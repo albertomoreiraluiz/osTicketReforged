@@ -4,9 +4,9 @@
 
 - Data de atualização: 2026-09-03.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
-- Branch: `codex/docs-reverse-engineering-v1.18.4`.
-- Etapa: formalização da governança antes da engenharia reversa.
-- Plano seguinte proposto: `docs/plans/active/0001-reverse-engineering.md`.
+- Branch estável resultante: `main`.
+- Etapa: engenharia reversa — preparação do inventário.
+- Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
 
@@ -21,26 +21,26 @@
 - Política obrigatória de documentação e formalização no GitHub aprovada.
 - Configuração e documentação de agentes isoladas em `.codex/`, sem inclusão no código executável do osTicket.
 - Leitura documental no início de toda tarefa e varredura documental anterior a todo PR aprovadas como obrigatórias.
+- Governança formalizada e integrada pela PR #1.
 
 ## Em andamento
 
-- Pacote inicial de governança pronto para commit, publicação e Pull Request.
+- Preparação da Onda 1 de inventário somente leitura.
 
 ## Próximo passo proposto
 
-Após integração deste pacote:
-
-1. validá-lo em um novo chat iniciado na raiz do repositório;
-2. iniciar a Onda 1, inventário somente leitura;
-3. criar os documentos de engenharia reversa apenas quando houver evidência suficiente;
-4. atualizar este arquivo ao final de cada unidade verificável.
+1. validar o carregamento da governança em um novo chat iniciado na raiz;
+2. registrar a avaliação de necessidade e a composição da Onda 1;
+3. iniciar o inventário somente leitura;
+4. criar documentos de engenharia reversa apenas com evidência suficiente;
+5. atualizar este arquivo ao final de cada unidade verificável.
 
 ## Estado dos portões
 
 | Portão | Estado | Evidência atual | Bloqueio |
 | --- | --- | --- | --- |
-| A — Governança | Aprovado, não integrado | regras e perfis aprovados; TOML e referências validados | commit, push, PR e merge autorizados separadamente |
-| B — Inventário | Não iniciado | nenhuma | Portão A |
+| A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
+| B — Inventário | Pronto para iniciar | plano ativo e governança integrada | composição da Onda 1 |
 | C — Análise profunda | Não iniciado | nenhuma | Portão B |
 | D — Decisão arquitetural | Não iniciado | nenhuma | Portão C e aprovação do ADR |
 
@@ -69,3 +69,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Remotos | `origin`, `upstream` com push desabilitado | Concluído |
 | 2026-09-03 | Governança inicial | arquivos locais; validação TOML e referências | Produzido, em revisão |
 | 2026-09-03 | Perfis e políticas | aprovação explícita do responsável; `DECISIONS.md` | Aprovado, aguardando integração |
+| 2026-09-03 | Portão A | PR #1 | Concluído |

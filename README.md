@@ -7,21 +7,21 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | Item | Estado |
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
-| Branch de trabalho | `codex/docs-reverse-engineering-v1.18.4` |
-| Etapa atual | Formalização da governança |
-| Portão A — Governança | Aprovado, aguardando integração |
-| Portão B — Inventário | Não iniciado |
+| Branch estável | `main` |
+| Etapa atual | Engenharia reversa — preparação do inventário |
+| Portão A — Governança | Concluído pela PR #1 |
+| Portão B — Inventário | Pronto para iniciar |
 | Portão C — Análise profunda | Não iniciado |
 | Portão D — Decisão arquitetural | Não iniciado |
 
-Em andamento: publicar e integrar por Pull Request o contexto persistente, os treze perfis profissionais e as políticas obrigatórias já aprovadas.
+Em andamento: preparar a Onda 1 de inventário somente leitura com base na governança integrada pela PR #1.
 
 Próximas etapas:
 
-1. integrar o Portão A em `main`;
-2. iniciar em novo chat a Onda 1 de inventário somente leitura;
-3. mapear core, plugins, hooks, domínio, banco, autenticação, API e frontend;
-4. produzir evidências antes de propor a arquitetura.
+1. iniciar em novo chat a Onda 1 de inventário somente leitura;
+2. mapear core, plugins, hooks, domínio, banco, autenticação, API e frontend;
+3. produzir evidências antes de propor a arquitetura;
+4. atualizar o progresso ao concluir cada unidade verificável.
 
 Fontes operacionais:
 

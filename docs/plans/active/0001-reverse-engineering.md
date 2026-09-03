@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposto** — aguarda revisão e aprovação do responsável antes do início das ondas de análise.
+**Aceito** pelo responsável pelo projeto; ativo após a integração da PR #1.
 
 ## Objetivo
 
