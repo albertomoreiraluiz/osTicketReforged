@@ -1,0 +1,62 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+[features]
+multi_agent = true
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+max_depth = 1
+interrupt_message = true
+
+[agents.reverse_engineering_engineer]
+description = "Engenheiro Sênior de Engenharia Reversa responsável por rastrear o comportamento real do osTicket."
+config_file = "agents/reverse-engineering-engineer.toml"
+
+[agents.plugin_architect]
+description = "Arquiteto de Extensibilidade e Plugins responsável pelo framework de plugins, hooks e estratégias de customização."
+config_file = "agents/plugin-architect.toml"
+
+[agents.data_engineer]
+description = "Engenheiro de Dados responsável pelo modelo relacional, persistência, consultas e riscos de evolução do banco."
+config_file = "agents/data-engineer.toml"
+
+[agents.security_architect]
+description = "Arquiteto de Segurança e IAM responsável por autenticação, autorização, sessão, API e dados sensíveis."
+config_file = "agents/security-architect.toml"
+
+[agents.frontend_architect]
+description = "Arquiteto Frontend responsável pela análise da UI atual e pela futura arquitetura Angular e PrimeNG."
+config_file = "agents/frontend-architect.toml"
+
+[agents.senior_php_engineer]
+description = "Engenheiro PHP Sênior responsável por implementações aprovadas no backend, API e extensões."
+config_file = "agents/senior-php-engineer.toml"
+
+[agents.senior_angular_engineer]
+description = "Engenheiro Angular Sênior responsável por implementações aprovadas em Angular e PrimeNG."
+config_file = "agents/senior-angular-engineer.toml"
+
+[agents.software_architect]
+description = "Arquiteto de Software responsável por limites, opções arquiteturais, ADRs e compatibilidade evolutiva."
+config_file = "agents/software-architect.toml"
+
+[agents.qa_engineer]
+description = "Engenheiro de Qualidade responsável por estratégia de testes, rastreabilidade e verificação independente."
+config_file = "agents/qa-engineer.toml"
+
+[agents.api_architect]
+description = "Arquiteto de APIs responsável por contratos, isolamento do core, integração e evolução da futura API."
+config_file = "agents/api-architect.toml"
+
+[agents.technical_writer]
+description = "Especialista em Documentação Técnica responsável por clareza, consistência, índices e rastreabilidade documental."
+config_file = "agents/technical-writer.toml"
+
+[agents.database_engineer]
+description = "Engenheiro de Banco de Dados responsável por migrations e mudanças executáveis de persistência aprovadas."
+config_file = "agents/database-engineer.toml"
+
+[agents.devops_release_engineer]
+description = "Engenheiro DevOps e Release responsável por CI/CD, integração do upstream, builds e releases aprovadas."
+config_file = "agents/devops-release-engineer.toml"

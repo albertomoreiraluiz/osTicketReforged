@@ -1,5 +1,47 @@
+# osTicket Reforged
+
+Fork controlado do osTicket para engenharia reversa e futura revitalização progressiva do frontend, preservando o core e a capacidade de acompanhar o upstream.
+
+## Estado atual do projeto
+
+| Item | Estado |
+| --- | --- |
+| Baseline | osTicket `v1.18.4`, commit `8d38b061` |
+| Branch de trabalho | `codex/docs-reverse-engineering-v1.18.4` |
+| Etapa atual | Formalização da governança |
+| Portão A — Governança | Aprovado, aguardando integração |
+| Portão B — Inventário | Não iniciado |
+| Portão C — Análise profunda | Não iniciado |
+| Portão D — Decisão arquitetural | Não iniciado |
+
+Em andamento: publicar e integrar por Pull Request o contexto persistente, os treze perfis profissionais e as políticas obrigatórias já aprovadas.
+
+Próximas etapas:
+
+1. integrar o Portão A em `main`;
+2. iniciar em novo chat a Onda 1 de inventário somente leitura;
+3. mapear core, plugins, hooks, domínio, banco, autenticação, API e frontend;
+4. produzir evidências antes de propor a arquitetura.
+
+Fontes operacionais:
+
+- [instruções obrigatórias](AGENTS.md);
+- [contexto persistente](docs/governance/PROJECT_CONTEXT.md);
+- [controle detalhado de progresso](docs/governance/PROGRESS.md);
+- [política de documentação](docs/governance/DOCUMENTATION_POLICY.md);
+- [decisões de governança](docs/governance/DECISIONS.md);
+- [instruções de automação](.codex/README.md);
+- [plano proposto de engenharia reversa](docs/plans/active/0001-reverse-engineering.md).
+
+---
+
+## Documentação original do upstream
+
+O conteúdo abaixo é mantido para referência e compatibilidade com o projeto oficial.
+
 osTicket
 ========
+
 <a href="https://osticket.com"><img height="80px" width="80px" src="images/favicon.png"
 align="left" hspace="10" vspace="6"></a>
 
