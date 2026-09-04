@@ -102,6 +102,24 @@ sinais em `AJAX_ROUTE_CATALOG.md`, `ORM_CATALOG.md`, `CLI_CATALOG.md` e
 `SIGNAL_CATALOG.md`. Os 13 alvos AJAX ausentes e três divergências ORM
 permanecem achados estáticos, reservados à confirmação posterior.
 
+## Onda 5 — integridade, registries e limites de customização
+
+**Estado:** em execução.
+
+**Justificativa:** as três frentes percorrem mecanismos independentes e
+extensos. A separação permite revisão especializada sem ownership concorrente;
+o agente principal permanece único redator e integrador.
+
+| Instância | Perfil permanente | Missão | Escrita | Integrador |
+| --- | --- | --- | --- | --- |
+| `engenheiro-dados/onda-05/falhas-orfaos` | Engenheiro de Dados | rastrear atomicidade, rollback, cascatas e limpeza de órfãos de ticket/tarefa | nenhuma | agente principal |
+| `engenheiro-reversa/onda-05/registries` | Engenheiro de Engenharia Reversa | catalogar registries, callbacks e extensões externas a `Signal` | nenhuma | agente principal |
+| `arquiteto-api/onda-05/matriz-customizacao` | Arquiteto de API | classificar superfícies por plugin, sinal, API/AJAX, composição ou alteração de core | nenhuma | agente principal |
+
+As missões devem citar definição, registro, consumidor, identidade, efeito e
+limite. Achados suspeitos permanecem fatos estáticos ou inferências; nenhuma
+arquitetura futura será escolhida nesta onda.
+
 ## Restrições da fase
 
 - A análise é exclusivamente estática enquanto o osTicket não estiver

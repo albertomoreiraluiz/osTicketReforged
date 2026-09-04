@@ -31,6 +31,8 @@
 
 - Portão C iniciado para catálogos exaustivos, matriz de customização e limites
   de extensão do core.
+- Onda 5 iniciada para integridade de ticket/tarefa, registries externos a
+  `Signal` e matriz de customização, em três missões somente leitura.
 - Onda 4 concluída com matriz das 229 folhas AJAX, catálogo das 72 declarações
   ORM, contratos dos 14 módulos CLI e dos 41 sinais.
 - Onda 1 do inventário estático formalizada para ciclo de requisição, modelo de
