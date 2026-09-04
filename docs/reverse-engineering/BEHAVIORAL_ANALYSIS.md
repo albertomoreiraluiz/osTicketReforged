@@ -290,6 +290,26 @@ confirmar zero linhas e o comportamento permissivo anterior voltar a ser
 observável. Se qualquer pré-condição divergir, a exclusão não será executada e o
 dump será preservado para restauração manual.
 
+**Resultado do protocolo A:** o dump integral foi criado e verificado por
+tamanho, SHA-256, definição e dados de `ost_config`. A chave global `.txt` foi
+inserida, mas os dois canais continuaram aceitando ambos os arquivos. O rollback
+planejado excluiu exatamente a linha criada e confirmou zero remanescentes. O
+ensaio não provou a allowlist porque os campos de thread instalados continuaram
+com configuração própria vazia.
+
+#### Plano de rollback BHV-010-B — campos de thread
+
+**Estado anterior observado:** os campos `message` do formulário de ticket e
+`description` do formulário de tarefa possuem `configuration` vazia. O mesmo
+dump integral anterior às mutações cobre essas linhas. O ensaio atualizará
+somente esses dois campos para JSON com anexos habilitados, extensão `.txt` e o
+limite já vigente, confirmará os valores e comparará os canais. Em bloco final
+obrigatório, ambas as linhas serão restauradas para string vazia por ID e apenas
+se o JSON temporário ainda for exatamente o esperado. O rollback exige duas
+linhas atualizadas e verificação posterior dos dois valores vazios; divergência
+interrompe o teste e preserva o dump. Nenhuma exclusão ou mudança de schema faz
+parte deste protocolo.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
