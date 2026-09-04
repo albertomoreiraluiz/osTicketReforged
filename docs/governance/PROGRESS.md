@@ -31,6 +31,9 @@
   registrar credenciais, cookies ou tokens.
 - Mutações funcionais no banco descartável de homologação autorizadas para a
   Onda 7; exclusões condicionadas a plano, backup e rollback por GOV-014.
+- Push para branches dedicadas, criação de PR e merge validado em `main`
+  autorizados permanentemente por GOV-016; ações de risco material continuam
+  exigindo parada e autorização específica.
 
 ## Onda 7 concluída funcionalmente
 
@@ -277,3 +280,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — consolidação funcional | matriz BHV; estado final do banco e serviços; auditoria transversal | BHV-001 a BHV-025 concluídos; restaurações confirmadas; fixtures preservadas sem limpeza destrutiva; revisão QA final preparada |
 | 2026-09-04 | Onda 7 — revisão QA final | `REVIEW_REPORT.md`; matriz BHV; diff documental | 25 cenários confirmados; duas inconsistências médias e uma baixa corrigidas; nenhum bloqueio funcional ou documental restante |
 | 2026-09-04 | Integração da Onda 7 | PR #6; merge `845241ed`; `main` sincronizada | 45 commits e 19 arquivos documentais integrados; engenharia reversa funcional encerrada; Portão D permanece não iniciado até decisão explícita |
+| 2026-09-04 | Autorização operacional de PR | GOV-016; decisão explícita do responsável | Push em branch dedicada, criação de PR e merge validado passam a ser autônomos; ações excessivamente arriscadas permanecem fora da autorização |
