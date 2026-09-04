@@ -32,3 +32,39 @@ aberto. Referências, contagens e navegação foram reconciliadas; o integrador
 executou `mkdocs build --strict` e `git diff --check` com sucesso. Validações
 exclusivamente comportamentais continuam registradas e não bloqueiam o
 fechamento da análise estática.
+
+## Onda 7 — revisão independente de ACL e arquivos
+
+A instância `arquiteto-seguranca/onda-07/revisao-acl-upload` revisou em modo
+somente leitura o primeiro conjunto estabilizado de evidências comportamentais.
+
+| Severidade | Achado | Resultado |
+| --- | --- | --- |
+| alta | `postreply` sem `task.reply` e `task:status` sem `task.close` | resposta e fechamento confirmados em runtime; fixture reaberta |
+| alta | URL HMAC de arquivo não inclui principal, pai nem attachment id | cliente sem visibilidade da tarefa consumiu anexo interno com URL staff |
+| média | `ajaxUpload(true)` do staff ignora tipo e tamanho do campo | allowlist `.txt` contornada em runtime; validação básica permanece |
+| média contratual | 413/415 ausentes de `Http::header_code_verbose()` | rejeição 415 observada como HTTP 500 |
+| média | negação AJAX de `task.close` não propaga erro ao template | estado protegido, mas 200/formulário sem mensagem inequívoca |
+
+O revisor não acessou `.env`, banco ou runtime e não alterou arquivos. As
+conclusões foram relidas no código pelo integrador e incorporadas aos documentos
+canônicos; correção do core e aceite residual permanecem fora da etapa atual.
+
+## Onda 7 — revisão QA do fechamento funcional
+
+A instância `engenheiro-qa/onda-07/revisao-fechamento-funcional` confrontou em
+modo somente leitura a matriz comportamental e o diff de consolidação.
+
+- confirmou 25 identificadores únicos, de `BHV-001` a `BHV-025`, todos com
+  estado concluído e seção de evidência;
+- não encontrou lacuna funcional adicional nem afirmação sem suporte que
+  exigisse novo ensaio;
+- classificou corretamente concorrência, `E_ALL`, integrações reais de correio,
+  acessibilidade, desempenho e novos testes de segurança como fases futuras;
+- apontou duas inconsistências documentais médias e uma baixa: autorização
+  cruzada já confirmada ainda listada como lacuna, fechamento anunciado antes
+  do registro do parecer e um checkpoint histórico redigido no presente.
+
+O integrador corrigiu os três itens e repetiu as validações documentais. O
+revisor não leu `.env`, banco ou runtime, não executou testes ofensivos e não
+alterou arquivos. Não permanece bloqueio funcional ou documental da Onda 7.

@@ -19,3 +19,11 @@ Riscos estáticos de maior confiança incluem payloads de sinais com credenciais
 `auth.login.succeeded` antes da conclusão potencial de 2FA e ausência de guarda
 uniforme em rotas adicionadas. Testes de sessão, proxy, capability de arquivo e
 upload permanecem deliberadamente dinâmicos.
+
+Na Onda 7, uma tentativa inválida isolada de agente e cliente respondeu `200`,
+reapresentou login com mensagem genérica e não impediu autenticação correta em
+nova sessão. CSRF inválido nos dois formulários produziu redirecionamento `302`,
+enquanto o dispatcher AJAX staff sem token respondeu `400`. A rotação adiada da
+sessão, upload e capability de arquivo também possuem evidência dinâmica no
+[modelo comportamental](BEHAVIORAL_ANALYSIS.md); limiar de bloqueio, expiração
+longa e 2FA continuam não exercitados.

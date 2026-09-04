@@ -87,3 +87,133 @@ Esta análise não escolhe Angular/PrimeNG nem arquitetura de integração.
 
 Observações estáticas de markup obsoleto ou layout tabular não provam falha de
 acessibilidade; a auditoria dinâmica ocorrerá após a instalação.
+
+## Confirmação inicial de exportação — Onda 7
+
+Ticket staff, tarefa administrativa, tarefa do agente atribuído e ticket do
+cliente foram exportados pelas rotas nativas. Todos responderam `200`, MIME
+`application/pdf`, prefixo `%PDF` e corpo não vazio. Extração textual e inspeção
+visual confirmaram documentos legíveis: o ticket do cliente expõe somente a
+conversa pública, e nem ele nem o ticket staff incorporam a thread da tarefa. As
+duas exportações da tarefa exibem o histórico interno desse objeto, inclusive
+notas, anexo e mudanças de estado, conforme o acesso do administrador e do
+agente atribuído no cenário testado.
+
+## Listas e buscas confirmadas — Onda 7
+
+O portal manteve filtros de tickets na sessão do cliente. Busca positiva e
+negativa, estados aberto/fechado, tópico presente/ausente e ordenação por número
+foram reproduzidos pela interface HTTP. Limpar os filtros foi necessário antes
+de alternar estado ou tópico, confirmando que os controles se compõem sobre o
+estado salvo em `client:Q`.
+
+No SCP, a busca simples criou uma fila ad hoc: número existente retornou a linha
+do ticket e termo inexistente não retornou a fixture. O typeahead AJAX entregou
+JSON estruturado para o número e lista vazia para o termo ausente; a busca
+avançada carregou como formulário AJAX. Esses resultados confirmam os dois
+caminhos de pesquisa observáveis sem criar uma fila salva.
+
+## Base de Conhecimento confirmada — Onda 7
+
+Categoria pública e FAQ publicada não bastam para disponibilizar o módulo quando
+`enable_kb=0`: as rotas sob `/kb/` retornam à página inicial. Depois de habilitar
+o módulo pelo formulário administrativo, o shell público passou a incluir o link
+da Base de Conhecimento. Em sessão anônima, índice, categoria, artigo e busca
+renderizaram a fixture. A mudança demonstra que navegação e roteamento público
+dependem simultaneamente da configuração global e da existência de conteúdo
+publicado.
+
+## Respostas Prontas confirmadas — Onda 7
+
+O cadastro administrativo produziu uma resposta ativa e global. No editor de
+ticket, o frontend pode obtê-la tanto pelo endpoint genérico da Base de
+Conhecimento quanto pelo endpoint contextual do ticket. As variantes JSON
+entregam metadados e corpo; as variantes de texto entregam HTML pronto para o
+editor. O carregamento é independente da submissão final da resposta.
+
+## Colaboração no portal confirmada — Onda 7
+
+Um cliente que não era proprietário inicialmente não recebeu o segundo ticket
+na lista nem abriu sua tela. Depois da inclusão pelo diálogo staff, o mesmo shell
+do cliente passou a listar e renderizar o ticket sem novo login. O formulário de
+resposta permaneceu o mesmo e a mensagem do colaborador surgiu na thread. Assim,
+o frontend do portal compõe a lista com propriedade e colaboração, enquanto o
+backend preserva o proprietário original.
+
+## Perfil do cliente confirmado — Onda 7
+
+`profile.php` renderiza os dados de contato por formulários dinâmicos: os nomes
+HTTP dos campos variam entre requisições e não equivalem diretamente a `name`,
+`email` ou `phone`. O fluxo normal com CSRF alterou um nome fictício,
+redirecionou para a lista de tickets e apresentou o novo valor ao reabrir a
+tela. A repetição restaurou o valor original, demonstrando que integrações
+futuras deverão descobrir ou reproduzir o contrato dos formulários, em vez de
+fixar nomes de parâmetros observados em uma única resposta.
+
+## Organização e agregação confirmadas — Onda 7
+
+O shell staff abre a criação de organização em um diálogo AJAX, envia CSRF e
+consome a resposta `201` em JSON. A página de detalhe combina três painéis:
+usuários, tickets e notas. Depois de associar um usuário existente, a mesma tela
+passou a apresentar o usuário e o ticket de sua propriedade. O painel de
+tickets, portanto, é uma visão derivada da organização atual do proprietário,
+e não uma associação gravada diretamente no ticket.
+
+O link de edição abre outro diálogo AJAX e espera `201` em JSON; o ciclo
+temporário/restauração confirmou que o mesmo contrato serve às duas alterações.
+Já o painel de notas recebe um fragmento HTML com `200` e o injeta na coleção da
+tela. A área administrativa combina, portanto, respostas JSON para entidade e
+HTML para conteúdo incremental na mesma página.
+
+## Edição tradicional de ticket confirmada — Onda 7
+
+A edição de ticket não usa o padrão de diálogo AJAX da organização. O formulário
+completo envia uma ação relativa `tickets.php?...` e retorna `200` após o
+redirecionamento. Essa URL só é correta quando resolvida a partir do shell
+`/scp`; resolvê-la a partir da raiz conduz ao portal público. O assunto dinâmico
+foi alterado e restaurado, confirmando que o frontend deve preservar tanto os
+campos atuais quanto o contexto da URL relativa.
+
+## Administração do usuário confirmada — Onda 7
+
+O detalhe do usuário combina edição em diálogo AJAX, organização, tickets e
+notas. A edição retornou JSON com `201`, enquanto a nota retornou HTML com `200`,
+o mesmo padrão heterogêneo observado na organização. Já o perfil do próprio
+cliente usa página e redirecionamento tradicionais. O frontend futuro precisará
+distinguir esses contratos mesmo quando ambos terminam em
+`User::updateInfo()`.
+
+## Perfil do agente confirmado — Onda 7
+
+`scp/profile.php` mantém outro contrato tradicional: formulário completo, POST
+na própria página e resposta `200`, sem JSON. A preferência de fuso foi alterada
+e restaurada em duas submissões. Esse comportamento contrasta com os diálogos
+AJAX de administração de usuário, embora ambos pertençam ao shell staff.
+
+## Editor de resposta e lock confirmados — Onda 7
+
+Carregar a tela não basta quando o modo de lock depende de atividade: o
+JavaScript chama `ajax.php/lock/ticket/{id}`, recebe ID/código e só então o
+formulário tradicional pode responder. Sem essa etapa, o backend devolveu a
+mensagem de lock e manteve o texto no editor; com o código válido, redirecionou
+e mostrou a nova resposta. Uma reprodução futura precisa modelar esse estado
+intermediário, não apenas os campos visíveis do formulário.
+
+No portal do cliente, o editor de mensagem do colaborador não usa o lock staff.
+O formulário tradicional com CSRF enviou a mensagem, redirecionou para
+`/tickets.php` e exibiu o novo conteúdo. O backend marcou o ticket como não
+respondido e limpou o namespace de draft do ticket, que estava vazio pela
+pré-condição do ensaio.
+
+## Filas e paginação confirmadas — Onda 7
+
+Com a preferência do agente temporariamente ajustada para cinco itens, a fila
+staff dividiu seis tickets em cinco linhas na página 1 e uma linha na página 2.
+O link preservou a fila corrente e usou o parâmetro `p`; a preferência original
+foi restaurada após o ensaio.
+
+Uma página muito acima do total revelou um estado incoerente: `p=99` retornou
+`200`, mostrou a navegação como página 1 e deixou a tabela vazia. O offset é
+aplicado quando o total ainda vale `PHP_INT_MAX`; o total verdadeiro corrige o
+paginador somente depois da consulta. A reprodução futura não deve copiar essa
+inconsistência visual sem uma decisão explícita de compatibilidade.

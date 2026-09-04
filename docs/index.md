@@ -7,7 +7,7 @@ Este portal organiza a documentação humana e verificável da baseline osTicket
 
 - Portão A — Governança: concluído.
 - Portão B — Inventário: concluído após revisão independente.
-- Portão C — Análise profunda: em andamento.
+- Portão C — Análise profunda: concluído, incluindo a Onda 7 funcional.
 - Portão D — Decisão arquitetural: não iniciado.
 
 Comece pelo [inventário da baseline](reverse-engineering/INVENTORY.md) e use a

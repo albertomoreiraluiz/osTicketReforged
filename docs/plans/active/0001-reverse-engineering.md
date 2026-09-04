@@ -20,8 +20,8 @@ Produzir a documentação técnica necessária para escolher, sem antecipação,
 
 A infraestrutura local está ativa com XAMPP, Apache, PHP 8.2, extensões
 necessárias e logs. A instalação funcional, o banco, o ciclo HTTP público e a
-autenticação administrativa foram confirmados; a Onda 7 executa agora a
-validação comportamental controlada.
+autenticação administrativa foram confirmados; a Onda 7 concluiu a validação
+funcional controlada, revisada independentemente sem bloqueio restante.
 
 ## Fontes externas de apoio
 
@@ -81,7 +81,8 @@ aprofundamento do Portão C. Eles não são pré-condição retroativa do Portã
 
 **Estado:** escopo estático concluído em 2026-09-03, após seis ondas, catálogos
 exaustivos e revisão cruzada sem achado alto ou médio aberto. A instalação foi
-concluída em 2026-09-04 e a validação comportamental constitui a Onda 7.
+concluída em 2026-09-04; os 25 cenários da validação comportamental da Onda 7
+foram concluídos e aprovados na revisão documental final.
 
 ### Portão D — Decisão arquitetural
 

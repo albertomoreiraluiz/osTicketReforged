@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-04.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável resultante: `main`.
-- Etapa: engenharia reversa — análise comportamental em execução.
+- Etapa: engenharia reversa — Onda 7 concluída e revisada; integração em preparação.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -32,10 +32,82 @@
 - Mutações funcionais no banco descartável de homologação autorizadas para a
   Onda 7; exclusões condicionadas a plano, backup e rollback por GOV-014.
 
-## Em andamento
+## Onda 7 concluída funcionalmente
 
-- Onda 7 comportamental iniciada sobre a distribuição `v1.18.4` instalada na
+- Onda 7 comportamental executada sobre a distribuição `v1.18.4` instalada na
   raiz `C:\xampp\htdocs`.
+- Varredura autenticada de 31 páginas concluída sem falha HTTP, formulário de
+  login, erro fatal ou novo registro no log PHP.
+- Passagem AJAX confirmou guards 400/403, respostas heterogêneas e todos os
+  treze alvos ausentes retornando 500 em runtime, sem alcançar persistência.
+- Fixtures fictícias de administrador, agente somente visualização e cliente
+  autenticado disponíveis; segredos permanecem apenas no `.env` ignorado.
+- Matriz inicial confirmou isolamento entre sessões de cliente/equipe, menu
+  restrito do agente e `403` em AJAX administrativo.
+- CLI `user activate` confirmou erro fatal por chamada ao método inexistente
+  `UserAccount::create()`; importação de usuário funcionou.
+- Cliente fictício criou ticket aberto pelo portal; administrador o atribuiu ao
+  agente restrito, alterando sua visibilidade de ausente para presente.
+- Agente sem permissão de resposta teve POST negado sem persistência, mas pôde
+  criar nota interna; cliente viu resposta administrativa e não viu a nota.
+- Transições Aberto → Resolvido → Aberto confirmadas por notas administrativas,
+  locks válidos e leitura do estado persistido; ticket permanece ativo.
+- Tarefa vinculada criada e atribuída; visibilidade entre administrador, agente
+  e cliente confirmada. POST direto demonstrou que `task.reply` é aplicado
+  somente na interface e não no controlador, permitindo resposta sem permissão.
+- Nota de tarefa, negação de fechamento pelo agente e transições administrativas
+  fechar/reabrir confirmadas; a fixture terminou aberta, sem exclusão.
+- Upload Web aceitou TXT e extensão `.php` sob configuração permissiva; TXT foi
+  associado à tarefa, entregue como attachment, protegido por login e assinatura.
+- Limite temporário de 256 KiB confirmou cliente `200/500` abaixo/acima do
+  limite e bypass staff também para tamanho; os campos foram restaurados a
+  `NULL` e somente os dois uploads aceitos persistiram como temporários `D`.
+- Ensaio com dump e rollback confirmou bypass staff de allowlist, rejeição do
+  cliente convertida de 415 para 500 e ausência de ACL do pai em URL assinada.
+- Tentativa inválida isolada e recuperação por login correto confirmadas para
+  agente e cliente; CSRF inválido em login redireciona com 302.
+- API nativa validada com chave local fictícia: guards 401, JSON/XML/e-mail
+  `201`, parsing inválido 400, cron sem flag 401 e cron autorizado `200` após
+  backup restaurável; chave terminou desativada e sem permissão de cron.
+- Revisão independente elevou ACL composta de tarefa e capability assinada a
+  altas; POST forjado confirmou fechamento sem `task.close`, seguido de rollback.
+- Exportações PDF de ticket/tarefa em sessões staff, agente e cliente retornaram
+  documentos válidos e legíveis; o ticket do cliente omitiu conteúdo interno e
+  as exportações específicas da tarefa refletiram seu histórico autorizado.
+- Escopo da Onda 7 ajustado por GOV-015 para priorizar fluxos funcionais fiéis
+  entre frontend e backend, sem ampliar testes dedicados a segurança.
+- Buscas e listas do cliente/SCP validadas com resultados positivos e negativos,
+  filtros de estado/tópico, ordenação, lookup e formulário avançado.
+- Base de Conhecimento habilitada pelo fluxo administrativo após criação de
+  categoria e FAQ fictícias; publicação, menu, navegação e busca anônima validados.
+- Resposta Pronta fictícia criada como fixture ativa/global; carregamento genérico
+  e contextual do ticket validado em JSON e texto sem envio ao cliente.
+- Ciclo reversível de liberação e atribuição confirmou eventos e visibilidade
+  `assigned_only`; ticket terminou novamente atribuído ao administrador.
+- Abertura anônima, validação de e-mail e colaboração reproduzidas com fixtures:
+  associação tornou o segundo ticket visível e permitiu resposta do colaborador.
+- Perfil do cliente alterado pelo formulário dinâmico e restaurado pelo mesmo
+  fluxo; persistência final não reteve o marcador fictício.
+- Organização fictícia criada e associada ao proprietário do ticket anônimo;
+  a tela agregou usuário e ticket por relação derivada, sem exclusão.
+- Nome da organização alterado e restaurado por AJAX; nota administrativa única
+  persistida como fixture polimórfica, sem exclusão.
+- Assunto de ticket alterado e restaurado pelo formulário tradicional; a visão
+  dinâmica terminou com o original e sem marcador temporário.
+- Transporte de saída inspecionado: sem SMTP cadastrado; coletores locais
+  efêmeros e sem relay classificaram os fluxos previstos e foram encerrados.
+- Usuário anônimo editado e restaurado pelo diálogo staff; organização
+  preservada e nota rápida única persistida como fixture.
+- Fuso do perfil administrativo alterado e restaurado por dois POSTs
+  tradicionais; credenciais, 2FA e permissões preservados.
+- Coletor SMTP local sem relay capturou uma mensagem/um destinatário durante
+  nova abertura Web; ticket persistido e porta 25 fechada ao final.
+- Segunda abertura Web classificou o único envio como alerta administrativo;
+  autoresposta ausente por configuração global desativada, sem armazenar endereço.
+- Resposta staff com lock AJAX persistiu uma única `R`, marcou ticket respondido
+  e enviou somente ao proprietário fictício pelo coletor local.
+- Exportador CLI integral rejeitado como backup: runtime produziu schemas sem
+  linhas por reutilização incorreta de `$res` em `DatabaseExporter::dump()`.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -75,10 +147,10 @@
 
 ## Próximo passo proposto
 
-1. executar testes comportamentais de interface, sessão, permissões, uploads,
-   e-mail e riscos priorizados em ambiente descartável;
-2. atualizar os mesmos catálogos com fatos observados em runtime;
-3. somente depois preparar opções do Portão D e decisões de integração.
+1. preparar e integrar o Pull Request de encerramento da Onda 7;
+2. confirmar a branch estável sincronizada e o portal documental válido;
+3. somente após a integração preparar opções do Portão D, sem antecipar a
+   decisão de frontend.
 
 ## Estado dos portões
 
@@ -163,3 +235,44 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Exposição local do instalador | decisão explícita do responsável | `setup/` será mantido na homologação acessível somente pela máquina local; produção permanece fora dessa exceção |
 | 2026-09-04 | Autorização de dados da Onda 7 | GOV-014; decisão explícita do responsável | Criação e edição funcionais autorizadas na homologação; exclusões exigem plano, backup verificável e rollback |
 | 2026-09-04 | Consolidação da engenharia reversa | PR #5 | Inventário estático, homologação e início da Onda 7 submetidos para integração em `main` |
+| 2026-09-04 | Integração documental | PR #5; merge `9feda032` | Engenharia reversa estática e início comportamental integrados em `main` |
+| 2026-09-04 | Onda 7 — páginas e AJAX | 31 páginas autenticadas; rotas AJAX válidas, inválidas e treze alvos ausentes | Páginas estáveis; guards registrados; todos os alvos ausentes confirmados com 500 sem persistência |
+| 2026-09-04 | Onda 7 — identidades e permissões | criação administrativa de agente; importação/registro de cliente; três sessões | Agente de visualização e cliente autenticados; fronteiras iniciais confirmadas sem expor credenciais |
+| 2026-09-04 | CLI de cliente | `manage.php user import`; `manage.php user activate` | Importação concluída; ativação fatal por `UserAccount::create()` inexistente |
+| 2026-09-04 | Onda 7 — ticket inicial | formulário público, AJAX de tópico, persistência e atribuição AJAX | Ticket fictício aberto e atribuído; escopo `assigned_only` confirmado antes/depois |
+| 2026-09-04 | Onda 7 — thread e ACL | resposta negada do agente; nota interna; resposta administrativa; visão do cliente | `ticket.reply` aplicado; nota interna permitida ao papel; conteúdo interno oculto do cliente |
+| 2026-09-04 | Onda 7 — transições | notas administrativas com lock; estados 1 e 2 | Fechamento e reabertura confirmados; fixture preservada, sem exclusão |
+| 2026-09-04 | Onda 7 — tarefa vinculada e ACL | criação AJAX; três identidades; POST direto; persistência da thread | Tarefa única confirmada; `task.create` negado ao agente, mas resposta persistiu sem `task.reply` |
+| 2026-09-04 | Onda 7 — tarefa, nota e estado | nota do agente; fechamento negado; fechamento/reabertura administrativos; banco | Nota persistida; ACL de status preservada com feedback ambíguo; tarefa novamente aberta |
+| 2026-09-04 | Onda 7 — arquivos inicial | uploads staff/cliente; associação em thread; URL assinada; três contextos de acesso | Configuração sem allowlist aceita extensões; TXT associado e serving básico confirmado |
+| 2026-09-04 | Onda 7 — allowlist e rollback | dump SHA-256; protocolos A/B; campos `.txt`; restauração a `NULL` | Bypass staff confirmado; cliente rejeita com 500; acesso ao pai não é verificado |
+| 2026-09-04 | Onda 7 — autenticação negativa | sessões isoladas; senha e CSRF inválidos; login correto subsequente | Mensagem genérica e 200 para senha; 302 para CSRF; sem bloqueio após uma falha |
+| 2026-09-04 | Onda 7 — API HTTP | chave local; JSON válido/inválido; flag de cron; banco | 401/201/400 confirmados; ticket `source=API`; chave desativada ao final |
+| 2026-09-04 | Onda 7 — revisão de segurança 1 | parecer independente; releitura do código; fechamento forjado e reabertura | ACL composta e capability altas; upload médio; contratos de erro classificados |
+| 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
+| 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
+| 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |
+| 2026-09-04 | Onda 7 — buscas e filtros | cliente e SCP; número/termo ausente; estado, tópico, ordem, lookup e diálogo avançado | Resultados positivos e negativos coerentes; filtros do cliente persistem em sessão e precisam ser limpos entre composições; nenhuma mutação |
+| 2026-09-04 | Onda 7 — Base de Conhecimento | estado vazio; categoria pública; FAQ interna→pública; configuração administrativa; sessão anônima | Artigo interno oculto; artigo publicado ainda bloqueado por `enable_kb=0`; após habilitação, menu, índice, categoria, artigo e busca públicos funcionaram; fixtures preservadas |
+| 2026-09-04 | Onda 7 — Respostas Prontas | cadastro administrativo; listagem; endpoints KB/ticket em JSON e texto | Fixture ativa/global persistida; quatro contratos carregaram conteúdo e metadados no contexto do editor, sem criar thread ou e-mail |
+| 2026-09-04 | Onda 7 — atribuição e liberação | administrador→sem atribuição→agente→administrador; duas sessões; banco/eventos | Três mutações `201`; visibilidade acompanhou `assigned_only`; repetição isolada determinística e estado final restaurado sem exclusão |
+| 2026-09-04 | Onda 7 — abertura anônima e colaboração | TLD rejeitado/aceito; novo usuário/ticket; diálogo staff; portal do cliente; thread | `.invalid`/`.test` rejeitados sem persistência; ticket Web criado com `example.com`; colaborador ganhou lista/tela e publicou `M`, preservando proprietário e estado |
+| 2026-09-04 | Onda 7 — perfil do cliente | formulário dinâmico; POST com CSRF; releitura Web; banco; restauração | Nome fictício persistiu e apareceu no perfil; valor original restaurado exatamente; nenhum marcador residual, e-mail ou exclusão |
+| 2026-09-04 | Onda 7 — organização | diálogo AJAX; criação JSON; associação de usuário; detalhe; banco | Uma organização persistida; usuário ligado por `org_id`; ticket existente apareceu pela relação do proprietário; fixtures preservadas |
+| 2026-09-04 | Onda 7 — edição e nota de organização | formulário AJAX; alteração/restauração; nota rápida; banco | Dois `201` restauraram o nome; nota retornou HTML `200` e persistiu uma vez com `ext_id=O{id}` |
+| 2026-09-04 | Onda 7 — edição de ticket | formulário completo; ação relativa; dois POSTs; `ticket__cdata` | Assunto temporário apareceu e foi restaurado; resolução correta depende do contexto `/scp`; nenhuma notificação ou exclusão |
+| 2026-09-04 | Onda 7 — pré-condição de notificações | `email_account`; PHP mail; porta local; `syslog` | Sem SMTP ativo ou listener/coleção; ausência de erro não prova envio; ensaio aguarda coletor local sem relay |
+| 2026-09-04 | Onda 7 — administração de usuário | diálogo AJAX; dois POSTs; detalhe; banco; nota rápida | Nome restaurado por dois `201`; `org_id` preservado; uma nota `U{id}` retornada em HTML `200` |
+| 2026-09-04 | Onda 7 — perfil do agente | formulário completo; fuso alternativo; duas releituras | Dois `200`; preferência alternativa confirmada e valor inicial restaurado; nenhum campo sensível alterado |
+| 2026-09-04 | Onda 7 — notificação de abertura Web | coletor `127.0.0.1:25` sem relay; formulário público; banco; `syslog` | Uma mensagem/um destinatário aceito; ticket Web aberto persistido; sem erro de mailer; coletor encerrado e tipo da notificação ainda não classificado |
+| 2026-09-04 | Onda 7 — classificação de notificação | coletor efêmero com classificação de domínio; nova abertura Web; configuração | Única mensagem destinada ao lado interno; alerta administrativo ativo, autoresponder global desligado e departamento sem gerente; porta fechada ao final |
+| 2026-09-04 | Onda 7 — resposta staff notificada | plano prévio; snapshot SHA-256; lock AJAX; POST de resposta; banco; coletor local | Sem lock, validação sem efeito; com lock, uma `R`, ticket aberto/respondido, `lastresponse` atualizado, draft vazio e uma mensagem ao proprietário |
+| 2026-09-04 | Onda 7 — mensagem de colaborador notificada | plano prévio; snapshot SHA-256; portal; banco; configuração; coletor local | Uma `M`, ticket aberto/não respondido, `lastmessage` atualizado, draft vazio e uma mensagem ao proprietário; sem autoresposta ou destinatário interno |
+| 2026-09-04 | Onda 7 — filas e paginação | preferência temporária 5; fila com 6 tickets; páginas 1, 2 e 99; restauração | Divisão 5+1 confirmada; página fora do intervalo fica vazia apesar de indicar página 1; preferência original restaurada |
+| 2026-09-04 | Onda 7 — atribuição e nota notificadas | plano prévio; snapshot SHA-256; atribuição; lock; nota; liberação; coletor | Uma `N`, relógios de mensagem/resposta preservados, draft vazio e atribuição restaurada; zero e-mail pelas políticas efetivas |
+| 2026-09-04 | Onda 7 — API XML e e-mail | chave temporariamente ativa; XML; RFC 822; banco; coletor; restauração | Dois `201`; tickets `API` e `Email` com entrada `M`; zero saída no recorte; flags originais da chave restauradas |
+| 2026-09-04 | Onda 7 — cron HTTP autorizado | inventário; dump SHA-256; restauração em banco temporário; cron; pós-check | `200 Completed`; 12 sessões expiradas removidas, demais candidatos zero, dados funcionais preservados e chave restaurada |
+| 2026-09-04 | Onda 7 — limite de upload | configuração temporária 256 KiB; cliente abaixo/acima; staff acima; `finally`; banco | Cliente `200/500`, staff `200`; bypass inclui tamanho; dois arquivos temporários `D`; configurações novamente `NULL` |
+| 2026-09-04 | Onda 7 — exportador de backup | export CLI comprimido; inspeção sem expor conteúdo; `class.export.php` | 47 schemas e zero linhas; artefato rejeitado para rollback; causa é `SELECT *` sem atribuição a `$res` |
+| 2026-09-04 | Onda 7 — consolidação funcional | matriz BHV; estado final do banco e serviços; auditoria transversal | BHV-001 a BHV-025 concluídos; restaurações confirmadas; fixtures preservadas sem limpeza destrutiva; revisão QA final preparada |
+| 2026-09-04 | Onda 7 — revisão QA final | `REVIEW_REPORT.md`; matriz BHV; diff documental | 25 cenários confirmados; duas inconsistências médias e uma baixa corrigidas; nenhum bloqueio funcional ou documental restante |

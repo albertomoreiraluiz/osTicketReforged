@@ -42,12 +42,21 @@ e `user` apenas quando envia ativação.
   `include/cli/modules/package.php:86-90` implementa apenas ZIP.
 - `include/cli/modules/export.php:51,76` procura
   `include/cli/modules/importer/`, diretório ausente na baseline.
+- `DatabaseExporter::dump()` executa `db_query("select * from $t")` sem atribuir
+  o retorno; o laço seguinte reutiliza `$res` da consulta de colunas
+  (`include/class.export.php:807-836`). Na Onda 7, um export integral produziu
+  47 schemas e zero linhas, portanto não constitui backup restaurável.
 - `include/cli/modules/org.php:48` contém item `email` sem valor explícito na
   chamada a `Organization::fromVars()`; efeito pendente.
+- `include/cli/modules/user.php:95` chama `UserAccount::create()` ao ativar um
+  usuário sem conta, mas esse método não existe na baseline; a Onda 7 confirmou
+  término fatal no comando `user activate`. O fluxo web usa
+  `ClientAccount::createForUser()` em `account.php`.
 
 ## Regras operacionais para a engenharia reversa
 
-Nenhum comando mutável deste catálogo foi executado. Quando a instalação
-existir, cada execução deverá declarar alvo, backup/recuperação, efeito esperado
-e critério de validação. Ferramentas de distribuição e desenvolvimento não
-devem ser confundidas com comandos administrativos do domínio.
+Na Onda 7, `user import` criou uma fixture fictícia com sucesso; `user activate`
+falhou antes da criação da conta pelo defeito acima. As demais operações
+mutáveis ou destrutivas continuam condicionadas a alvo, evidência e, para
+exclusão, plano/backup/rollback. Ferramentas de distribuição e desenvolvimento
+não devem ser confundidas com comandos administrativos do domínio.

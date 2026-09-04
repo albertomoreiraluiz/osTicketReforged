@@ -3,25 +3,27 @@
 | Frente | Evidência atual | Estado | Próxima verificação |
 | --- | --- | --- | --- |
 | Estrutura do repositório | árvore, contagens e fronteira core/dependências em `PROVENANCE_MAP.md` | Mapeado estaticamente | revisar ownership por arquivo apenas quando houver alteração |
-| Bootstrap e sessão | cadeias web/CLI, configuração, conexão, handlers e composição de `osTicket` | Mapeado estaticamente | validar rewrite, cookies e estados de upgrade após instalação |
-| Portal do usuário | controladores, pré-condições, ações e composição estática | Mapeado estaticamente | interface e respostas somente após instalação |
-| Painel da equipe | guarda comum, ações centrais e 229 folhas AJAX catalogadas individualmente | Mapeado estaticamente | confirmar respostas e controles na fase comportamental |
-| API/AJAX | API nativa, 12 rotas cliente e matriz integral das 229 folhas staff | Mapeado estaticamente | confirmar alcance e resposta real dos 13 alvos não callable após instalação |
-| CLI/cron/pipe | contratos, efeitos e pré-condições dos 14 módulos; cron/pipe aprofundados | Mapeado estaticamente | executar somente cenários futuros controlados |
-| Domínio | criação multicanal, ticket/thread/task/forms, update/status/delete, falhas e órfãos | Mapeado estaticamente | injetar falhas após instalação descartável |
-| Banco | schema sem FKs, catálogo das 72 metas ORM, relações, cdata, cascatas e evolução | Mapeado estaticamente | validar engines/índices após instalação |
-| Plugins e sinais | ciclo/persistência, 41 sinais, 22 registries/factories e matriz de customização | Mapeado estaticamente | revisão cruzada dos limites de extensão |
-| Autenticação/autorização | identidade, sessão, ACL, CSRF, 2FA, reset, API keys, arquivos, uploads e sinais | Mapeado estaticamente | testes controlados dos riscos priorizados |
-| Frontend PHP | shells cliente/SCP, navegação, templates, assets, widgets e PJAX | Mapeado estaticamente | matriz de telas e acessibilidade após instalação |
+| Bootstrap e sessão | cadeias web/CLI, configuração, conexão, handlers; sessões pública, cliente e staff observadas | Confirmado estática e funcionalmente | estados de upgrade permanecem no recorte próprio |
+| Portal do usuário | navegação, login, tickets, buscas, perfil, colaboração, arquivos e conhecimento | Confirmado funcionalmente | acessibilidade pertence à futura análise de frontend |
+| Painel da equipe | guarda comum, 229 folhas AJAX, filas, tickets, tarefas e administração | Confirmado funcionalmente no recorte BHV | novos módulos somente quando uma fase os exigir |
+| API/AJAX | API JSON/XML/e-mail/cron, AJAX cliente/staff e 13 alvos não callable | Confirmado funcionalmente | correções contratuais permanecem fora do inventário |
+| CLI/cron/pipe | 14 módulos catalogados; cron HTTP executado com backup; pipe/e-mail rastreados | Confirmado no recorte seguro | concorrência e falhas induzidas permanecem fases próprias |
+| Domínio | criação multicanal, ticket/thread/task/forms, estados, arquivos, busca e notificações | Confirmado funcionalmente | exclusão e falhas induzidas exigem novo plano e backup |
+| Banco | 72 metas ORM, relações, cdata, schema instalado e efeitos dos cenários verificados | Confirmado estática e funcionalmente | mudanças de schema permanecem fora do escopo |
+| Plugins e sinais | ciclo/persistência, 41 sinais, 22 registries/factories e matriz de customização | Mapeado e revisado estaticamente | comportamento de plugin somente quando uma fase o exigir |
+| Autenticação/autorização | identidade, sessão, ACL, CSRF, API keys, arquivos e uploads confrontados por papel | Confirmado no recorte funcional | novos ensaios de segurança pertencem à fase própria |
+| Frontend PHP | shells cliente/SCP, navegação, formulários, assets, widgets, AJAX e PJAX | Confirmado funcionalmente | acessibilidade e arquitetura futura permanecem no Portão D/frontend |
 
 ## Encerramento do aprofundamento estático — Portão C
 
 Catálogos, referências e limites foram normalizados. A revisão cruzada não
-mantém achado alto ou médio documental aberto. As verificações abaixo exigem
-instalação e pertencem à fase comportamental seguinte.
+mantém achado alto ou médio documental aberto. A instalação subsequente permitiu
+confrontar as superfícies funcionais na Onda 7.
 
-## Validações reservadas à fase comportamental
+## Encerramento da validação funcional
 
-Rewrite, cookies, engines reais, concorrência, interface, acessibilidade,
-uploads, e-mail e riscos priorizados serão testados somente após a instalação.
-Não bloqueiam a conclusão do inventário estrutural estático.
+A Onda 7 confrontou os 25 cenários planejados com a instalação local. Interface,
+sessões, uploads, e-mail, API, cron e efeitos persistidos possuem evidência
+funcional. Concorrência, falhas induzidas, acessibilidade e novos ensaios de
+segurança permanecem em fases próprias; não são lacunas do inventário funcional
+encerrado.

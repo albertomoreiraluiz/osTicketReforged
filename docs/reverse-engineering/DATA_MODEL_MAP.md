@@ -50,6 +50,56 @@ associações polimórficas, `__cdata` e cascatas manuais já estão consolidada
 [Arquitetura de persistência](DATABASE_ARCHITECTURE.md). O catálogo individual
 das 72 declarações ainda pertence ao aprofundamento.
 
+## Confirmação do domínio de conhecimento — Onda 7
+
+O banco instalado começou sem registros em `faq_category`, `faq` e `faq_topic`.
+O fluxo administrativo criou uma categoria, uma FAQ e um vínculo ao tópico de
+ajuda. A edição da FAQ alterou `ispublished` de interno para público; a categoria
+permaneceu pública. A exposição no portal ainda dependeu separadamente da chave
+`config(namespace=core, key=enable_kb)`, confirmando que persistência, publicação
+do conteúdo e habilitação global são três estados distintos.
+
+Na colaboração da Onda 7, a abertura pública criou separadamente `user`,
+`user_email`, `ticket`, `thread` e a mensagem inicial. A adição posterior de um
+cliente existente gerou uma única linha em `thread_collaborator`, sem substituir
+`ticket.user_id`. A mensagem do colaborador foi persistida em `thread_entry`
+como `type=M` com seu `user_id`, e `thread.lastmessage` acompanhou a entrada mais
+recente.
+
+Na edição do perfil, o nome público percorreu o formulário dinâmico do usuário,
+mas foi materializado no atributo principal `user.name` por
+`User::updateInfo()`. O valor temporário apareceu na releitura Web e foi
+restaurado pelo mesmo contrato; a consulta final não encontrou o marcador. Isso
+distingue os atributos centrais `name`/`user_email` das respostas adicionais
+persistidas por `DynamicFormEntry::saveAnswers()`.
+
+A organização funcional da Onda 7 foi persistida em `organization`; a
+associação atualizou `user.org_id`. A aba administrativa não depende de uma
+coluna de organização em `ticket`: ela filtra tickets pela relação
+`ticket.user_id → user.org_id`. Assim, o ticket já existente apareceu na
+organização imediatamente após o vínculo do proprietário, sem mutação no
+registro do ticket.
+
+A nota administrativa da organização utiliza a tabela polimórfica `note` com
+`ext_id=O{id}` e `staff_id` do autor. Diferentemente da thread do ticket, o
+registro é uma anotação rápida diretamente associada à entidade por esse
+identificador textual. A edição do nome atualiza a própria organização via
+formulário dinâmico e não cria uma nova versão da entidade.
+
+Na edição administrativa do ticket, o assunto continuou sendo uma resposta do
+formulário materializada em `ticket__cdata`, e não uma coluna de `ticket`. A
+alteração temporária e a restauração apareceram imediatamente nessa visão; o
+registro final reteve somente o assunto original.
+
+A nota rápida do usuário reutilizou `note` com `ext_id=U{id}`, paralela ao
+prefixo `O` da organização. A edição administrativa atualizou `user.name` e
+preservou `user.org_id`, confirmando que os formulários de pessoa e o vínculo
+organizacional podem mudar independentemente.
+
+O perfil do agente confirmou a persistência de preferência de fuso na entidade
+`staff`. O valor alternativo foi lido na requisição seguinte e depois restaurado
+ao original, sem tocar as relações de departamento, função ou equipe.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação

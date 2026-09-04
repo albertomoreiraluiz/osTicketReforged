@@ -83,8 +83,17 @@ Treze folhas apontam para alvo ausente na baseline:
 Para os nove métodos ausentes em controllers carregáveis, o dispatcher produz
 500 após `access()` (`include/class.dispatcher.php:139-155`). As quatro rotas de
 relatório falham antes, no `include_once`/construção do controller ausente
-(`include/class.dispatcher.php:163-175`); o status efetivo desse grupo permanece
-para a fase dinâmica. A ausência dos 13 alvos é fato estático.
+(`include/class.dispatcher.php:163-175`). A Onda 7 confirmou resposta `500` nas
+quatro rotas desse grupo. A ausência dos 13 alvos é fato estático.
+
+### Confirmação comportamental parcial — Onda 7
+
+Em 2026-09-04, uma sessão administrativa confirmou resposta `500` nos treze
+alvos ausentes. As rotas mutáveis foram acionadas somente com identificadores
+fictícios e CSRF válido; a falha de resolução do método antecedeu qualquer
+persistência. Rotas válidas de configuração responderam `200`; parâmetros
+obrigatórios ausentes produziram `400`; acesso anônimo a uma rota de
+configuração produziu `403`; e POST autenticado sem CSRF produziu `400`.
 
 Três regex de filas concatenam `search` diretamente ao ID, sem barra, e
 `/admin/role/{id}/perms` é irmã de `quick-add`. Esses detalhes comprovam por
@@ -329,3 +338,20 @@ observados; não são nomes canônicos de permissões.
 | 320 | ANY | `/email/(?P<id>\d+)/auth/config/(?P<type>\w+)/(?P<auth>.+)` | `EmailAjaxAPI::configureAuth` | `ajax.email.php:18` | STAFF+ADMIN | GET/POST inválido: HTML; POST basic: config/account + 201 texto; OAuth2: config/account + 201 JSON redirect quando autoriza |
 
 Contagem da matriz: 229 linhas; 101 GET, 60 POST, 5 DELETE, 63 ANY; 13 definições ausentes.
+
+## Confirmação funcional de respostas prontas — Onda 7
+
+Uma resposta pronta ativa e global foi criada pelo formulário administrativo.
+As rotas 39 e 177 foram exercitadas em `.json` e `.txt`: todas retornaram `200`
+e o conteúdo esperado. As respostas JSON possuíam `files`, `id`, `response` e
+`title`; os contratos `.txt` devolveram HTML para inserção no editor. A rota
+contextual do ticket aplicou o mesmo conteúdo à fixture acessível sem persistir
+uma resposta.
+
+## Confirmação funcional de atribuição — Onda 7
+
+As rotas 195 e 196 foram exercitadas pelo administrador em um ciclo reversível:
+liberar, atribuir ao agente e reatribuir ao administrador. Cada POST respondeu
+`201`; a visibilidade do agente `assigned_only` acompanhou a atribuição e o banco
+registrou os eventos correspondentes. O estado final restaurou o administrador
+como agente do ticket e manteve a equipe vazia.

@@ -91,11 +91,62 @@ Achados e validações futuras:
 1. **fato observado:** treze folhas apontam para alvo ausente; nos nove métodos
    ausentes de controllers carregáveis, requisição que passe `access()` alcança
    o 500 explícito; nas quatro rotas de relatório, a falha antecede o teste de
-   callable durante carregamento/construção; runtime confirmará alcance e
-   resposta real;
+   callable durante carregamento/construção; a Onda 7 confirmou resposta `500`
+   em todos os treze casos;
 2. a documentação histórica diz que API keys servem à API HTTP sem configuração
    especial, enquanto o código exige flags por operação;
+
+Na análise comportamental da Onda 7, todos os treze alvos ausentes foram
+confirmados com resposta `500`. Nos contratos mutáveis, IDs fictícios e CSRF
+válido demonstraram que a falha de resolução ocorre antes da persistência.
+Configuração sem sessão retornou `403`, POST autenticado sem CSRF retornou
+`400`, e rotas de leitura com parâmetros válidos responderam `200`. Os tipos
+observados continuaram mistos entre JSON e `text/html`.
 
 **Inferência sustentada:** a API nativa é orientada a comandos, não CRUD. AJAX é
 interno, sem versão e acoplado a templates; não está classificado como contrato
 público estável.
+
+## Confirmação comportamental — Onda 7
+
+Sem `X-API-Key` e com valor inválido, `POST /api/tickets.json` respondeu `401`.
+Uma chave fictícia ativa, vinculada ao endereço local `::1` e somente à flag
+`can_create_tickets`, foi criada pelo painel administrativo sem registrar seu
+valor na documentação. Com JSON válido e alertas/autoresposta desabilitados, a
+API respondeu `201` com uma referência de ticket; o banco confirmou exatamente
+um ticket com `source=API`.
+
+JSON deliberadamente malformado respondeu `400`. A mesma chave foi recusada em
+`POST /api/tasks/cron` com `401`, confirmando que autenticação válida não
+substitui a flag por operação. Ao final, a chave foi desativada e preservada
+apenas como fixture auditável; nenhum segredo foi impresso ou versionado.
+
+Na ampliação comportamental, a chave foi habilitada temporariamente pelo mesmo
+formulário e restaurada em `finally`. `POST /api/tickets.xml` aceitou a raiz
+`ticket`, atributos booleanos e mensagem `text/plain`, respondeu `201` e criou
+ticket `source=API`. `POST /api/tickets.email` aceitou uma mensagem RFC 822
+fictícia, respondeu `201` e criou ticket `source=Email` com cabeçalhos ligados à
+entrada original. O parser não a classificou como bounce ou autoresposta.
+
+O ensaio XML suprimiu alertas e autoresposta no payload. O RFC 822 usou um
+destinatário fictício que não corresponde à identidade do sistema e não gerou
+saída no coletor local; portanto, a criação por e-mail está confirmada, mas o
+resultado não prova notificações para uma mensagem recebida pela identidade
+configurada. O cron autorizado permanece deliberadamente não executado:
+`Cron::run()` chama rotinas de limpeza de locks, drafts, sessões, resets e
+arquivos órfãos (`include/class.cron.php:28-119`), exigindo backup verificável
+também do filesystem.
+
+O pré-inventário do cron encontrou somente 12 sessões expiradas; locks, drafts,
+resets, logs antigos e arquivos órfãos estavam zerados. Todos os arquivos
+persistidos usavam backend `D`. Um dump MariaDB integral foi restaurado em banco
+temporário e reproduziu as contagens de oito tickets, 29 entradas e 72 tabelas
+antes de o banco de verificação ser removido.
+
+Com rollback demonstrável, a chave recebeu `can_exec_cron` temporariamente e
+`POST /api/tasks/cron` respondeu `200 Completed`. As 12 sessões expiradas foram
+removidas; os demais candidatos permaneceram zerados e as contagens funcionais
+não mudaram. O formulário restaurou a chave para inativa e sem cron. A execução
+não gravou `Cron Job` em `syslog`, pois o evento usa o caminho de debug, não
+persistido pela configuração observada. Os quatro contratos HTTP nativos ficam,
+assim, confirmados em runtime.
