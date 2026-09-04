@@ -46,6 +46,10 @@
   restrito do agente e `403` em AJAX administrativo.
 - CLI `user activate` confirmou erro fatal por chamada ao método inexistente
   `UserAccount::create()`; importação de usuário funcionou.
+- Cliente fictício criou ticket aberto pelo portal; administrador o atribuiu ao
+  agente restrito, alterando sua visibilidade de ausente para presente.
+- Agente sem permissão de resposta teve POST negado sem persistência, mas pôde
+  criar nota interna; cliente viu resposta administrativa e não viu a nota.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -177,3 +181,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — páginas e AJAX | 31 páginas autenticadas; rotas AJAX válidas, inválidas e treze alvos ausentes | Páginas estáveis; guards registrados; todos os alvos ausentes confirmados com 500 sem persistência |
 | 2026-09-04 | Onda 7 — identidades e permissões | criação administrativa de agente; importação/registro de cliente; três sessões | Agente de visualização e cliente autenticados; fronteiras iniciais confirmadas sem expor credenciais |
 | 2026-09-04 | CLI de cliente | `manage.php user import`; `manage.php user activate` | Importação concluída; ativação fatal por `UserAccount::create()` inexistente |
+| 2026-09-04 | Onda 7 — ticket inicial | formulário público, AJAX de tópico, persistência e atribuição AJAX | Ticket fictício aberto e atribuído; escopo `assigned_only` confirmado antes/depois |
+| 2026-09-04 | Onda 7 — thread e ACL | resposta negada do agente; nota interna; resposta administrativa; visão do cliente | `ticket.reply` aplicado; nota interna permitida ao papel; conteúdo interno oculto do cliente |

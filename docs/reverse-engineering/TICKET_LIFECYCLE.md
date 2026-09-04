@@ -106,3 +106,24 @@ Achados ainda não classificados como defeito:
 
 Nenhum desses achados será corrigido antes de comparação com upstream, revisão
 especializada e teste em instalação descartável.
+
+## Confirmação comportamental inicial — Onda 7
+
+Um cliente fictício autenticado criou ticket pelo formulário público do tópico
+`Questões gerais`. Os campos de assunto e mensagem foram obtidos pelo AJAX do
+tópico, o POST usou CSRF válido e a persistência confirmou ticket aberto com
+thread inicial. Antes da atribuição, um agente `assigned_only` não via o ticket.
+
+O administrador atribuiu o ticket ao agente pelo formulário AJAX e recebeu
+`201`. Depois da atribuição, a fila do agente passou a incluir a referência e a
+tela detalhada respondeu `200`. O cenário confirma a ligação observável entre
+criação, thread, estado aberto, atribuição e filtragem por escopo. Resposta,
+nota, tarefas, transições e anexos permanecem para os próximos cenários.
+
+O agente sem `ticket.reply` teve resposta direta negada e nenhuma entrada foi
+persistida, mas conseguiu publicar nota interna. O `case postnote` em
+`scp/tickets.php` não replica a verificação de `Ticket::PERM_REPLY` feita pelo
+`case reply`; o runtime confirmou essa diferença. Em seguida, o administrador
+adquiriu lock via AJAX e publicou resposta sem envio de e-mail. O cliente viu a
+resposta, mas não a nota interna. Assim, tipo de entrada e autorização de escrita
+são fronteiras distintas no ciclo observado.

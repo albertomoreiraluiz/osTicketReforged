@@ -40,7 +40,7 @@ de rollback.
 | BHV-005 | matriz de permissões | agente/admin | leitura | iniciado | diferenças de menu e resposta |
 | BHV-006 | AJAX/PJAX | administrador/agente | leitura | iniciado | contrato HTTP e erros sanitizados |
 | BHV-007 | logs PHP e Apache | sistema | leitura | iniciado | ausência/presença de falhas correlatas |
-| BHV-008 | ticket de teste | papéis fictícios | mutável | pendente | ciclo e persistência controlados |
+| BHV-008 | ticket de teste | papéis fictícios | mutável | iniciado | ciclo e persistência controlados |
 | BHV-009 | anexos, e-mail e tarefas | papéis fictícios | mutável | pendente | efeitos controlados por subsistema |
 
 ## Regras de evidência
@@ -179,6 +179,34 @@ própria conta para o backend nativo `client`. Nenhum schema, registro alheio ou
 dado real foi alterado. Essa preparação não é evidência do fluxo normal de
 registro e permanece separada dos resultados comportamentais do cliente.
 
+### BHV-008 — criação e atribuição inicial do ticket
+
+O cliente autenticado abriu um ticket fictício pelo formulário público com o
+tópico `Questões gerais`. O formulário inicial expôs apenas o seletor de tópico;
+os campos `subject` e `message` foram carregados pelo AJAX de tópico e possuem
+nomes ofuscados por sessão. O POST com CSRF válido respondeu `200`, preservou a
+sessão do cliente e criou no banco um ticket aberto (`status_id=1`). A referência
+não secreta foi armazenada localmente em `OSTR_TEST_TICKET_NUMBER`.
+
+Antes da atribuição, o agente configurado como `assigned_only` não via o ticket.
+O administrador abriu o formulário AJAX de atribuição, selecionou o agente e
+recebeu `201`. Na sessão seguinte do agente, o mesmo ticket passou a aparecer na
+fila e sua visualização detalhada respondeu `200`, sem erro fatal. Esse contraste
+confirma o efeito combinado de atribuição e escopo `assigned_only`.
+
+O papel de visualização não recebeu a ação de resposta. Um POST direto com
+`a=reply` foi negado pela verificação de `Ticket::PERM_REPLY` e não criou entrada
+de resposta. Entretanto, o mesmo agente publicou uma nota interna: o fluxo
+`postnote` exige acesso ao ticket e lock válido, mas não consulta uma permissão
+de resposta equivalente. Trata-se de assimetria confirmada, não de inferência
+baseada apenas no nome do papel.
+
+O administrador adquiriu o lock pelo endpoint AJAX e publicou uma resposta com
+notificação desabilitada, evitando dependência de e-mail. A thread passou a
+conter uma resposta. No portal, o cliente visualizou essa resposta e não
+visualizou a nota interna, confirmando a fronteira entre entradas públicas e
+internas.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
@@ -201,5 +229,5 @@ reavaliada se o serviço passar a aceitar conexões externas.
 1. aprofundar as páginas administrativas sem alterar configuração;
 2. ampliar a amostra de rotas AJAX válidas por família;
 3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
-4. aprofundar a matriz de permissões com tickets atribuídos e não atribuídos;
-5. iniciar o ciclo funcional de ticket com rastreabilidade.
+4. testar resposta, nota, status e tarefas no ticket fictício;
+5. preparar anexos controlados e observar persistência/limites.

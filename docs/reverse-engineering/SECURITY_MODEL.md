@@ -115,3 +115,17 @@ devem ser registrados na documentação ou em logs
 A suspeita anterior de `Trowable` não se confirmou: os usos verificados escrevem
 `Throwable`. O risco real é o `die($t->getMessage())` no registro do backend de
 sessão (`include/class.ostsession.php:99-115`).
+
+## Confirmação de autorização por papel — Onda 7
+
+O agente fictício com papel `Apenas visualização` e escopo `assigned_only` não
+viu ticket não atribuído e passou a vê-lo após atribuição. Ele não recebeu a
+ação de resposta; um POST direto foi negado por `Ticket::PERM_REPLY` e não
+persistiu resposta. Contudo, o mesmo papel conseguiu publicar nota interna no
+ticket acessível, confirmando que `postnote` não exige a permissão de resposta.
+
+O cliente autenticado visualizou a resposta pública inserida pelo administrador
+e não visualizou a nota interna. A fronteira de confidencialidade por tipo de
+entrada funcionou no cenário. A capacidade de nota do papel de visualização deve
+ser considerada ao desenhar equivalências futuras de ACL; o nome do papel não
+implica ausência total de escrita.
