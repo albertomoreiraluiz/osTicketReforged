@@ -50,6 +50,7 @@ nav:
       - Ciclo inicial de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
       - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
       - Arquitetura de persistência: reverse-engineering/DATABASE_ARCHITECTURE.md
+      - Instalação e upgrades: reverse-engineering/INSTALLATION_UPGRADE.md
       - Pontos de extensão: reverse-engineering/EXTENSION_POINTS.md
       - Arquitetura de plugins: reverse-engineering/PLUGIN_ARCHITECTURE.md
       - Catálogo de sinais: reverse-engineering/HOOKS.md

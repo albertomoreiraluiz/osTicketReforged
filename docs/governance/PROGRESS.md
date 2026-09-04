@@ -46,6 +46,8 @@
   dispatchers e catálogo de 41 sinais literais documentados.
 - Onda 2 iniciada para contratos críticos: ciclo do ticket, controles de
   segurança e superfícies de API/AJAX.
+- Instalação e upgrader interpretados estaticamente, incluindo ordem de
+  persistência, assinaturas e lotes de patches.
 
 ## Próximo passo proposto
 
@@ -115,3 +117,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Ciclos e persistência — Onda 1 | `REQUEST_LIFECYCLE.md`; `DATABASE_ARCHITECTURE.md` | Cadeias web/CLI e modelo lógico/físico documentados; validação dinâmica adiada |
 | 2026-09-03 | Extensibilidade — Onda 1 | `PLUGIN_ARCHITECTURE.md`; `HOOKS.md` | Ciclo de plugins, registries e sinais mapeados; contratos individuais seguem pendentes |
 | 2026-09-03 | Onda 2 do inventário | `docs/reverse-engineering/WAVE_MANIFEST.md` | Três missões críticas somente leitura registradas |
+| 2026-09-03 | Instalação e evolução | `INSTALLATION_UPGRADE.md`; instalador e upgrader da baseline | Fluxos estáticos registrados; execução reservada para homologação instalada |
