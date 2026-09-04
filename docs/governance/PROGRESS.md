@@ -24,20 +24,20 @@
 - Governança formalizada e integrada pela PR #1.
 - Infraestrutura-base de homologação preparada com XAMPP, PHP 8.2, extensões,
   logs e toolchain local inventariados.
+- Snapshot rastreável do guia oficial de instalação, índice de ERDs, quatorze
+  diagramas PDF e licença incorporado a partir de `osTicket/docs`.
 
 ## Em andamento
 
-- Fechamento documental da homologação-base e revisão das etapas e decisões
-  pendentes antes da Onda 1.
+- Preparação da composição e das fronteiras do inventário da Onda 1.
 
 ## Próximo passo proposto
 
-1. revisar com o responsável as etapas e decisões pendentes;
-2. receber do responsável somente os dados de banco no `.env` local;
-3. definir e validar a instalação local do osTicket sob o Apache;
-4. registrar a avaliação de necessidade e a composição da Onda 1;
-5. iniciar o inventário somente leitura;
-6. preparar o bootstrap de `frontend/` somente na etapa autorizada.
+1. registrar a avaliação de necessidade e a composição da Onda 1;
+2. iniciar o inventário estático e somente leitura;
+3. receber os dados de banco e validar a instalação web somente antes dos testes
+   dinâmicos que dependam deles;
+4. manter Angular, PrimeNG e decisões de integração fora da etapa atual.
 
 ## Estado dos portões
 
@@ -48,7 +48,10 @@
 | C — Análise profunda | Não iniciado | nenhuma | Portão B |
 | D — Decisão arquitetural | Não iniciado | nenhuma | Portão C e aprovação do ADR |
 
-## Decisões pendentes
+## Decisões futuras, fora da preparação atual
+
+Os itens abaixo não bloqueiam o início nem a preparação do inventário. Serão
+deliberados apenas na etapa a que pertencem, com base nas evidências produzidas.
 
 - Convenção final de releases do Reforged — **A definir (TBD)**.
 - Política de proteção obrigatória de `main` no GitHub — **Proposto**.
@@ -86,3 +89,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Fronteira do frontend | ADR 0001; GOV-011 | `frontend/` reservado para Angular e PrimeNG |
 | 2026-09-03 | Homologação-base | `.env.example`; guia de homologação; validações PHP/Apache | Preparada; instalação funcional aguarda banco e localização web |
 | 2026-09-03 | Integração da homologação-base | PR #2; merge `8786c271` | Concluída |
+| 2026-09-03 | Referência oficial para o inventário | snapshot `osTicket/docs` no commit `f2367c5f`; guia de instalação, licença e 14 ERDs; hashes SHA-256 conferidos | Concluída localmente na branch documental |

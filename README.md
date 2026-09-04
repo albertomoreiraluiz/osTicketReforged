@@ -15,15 +15,15 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | Portão D — Decisão arquitetural | Não iniciado |
 
 Ambiente-base de homologação concluído: XAMPP local, PHP 8.2, extensões, logs e
-toolchain Node.js/pnpm inventariados. Em andamento: revisão das pendências antes
-da Onda 1.
+toolchain Node.js/pnpm inventariados. O snapshot oficial de referência também
+está preparado. Em andamento: composição do inventário da Onda 1.
 
 Próximas etapas:
 
-1. revisar e deliberar as etapas e decisões pendentes;
-2. preencher no `.env` local os dados exclusivos do banco de homologação;
-3. definir a localização da instalação web e validar o ciclo HTTP completo;
-4. registrar a composição da Onda 1 e iniciar o inventário somente leitura.
+1. registrar a composição da Onda 1;
+2. iniciar o inventário estático e somente leitura;
+3. preencher banco e localização web quando forem necessários aos testes
+   dinâmicos posteriores.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
 `frontend/`; versões e integração serão definidas após a análise correspondente.
@@ -38,6 +38,7 @@ Fontes operacionais:
 - [instruções de automação](.codex/README.md);
 - [plano proposto de engenharia reversa](docs/plans/active/0001-reverse-engineering.md).
 - [ambiente de homologação](docs/development/HOMOLOGATION_ENVIRONMENT.md).
+- [snapshot da documentação oficial](docs/upstream/osticket-docs/README.md).
 
 ---
 

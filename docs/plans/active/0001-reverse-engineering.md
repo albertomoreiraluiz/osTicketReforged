@@ -23,6 +23,17 @@ extensões necessárias, logs e toolchain Node.js/pnpm. A instalação funcional
 osTicket, com banco e ciclo HTTP, será validada antes dos testes dinâmicos que a
 exigirem; isso não bloqueia o início do inventário estático da Onda 1.
 
+## Fontes externas de apoio
+
+O snapshot rastreável da documentação oficial usado no inventário está em
+`docs/upstream/osticket-docs/`. Ele contém o guia de instalação, o índice de
+ERDs e seus quatorze diagramas PDF, capturados do commit `f2367c5f` do
+repositório `osTicket/docs`.
+
+A publicação oficial consultada se apresenta como documentação `1.17.7`.
+Portanto, seu conteúdo é auxiliar: código, esquema e comportamento observado na
+baseline `v1.18.4` prevalecem, e divergências devem ser registradas.
+
 ## Fora do escopo
 
 - alteração funcional do core;
