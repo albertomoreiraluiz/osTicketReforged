@@ -300,13 +300,15 @@ com configuração própria vazia.
 #### Plano de rollback BHV-010-B — campos de thread
 
 **Estado anterior observado:** os campos `message` do formulário de ticket e
-`description` do formulário de tarefa possuem `configuration` vazia. O mesmo
+`description` do formulário de tarefa possuem `configuration` nula. Uma
+pré-condição inicialmente escrita para string vazia falhou de forma segura e
+nenhuma linha foi alterada. O mesmo
 dump integral anterior às mutações cobre essas linhas. O ensaio atualizará
 somente esses dois campos para JSON com anexos habilitados, extensão `.txt` e o
 limite já vigente, confirmará os valores e comparará os canais. Em bloco final
-obrigatório, ambas as linhas serão restauradas para string vazia por ID e apenas
+obrigatório, ambas as linhas serão restauradas para `NULL` por ID e apenas
 se o JSON temporário ainda for exatamente o esperado. O rollback exige duas
-linhas atualizadas e verificação posterior dos dois valores vazios; divergência
+linhas atualizadas e verificação posterior dos dois valores nulos; divergência
 interrompe o teste e preserva o dump. Nenhuma exclusão ou mudança de schema faz
 parte deste protocolo.
 
