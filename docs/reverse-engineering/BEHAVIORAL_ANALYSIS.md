@@ -137,10 +137,13 @@ resposta descrita estaticamente.
 Sem sessão, `/config/scp` retornou `403`. Um POST autenticado sem token CSRF
 retornou `400`, exatamente pelo guard global de `scp/staff.inc.php`.
 
-Cinco alvos classificados estaticamente como ausentes foram alcançados em
-runtime: as quatro rotas de relatório de visão geral e `/orgs/1` retornaram
-`500`. Isso confirma o efeito previsto para esse subconjunto; não houve tentativa
-de executar as rotas mutáveis com métodos ausentes.
+Os treze alvos classificados estaticamente como ausentes foram alcançados em
+runtime e retornaram `500`. A primeira passagem confirmou as quatro rotas de
+relatório de visão geral e `/orgs/1`. A segunda usou GET nos contratos de leitura
+ou `ANY` e token CSRF válido nos contratos POST/DELETE para lista, plugin,
+alteração de usuário do ticket, pesquisas/filas e coluna de fila. Foram usados
+IDs e nomes fictícios; como o dispatcher falhou na resolução do método, nenhum
+fluxo de persistência foi alcançado. O log PHP não cresceu durante essa passagem.
 
 ## Exposição local aceita na homologação
 
@@ -162,7 +165,7 @@ reavaliada se o serviço passar a aceitar conexões externas.
 ## Pendências imediatas
 
 1. aprofundar as páginas administrativas sem alterar configuração;
-2. confrontar rotas AJAX de leitura com o catálogo estático;
+2. ampliar a amostra de rotas AJAX válidas por família;
 3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
 4. preparar identidades fictícias por papel antes da matriz de permissões;
-5. preparar backup e rollback antes de qualquer cenário de exclusão.
+5. iniciar cenários funcionais de criação e edição com rastreabilidade.

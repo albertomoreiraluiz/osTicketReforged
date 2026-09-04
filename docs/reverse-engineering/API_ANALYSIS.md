@@ -91,16 +91,17 @@ Achados e validações futuras:
 1. **fato observado:** treze folhas apontam para alvo ausente; nos nove métodos
    ausentes de controllers carregáveis, requisição que passe `access()` alcança
    o 500 explícito; nas quatro rotas de relatório, a falha antecede o teste de
-   callable durante carregamento/construção; runtime confirmará alcance e
-   resposta real;
+   callable durante carregamento/construção; a Onda 7 confirmou resposta `500`
+   em todos os treze casos;
 2. a documentação histórica diz que API keys servem à API HTTP sem configuração
    especial, enquanto o código exige flags por operação;
 
-Na primeira passagem comportamental da Onda 7, cinco dos treze alvos ausentes
-foram confirmados com resposta `500`: as quatro rotas de relatório e a consulta
-de organização por ID. Configuração sem sessão retornou `403`, POST autenticado
-sem CSRF retornou `400`, e rotas de leitura com parâmetros válidos responderam
-`200`. Os tipos observados continuaram mistos entre JSON e `text/html`.
+Na análise comportamental da Onda 7, todos os treze alvos ausentes foram
+confirmados com resposta `500`. Nos contratos mutáveis, IDs fictícios e CSRF
+válido demonstraram que a falha de resolução ocorre antes da persistência.
+Configuração sem sessão retornou `403`, POST autenticado sem CSRF retornou
+`400`, e rotas de leitura com parâmetros válidos responderam `200`. Os tipos
+observados continuaram mistos entre JSON e `text/html`.
 
 **Inferência sustentada:** a API nativa é orientada a comandos, não CRUD. AJAX é
 interno, sem versão e acoplado a templates; não está classificado como contrato

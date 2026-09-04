@@ -88,12 +88,12 @@ quatro rotas desse grupo. A ausência dos 13 alvos é fato estático.
 
 ### Confirmação comportamental parcial — Onda 7
 
-Em 2026-09-04, uma sessão administrativa alcançou as quatro rotas de relatório
-de visão geral e `/orgs/1`; todas retornaram `500`, confirmando o status previsto
-para esses cinco alvos ausentes. Rotas válidas de configuração responderam
-`200`; parâmetros obrigatórios ausentes produziram `400`; acesso anônimo a uma
-rota de configuração produziu `403`; e POST autenticado sem CSRF produziu
-`400`. Os oito alvos ausentes restantes ainda não foram acionados em runtime.
+Em 2026-09-04, uma sessão administrativa confirmou resposta `500` nos treze
+alvos ausentes. As rotas mutáveis foram acionadas somente com identificadores
+fictícios e CSRF válido; a falha de resolução do método antecedeu qualquer
+persistência. Rotas válidas de configuração responderam `200`; parâmetros
+obrigatórios ausentes produziram `400`; acesso anônimo a uma rota de
+configuração produziu `403`; e POST autenticado sem CSRF produziu `400`.
 
 Três regex de filas concatenam `search` diretamente ao ID, sem barra, e
 `/admin/role/{id}/perms` é irmã de `quick-add`. Esses detalhes comprovam por
