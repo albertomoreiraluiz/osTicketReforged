@@ -87,3 +87,11 @@ Esta análise não escolhe Angular/PrimeNG nem arquitetura de integração.
 
 Observações estáticas de markup obsoleto ou layout tabular não provam falha de
 acessibilidade; a auditoria dinâmica ocorrerá após a instalação.
+
+## Confirmação inicial de exportação — Onda 7
+
+Ticket staff, tarefa administrativa, tarefa do agente atribuído e ticket do
+cliente foram exportados pelas rotas nativas. Todos responderam `200`, MIME
+`application/pdf`, prefixo `%PDF` e corpo não vazio. O resultado confirma o
+gerador e os guards básicos, mas a paridade e a filtragem de conteúdo interno
+exigem inspeção documental controlada posterior.

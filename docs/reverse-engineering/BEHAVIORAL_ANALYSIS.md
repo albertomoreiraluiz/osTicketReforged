@@ -45,6 +45,7 @@ de rollback.
 | BHV-010 | anexos e arquivos | papéis fictícios | mutável | iniciado | persistência, serving e limites |
 | BHV-011 | e-mail | papéis fictícios | mutável | pendente | efeitos controlados sem entrega externa acidental |
 | BHV-012 | API HTTP nativa | chave fictícia local | mutável | iniciado | autenticação, flags, parsing e persistência |
+| BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
 
 ## Regras de evidência
 
@@ -362,6 +363,16 @@ JSON malformado retornou `400`. A tentativa de executar cron com a mesma chave,
 sem `can_exec_cron`, retornou `401`, confirmando a autorização por flag. A chave
 foi desativada ao final, sem exclusão, e seu valor não foi registrado. XML,
 e-mail e cron autorizado permanecem fora deste checkpoint.
+
+### BHV-013 — exportação PDF
+
+As exportações do ticket na sessão administrativa, da tarefa nas sessões de
+administrador e agente atribuído e do ticket no portal do cliente responderam
+`200` como `application/pdf`. Os quatro corpos começaram por `%PDF` e tiveram
+tamanho não nulo. A validação confirma carregamento do gerador e acesso básico
+por papel; não afirma ainda equivalência de conteúdo nem ausência de campos
+internos no PDF do cliente. Nenhum documento autenticado foi persistido como
+evidência.
 
 ## Exposição local aceita na homologação
 
