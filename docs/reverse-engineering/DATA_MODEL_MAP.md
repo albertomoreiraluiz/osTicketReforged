@@ -73,6 +73,13 @@ restaurado pelo mesmo contrato; a consulta final não encontrou o marcador. Isso
 distingue os atributos centrais `name`/`user_email` das respostas adicionais
 persistidas por `DynamicFormEntry::saveAnswers()`.
 
+A organização funcional da Onda 7 foi persistida em `organization`; a
+associação atualizou `user.org_id`. A aba administrativa não depende de uma
+coluna de organização em `ticket`: ela filtra tickets pela relação
+`ticket.user_id → user.org_id`. Assim, o ticket já existente apareceu na
+organização imediatamente após o vínculo do proprietário, sem mutação no
+registro do ticket.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação

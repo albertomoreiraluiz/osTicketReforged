@@ -149,3 +149,12 @@ redirecionou para a lista de tickets e apresentou o novo valor ao reabrir a
 tela. A repetição restaurou o valor original, demonstrando que integrações
 futuras deverão descobrir ou reproduzir o contrato dos formulários, em vez de
 fixar nomes de parâmetros observados em uma única resposta.
+
+## Organização e agregação confirmadas — Onda 7
+
+O shell staff abre a criação de organização em um diálogo AJAX, envia CSRF e
+consome a resposta `201` em JSON. A página de detalhe combina três painéis:
+usuários, tickets e notas. Depois de associar um usuário existente, a mesma tela
+passou a apresentar o usuário e o ticket de sua propriedade. O painel de
+tickets, portanto, é uma visão derivada da organização atual do proprietário,
+e não uma associação gravada diretamente no ticket.

@@ -58,6 +58,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-017 | atribuição e liberação | administrador/agente | mutável | concluído | eventos, visibilidade e restauração da fixture |
 | BHV-018 | abertura anônima e colaboração | anônimo/admin/cliente | mutável | concluído | validação, associação, visibilidade e resposta |
 | BHV-019 | edição do perfil do cliente | cliente | mutável | concluído | formulário dinâmico, persistência e restauração |
+| BHV-020 | organização e vínculo de usuário | administrador | mutável | concluído | criação, associação e agregação de ticket |
 
 ## Regras de evidência
 
@@ -517,6 +518,25 @@ O log PHP não foi modificado pelo ensaio. O log do Apache continuou recebendo
 somente ocorrências ambientais de `VirtualProtect() failed [87]`, sem rota,
 timestamp ou stack correlacionável ao perfil.
 
+### BHV-020 — criação de organização e associação de usuário
+
+O diálogo administrativo `ajax.php/orgs/add` retornou o formulário dinâmico da
+organização. A submissão normal com CSRF criou uma organização fictícia e
+respondeu `201 application/json`. A listagem reconheceu a fixture na repetição,
+evitando duplicação, e `orgs.php?id={id}` apresentou o nome cadastrado.
+
+O endpoint `ajax.php/users/{id}/org` recebeu o identificador da organização e
+respondeu `201 application/json`. Depois da associação, a tela da organização
+mostrou o usuário e também o ticket cujo proprietário é esse usuário. No banco
+há exatamente uma organização com o marcador, um usuário associado e um ticket
+herdado. A organização e a associação foram preservadas como fixtures; nenhuma
+remoção, exclusão ou notificação foi executada.
+
+O comportamento confirma que `User::setOrganization()` persiste a relação
+(`include/class.user.php:143-157`), enquanto a aba de tickets deriva seu conjunto
+por `ticket.user__org` (`include/staff/templates/tickets.tmpl.php:15-19`), sem
+copiar `org_id` para o ticket.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
@@ -536,7 +556,7 @@ reavaliada se o serviço passar a aceitar conexões externas.
 
 ## Pendências imediatas
 
-1. reproduzir os fluxos normais ainda não cobertos de ticket e organização;
+1. reproduzir os fluxos normais ainda não cobertos de ticket e administração;
 2. caracterizar efeitos de notificações sem entrega externa acidental;
 3. ampliar os fluxos administrativos de leitura e edição não destrutiva;
 4. consolidar filas e paginação com o conjunto crescente de fixtures.
