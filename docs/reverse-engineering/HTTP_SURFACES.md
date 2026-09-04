@@ -8,8 +8,9 @@ comportamento visual nem o resultado em execução.
 
 Foram inspecionados os controladores públicos principais, o login da equipe,
 os guardas compartilhados e os dispatchers de API e AJAX. A contagem
-reproduzível de `url*(` em `scp/ajax.php` retorna 256 registros sintáticos:
-229 rotas-folha e 27 matchers estruturais de agrupamento.
+reproduzível de `url*(` em `scp/ajax.php` retorna 256 registros sintáticos.
+A classificação de folhas permanece em reconciliação por divergência entre o
+total especializado e a soma por grupo.
 
 ## Portal do usuário
 
@@ -70,7 +71,7 @@ matriz de autorização (`scp/tickets.php:159-456`).
 | Superfície | Registro estático | Extensão anterior à resolução | Guarda observada |
 | --- | --- | --- | --- |
 | API pública | criação de ticket em `/tickets.(xml|json|email)` e cron em `/tasks/cron` | sinal `api` | `api/api.inc.php`; controles específicos ainda em análise |
-| AJAX da equipe | 229 rotas-folha em 26 grupos superiores | sinal `ajax.scp` | `scp/staff.inc.php` e CSRF para métodos mutáveis |
+| AJAX da equipe | 256 declarações sintáticas em grupos aninhados | sinal `ajax.scp` | `scp/staff.inc.php` e CSRF para métodos mutáveis |
 | Aplicações da equipe | `Dispatcher` vazio preenchido por assinantes | `apps.admin` ou `apps.scp` | `staff.inc.php`; `admin.inc.php` no prefixo `/admin/` |
 
 As funções `patterns()`, `url()`, `url_post()`, `url_get()` e `url_delete()`
@@ -81,8 +82,8 @@ sem examinar o controlador e a guarda da superfície.
 ## Limites desta leitura
 
 - Estado de menus, respostas renderizadas e JavaScript não foi reproduzido.
-- As 229 folhas ainda precisam ser cruzadas integralmente com permissões,
-  ownership, persistência e resposta.
+- As folhas precisam ser extraídas de modo reproduzível e cruzadas com
+  permissões, ownership, persistência e resposta.
 - Endpoints adicionados por plugins dependem dos assinantes dos sinais e serão
   cruzados com o inventário de extensibilidade.
 - Resultados HTTP, mensagens e efeitos no banco serão confirmados somente na

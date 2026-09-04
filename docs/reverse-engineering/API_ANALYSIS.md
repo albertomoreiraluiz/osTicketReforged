@@ -47,9 +47,10 @@ O sinal `ajax.client` permite rotas adicionais e também preenche
 
 ## AJAX da equipe
 
-`scp/ajax.php:36-322` contém 229 rotas-folha e 27 matchers estruturais. Logo, a
-contagem sintática anterior de 256 chamadas `url*()` não representava endpoints
-finais.
+`scp/ajax.php:36-322` contém 256 chamadas sintáticas `url*()`, entre folhas e
+matchers estruturais. Uma primeira classificação apontou 229 folhas, mas a soma
+da tabela por grupos retorna 231. A quantidade de folhas permanece **em
+reconciliação**; 256 é a única contagem fechada desta unidade.
 
 | Grupo | Folhas | Grupo | Folhas |
 | --- | ---: | --- | ---: |
@@ -67,9 +68,10 @@ finais.
 | Admin | 8 | Staff | 8 |
 | Filas | 7 | E-mail | 3 |
 
-Distribuição por método: 101 GET, 60 POST, 5 DELETE e 63 declarações sem
+A decomposição provisória indica 101 GET, 60 POST, 5 DELETE e 65 declarações sem
 restrição de método. Toda a superfície exige agente válido e CSRF mutável via
-`staff.inc.php`; plugins, e-mail e upgrader adicionam requisito de administrador.
+`scp/staff.inc.php`; plugins, e-mail e upgrader adicionam requisito de
+administrador.
 As demais rotas ainda requerem cruzamento método a método.
 
 As respostas misturam HTML, texto e JSON. No SCP, somente string iniciada por
@@ -79,7 +81,7 @@ As respostas misturam HTML, texto e JSON. No SCP, somente string iniciada por
 ## Semântica e achados
 
 - `url()` sem helper de verbo aceita qualquer método; POST pode emular PUT,
-  PATCH e DELETE por `_method` (`class.dispatcher.php:29-37,87-104`).
+  PATCH e DELETE por `_method` (`include/class.dispatcher.php:29-37,87-104`).
 - primeira regex compatível vence e várias não possuem âncora final `$`;
 - `Controller::access()` é permissivo por padrão;
 - controllers no formato arquivo/classe são carregados sob demanda.
@@ -90,8 +92,8 @@ Achados pendentes de confirmação:
    `OverviewReportAjaxAPI`, nenhum deles localizado na baseline;
 2. a documentação histórica diz que API keys servem à API HTTP sem configuração
    especial, enquanto o código exige flags por operação;
-3. a matriz completa rota → permissão → entidade → efeito → resposta ainda será
-   produzida para os 229 métodos.
+3. reconciliar as folhas e produzir a matriz rota → permissão → entidade →
+   efeito → resposta.
 
 **Inferência sustentada:** a API nativa é orientada a comandos, não CRUD. AJAX é
 interno, sem versão e acoplado a templates; não está classificado como contrato

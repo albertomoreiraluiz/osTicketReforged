@@ -2,8 +2,8 @@
 
 ## Sinais
 
-`include/class.signal.php` declara `Signal` em `:27`, `connect()` em `:56` e
-`send()` em `:89`.
+`include/class.signal.php:27` declara `Signal`, `include/class.signal.php:56`
+declara `connect()` e `include/class.signal.php:89` declara `send()`.
 
 **Fato observado:** o mecanismo permite conectar callbacks por nome de sinal e
 emitir eventos com objeto e dados associados.

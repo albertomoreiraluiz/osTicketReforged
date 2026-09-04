@@ -58,7 +58,7 @@ As missões foram concluídas sem runtime, banco, interface ou leitura de
 
 ## Onda 3 — cobertura transversal e revisão
 
-**Estado:** em execução.
+**Estado:** concluída e integrada documentalmente.
 
 | Instância | Perfil permanente | Missão | Leitura autorizada | Escrita | Revisão/integrador |
 | --- | --- | --- | --- | --- | --- |
@@ -73,6 +73,13 @@ As missões foram concluídas sem runtime, banco, interface ou leitura de
 - achados da revisão independente triados e incorporados;
 - matriz de evidências atualizada com pendências realmente dinâmicas;
 - build estrito e diff estabilizado.
+
+### Encerramento das missões
+
+Frontend PHP, subsistemas transversais e parecer QA foram entregues sem
+execução, banco, navegador ou leitura de `.env`. A revisão confirmou as
+contagens fundamentais e identificou correções de rotas, sinais, referências e
+separação entre Portões B e C.
 
 ## Restrições da fase
 

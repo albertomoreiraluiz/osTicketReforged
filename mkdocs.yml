@@ -49,11 +49,14 @@ nav:
       - Superfícies HTTP: reverse-engineering/HTTP_SURFACES.md
       - APIs e AJAX: reverse-engineering/API_ANALYSIS.md
       - Modelo de segurança: reverse-engineering/SECURITY_MODEL.md
+      - Frontend PHP existente: reverse-engineering/FRONTEND_ANALYSIS.md
       - Ciclo inicial de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
       - Ciclo do ticket: reverse-engineering/TICKET_LIFECYCLE.md
+      - Subsistemas transversais: reverse-engineering/TRANSVERSAL_SUBSYSTEMS.md
       - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
       - Arquitetura de persistência: reverse-engineering/DATABASE_ARCHITECTURE.md
       - Instalação e upgrades: reverse-engineering/INSTALLATION_UPGRADE.md
+      - Testes da baseline: reverse-engineering/TESTING_BASELINE.md
       - Pontos de extensão: reverse-engineering/EXTENSION_POINTS.md
       - Arquitetura de plugins: reverse-engineering/PLUGIN_ARCHITECTURE.md
       - Catálogo de sinais: reverse-engineering/HOOKS.md

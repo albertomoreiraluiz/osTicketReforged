@@ -13,17 +13,24 @@ instalação. O arquivo alvo é `include/ost-config.php`
 
 `Installer::install()` executa, na ordem observada:
 
-1. valida help desk, administrador, prefixo e banco (`class.installer.php:46-90`);
+1. valida help desk, administrador, prefixo e banco
+   (`setup/inc/class.installer.php:46-90`);
 2. conecta, verifica versão, seleciona ou tenta criar o banco e recusa prefixo
-   utilizado (`:92-116`);
-3. define tabelas, carrega o core e aplica política de senha (`:118-136`);
-4. abre a configuração e valida assinaturas MD5 dos schemas (`:139-169`);
-5. carrega schemas/dados de i18n e emite `system.install` (`:148-178`);
-6. cria administrador, permissões, acessos e e-mails padrão (`:180-250`);
-7. grava configurações, assinaturas e empresa (`:252-286`);
+   utilizado (`setup/inc/class.installer.php:92-116`);
+3. define tabelas, carrega o core e aplica política de senha
+   (`setup/inc/class.installer.php:118-136`);
+4. abre a configuração e valida assinaturas MD5 dos schemas
+   (`setup/inc/class.installer.php:139-169`);
+5. carrega schemas/dados de i18n e emite `system.install`
+   (`setup/inc/class.installer.php:148-178`);
+6. cria administrador, permissões, acessos e e-mails padrão
+   (`setup/inc/class.installer.php:180-250`);
+7. grava configurações, assinaturas e empresa
+   (`setup/inc/class.installer.php:252-286`);
 8. reescreve `ost-config.php` por último, com credenciais e instalação marcada
-   como concluída (`:289-304`);
-9. recarrega a configuração e cria um ticket inicial (`:306-315`).
+   como concluída (`setup/inc/class.installer.php:289-304`);
+9. recarrega a configuração e cria um ticket inicial
+   (`setup/inc/class.installer.php:306-315`).
 
 **Fato observado:** o instalador grava credenciais no arquivo nativo
 `ost-config.php`; o `.env` de ferramentas não participa do fluxo.
@@ -45,7 +52,8 @@ O processamento é fatiado:
   (`include/class.upgrader.php:331-359`);
 - no máximo cinco patches SQL são aplicados por chamada;
 - a cada patch, caches de metadados são limpos, assinatura/estado avançam e uma
-  tarefa complementar pode interromper o lote (`class.upgrader.php:362-410`).
+  tarefa complementar pode interromper o lote
+  (`include/class.upgrader.php:362-410`).
 
 Os 99 SQL históricos formam uma cadeia ordenada por hashes. Não devem ser
 aplicados isoladamente nem tratados como representação do schema final.

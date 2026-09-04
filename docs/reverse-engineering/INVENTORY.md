@@ -23,14 +23,14 @@ commit referenciado.
 | Superfície | Entry point ou bootstrap | Evidência inicial |
 | --- | --- | --- |
 | Portal do usuário | `index.php`, `open.php`, `tickets.php`, `view.php` | os entrypoints carregam `client.inc.php`; `open.php:51` chama `Ticket::create()` |
-| Painel da equipe | `scp/index.php`, `scp/login.php`, demais scripts em `scp/` | `scp/index.php:17` encaminha a `tickets.php`; `scp/staff.inc.php:17` carrega `main.inc.php` e aplica autenticação/CSRF |
+| Painel da equipe | `scp/index.php`, `scp/login.php`, demais scripts em `scp/` | `scp/index.php:17` encaminha a `tickets.php`; `scp/staff.inc.php:20` carrega `main.inc.php` e aplica autenticação/CSRF |
 | API HTTP | `api/http.php` | registra rotas de tickets e cron e emite o sinal `api` antes da resolução (`api/http.php:16-29`) |
 | AJAX do usuário | `ajax.php` | monta dispatcher próprio e emite `ajax.client` (`ajax.php:22-51`) |
 | AJAX da equipe | `scp/ajax.php` | concentra grupos de rotas para KB, formulários, usuários, tickets e outras áreas |
 | CLI | `manage.php` | exige CLI, carrega módulos em `include/cli/modules/` e instancia `Manager` (`manage.php:21-80`) |
 | Instalação e upgrade | `setup/`, `setup/install.php`, `setup/upgrade.php` | esquema inicial em `setup/inc/streams/core/install-mysql.sql` |
 | Cron e entrada por e-mail | `api/cron.php`, `api/pipe.php` | entrypoints distintos dentro da superfície `api/` |
-| Aplicações/plugins | `apps/dispatcher.php` e `include/class.plugin.php` | `PluginManager` em `include/class.plugin.php:175`; `Plugin` em `:543` |
+| Aplicações/plugins | `apps/dispatcher.php` e `include/class.plugin.php` | `PluginManager` em `include/class.plugin.php:175`; `Plugin` em `include/class.plugin.php:543` |
 
 ## Estrutura principal
 
@@ -59,7 +59,8 @@ commit referenciado.
   baseada em `VerySimpleModel` e associada a `RestrictedAccess`, `Threadable` e
   `Searchable`.
 - **Autenticação:** famílias `StaffAuthenticationBackend` e
-  `UserAuthenticationBackend` em `include/class.auth.php:580` e `:800`.
+  `UserAuthenticationBackend` em `include/class.auth.php:580` e
+  `include/class.auth.php:800`.
 - **Extensão:** sinais em `include/class.signal.php`; plugins em
   `include/class.plugin.php`; dispatch genérico em `include/class.dispatcher.php`.
 - **Banco:** constantes de tabelas derivadas do prefixo em

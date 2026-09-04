@@ -35,22 +35,23 @@ reativa (`include/class.sequence.php:153-169`).
 
 O schema declara InnoDB explicitamente somente para `sequence`, `event` e
 `thread_referral`; as demais tabelas herdam o padrão do servidor
-(`install-mysql.sql:80-82,775,808`). A engine efetiva deverá ser inventariada
+(`setup/inc/streams/core/install-mysql.sql:80-82,775,808`). A engine efetiva
+deverá ser inventariada
 após a instalação.
 
 ## Relações centrais lógicas
 
 | Origem | Relação observada | Evidência |
 | --- | --- | --- |
-| Organização | 1:N usuários | `class.organization.php:21-40`; `class.user.php:48-86` |
-| Usuário | 1:N e-mails; 0..1 conta lógica; 1:N tickets | `class.user.php:48-86`; schema `:1027-1066` |
-| Ticket | N:1 usuário, status, dept, SLA, agente, equipe e tópico; 1:N tarefas/formulários | `class.ticket.php:39-106`; schema `:715-755` |
-| Thread | associação polimórfica a ticket (`T`) ou tarefa (`A`); 1:N entries, colaboradores, referrals e eventos | `class.thread.php:22-55`; `class.model.php:16-45` |
-| ThreadEntry | N:1 thread; autores opcionais; 1:N anexos | `class.thread.php:798-837`; schema `:665-711` |
-| Colaborador | N:1 thread e N:1 usuário; par único | `class.collaborator.php:19-35`; schema `:842-854` |
-| Agente | N:1 departamento/papel; M:N departamentos e equipes | `class.staff.php:25-45,1451-1467`; `class.team.php:17-33,372-385` |
-| Departamento/tópico | auto-hierarquias por `pid` | `class.dept.php:19-53`; `class.topic.php:20-61` |
-| Plugin | 1:N instâncias | `class.plugin.php:543-553,1006-1017`; schema `:896-919` |
+| Organização | 1:N usuários | `include/class.organization.php:21-40`; `include/class.user.php:48-86` |
+| Usuário | 1:N e-mails; 0..1 conta lógica; 1:N tickets | `include/class.user.php:48-86`; `setup/inc/streams/core/install-mysql.sql:1027-1066` |
+| Ticket | N:1 usuário, status, dept, SLA, agente, equipe e tópico; 1:N tarefas/formulários | `include/class.ticket.php:39-106`; `setup/inc/streams/core/install-mysql.sql:715-755` |
+| Thread | associação polimórfica a ticket (`T`) ou tarefa (`A`); 1:N entries, colaboradores, referrals e eventos | `include/class.thread.php:22-55`; `include/class.model.php:16-45` |
+| ThreadEntry | N:1 thread; autores opcionais; 1:N anexos | `include/class.thread.php:798-837`; `setup/inc/streams/core/install-mysql.sql:665-711` |
+| Colaborador | N:1 thread e N:1 usuário; par único | `include/class.collaborator.php:19-35`; `setup/inc/streams/core/install-mysql.sql:842-854` |
+| Agente | N:1 departamento/papel; M:N departamentos e equipes | `include/class.staff.php:25-45,1451-1467`; `include/class.team.php:17-33,372-385` |
+| Departamento/tópico | auto-hierarquias por `pid` | `include/class.dept.php:19-53`; `include/class.topic.php:20-61` |
+| Plugin | 1:N instâncias | `include/class.plugin.php:543-553,1006-1017`; `setup/inc/streams/core/install-mysql.sql:896-919` |
 
 **Restrição lógica relevante:** `user_account.user_id` não é único no schema,
 embora o ORM trate `User.account` como 0..1. Essa cardinalidade depende do fluxo
@@ -70,7 +71,7 @@ O último caso é uma lacuna de invariantes a rastrear, não um defeito confirma
 ## Dados dinâmicos e `__cdata`
 
 `form_entry_values` usa PK composta `(entry_id, field_id)` e responde às
-entradas polimórficas (`install-mysql.sql:150-171`;
+entradas polimórficas (`setup/inc/streams/core/install-mysql.sql:150-171`;
 `include/class.dynamic_forms.php:974-990,1416-1432`).
 
 `DynamicForm::ensureDynamicDataViews()` cobre ticket, tarefa, usuário e
@@ -91,10 +92,10 @@ derivadas dinamicamente.
 | Organização | remove linha; zera usuários e remove dados dinâmicos | não |
 | Agente/equipe | limpa ownership e tabelas de associação | não |
 
-Evidências: `class.ticket.php:3601-3658`, `class.thread.php:743-764`,
-`class.task.php:1584-1597`, `class.user.php:647-668`,
-`class.organization.php:548-566`, `class.staff.php:935-964` e
-`class.team.php:278-295`.
+Evidências: `include/class.ticket.php:3601-3658`,
+`include/class.thread.php:743-764`, `include/class.task.php:1584-1597`,
+`include/class.user.php:647-668`, `include/class.organization.php:548-566`,
+`include/class.staff.php:935-964` e `include/class.team.php:278-295`.
 
 **Risco sustentado:** sem FKs e sem uma transação envolvendo cada cascade
 manual completa, uma falha intermediária pode deixar estado parcial. Qualquer

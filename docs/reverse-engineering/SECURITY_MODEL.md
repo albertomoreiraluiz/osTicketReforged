@@ -17,12 +17,13 @@ da superfície, identidade, escopo do objeto e `PERM_*` do método.
 ## Identidade e credenciais
 
 - agentes: backends registrados, login local por `StaffSession`, sessão
-  revalidada contra backend, atividade e ID (`class.auth.php:324-367,625-720`);
+  revalidada contra backend, atividade e ID
+  (`include/class.auth.php:324-367,625-720`);
 - clientes: login local por `ClientAccount`, conta confirmada/ativa e sessão
-  revalidada (`class.auth.php:836-938,1440-1461`);
+  revalidada (`include/class.auth.php:836-938,1440-1461`);
 - hashing: phpass/bcrypt, custo padrão 8; MD5 legado é migrado no login
-  (`class.passwd.php:17-40`, `class.client.php:410-419`,
-  `class.staff.php:223-251`);
+  (`include/class.passwd.php:17-40`, `include/class.client.php:410-419`,
+  `include/class.staff.php:223-251`);
 - alteração de senha emite `auth.clean`, que tenta remover outras sessões.
 
 Contadores de falha observados residem na sessão PHP. **Inferência:** trocar
@@ -33,20 +34,22 @@ classificar como defeito.
 
 O cookie inicial usa caminho/domínio calculados, `Secure` conforme HTTPS e
 `HttpOnly`; renovações definem `SameSite=Strict`, ou `None` quando iframe é
-permitido (`class.ostsession.php:26-37,252-265`). A regeneração mantém a sessão
+permitido (`include/class.ostsession.php:26-37,252-265`). A regeneração mantém a sessão
 antiga por uma janela deliberada e usa `session_regenerate_id(false)`
-(`class.usersession.php:129-177`). O impacto sobre fixação/concorrência exige
+(`include/class.usersession.php:129-177`). O impacto sobre fixação/concorrência exige
 teste.
 
 CSRF combina ID de sessão, aleatoriedade e `SECRET_SALT`; portal e equipe o
-validam em POST/PUT/PATCH/DELETE (`class.csrf.php:56-74`, `client.inc.php:69-79`,
+validam em POST/PUT/PATCH/DELETE (`include/class.csrf.php:56-74`,
+`client.inc.php:69-79`,
 `scp/staff.inc.php:106-115`). Rotas GET mutáveis devem ser procuradas no catálogo.
 
 ## 2FA e reset
 
 2FA de agente cria estado pendente, limita tentativas/tempo e pode enviar OTP
-por e-mail (`class.auth.php:645-660`; `class.2fa.php:14-89,169-258`). O portal do
-cliente retorna backend 2FA nulo com TODO (`class.client.php:258-266`).
+por e-mail (`include/class.auth.php:645-660`;
+`include/class.2fa.php:14-89,169-258`). O portal do cliente retorna backend 2FA
+nulo com TODO (`include/class.client.php:258-266`).
 
 Tokens de reset são aleatórios, persistidos no namespace `pwreset`, possuem
 janela configurável e são cancelados após uso/login. Ficam utilizáveis como
@@ -55,27 +58,28 @@ chaves legíveis no banco; o banco e o e-mail são fronteiras confiáveis.
 ## API, arquivos e uploads
 
 API keys ficam armazenadas diretamente e são cruzadas com `REMOTE_ADDR`, estado
-ativo e flags por operação (`class.api.php:34-39,68-78,124-215`). TLS e a
+ativo e flags por operação (`include/class.api.php:34-39,68-78,124-215`). TLS e a
 configuração correta do proxy são requisitos externos.
 
 Downloads usam URL HMAC com expiração e `hash_equals`; tipos inseguros são
-forçados para attachment (`class.file.php:177-209,244-312`). `file.php` não chama
+forçados para attachment (`include/class.file.php:177-209,244-312`). `file.php` não chama
 `Ticket::checkUserAccess()` apesar do comentário sobre o pai; assinatura e
 autenticação ampla opcional funcionam como capability. Isso é risco a testar,
 não vulnerabilidade confirmada (`file.php:20-67`).
 
 Uploads web validam tamanho, extensão/MIME e imagem real. API/e-mail usam fluxo
-menos estrito e não chamam `isValidFile()` (`class.forms.php:3898-4017`;
-`api.tickets.php:90-104`). A diferença factual precisa de teste de consumo.
+menos estrito e não chamam `isValidFile()`
+(`include/class.forms.php:3898-4017`; `include/api.tickets.php:90-104`). A
+diferença factual precisa de teste de consumo.
 
 ## Plugins como fronteira confiável
 
 Sinais de autenticação podem expor a plugins:
 
-- usuário e senha em `auth.login.failed` (`class.auth.php:358-366`);
-- senha nova/atual em `auth.pwchange` (`class.auth.php:486-494`);
-- token em `auth.pwreset.email` (`class.staff.php:1101-1124`;
-  `class.user.php:1241-1266`).
+- usuário e senha em `auth.login.failed` (`include/class.auth.php:358-366`);
+- senha nova/atual em `auth.pwchange` (`include/class.auth.php:486-494`);
+- token em `auth.pwreset.email` (`include/class.staff.php:1101-1124`;
+  `include/class.user.php:1241-1266`).
 
 Como manifesto e `init()` executam PHP, plugins devem ser tratados como código
 plenamente confiável. O risco é alto na fronteira de confiança, sem afirmar que
@@ -94,4 +98,4 @@ um plugin malicioso esteja presente.
 
 A suspeita anterior de `Trowable` não se confirmou: os usos verificados escrevem
 `Throwable`. O risco real é o `die($t->getMessage())` no registro do backend de
-sessão (`class.ostsession.php:99-115`).
+sessão (`include/class.ostsession.php:99-115`).

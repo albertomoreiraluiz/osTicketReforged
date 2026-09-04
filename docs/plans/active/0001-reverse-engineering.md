@@ -62,8 +62,11 @@ Execução atual:
 - árvore e tecnologias contabilizadas na baseline;
 - superfícies, bootstraps e dispatchers principais localizados;
 - mapas iniciais de componentes, entrypoints, dados e extensão produzidos;
-- catálogo completo de rotas e sinais, relações ORM e revisão independente
-  ainda pendentes antes de concluir o portão.
+- relações centrais, frontend PHP e subsistemas transversais localizados;
+- revisão independente executada e correções documentais em integração.
+
+Catálogos exaustivos de cada rota, metadado ORM e payload de sinal pertencem ao
+aprofundamento do Portão C. Eles não são pré-condição retroativa do Portão B.
 
 ### Portão C — Análise profunda concluída
 

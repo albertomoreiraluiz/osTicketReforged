@@ -39,14 +39,16 @@ notificações. `TicketThread::create()` persiste `thread` com tipo `T`
 ## Conversa e atividades
 
 - `postMessage()` resolve parent de merge, usuário/colaborador, grava mensagem,
-  atualiza estado e envia alertas (`class.ticket.php:3081-3269`).
+  atualiza estado e envia alertas (`include/class.ticket.php:3081-3269`).
 - `postReply()` grava resposta, pode alterar status/claim, marca respondido e
-  envia e-mail (`:3345-3459`).
-- `postNote()` grava nota, pode alterar status e gera alerta (`:3509-3559`).
+  envia e-mail (`include/class.ticket.php:3345-3459`).
+- `postNote()` grava nota, pode alterar status e gera alerta
+  (`include/class.ticket.php:3509-3559`).
 - `ThreadEntry::create()` sanitiza conteúdo, grava entry, anexos e metadados de
-  e-mail, então emite `threadentry.created` (`class.thread.php:1639-1823`).
+  e-mail, então emite `threadentry.created`
+  (`include/class.thread.php:1639-1823`).
 - colaboração é única logicamente por `(thread_id, user_id)`
-  (`class.collaborator.php:179-210`).
+  (`include/class.collaborator.php:179-210`).
 
 E-mail relacionado é classificado como mensagem ou nota conforme identidade;
 remetente desconhecido pode virar mensagem com aviso. O processamento bloqueia
@@ -66,16 +68,19 @@ inicial do ticket.
 ## Atualização, status e exclusão
 
 `Ticket::update()` exige `ticket.edit`, valida campos base e dinâmicos, salva
-respostas/forms, evento, SLA e prazo (`class.ticket.php:3675-3804`).
-`updateField()` fornece caminho de campo único (`:3809-3897`).
+respostas/forms, evento, SLA e prazo (`include/class.ticket.php:3675-3804`).
+`updateField()` fornece caminho de campo único
+(`include/class.ticket.php:3809-3897`).
 
 Status `deleted` encaminha ao hard delete somente com `ticket.delete`; fechar
-valida tarefas, enquanto reabrir recompõe assignment/SLA (`:1483-1602`).
+valida tarefas, enquanto reabrir recompõe assignment/SLA
+(`include/class.ticket.php:1483-1602`).
 
 `Ticket::delete()` remove primeiro a linha do ticket, depois desassocia filhos,
-remove thread, forms, drafts e cdata (`:3601-3658`). `Thread::delete()` remove
+remove thread, forms, drafts e cdata (`include/class.ticket.php:3601-3658`).
+`Thread::delete()` remove
 anexos, colaboradores, referrals e entries e zera `thread_id` de eventos
-(`class.thread.php:743-764`).
+(`include/class.thread.php:743-764`).
 
 ## Atomicidade e lacunas
 
@@ -88,11 +93,13 @@ Achados ainda não classificados como defeito:
 - anexos de API podem ser persistidos durante validação, antes do ticket
   (`include/api.tickets.php:70-107`); limpeza de órfãos precisa ser rastreada;
 - retornos de alguns saves de forms/mensagem não são testados antes de avançar
-  (`class.ticket.php:4385-4443`);
+  (`include/class.ticket.php:4385-4443`);
 - ORM e métodos de ticket podem emitir `model.updated` mais de uma vez por
-  operação (`class.orm.php:682-689`; `class.ticket.php:3800-3804,3893-3895`);
+  operação (`include/class.orm.php:682-689`;
+  `include/class.ticket.php:3800-3804,3893-3895`);
 - exclusão remove a thread e depois tenta registrar evento `deleted`; o vínculo
-  efetivo desse evento requer confirmação dinâmica (`ticket.php:3633-3636`).
+  efetivo desse evento requer confirmação dinâmica
+  (`include/class.ticket.php:3633-3636`).
 
 Nenhum desses achados será corrigido antes de comparação com upstream, revisão
 especializada e teste em instalação descartável.

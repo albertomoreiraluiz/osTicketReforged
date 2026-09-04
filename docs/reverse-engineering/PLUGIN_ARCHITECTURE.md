@@ -57,12 +57,14 @@ disponível.
 ## Persistência
 
 - `plugin`: pacote instalado, estado global e metadados
-  (`class.plugin.php:543-553`; schema `:894-907`).
+  (`include/class.plugin.php:543-553`;
+  `setup/inc/streams/core/install-mysql.sql:894-907`).
 - `plugin_instance`: instância e flags, relacionada logicamente a `plugin_id`
-  (`class.plugin.php:1006-1017`; schema `:909-920`).
+  (`include/class.plugin.php:1006-1017`;
+  `setup/inc/streams/core/install-mysql.sql:909-920`).
 - `config`: pares por namespace; cada instância usa
   `plugin.<pluginId>.instance.<instanceId>`
-  (`class.plugin.php:1110-1114`).
+  (`include/class.plugin.php:1110-1114`).
 
 Não há FK SQL entre pacote e instância. `PluginInstance::delete()` remove
 configuração antes do registro (`include/class.plugin.php:1167-1170`).
@@ -73,11 +75,11 @@ cifra automaticamente valores arbitrários de configuração
 ## Ciclo administrativo
 
 - instalação valida manifesto/compatibilidade, cria `Plugin`, chama
-  `enable()` e limpa caches (`class.plugin.php:364-393`);
+  `enable()` e limpa caches (`include/class.plugin.php:364-393`);
 - o registro nasce inativo e a implementação base não cria instância;
 - instâncias são criadas/atualizadas por `addInstance()` e `update()`;
 - desinstalação admite veto, remove registros/configuração e preserva arquivos
-  do pacote (`class.plugin.php:813-896,1136-1152`);
+  do pacote (`include/class.plugin.php:813-896,1136-1152`);
 - administração exige `admin.inc.php`; AJAX de plugins também exige
   administrador.
 
@@ -99,11 +101,11 @@ como API pública estável.
 
 | Achado estático | Evidência | Estado |
 | --- | --- | --- |
-| `init()` roda para plugin compatível inativo | `class.plugin.php:193-203` | fato; impacto depende do plugin |
-| manifesto executa PHP na descoberta | `class.plugin.php:319-328` | fato; fronteira confiável |
-| verificação não bloqueia `install()` | `class.plugin.php:364-518` | fato na baseline |
-| rota aponta para `PluginsAjaxAPI::actions`, método não localizado | `scp/ajax.php:95`; `ajax.plugins.php:4-62` | possível defeito; validar depois |
-| `Plugin::__onload()` usa chave `verion` | `class.plugin.php:583-590` | possível typo; efeito pendente |
+| `init()` roda para plugin compatível inativo | `include/class.plugin.php:193-203` | fato; impacto depende do plugin |
+| manifesto executa PHP na descoberta | `include/class.plugin.php:319-328` | fato; fronteira confiável |
+| verificação não bloqueia `install()` | `include/class.plugin.php:364-518` | fato na baseline |
+| rota aponta para `PluginsAjaxAPI::actions`, método não localizado | `scp/ajax.php:95`; `include/ajax.plugins.php:4-62` | possível defeito; validar depois |
+| `Plugin::__onload()` usa chave `verion` | `include/class.plugin.php:583-590` | possível typo; efeito pendente |
 
 Nenhum dos dois últimos itens autoriza correção nesta fase; primeiro serão
 comparados com upstream e confirmados em runtime.

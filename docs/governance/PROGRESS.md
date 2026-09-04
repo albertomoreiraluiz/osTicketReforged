@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-03.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável resultante: `main`.
-- Etapa: engenharia reversa — preparação do inventário.
+- Etapa: engenharia reversa — análise estática profunda.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -29,10 +29,8 @@
 
 ## Em andamento
 
-- Portão B iniciado com portal documental, inventário da árvore, superfícies
-  executáveis, bootstrap e matriz inicial de evidências.
-- Mapas iniciais de componentes, entrypoints, dados e pontos de extensão
-  produzidos diretamente da baseline.
+- Portão C iniciado para catálogos exaustivos, matriz de customização e limites
+  de extensão do core.
 - Onda 1 do inventário estático formalizada para ciclo de requisição, modelo de
   persistência e extensibilidade, sem execução da interface ou leitura de
   segredos locais.
@@ -50,10 +48,19 @@
   persistência, assinaturas e lotes de patches.
 - Ciclo central do ticket rastreado nas entradas Web, agente, API e e-mail, com
   thread, tarefas, formulários, status e exclusão.
-- Onda 2 concluída com API nativa, 12 rotas AJAX do cliente, 229 rotas-folha do
-  staff e modelo estático de segurança por camadas.
+- Onda 2 concluída com API nativa, 12 rotas AJAX do cliente, 256 declarações
+  sintáticas no AJAX staff e modelo estático de segurança por camadas; a
+  classificação de folhas está em reconciliação.
 - Onda 3 iniciada para frontend PHP estático, subsistemas transversais e revisão
   independente do inventário.
+- Infraestrutura histórica de testes inventariada sem execução prematura do
+  runner dependente da baseline não instalada.
+- Frontend PHP mapeado estaticamente em dois shells, com navegação, templates,
+  assets, widgets e contratos PJAX/AJAX.
+- E-mail, arquivos, busca, cron, filtros, formulários e base de conhecimento
+  ligados a entrypoints, persistência e efeitos.
+- Revisão QA independente concluída; contagens fundamentais confirmadas e
+  inconsistências documentais em correção.
 
 ## Próximo passo proposto
 
@@ -69,8 +76,8 @@
 | Portão | Estado | Evidência atual | Bloqueio |
 | --- | --- | --- | --- |
 | A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
-| B — Inventário | Em andamento | portal MkDocs; inventário e matriz iniciais | classificação e mapas ainda incompletos |
-| C — Análise profunda | Não iniciado | nenhuma | Portão B |
+| B — Inventário | Concluído | três ondas estáticas, portal e revisão QA independente | nenhum |
+| C — Análise profunda | Em andamento | ciclos, dados, plugins, segurança, API, frontend e subsistemas | catálogos exaustivos e matriz de customização |
 | D — Decisão arquitetural | Não iniciado | nenhuma | Portão C e aprovação do ADR |
 
 ## Decisões futuras, fora da preparação atual
@@ -127,3 +134,7 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Ciclo do ticket — Onda 2 | `TICKET_LIFECYCLE.md`; classes e adaptadores centrais | Pipeline multicanal e riscos de atomicidade documentados estaticamente |
 | 2026-09-03 | API e segurança — Onda 2 | `API_ANALYSIS.md`; `SECURITY_MODEL.md` | Contratos e riscos estáticos integrados; testes dinâmicos permanecem adiados |
 | 2026-09-03 | Onda 3 do inventário | `docs/reverse-engineering/WAVE_MANIFEST.md` | Cobertura transversal e revisão independente registradas |
+| 2026-09-03 | Testes da baseline | `TESTING_BASELINE.md`; 20 arquivos em `setup/test/` | Runner próprio e limites de confiança documentados; execução adiada |
+| 2026-09-03 | Cobertura transversal — Onda 3 | `FRONTEND_ANALYSIS.md`; `TRANSVERSAL_SUBSYSTEMS.md` | Frontend e subsistemas documentados sem execução |
+| 2026-09-03 | Revisão independente — Onda 3 | parecer do Engenheiro de QA; matriz e documentos corrigidos | Contagens-base validadas; aprofundamentos separados do Portão B |
+| 2026-09-03 | Fechamento do Portão B | plano 0001; matriz de evidências; três ondas e revisão QA | Inventário estrutural concluído; Portão C iniciado |

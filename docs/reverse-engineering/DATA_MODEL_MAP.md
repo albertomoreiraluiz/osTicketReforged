@@ -45,9 +45,10 @@ confirmada.
 | Formulários | `DynamicForm`, `DynamicFormField`, `DynamicFormEntry`, `DynamicFormEntryAnswer` | `include/class.dynamic_forms.php` |
 | Plugins | `Plugin`, `PluginInstance` | `include/class.plugin.php` |
 
-Esses símbolos declaram metadados `static $meta` do ORM. Relações, joins,
-cardinalidades e regras de exclusão ainda precisam ser extraídos e comparados
-com os ERDs oficiais.
+Esses símbolos declaram metadados `static $meta` do ORM. As relações centrais,
+associações polimórficas, `__cdata` e cascatas manuais já estão consolidadas em
+[Arquitetura de persistência](DATABASE_ARCHITECTURE.md). O catálogo individual
+das 72 declarações ainda pertence ao aprofundamento.
 
 ## Relação com a documentação oficial
 
@@ -55,10 +56,17 @@ Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicaç�
 se identifica como 1.17.7, nenhum relacionamento será considerado confirmado
 sem confronto com o esquema e os metadados ORM da baseline 1.18.4.
 
-## Próximas extrações
+## Extrações já concluídas
 
-1. chaves primárias, estrangeiras e índices do esquema;
-2. relações declaradas nos metadados ORM;
-3. tabelas dinâmicas `__cdata` e formulários;
-4. diferenças entre esquema inicial, patches e ERDs;
-5. operações de escrita por fluxo de ticket.
+1. ausência de FKs executáveis e chaves/índices centrais;
+2. relações ORM dos agregados principais;
+3. materialização dinâmica `__cdata`;
+4. divergências iniciais entre schema, constantes e ERDs;
+5. operações de escrita do ciclo do ticket.
+
+## Aprofundamentos restantes
+
+1. catálogo das 72 declarações `static $meta`;
+2. invariantes de todas as relações polimórficas;
+3. engines e índices efetivos após instalação;
+4. reconciliação ERD por domínio.

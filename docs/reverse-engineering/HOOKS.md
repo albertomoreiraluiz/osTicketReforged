@@ -2,10 +2,11 @@
 
 ## Contrato do barramento
 
-`Signal::connect()` registra callbacks por nome. `Signal::send()` chama todos
-na ordem de conexão, sem interrupção da entrega, com filtros opcionais por classe
-e predicado (`include/class.signal.php:56-100`). O payload não possui schema ou
-validação e pode ser recebido por referência.
+`Signal::connect()` registra callbacks por nome. `Signal::send()` tenta
+chamá-los na ordem de conexão, com filtros opcionais por classe e predicado
+(`include/class.signal.php:56-100`). Não há veto padronizado por retorno, mas
+exceção não tratada ou término do callback pode interromper os seguintes. O
+payload não possui schema ou validação e pode ser recebido por referência.
 
 Não há prioridade explícita, unsubscribe, isolamento de exceções, agregação de
 retorno ou veto padronizado. Portanto, mutabilidade deve ser confirmada por
