@@ -10,5 +10,11 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-004 | 2026-09-03 | Aceito | Os treze perfis profissionais são permanentes; missões não alteram cargo, autoridade, permissão ou limites. | `.codex/config.toml`; `.codex/agents/`; PR #1 |
 | GOV-005 | 2026-09-03 | Aceito | Código deve respeitar decisões aceitas e não reabrir perguntas já formalmente respondidas. | `DOCUMENTATION_POLICY.md`; `AGENTS.md`; PR #1 |
 | GOV-006 | 2026-09-03 | Aceito | Toda tarefa começa pela releitura da documentação e todo PR exige atualização e varredura documental imediatamente antes de sua criação. | `DOCUMENTATION_POLICY.md`; `AGENTS.md`; PR #1 |
+| GOV-007 | 2026-09-03 | Aceito | O `.env` é entrada local e não versionada apenas para ferramentas; o osTicket mantém seu instalador e `include/ost-config.php`. A persistência definitiva das conexões permanece TBD. | `docs/development/HOMOLOGATION_ENVIRONMENT.md`; `.env.example` |
+| GOV-008 | 2026-09-03 | Aceito | A homologação primária da engenharia reversa usará XAMPP local com Apache para permitir acesso direto ao PHP e aos logs; o aaPanel deixa de ser o alvo desta etapa. | `docs/development/HOMOLOGATION_ENVIRONMENT.md`; decisão explícita do responsável |
+| GOV-009 | 2026-09-03 | Aceito | O runtime de homologação usará PHP 8.2 fornecido pelo XAMPP; esta versão satisfaz o requisito mínimo declarado pela baseline `v1.18.4`. | `include/class.setup.php`; `docs/development/HOMOLOGATION_ENVIRONMENT.md` |
+| GOV-010 | 2026-09-03 | Aceito | A homologação atual será integralmente local; SSH, SFTP e FTPS não serão usados para PHP ou frontend, e o responsável preencherá os dados do banco. | `docs/development/HOMOLOGATION_ENVIRONMENT.md`; `.env.example` |
+| GOV-011 | 2026-09-03 | Aceito | O novo frontend ficará isolado em `frontend/` e usará Angular com PrimeNG; versões e integração serão decididas posteriormente. | `docs/adr/0001-frontend-angular-primeng.md` |
 
-Estas decisões foram formalizadas no GitHub pela PR #1.
+As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões seguintes
+serão vinculadas à Pull Request que integrar a preparação da homologação.
