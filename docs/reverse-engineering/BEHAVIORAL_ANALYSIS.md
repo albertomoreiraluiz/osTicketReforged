@@ -535,6 +535,28 @@ endereços/conteúdo. A atribuição será então liberada pelo endpoint normal 
 banco deverá coincidir com o estado inicial de atribuição. A nota permanecerá
 como fixture funcional; sua exclusão exigiria outro plano e backup válido.
 
+**Resultado do protocolo E:** o snapshot ignorado registrou 214 bytes e
+SHA-256 `0F27CB17BBA2DF2B3ABADB9A94E768F5E77DFBAF8020AF70C482B5F5317000AB`,
+com ticket aberto, sem atribuição, marcador ausente e zero draft. A atribuição
+ao agente fictício foi aceita, mas a primeira execução do cliente local falhou
+ao serializar o formulário seguinte. A verificação intermediária encontrou o
+ticket atribuído, zero nota e zero draft; a execução foi retomada sem repetir
+conteúdo funcional.
+
+Com lock `200`, a nota retornou `200`, apareceu na thread e persistiu exatamente
+uma entrada `type=N` do administrador. A thread aumentou em uma entrada, mas
+`lastmessage` e `lastresponse` permaneceram inalterados. O namespace de draft
+continuou vazio. A liberação respondeu `201` e o banco confirmou novamente
+ticket aberto, sem agente ou equipe atribuídos.
+
+O coletor não recebeu mensagens. Para notas, o resultado é determinado por
+`note_alert_active=0`, apesar de último respondente e atribuído estarem marcados
+como destinatários potenciais. A política de atribuição está ativa para o
+agente, mas `Ticket::onAssign()` também exige membros elegíveis para alertas no
+departamento (`include/class.ticket.php:2036-2059`); a configuração atual não
+formou um destinatário efetivo. A porta 25 foi encerrada e verificada fechada.
+Nenhuma limpeza afetou linha e nenhum rollback adicional foi necessário.
+
 ### BHV-012 — API HTTP nativa
 
 Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou

@@ -53,6 +53,14 @@ atribuído, não possuía respondente staff e o departamento não tinha gerente.
 Essa separação confirma que autoresposta, aviso a colaboradores e alerta staff
 são ramos distintos do mesmo `postMessage()`.
 
+O ensaio de atividade interna separou mais dois ramos. A atribuição temporária
+não enviou mensagem, embora `assigned_alert_active=1` e o agente esteja marcado
+como destinatário, porque `Ticket::onAssign()` exige membros elegíveis para
+alerta no departamento. A nota interna também não enviou: a chave mestre
+`note_alert_active=0` encerra `onActivity()` antes de considerar atribuído ou
+último respondente. A ausência foi medida com o coletor ativo e não inferida de
+logs.
+
 ## Arquivos, storage e anexos
 
 `AttachmentFile` representa conteúdo/metadados, `Attachment` associa o arquivo

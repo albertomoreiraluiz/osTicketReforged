@@ -218,3 +218,9 @@ respondido. A notificação foi enviada somente ao proprietário; o autor não
 recebeu autoresposta e nenhum agente recebeu alerta porque o ticket não tinha
 atribuído, respondente anterior ou gerente elegível. O namespace de draft do
 cliente estava vazio antes e depois da limpeza automática do controlador.
+
+Uma atribuição temporária seguida de nota interna confirmou que a entrada `N`
+não movimenta `thread.lastmessage` nem `thread.lastresponse`. O lock staff foi
+obrigatório, a limpeza de draft encontrou zero linha e a liberação restaurou o
+ticket sem atribuído. Nenhum alerta foi emitido: nota estava globalmente
+desabilitada e a atribuição não encontrou destinatário elegível no departamento.
