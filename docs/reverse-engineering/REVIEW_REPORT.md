@@ -49,3 +49,22 @@ somente leitura o primeiro conjunto estabilizado de evidências comportamentais.
 O revisor não acessou `.env`, banco ou runtime e não alterou arquivos. As
 conclusões foram relidas no código pelo integrador e incorporadas aos documentos
 canônicos; correção do core e aceite residual permanecem fora da etapa atual.
+
+## Onda 7 — revisão QA do fechamento funcional
+
+A instância `engenheiro-qa/onda-07/revisao-fechamento-funcional` confrontou em
+modo somente leitura a matriz comportamental e o diff de consolidação.
+
+- confirmou 25 identificadores únicos, de `BHV-001` a `BHV-025`, todos com
+  estado concluído e seção de evidência;
+- não encontrou lacuna funcional adicional nem afirmação sem suporte que
+  exigisse novo ensaio;
+- classificou corretamente concorrência, `E_ALL`, integrações reais de correio,
+  acessibilidade, desempenho e novos testes de segurança como fases futuras;
+- apontou duas inconsistências documentais médias e uma baixa: autorização
+  cruzada já confirmada ainda listada como lacuna, fechamento anunciado antes
+  do registro do parecer e um checkpoint histórico redigido no presente.
+
+O integrador corrigiu os três itens e repetiu as validações documentais. O
+revisor não leu `.env`, banco ou runtime, não executou testes ofensivos e não
+alterou arquivos. Não permanece bloqueio funcional ou documental da Onda 7.

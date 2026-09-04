@@ -422,9 +422,9 @@ usuário já existente. O coletor aceitou uma mensagem com um destinatário;
 capturados, a evidência não distingue autoresposta de alerta interno. O processo
 do coletor foi encerrado e a porta 25 voltou a recusar conexões.
 
-BHV-011 avança para iniciado. Restam correlacionar tipos de notificação e
-gatilhos adicionais com um coletor local que classifique destinatários sem
-armazenar seus valores.
+Esse checkpoint iniciou BHV-011. Os checkpoints posteriores correlacionaram
+tipos e lados dos destinatários por configuração, sem armazenar conteúdo ou
+endereços completos, e concluíram o cenário no ambiente local.
 
 Na passagem seguinte, o coletor classificou o domínio do comando SMTP em
 memória e descartou o valor imediatamente. Outra abertura Web persistiu um novo
@@ -437,8 +437,9 @@ autoresposta. Portanto, o único envio observado foi o alerta administrativo, e
 a ausência de autoresposta decorre da chave global.
 
 O segundo coletor também foi encerrado e a porta 25 voltou a ficar fechada.
-Esse checkpoint conclui a notificação da abertura Web; respostas staff,
-mensagens do cliente e demais gatilhos ainda pertencem a BHV-011.
+Esse checkpoint concluiu a notificação da abertura Web; naquele momento,
+respostas staff, mensagens do cliente e demais gatilhos ainda pertenciam a
+BHV-011 e foram cobertos nas passagens seguintes.
 
 #### Plano de rollback BHV-011-C — resposta staff com coletor local
 
@@ -603,9 +604,9 @@ mensagem dirigida a uma identidade interna real.
 
 Em `finally`, o mesmo formulário restaurou as flags originais; a releitura e o
 banco confirmaram chave desativada, criação permitida e cron desabilitado. XML
-e e-mail estão cobertos para criação. Cron autorizado continua pendente porque
-`Cron::run()` pode apagar locks, drafts, sessões, resets e arquivos órfãos; ele
-somente será executado depois de backup verificável que cubra banco e
+e e-mail estão cobertos para criação. Naquele checkpoint, cron autorizado
+aguardava backup verificável porque `Cron::run()` pode apagar locks, drafts,
+sessões, resets e arquivos órfãos. Sua execução dependia de backup que cobrisse banco e
 filesystem, conforme GOV-014.
 
 #### Plano de rollback BHV-012-A — cron HTTP autorizado
@@ -899,10 +900,19 @@ porque o ambiente é acessível somente em sua máquina. A permanência é aceit
 apenas neste contexto, não constitui orientação para produção e deve ser
 reavaliada se o serviço passar a aceitar conexões externas.
 
-## Pendências imediatas
+## Encerramento funcional
 
-1. auditar a cobertura comportamental contra todas as superfícies funcionais
-   catalogadas e identificar lacunas reais, sem reabrir cenários concluídos;
-2. consolidar o estado final das fixtures, logs e artefatos locais da Onda 7;
-3. atualizar README, plano e manifesto para o fechamento documental da onda;
-4. preparar revisão independente antes de qualquer proposta do Portão D.
+Os 25 cenários da matriz estão concluídos. A auditoria transversal não encontrou
+lacuna funcional que exija novo ensaio nesta onda; referências a concorrência,
+injeção de falhas, acessibilidade e novos testes de segurança permanecem
+deliberadamente reservadas a fases próprias e não anulam a evidência obtida.
+
+O pós-check final confirmou oito tickets, 29 entradas de thread, dois uploads
+temporários do teste de limite no backend `D`, campos restaurados a configuração
+`NULL`, chave de API inativa e sem permissão de cron, zero sessão expirada e
+nenhum listener SMTP. Fixtures e artefatos locais ignorados permanecem
+disponíveis para rastreabilidade. Nenhuma exclusão adicional foi executada.
+
+O próximo gate é uma revisão QA independente, somente leitura, seguida da
+integração das correções documentais e do Pull Request de encerramento. Opções
+do Portão D só serão preparadas depois dessa integração.

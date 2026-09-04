@@ -8,7 +8,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Engenharia reversa — análise comportamental em execução |
+| Etapa atual | Engenharia reversa — Onda 7 concluída e revisada; integração em preparação |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
@@ -19,18 +19,19 @@ extensões e logs preparados. A interface pública e a autenticação administra
 foram confirmadas por observação em runtime. O snapshot oficial de referência e
 o portal MkDocs permanecem no fluxo obrigatório de atualização.
 
-A Onda 7 prioriza agora a reprodução fiel dos fluxos funcionais entre frontend
-e backend. Achados de segurança já confirmados continuam documentados, sem novos
+A Onda 7 concluiu a reprodução dos 25 cenários funcionais entre frontend e
+backend. Achados de segurança já confirmados continuam documentados, sem novos
 ensaios ofensivos nesta passagem comportamental. A auditoria de segurança terá
-fase própria depois do mapeamento e do inventário completos.
+fase própria e não altera o encerramento do inventário funcional.
 
 Próximas etapas:
 
-1. completar os fluxos funcionais de ticket, organização, administração e filas;
-2. caracterizar notificações em modo controlado, sem entrega externa acidental;
-3. consolidar a matriz comportamental e os catálogos; exclusões continuam
-   condicionadas a plano, backup verificável e rollback conforme GOV-014;
-4. somente depois preparar opções e decisões do Portão D.
+1. consolidar a entrega da Onda 7 em Pull Request;
+2. integrar a documentação revisada à branch estável;
+3. manter exclusões condicionadas a
+   plano, backup verificável e rollback conforme GOV-014;
+4. após a integração, preparar opções do Portão D sem antecipar decisões de
+   Angular, PrimeNG ou integração.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
 `frontend/`; versões e integração serão definidas após a análise correspondente.

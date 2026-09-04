@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-04.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável resultante: `main`.
-- Etapa: engenharia reversa — análise comportamental em execução.
+- Etapa: engenharia reversa — Onda 7 concluída e revisada; integração em preparação.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -32,9 +32,9 @@
 - Mutações funcionais no banco descartável de homologação autorizadas para a
   Onda 7; exclusões condicionadas a plano, backup e rollback por GOV-014.
 
-## Em andamento
+## Onda 7 concluída funcionalmente
 
-- Onda 7 comportamental iniciada sobre a distribuição `v1.18.4` instalada na
+- Onda 7 comportamental executada sobre a distribuição `v1.18.4` instalada na
   raiz `C:\xampp\htdocs`.
 - Varredura autenticada de 31 páginas concluída sem falha HTTP, formulário de
   login, erro fatal ou novo registro no log PHP.
@@ -94,8 +94,8 @@
   persistida como fixture polimórfica, sem exclusão.
 - Assunto de ticket alterado e restaurado pelo formulário tradicional; a visão
   dinâmica terminou com o original e sem marcador temporário.
-- Transporte de saída inspecionado: sem SMTP cadastrado, fallback local sem
-  listener e sem coletor; notificações permanecem pendentes sem inferência.
+- Transporte de saída inspecionado: sem SMTP cadastrado; coletores locais
+  efêmeros e sem relay classificaram os fluxos previstos e foram encerrados.
 - Usuário anônimo editado e restaurado pelo diálogo staff; organização
   preservada e nota rápida única persistida como fixture.
 - Fuso do perfil administrativo alterado e restaurado por dois POSTs
@@ -147,10 +147,10 @@
 
 ## Próximo passo proposto
 
-1. executar testes comportamentais de interface, sessão, permissões, uploads,
-   e-mail e riscos priorizados em ambiente descartável;
-2. atualizar os mesmos catálogos com fatos observados em runtime;
-3. somente depois preparar opções do Portão D e decisões de integração.
+1. preparar e integrar o Pull Request de encerramento da Onda 7;
+2. confirmar a branch estável sincronizada e o portal documental válido;
+3. somente após a integração preparar opções do Portão D, sem antecipar a
+   decisão de frontend.
 
 ## Estado dos portões
 
@@ -274,3 +274,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — cron HTTP autorizado | inventário; dump SHA-256; restauração em banco temporário; cron; pós-check | `200 Completed`; 12 sessões expiradas removidas, demais candidatos zero, dados funcionais preservados e chave restaurada |
 | 2026-09-04 | Onda 7 — limite de upload | configuração temporária 256 KiB; cliente abaixo/acima; staff acima; `finally`; banco | Cliente `200/500`, staff `200`; bypass inclui tamanho; dois arquivos temporários `D`; configurações novamente `NULL` |
 | 2026-09-04 | Onda 7 — exportador de backup | export CLI comprimido; inspeção sem expor conteúdo; `class.export.php` | 47 schemas e zero linhas; artefato rejeitado para rollback; causa é `SELECT *` sem atribuição a `$res` |
+| 2026-09-04 | Onda 7 — consolidação funcional | matriz BHV; estado final do banco e serviços; auditoria transversal | BHV-001 a BHV-025 concluídos; restaurações confirmadas; fixtures preservadas sem limpeza destrutiva; revisão QA final preparada |
+| 2026-09-04 | Onda 7 — revisão QA final | `REVIEW_REPORT.md`; matriz BHV; diff documental | 25 cenários confirmados; duas inconsistências médias e uma baixa corrigidas; nenhum bloqueio funcional ou documental restante |

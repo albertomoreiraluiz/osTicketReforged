@@ -18,17 +18,16 @@ outra identidade configurada e, por fim, `mail()`
 token de thread, cabeçalhos de supressão e CID compõem o threading/entrega.
 
 Na homologação da Onda 7, não há conta SMTP em `email_account`; o fallback do
-PHP aponta somente para `localhost:25`, onde nenhuma conexão é aceita, e não há
-`sendmail_path` ou `mail.log`. Esse isolamento evita relay externo pela
-configuração observada, mas a validação comportamental de notificações depende
-da inclusão futura de um coletor SMTP local que registre as mensagens sem
-entregá-las.
+PHP aponta somente para `localhost:25`, normalmente sem listener, e não há
+`sendmail_path` ou `mail.log`. Os ensaios instalaram somente um coletor SMTP
+local efêmero e sem relay, encerrado após cada passagem.
 
 Esse coletor foi executado temporariamente na Onda 7, sem relay. Durante uma
 abertura Web, recebeu uma mensagem com um destinatário e retornou sucesso SMTP;
 o ticket foi persistido e não houve `Mailer Error`. O coletor foi encerrado ao
-fim do ensaio. Como ele não armazenou endereços ou conteúdo, a classificação do
-tipo de notificação continua pendente.
+fim do ensaio. Como ele não armazenou endereços ou conteúdo, esse primeiro
+checkpoint não classificou o tipo; a passagem seguinte o fez pela lateralidade
+do destinatário e pela configuração persistida.
 
 Uma segunda passagem classificou apenas o domínio do destinatário em memória.
 O envio foi para o lado interno, não para o solicitante `example.com`. O estado
@@ -87,7 +86,7 @@ grava no backend; depois `GenericAttachments::upload()` cria a associação
 (`include/class.file.php:352-539`; `include/class.attachment.php:134-184`).
 Cron remove arquivos temporários órfãos com mais de um dia.
 
-Achados para teste:
+Achados observados e pontos ainda estáticos:
 
 - `file.php` valida URL HMAC, mas não demonstra o vínculo do usuário ao objeto;
 - a Onda 7 confirmou TXT associado à thread, download forçado como attachment,
@@ -174,7 +173,7 @@ declará-la morta.
 ## Lacunas dinâmicas adiadas
 
 - OAuth/IMAP/POP, threading, deduplicação, SMTP e bounce reais;
-- MIME, deduplicação, backends de storage, links e autorização cruzada;
+- MIME real, deduplicação e backends de storage alternativos;
 - reconstrução do índice/cdata e busca com volume/acentos;
 - concorrência/idempotência do cron;
 - desempenho da busca pública da KB.

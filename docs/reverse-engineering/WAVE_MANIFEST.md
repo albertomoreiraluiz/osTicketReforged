@@ -165,7 +165,7 @@ validou contagens, links, diff e build MkDocs estrito.
 
 ## Onda 7 — validação comportamental da baseline
 
-**Estado:** em execução.
+**Estado:** concluída e revisada independentemente.
 
 **Objetivo:** confrontar os contratos estáticos já documentados com o
 comportamento funcional observável da instalação `v1.18.4`, reproduzindo os
@@ -195,6 +195,39 @@ em fase própria somente após o mapeamento e o inventário completos.
 
 Os achados de segurança já obtidos permanecem evidência histórica da baseline,
 sem direcionar a sequência funcional restante.
+
+### Consolidação funcional
+
+Os 25 cenários `BHV-001` a `BHV-025` estão concluídos. A passagem cobriu os
+shells público, cliente, equipe e administração; tickets, tarefas, arquivos,
+e-mail, API, cron, buscas, conhecimento, organizações, perfis, filas e
+notificações. Mutações usaram apenas fixtures fictícias. Configurações
+temporárias e permissões da chave de API foram restauradas; a execução
+autorizada do cron contou com dump MariaDB restaurado em banco temporário antes
+do ensaio e removeu somente as 12 sessões expiradas previamente inventariadas.
+
+O estado final verificado registra oito tickets, 29 entradas de thread, dois
+uploads temporários do cenário de limite no backend `D`, configurações dos dois
+campos novamente `NULL`, chave de API inativa e sem permissão de cron, nenhuma
+sessão expirada e nenhuma escuta SMTP na porta 25. As fixtures funcionais e os
+artefatos locais ignorados foram preservados; nenhuma limpeza destrutiva foi
+executada.
+
+### Revisão independente final
+
+**Justificativa:** o fechamento atravessa todas as superfícies funcionais e
+precisa ser confrontado por profissional diferente do redator. A missão é
+única, somente leitura e não reabre testes de segurança.
+
+| Instância | Perfil permanente | Missão de revisão | Leitura autorizada | Escrita | Integrador |
+| --- | --- | --- | --- | --- | --- |
+| `engenheiro-qa/onda-07/revisao-fechamento-funcional` | Engenheiro de Qualidade | verificar cobertura dos 25 cenários, coerência entre matriz, catálogos, manifesto, plano e progresso, e apontar bloqueios documentais | código versionado, diff e documentação da Onda 7; sem `.env`, banco, runtime ou testes ofensivos | nenhuma | agente principal |
+
+**Encerramento:** o parecer confirmou os 25 cenários sem lacuna funcional nova.
+Duas inconsistências documentais médias e uma baixa foram corrigidas pelo
+integrador. Não permanece bloqueio funcional ou documental para encerrar a
+onda; concorrência, integrações reais de correio, acessibilidade, desempenho e
+segurança continuam corretamente reservados às fases próprias.
 
 ### Revisão independente de segurança — checkpoint 1
 
