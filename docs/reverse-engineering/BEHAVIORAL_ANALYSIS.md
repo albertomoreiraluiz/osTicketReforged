@@ -516,6 +516,25 @@ atribuído, o ticket não possuía resposta staff, agente, equipe ou gerente de
 departamento; o conjunto interno ficou vazio. O coletor foi encerrado e a porta
 25 voltou a ficar fechada. Nenhuma ação de rollback foi necessária.
 
+#### Plano de rollback BHV-011-E — atribuição e nota interna notificadas
+
+O ticket 4 deve iniciar aberto, sem agente/equipe atribuídos, sem o novo marcador
+e com zero draft no namespace `ticket.note.4` para o administrador. Um snapshot
+local ignorado registrará esses valores, os contadores da thread e hash SHA-256.
+Se qualquer pré-condição divergir, nenhuma ação será enviada.
+
+O administrador atribuirá temporariamente o ticket ao agente fictício já
+existente, com coletor local restrito e sem relay. Em uma segunda captura, o
+administrador adquirirá o lock nativo e publicará uma nota interna marcada,
+mantendo o ticket aberto e sem anexos. O controlador limpa o namespace de draft
+após sucesso; a pré-condição zero impede perda de conteúdo preexistente.
+
+Depois da nota serão verificados uma única entrada `N`, estado e relógios da
+thread, draft ainda vazio e destinatários classificados sem persistir
+endereços/conteúdo. A atribuição será então liberada pelo endpoint normal e o
+banco deverá coincidir com o estado inicial de atribuição. A nota permanecerá
+como fixture funcional; sua exclusão exigiria outro plano e backup válido.
+
 ### BHV-012 — API HTTP nativa
 
 Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou
