@@ -56,6 +56,24 @@ As missões foram concluídas sem runtime, banco, interface ou leitura de
 `.env`. Os resultados estão em `TICKET_LIFECYCLE.md`, `API_ANALYSIS.md` e
 `SECURITY_MODEL.md`.
 
+## Onda 3 — cobertura transversal e revisão
+
+**Estado:** em execução.
+
+| Instância | Perfil permanente | Missão | Leitura autorizada | Escrita | Revisão/integrador |
+| --- | --- | --- | --- | --- | --- |
+| `arquiteto-frontend/onda-03/frontend-php-estatico` | Arquiteto de Frontend | mapear templates PHP, navegação, assets, JS, temas e composição sem executar UI | código versionado e documentação vigente | nenhuma | agente principal |
+| `engenheiro-reversa/onda-03/subsistemas-transversais` | Engenheiro de Engenharia Reversa | mapear e-mail, arquivos, busca, cron, filtros, formulários e conhecimento | código versionado e documentação vigente | nenhuma | agente principal |
+| `engenheiro-qa/onda-03/revisao-inventario` | Engenheiro de QA | revisar cobertura, evidências, contradições e lacunas das Ondas 1 e 2 | código versionado e portal atual | nenhuma | agente principal |
+
+### Critérios de encerramento
+
+- composição estática do frontend existente documentada sem comportamento;
+- subsistemas transversais ligados a entrypoints, persistência e efeitos;
+- achados da revisão independente triados e incorporados;
+- matriz de evidências atualizada com pendências realmente dinâmicas;
+- build estrito e diff estabilizado.
+
 ## Restrições da fase
 
 - A análise é exclusivamente estática enquanto o osTicket não estiver
