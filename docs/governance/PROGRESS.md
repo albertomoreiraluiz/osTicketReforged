@@ -186,6 +186,15 @@
 - Oito cenários complementares foram concluídos no recorte declarado;
   `BHV-033` permanece mapeado, sem alegação de efeito em lote. Segunda revisão
   documental aprovada e fechamento integrado pela PR #9.
+- A restauração pós-Onda 8 usou inicialmente uma camada textual no
+  `StandardInput` e converteu caracteres multibyte do banco em `??`. O dump de
+  origem estava íntegro; o banco ativo foi corrigido por restauração binária
+  após validação em nova base temporária.
+- Antes da correção, um dump binário adicional preservou o estado afetado.
+  Depois dela, sete contagens coincidiram entre banco ativo e temporário, três
+  fixtures foram confirmadas e uma cedilha foi validada como `C3 A7` por
+  `HEX()`. A página administrativa de logs voltou a entregar `serviço` em
+  UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
 
@@ -292,6 +301,7 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — API HTTP | chave local; JSON válido/inválido; flag de cron; banco | 401/201/400 confirmados; ticket `source=API`; chave desativada ao final |
 | 2026-09-04 | Onda 7 — revisão de segurança 1 | parecer independente; releitura do código; fechamento forjado e reabertura | ACL composta e capability altas; upload médio; contratos de erro classificados |
 | 2026-09-04 | Onda 8 — menus e ações encadeadas | PR #9; `BHV-026`–`BHV-034`; três passagens QA; rollback verificado | oito cenários concluídos no recorte, massa mapeada, divergências relacionais registradas |
+| 2026-09-04 | Correção de encoding do rollback | dump íntegro; backup do estado afetado; restore binário temporário/ativo; `HEX()` e sete contagens | acentuação UTF-8 restaurada; procedimento textual proibido por GOV-017 |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |
