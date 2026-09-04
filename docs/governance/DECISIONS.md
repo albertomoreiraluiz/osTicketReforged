@@ -15,6 +15,7 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-009 | 2026-09-03 | Aceito | O runtime de homologação usará PHP 8.2 fornecido pelo XAMPP; esta versão satisfaz o requisito mínimo declarado pela baseline `v1.18.4`. | `include/class.setup.php`; `docs/development/HOMOLOGATION_ENVIRONMENT.md` |
 | GOV-010 | 2026-09-03 | Aceito | A homologação atual será integralmente local; SSH, SFTP e FTPS não serão usados para PHP ou frontend, e o responsável preencherá os dados do banco. | `docs/development/HOMOLOGATION_ENVIRONMENT.md`; `.env.example` |
 | GOV-011 | 2026-09-03 | Aceito | O novo frontend ficará isolado em `frontend/` e usará Angular com PrimeNG; versões e integração serão decididas posteriormente. | `docs/adr/0001-frontend-angular-primeng.md` |
+| GOV-012 | 2026-09-03 | Aceito | A documentação humana da engenharia reversa será publicada localmente por MkDocs Material; ferramentas de símbolos e API serão complementares e específicas ao recorte. | `docs/adr/0002-documentation-toolchain.md`; `mkdocs.yml` |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2.

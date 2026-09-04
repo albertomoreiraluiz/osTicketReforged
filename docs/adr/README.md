@@ -15,3 +15,5 @@ Decisões aceitas:
 
 - `0001-frontend-angular-primeng.md` — frontend separado em `frontend/`, com
   Angular e PrimeNG.
+- `0002-documentation-toolchain.md` — portal principal da engenharia reversa com
+  MkDocs Material e ferramentas especializadas complementares.

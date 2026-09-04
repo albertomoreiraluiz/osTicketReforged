@@ -10,18 +10,19 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | Branch estável | `main` |
 | Etapa atual | Engenharia reversa — preparação do inventário |
 | Portão A — Governança | Concluído pela PR #1 |
-| Portão B — Inventário | Pronto para iniciar |
+| Portão B — Inventário | Em andamento — unidade inicial |
 | Portão C — Análise profunda | Não iniciado |
 | Portão D — Decisão arquitetural | Não iniciado |
 
 Ambiente-base de homologação concluído: XAMPP local, PHP 8.2, extensões, logs e
 toolchain Node.js/pnpm inventariados. O snapshot oficial de referência também
-está preparado. Em andamento: composição do inventário da Onda 1.
+está preparado. O portal MkDocs e o inventário inicial da baseline estão em
+preparação.
 
 Próximas etapas:
 
-1. registrar a composição da Onda 1;
-2. iniciar o inventário estático e somente leitura;
+1. validar o portal documental e a unidade inicial do inventário;
+2. aprofundar componentes, entrypoints, classes centrais e modelo de dados;
 3. preencher banco e localização web quando forem necessários aos testes
    dinâmicos posteriores.
 
@@ -39,6 +40,7 @@ Fontes operacionais:
 - [plano proposto de engenharia reversa](docs/plans/active/0001-reverse-engineering.md).
 - [ambiente de homologação](docs/development/HOMOLOGATION_ENVIRONMENT.md).
 - [snapshot da documentação oficial](docs/upstream/osticket-docs/README.md).
+- [portal da engenharia reversa](docs/index.md).
 
 ---
 

@@ -29,22 +29,24 @@
 
 ## Em andamento
 
-- Preparação da composição e das fronteiras do inventário da Onda 1.
+- Portão B iniciado com portal documental, inventário da árvore, superfícies
+  executáveis, bootstrap e matriz inicial de evidências.
 
 ## Próximo passo proposto
 
-1. registrar a avaliação de necessidade e a composição da Onda 1;
-2. iniciar o inventário estático e somente leitura;
-3. receber os dados de banco e validar a instalação web somente antes dos testes
+1. validar o build estrito e a leitura humana do portal documental;
+2. aprofundar a classificação de `include/`, entrypoints e dispatchers;
+3. mapear classes centrais, tabelas e pontos de extensão;
+4. receber os dados de banco e validar a instalação web somente antes dos testes
    dinâmicos que dependam deles;
-4. manter Angular, PrimeNG e decisões de integração fora da etapa atual.
+5. manter Angular, PrimeNG e decisões de integração fora da etapa atual.
 
 ## Estado dos portões
 
 | Portão | Estado | Evidência atual | Bloqueio |
 | --- | --- | --- | --- |
 | A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
-| B — Inventário | Pronto para iniciar | plano ativo e governança integrada | composição da Onda 1 |
+| B — Inventário | Em andamento | portal MkDocs; inventário e matriz iniciais | classificação e mapas ainda incompletos |
 | C — Análise profunda | Não iniciado | nenhuma | Portão B |
 | D — Decisão arquitetural | Não iniciado | nenhuma | Portão C e aprovação do ADR |
 
@@ -89,4 +91,6 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Fronteira do frontend | ADR 0001; GOV-011 | `frontend/` reservado para Angular e PrimeNG |
 | 2026-09-03 | Homologação-base | `.env.example`; guia de homologação; validações PHP/Apache | Preparada; instalação funcional aguarda banco e localização web |
 | 2026-09-03 | Integração da homologação-base | PR #2; merge `8786c271` | Concluída |
-| 2026-09-03 | Referência oficial para o inventário | snapshot `osTicket/docs` no commit `f2367c5f`; guia de instalação, licença e 14 ERDs; hashes SHA-256 conferidos | Concluída localmente na branch documental |
+| 2026-09-03 | Referência oficial para o inventário | PR #4; merge `d90486ad`; snapshot `osTicket/docs` no commit `f2367c5f`; guia de instalação, licença e 14 ERDs | Concluída e integrada |
+| 2026-09-03 | Portal documental | ADR 0002; `mkdocs.yml`; build estrito e inspeção local | Validado com MkDocs 1.6.1 e Material 9.7.7 |
+| 2026-09-03 | Inventário inicial | árvore da baseline; entrypoints; bootstrap; matriz de evidências | Portão B iniciado; conclusão ainda bloqueada pelas lacunas registradas |
