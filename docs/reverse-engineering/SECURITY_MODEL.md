@@ -30,6 +30,12 @@ Contadores de falha observados residem na sessão PHP. **Inferência:** trocar
 sessão ou distribuir tentativas pode reduzir o bloqueio; confirmar antes de
 classificar como defeito.
 
+Na Onda 7, uma única senha inválida para cada tipo de conta retornou `200` com
+mensagem genérica e formulário; credenciais corretas funcionaram em novas
+sessões. A amostra evita deliberadamente o limiar de bloqueio e não confirma nem
+refuta a inferência acima. CSRF inválido nos logins redirecionou com `302`; POST
+AJAX staff sem token retornou `400`, evidenciando contratos de erro distintos.
+
 ## Sessão, cookie e CSRF
 
 O cookie inicial usa caminho/domínio calculados, `Secure` conforme HTTPS e

@@ -156,6 +156,17 @@ com resposta `200` e sem marcador fatal. A mesma sessão não autenticou
 `scp/index.php`, que apresentou o login da equipe. A configuração AJAX pública
 do cliente respondeu `200` como JSON.
 
+Uma única tentativa com senha inválida em sessão nova retornou `200`, manteve o
+formulário de login e apresentou mensagem genérica. Uma segunda sessão, com a
+credencial correta, autenticou normalmente. O mesmo padrão foi observado para o
+agente. A amostra confirma resposta não diferenciada e ausência de bloqueio após
+uma falha, mas deliberadamente não mede o limiar de lockout.
+
+Token CSRF deliberadamente inválido nos formulários de login público e staff
+produziu `302` para a página inicial correspondente. Isso difere do POST sem
+CSRF no dispatcher AJAX staff, que já havia retornado `400`; consumidores não
+devem presumir contrato uniforme entre formulário e AJAX.
+
 ### BHV-005 — agente de visualização
 
 Uma identidade fictícia foi criada pelo fluxo administrativo com departamento
@@ -350,6 +361,6 @@ reavaliada se o serviço passar a aceitar conexões externas.
 
 1. aprofundar as páginas administrativas sem alterar configuração;
 2. ampliar a amostra de rotas AJAX válidas por família;
-3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
+3. validar expiração longa e limiar de tentativas somente com protocolo próprio;
 4. concluir limites, MIME e acesso cruzado de anexos sob configuração controlada;
 5. classificar e revisar independentemente a falha de `task.reply`.
