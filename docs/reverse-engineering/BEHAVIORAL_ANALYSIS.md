@@ -233,6 +233,14 @@ para Resolvido (`status_id=2`) e depois de volta para Aberto (`status_id=1`).
 Cada transição usou lock recém-adquirido e foi confirmada na persistência. O
 ticket permaneceu disponível como fixture ativa; nenhuma exclusão foi executada.
 
+Pelo fluxo normal do portal, o cliente publicou depois uma nova mensagem
+fictícia. O POST com o token e o nome ofuscado do campo retornou `200`; a mensagem
+apareceu imediatamente tanto na tela do cliente quanto na visão staff. O backend
+criou exatamente uma entrada pública `type=M` vinculada ao usuário, atualizou
+`thread.lastmessage` para a mensagem mais recente e manteve o ticket aberto com
+`isanswered=0`, coerente com item aguardando resposta da equipe. Não houve novo
+registro nos logs PHP ou Apache.
+
 ### BHV-009 — tarefa vinculada e autorização de resposta
 
 O administrador criou pelo endpoint nativo uma única tarefa fictícia vinculada

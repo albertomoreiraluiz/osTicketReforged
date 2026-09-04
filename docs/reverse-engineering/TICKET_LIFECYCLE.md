@@ -146,8 +146,7 @@ thread inicial. Antes da atribuição, um agente `assigned_only` não via o tick
 O administrador atribuiu o ticket ao agente pelo formulário AJAX e recebeu
 `201`. Depois da atribuição, a fila do agente passou a incluir a referência e a
 tela detalhada respondeu `200`. O cenário confirma a ligação observável entre
-criação, thread, estado aberto, atribuição e filtragem por escopo. Resposta,
-nota, tarefas, transições e anexos permanecem para os próximos cenários.
+criação, thread, estado aberto, atribuição e filtragem por escopo.
 
 O agente sem `ticket.reply` teve resposta direta negada e nenhuma entrada foi
 persistida, mas conseguiu publicar nota interna. O `case postnote` em
@@ -161,3 +160,10 @@ Duas notas administrativas exercitaram transições reversíveis: Aberto para
 Resolvido e Resolvido para Aberto. O `status_id` persistido mudou de `1` para `2`
 e retornou a `1`. O cenário confirma fechamento e reabertura por nota com lock,
 sem exclusão e preservando o ticket como fixture para tarefas e anexos.
+
+Depois dessas transições, o cliente usou o formulário normal do portal para
+publicar outra mensagem. A interface do cliente e a visão staff mostraram a
+entrada, enquanto a persistência registrou uma única `type=M`, vinculada ao
+usuário. `thread.lastmessage` passou a apontar para a mensagem mais recente;
+`status_id=1` e `isanswered=0` permaneceram coerentes com ticket aberto
+aguardando atuação da equipe.
