@@ -82,7 +82,9 @@ aprofundamento do Portão C. Eles não são pré-condição retroativa do Portã
 **Estado:** escopo estático concluído em 2026-09-03, após seis ondas, catálogos
 exaustivos e revisão cruzada sem achado alto ou médio aberto. A instalação foi
 concluída em 2026-09-04; os 25 cenários da validação comportamental da Onda 7
-foram concluídos e aprovados na revisão documental final.
+foram concluídos, aprovados na revisão documental final e integrados pela PR #6.
+O trabalho restante deste plano é o Portão D, que depende da comparação de
+opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural
 

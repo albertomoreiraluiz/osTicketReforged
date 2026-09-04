@@ -22,5 +22,5 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2. GOV-012 e GOV-013, o
-inventário técnico e GOV-014 são consolidados pela PR #5. GOV-015 foi
-formalizada durante a execução da Onda 7.
+inventário técnico e GOV-014 são consolidados pela PR #5. GOV-015 e o
+encerramento da Onda 7 foram integrados pela PR #6.

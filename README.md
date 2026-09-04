@@ -8,7 +8,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Engenharia reversa — Onda 7 concluída e revisada; integração em preparação |
+| Etapa atual | Engenharia reversa concluída pela PR #6; preparação do Portão D |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
@@ -26,12 +26,12 @@ fase própria e não altera o encerramento do inventário funcional.
 
 Próximas etapas:
 
-1. consolidar a entrega da Onda 7 em Pull Request;
-2. integrar a documentação revisada à branch estável;
-3. manter exclusões condicionadas a
-   plano, backup verificável e rollback conforme GOV-014;
-4. após a integração, preparar opções do Portão D sem antecipar decisões de
-   Angular, PrimeNG ou integração.
+1. consolidar as evidências em pelo menos três opções arquiteturais;
+2. comparar riscos de atualização, integração, segurança e migração;
+3. manter exclusões condicionadas a plano, backup verificável e rollback
+   conforme GOV-014;
+4. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
+   versões de Angular, PrimeNG ou detalhes de integração.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
 `frontend/`; versões e integração serão definidas após a análise correspondente.

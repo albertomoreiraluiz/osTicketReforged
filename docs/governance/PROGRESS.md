@@ -4,8 +4,8 @@
 
 - Data de atualização: 2026-09-04.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
-- Branch estável resultante: `main`.
-- Etapa: engenharia reversa — Onda 7 concluída e revisada; integração em preparação.
+- Branch estável resultante: `main`, sincronizada após a PR #6.
+- Etapa: engenharia reversa concluída; preparação das opções do Portão D.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -147,10 +147,10 @@
 
 ## Próximo passo proposto
 
-1. preparar e integrar o Pull Request de encerramento da Onda 7;
-2. confirmar a branch estável sincronizada e o portal documental válido;
-3. somente após a integração preparar opções do Portão D, sem antecipar a
-   decisão de frontend.
+1. derivar pelo menos três opções arquiteturais das evidências consolidadas;
+2. comparar riscos de atualização, segurança, integração e migração;
+3. apresentar recomendação e ADR do Portão D ao responsável, sem antecipar a
+   decisão de versões ou integração do frontend.
 
 ## Estado dos portões
 
@@ -276,3 +276,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — exportador de backup | export CLI comprimido; inspeção sem expor conteúdo; `class.export.php` | 47 schemas e zero linhas; artefato rejeitado para rollback; causa é `SELECT *` sem atribuição a `$res` |
 | 2026-09-04 | Onda 7 — consolidação funcional | matriz BHV; estado final do banco e serviços; auditoria transversal | BHV-001 a BHV-025 concluídos; restaurações confirmadas; fixtures preservadas sem limpeza destrutiva; revisão QA final preparada |
 | 2026-09-04 | Onda 7 — revisão QA final | `REVIEW_REPORT.md`; matriz BHV; diff documental | 25 cenários confirmados; duas inconsistências médias e uma baixa corrigidas; nenhum bloqueio funcional ou documental restante |
+| 2026-09-04 | Integração da Onda 7 | PR #6; merge `845241ed`; `main` sincronizada | 45 commits e 19 arquivos documentais integrados; engenharia reversa funcional encerrada; Portão D permanece não iniciado até decisão explícita |
