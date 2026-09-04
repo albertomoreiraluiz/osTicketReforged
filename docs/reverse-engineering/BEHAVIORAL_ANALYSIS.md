@@ -55,6 +55,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
 | BHV-015 | base de conhecimento | administrador/anônimo | mutável | concluído | categoria, artigo, publicação, configuração e busca |
 | BHV-016 | respostas prontas | administrador | mutável/leitura | concluído | cadastro, listagem e carregamento no editor |
+| BHV-017 | atribuição e liberação | administrador/agente | mutável | concluído | eventos, visibilidade e restauração da fixture |
 
 ## Regras de evidência
 
@@ -457,6 +458,21 @@ conteúdo fictício. JSON retornou as chaves `files`, `id`, `response` e `title`
 texto entregou o corpo que o editor pode inserir diretamente. O checkpoint não
 submeteu o formulário de resposta do ticket, portanto não criou thread nem
 tentou enviar e-mail.
+
+### BHV-017 — atribuição e liberação de ticket
+
+O administrador exerceu os endpoints normais de liberação e atribuição sobre o
+ticket aberto. Na repetição com precondição isolada, o agente `assigned_only`
+não abriu o ticket atribuído ao administrador; liberar a atribuição respondeu
+`201` e manteve o item invisível; atribuí-lo ao agente respondeu `201` e tornou a
+tela visível; reatribuí-lo ao administrador respondeu `201` e voltou a ocultá-la.
+
+O banco terminou restaurado com o administrador como `staff_id` e sem equipe,
+registrando eventos `released` e `assigned`. A primeira execução encontrou uma
+visibilidade residual da história anterior da fixture antes do ciclo; completar
+a reatribuição ao administrador normalizou o estado, e a repetição seguinte foi
+determinística. O resíduo não foi investigado como segurança por GOV-015. Não
+houve exclusão, comentário de atribuição ou e-mail.
 
 ## Exposição local aceita na homologação
 

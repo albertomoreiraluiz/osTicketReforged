@@ -167,3 +167,10 @@ entrada, enquanto a persistência registrou uma única `type=M`, vinculada ao
 usuário. `thread.lastmessage` passou a apontar para a mensagem mais recente;
 `status_id=1` e `isanswered=0` permaneceram coerentes com ticket aberto
 aguardando atuação da equipe.
+
+O ciclo de atribuição também foi repetido pelo fluxo AJAX administrativo. Com o
+ticket atribuído ao administrador, o agente `assigned_only` não o visualizou; a
+liberação manteve o item invisível, a atribuição ao agente habilitou a tela e a
+reatribuição ao administrador voltou a ocultá-la. Os três comandos retornaram
+`201`, geraram eventos de liberação/atribuição e deixaram a fixture restaurada
+ao administrador, sem equipe.

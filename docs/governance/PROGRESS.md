@@ -78,6 +78,8 @@
   categoria e FAQ fictícias; publicação, menu, navegação e busca anônima validados.
 - Resposta Pronta fictícia criada como fixture ativa/global; carregamento genérico
   e contextual do ticket validado em JSON e texto sem envio ao cliente.
+- Ciclo reversível de liberação e atribuição confirmou eventos e visibilidade
+  `assigned_only`; ticket terminou novamente atribuído ao administrador.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -225,3 +227,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — buscas e filtros | cliente e SCP; número/termo ausente; estado, tópico, ordem, lookup e diálogo avançado | Resultados positivos e negativos coerentes; filtros do cliente persistem em sessão e precisam ser limpos entre composições; nenhuma mutação |
 | 2026-09-04 | Onda 7 — Base de Conhecimento | estado vazio; categoria pública; FAQ interna→pública; configuração administrativa; sessão anônima | Artigo interno oculto; artigo publicado ainda bloqueado por `enable_kb=0`; após habilitação, menu, índice, categoria, artigo e busca públicos funcionaram; fixtures preservadas |
 | 2026-09-04 | Onda 7 — Respostas Prontas | cadastro administrativo; listagem; endpoints KB/ticket em JSON e texto | Fixture ativa/global persistida; quatro contratos carregaram conteúdo e metadados no contexto do editor, sem criar thread ou e-mail |
+| 2026-09-04 | Onda 7 — atribuição e liberação | administrador→sem atribuição→agente→administrador; duas sessões; banco/eventos | Três mutações `201`; visibilidade acompanhou `assigned_only`; repetição isolada determinística e estado final restaurado sem exclusão |

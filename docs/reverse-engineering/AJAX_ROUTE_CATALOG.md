@@ -347,3 +347,11 @@ e o conteúdo esperado. As respostas JSON possuíam `files`, `id`, `response` e
 `title`; os contratos `.txt` devolveram HTML para inserção no editor. A rota
 contextual do ticket aplicou o mesmo conteúdo à fixture acessível sem persistir
 uma resposta.
+
+## Confirmação funcional de atribuição — Onda 7
+
+As rotas 195 e 196 foram exercitadas pelo administrador em um ciclo reversível:
+liberar, atribuir ao agente e reatribuir ao administrador. Cada POST respondeu
+`201`; a visibilidade do agente `assigned_only` acompanhou a atribuição e o banco
+registrou os eventos correspondentes. O estado final restaurou o administrador
+como agente do ticket e manteve a equipe vazia.
