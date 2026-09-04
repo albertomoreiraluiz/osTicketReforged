@@ -273,6 +273,23 @@ servido inline. A confirmação de allowlist e limite de tamanho exige cenário
 com configuração restritiva controlada; até lá, o parâmetro de bypass no fluxo
 staff permanece achado estático condicional.
 
+#### Plano de rollback BHV-010-A — allowlist temporária
+
+**Estado anterior observado:** não existe linha `(namespace=core,
+key=allowed_filetypes)` em `ost_config`; o default efetivo aceita qualquer
+extensão. **Alvo exclusivo:** essa única chave, sem mudança de schema ou de
+outros registros.
+
+Antes do ensaio será criado dump integral local fora do Git, com tamanho não
+nulo, SHA-256 e presença verificável da definição e dos dados de `ost_config`.
+Depois será inserido temporariamente o valor `.txt`, confirmada exatamente uma
+linha e executada a comparação do mesmo TXT e `.php` inerte nos canais cliente
+e equipe. A restauração excluirá somente a linha criada, mediante predicado por
+namespace, chave e valor esperado. O rollback será aceito apenas se a consulta
+confirmar zero linhas e o comportamento permissivo anterior voltar a ser
+observável. Se qualquer pré-condição divergir, a exclusão não será executada e o
+dump será preservado para restauração manual.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
