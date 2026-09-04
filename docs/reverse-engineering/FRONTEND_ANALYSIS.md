@@ -130,3 +130,12 @@ ticket, o frontend pode obtê-la tanto pelo endpoint genérico da Base de
 Conhecimento quanto pelo endpoint contextual do ticket. As variantes JSON
 entregam metadados e corpo; as variantes de texto entregam HTML pronto para o
 editor. O carregamento é independente da submissão final da resposta.
+
+## Colaboração no portal confirmada — Onda 7
+
+Um cliente que não era proprietário inicialmente não recebeu o segundo ticket
+na lista nem abriu sua tela. Depois da inclusão pelo diálogo staff, o mesmo shell
+do cliente passou a listar e renderizar o ticket sem novo login. O formulário de
+resposta permaneceu o mesmo e a mensagem do colaborador surgiu na thread. Assim,
+o frontend do portal compõe a lista com propriedade e colaboração, enquanto o
+backend preserva o proprietário original.

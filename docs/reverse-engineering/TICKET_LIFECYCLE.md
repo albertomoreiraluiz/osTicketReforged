@@ -174,3 +174,12 @@ liberação manteve o item invisível, a atribuição ao agente habilitou a tela
 reatribuição ao administrador voltou a ocultá-la. Os três comandos retornaram
 `201`, geraram eventos de liberação/atribuição e deixaram a fixture restaurada
 ao administrador, sem equipe.
+
+Um segundo ticket foi criado por visitante fictício no formulário público. A
+validação rejeitou TLDs `.invalid` e `.test` sem persistência; `example.com` foi
+aceito e produziu usuário, ticket Web aberto e thread. Outro cliente inicialmente
+não tinha a linha nem acesso direto. Após o administrador adicioná-lo pelo
+diálogo de colaboradores, `thread_collaborator` ganhou uma relação, lista e tela
+passaram a incluir o ticket e o cliente publicou uma mensagem `M`. A operação
+preservou o usuário proprietário e atualizou `thread.lastmessage` para a nova
+mensagem.

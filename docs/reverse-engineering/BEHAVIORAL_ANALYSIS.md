@@ -56,6 +56,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-015 | base de conhecimento | administrador/anônimo | mutável | concluído | categoria, artigo, publicação, configuração e busca |
 | BHV-016 | respostas prontas | administrador | mutável/leitura | concluído | cadastro, listagem e carregamento no editor |
 | BHV-017 | atribuição e liberação | administrador/agente | mutável | concluído | eventos, visibilidade e restauração da fixture |
+| BHV-018 | abertura anônima e colaboração | anônimo/admin/cliente | mutável | concluído | validação, associação, visibilidade e resposta |
 
 ## Regras de evidência
 
@@ -473,6 +474,28 @@ visibilidade residual da história anterior da fixture antes do ciclo; completar
 a reatribuição ao administrador normalizou o estado, e a repetição seguinte foi
 determinística. O resíduo não foi investigado como segurança por GOV-015. Não
 houve exclusão, comentário de atribuição ou e-mail.
+
+### BHV-018 — abertura anônima e colaboração
+
+O formulário público com tópico geral rejeitou endereços fictícios terminados em
+`.invalid` e `.test`, exibiu erro de e-mail e não criou usuário ou ticket. Com um
+endereço igualmente fictício sob o domínio reservado `example.com`, o mesmo
+fluxo respondeu `200` e persistiu um novo usuário, um ticket Web aberto e sua
+thread. Isso registra uma diferença funcional do validador, sem tratar a escolha
+de TLD como teste de segurança.
+
+Antes da colaboração, o cliente autenticado existente não recebeu a linha desse
+novo ticket e não abriu sua tela direta. Uma primeira tentativa com URL de POST
+incompatível retornou `400` sem associação. O POST na rota correta do diálogo
+staff respondeu `200` e criou exatamente um `thread_collaborator` para o cliente,
+preservando o proprietário e o estado do ticket. Em seguida, lista e tela ficaram
+visíveis no portal.
+
+O colaborador publicou uma mensagem pelo formulário normal. Ela apareceu no
+portal, gerou exatamente uma entrada `type=M` ligada ao usuário colaborador e
+atualizou `thread.lastmessage`. O proprietário original não mudou; ticket
+aberto e `isanswered=0` também foram preservados. As fixtures permanecem para
+cenários posteriores, sem exclusão.
 
 ## Exposição local aceita na homologação
 

@@ -59,6 +59,13 @@ permaneceu pública. A exposição no portal ainda dependeu separadamente da cha
 `config(namespace=core, key=enable_kb)`, confirmando que persistência, publicação
 do conteúdo e habilitação global são três estados distintos.
 
+Na colaboração da Onda 7, a abertura pública criou separadamente `user`,
+`user_email`, `ticket`, `thread` e a mensagem inicial. A adição posterior de um
+cliente existente gerou uma única linha em `thread_collaborator`, sem substituir
+`ticket.user_id`. A mensagem do colaborador foi persistida em `thread_entry`
+como `type=M` com seu `user_id`, e `thread.lastmessage` acompanhou a entrada mais
+recente.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação

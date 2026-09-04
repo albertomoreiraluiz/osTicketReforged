@@ -80,6 +80,8 @@
   e contextual do ticket validado em JSON e texto sem envio ao cliente.
 - Ciclo reversível de liberação e atribuição confirmou eventos e visibilidade
   `assigned_only`; ticket terminou novamente atribuído ao administrador.
+- Abertura anônima, validação de e-mail e colaboração reproduzidas com fixtures:
+  associação tornou o segundo ticket visível e permitiu resposta do colaborador.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -228,3 +230,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — Base de Conhecimento | estado vazio; categoria pública; FAQ interna→pública; configuração administrativa; sessão anônima | Artigo interno oculto; artigo publicado ainda bloqueado por `enable_kb=0`; após habilitação, menu, índice, categoria, artigo e busca públicos funcionaram; fixtures preservadas |
 | 2026-09-04 | Onda 7 — Respostas Prontas | cadastro administrativo; listagem; endpoints KB/ticket em JSON e texto | Fixture ativa/global persistida; quatro contratos carregaram conteúdo e metadados no contexto do editor, sem criar thread ou e-mail |
 | 2026-09-04 | Onda 7 — atribuição e liberação | administrador→sem atribuição→agente→administrador; duas sessões; banco/eventos | Três mutações `201`; visibilidade acompanhou `assigned_only`; repetição isolada determinística e estado final restaurado sem exclusão |
+| 2026-09-04 | Onda 7 — abertura anônima e colaboração | TLD rejeitado/aceito; novo usuário/ticket; diálogo staff; portal do cliente; thread | `.invalid`/`.test` rejeitados sem persistência; ticket Web criado com `example.com`; colaborador ganhou lista/tela e publicou `M`, preservando proprietário e estado |
