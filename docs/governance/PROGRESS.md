@@ -31,12 +31,14 @@
 
 - Portão B iniciado com portal documental, inventário da árvore, superfícies
   executáveis, bootstrap e matriz inicial de evidências.
+- Mapas iniciais de componentes, entrypoints, dados e pontos de extensão
+  produzidos diretamente da baseline.
 
 ## Próximo passo proposto
 
-1. validar o build estrito e a leitura humana do portal documental;
-2. aprofundar a classificação de `include/`, entrypoints e dispatchers;
-3. mapear classes centrais, tabelas e pontos de extensão;
+1. completar o catálogo de rotas e sinais;
+2. relacionar classes centrais, metadados ORM e tabelas;
+3. confirmar as fronteiras entre core e bibliotecas incorporadas;
 4. receber os dados de banco e validar a instalação web somente antes dos testes
    dinâmicos que dependam deles;
 5. manter Angular, PrimeNG e decisões de integração fora da etapa atual.
@@ -94,3 +96,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Referência oficial para o inventário | PR #4; merge `d90486ad`; snapshot `osTicket/docs` no commit `f2367c5f`; guia de instalação, licença e 14 ERDs | Concluída e integrada |
 | 2026-09-03 | Portal documental | ADR 0002; `mkdocs.yml`; build estrito e inspeção local | Validado com MkDocs 1.6.1 e Material 9.7.7 |
 | 2026-09-03 | Inventário inicial | árvore da baseline; entrypoints; bootstrap; matriz de evidências | Portão B iniciado; conclusão ainda bloqueada pelas lacunas registradas |
+| 2026-09-03 | Mapas do Portão B | componentes; 46 scripts diretos e dispatcher de apps no SCP; 14 módulos CLI; 67 tabelas; 99 patches SQL; plugins e sinais | Mapeamento inicial ampliado; rastreamento profundo ainda não iniciado |

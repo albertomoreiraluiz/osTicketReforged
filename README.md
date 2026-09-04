@@ -15,14 +15,14 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | Portão D — Decisão arquitetural | Não iniciado |
 
 Ambiente-base de homologação concluído: XAMPP local, PHP 8.2, extensões, logs e
-toolchain Node.js/pnpm inventariados. O snapshot oficial de referência também
-está preparado. O portal MkDocs e o inventário inicial da baseline estão em
-preparação.
+toolchain Node.js/pnpm inventariados. O snapshot oficial de referência e o
+portal MkDocs estão preparados. O inventário do Portão B está em andamento com
+mapas iniciais de componentes, entrypoints, dados e extensão.
 
 Próximas etapas:
 
-1. validar o portal documental e a unidade inicial do inventário;
-2. aprofundar componentes, entrypoints, classes centrais e modelo de dados;
+1. completar o catálogo de rotas e sinais;
+2. relacionar classes centrais, tabelas e fluxos;
 3. preencher banco e localização web quando forem necessários aos testes
    dinâmicos posteriores.
 

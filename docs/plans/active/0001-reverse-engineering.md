@@ -57,6 +57,14 @@ baseline `v1.18.4` prevalecem, e divergências devem ser registradas.
 - entrypoints e fluxos principais identificados;
 - mapa inicial de documentos e evidências criado.
 
+Execução atual:
+
+- árvore e tecnologias contabilizadas na baseline;
+- superfícies, bootstraps e dispatchers principais localizados;
+- mapas iniciais de componentes, entrypoints, dados e extensão produzidos;
+- catálogo completo de rotas e sinais, relações ORM e revisão independente
+  ainda pendentes antes de concluir o portão.
+
 ### Portão C — Análise profunda concluída
 
 - plugins, hooks, domínio, banco, autenticação, autorização, API e frontend documentados;

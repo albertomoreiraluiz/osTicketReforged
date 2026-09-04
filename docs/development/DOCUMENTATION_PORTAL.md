@@ -33,6 +33,21 @@ Abrir o portal local com atualização automática:
 
 O endereço padrão é `http://127.0.0.1:8000/`.
 
+## Fluxo obrigatório de atualização
+
+Toda tarefa que altere `docs/` deve:
+
+1. atualizar o documento canônico afetado;
+2. incluir páginas novas ou renomeadas na navegação de `mkdocs.yml`, quando
+   forem relevantes à leitura do projeto;
+3. atualizar `README.md`, `PROGRESS.md`, plano e decisões conforme o impacto;
+4. executar `mkdocs build --strict` antes de concluir a tarefa;
+5. repetir a validação imediatamente antes de criar uma Pull Request;
+6. não versionar `.local/site-docs/` nem o ambiente virtual.
+
+Falha de navegação, link ou build bloqueia a conclusão e o merge. O site HTML é
+derivado; Markdown e configuração versionados continuam sendo as fontes.
+
 ## Ferramentas complementares
 
 - **phpDocumentor:** candidato para gerar índices automáticos de classes,

@@ -43,7 +43,11 @@ nav:
   - Engenharia reversa:
       - Visão geral: reverse-engineering/index.md
       - Inventário da baseline: reverse-engineering/INVENTORY.md
+      - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
+      - Catálogo de entrypoints: reverse-engineering/ENTRYPOINT_CATALOG.md
       - Ciclo inicial de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
+      - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
+      - Pontos de extensão: reverse-engineering/EXTENSION_POINTS.md
       - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
   - Governança:
       - Contexto: governance/PROJECT_CONTEXT.md

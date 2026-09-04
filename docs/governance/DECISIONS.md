@@ -16,6 +16,7 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-010 | 2026-09-03 | Aceito | A homologação atual será integralmente local; SSH, SFTP e FTPS não serão usados para PHP ou frontend, e o responsável preencherá os dados do banco. | `docs/development/HOMOLOGATION_ENVIRONMENT.md`; `.env.example` |
 | GOV-011 | 2026-09-03 | Aceito | O novo frontend ficará isolado em `frontend/` e usará Angular com PrimeNG; versões e integração serão decididas posteriormente. | `docs/adr/0001-frontend-angular-primeng.md` |
 | GOV-012 | 2026-09-03 | Aceito | A documentação humana da engenharia reversa será publicada localmente por MkDocs Material; ferramentas de símbolos e API serão complementares e específicas ao recorte. | `docs/adr/0002-documentation-toolchain.md`; `mkdocs.yml` |
+| GOV-013 | 2026-09-03 | Aceito | O portal MkDocs integra o fluxo documental obrigatório: navegação deve acompanhar documentos relevantes e o build estrito deve passar antes da conclusão e de cada PR documental. | `AGENTS.md`; `docs/governance/DOCUMENTATION_POLICY.md`; `docs/development/DOCUMENTATION_PORTAL.md` |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2.
