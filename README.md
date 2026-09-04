@@ -8,7 +8,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Onda 8 encerrada: oito cenários concluídos e um mapeado |
+| Etapa atual | Onda 8 integrada pela PR #9; preparação do Portão D |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
@@ -23,18 +23,18 @@ A Onda 7 concluiu 25 cenários funcionais. Uma revisão de cobertura abriu a Ond
 8 para demonstrar menus contextuais e ações encadeadas ainda não exercitadas.
 Oito cenários complementares foram concluídos no recorte declarado, incluindo
 vínculo, fusão e criação de ticket ou tarefa a partir da thread; ações em massa
-ficaram mapeadas sem efeito em lote. A revisão final está em curso.
+ficaram mapeadas sem efeito em lote. A revisão final foi aprovada e integrada
+pela PR #9.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 
 Próximas etapas:
 
-1. integrar o fechamento revisado da matriz `BHV-026` a `BHV-034`;
-2. consolidar as evidências em pelo menos três opções arquiteturais;
-3. comparar riscos de atualização, integração, segurança e migração;
-4. manter exclusões condicionadas a plano, backup verificável e rollback
+1. consolidar as evidências em pelo menos três opções arquiteturais;
+2. comparar riscos de atualização, integração, segurança e migração;
+3. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
-5. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
+4. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
    versões de Angular, PrimeNG ou detalhes de integração.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em

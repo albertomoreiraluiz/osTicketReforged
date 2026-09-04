@@ -1086,7 +1086,8 @@ reavaliada se o serviço passar a aceitar conexões externas.
 
 Os 25 cenários originais e oito dos nove cenários complementares estão
 concluídos no recorte declarado. BHV-033 permanece mapeado estaticamente, sem
-alegação de efeito em lote. Referências a concorrência,
+alegação de efeito em lote. O fechamento revisado foi integrado pela PR #9.
+Referências a concorrência,
 injeção de falhas, acessibilidade e novos testes de segurança permanecem
 deliberadamente reservadas a fases próprias e não anulam a evidência obtida.
 
@@ -1100,4 +1101,5 @@ A revisão QA independente da Onda 8 bloqueou o primeiro fechamento, identificou
 o desvio de rollback e alegações de cobertura excessivas. O dump foi restaurado
 com paridade verificada e os critérios foram estreitados ao que efetivamente se
 observou. Uma segunda passagem QA deve confirmar essas correções antes do Pull
-Request. Opções do Portão D só serão preparadas depois dessa integração.
+Request. A segunda passagem foi aprovada e a integração ocorreu pela PR #9;
+as opções do Portão D podem ser preparadas em etapa própria.
