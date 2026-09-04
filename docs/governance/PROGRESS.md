@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-04.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável resultante: `main`, sincronizada após a PR #6.
-- Etapa: engenharia reversa concluída; preparação das opções do Portão D.
+- Etapa: Onda 8 complementar em execução antes da preparação do Portão D.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -148,11 +148,23 @@
 - Revisão QA independente concluída; contagens fundamentais confirmadas e
   inconsistências documentais em correção.
 
+## Onda 8 em execução
+
+- Revisão de cobertura solicitada para menus e submenus que não receberam
+  ensaio comportamental específico na Onda 7.
+- Enumeração estática confirmou ações de vínculo, fusão, criação derivada de
+  ticket/tarefa, ações por entrada da thread, comandos secundários e ações em
+  massa ainda sem evidência dinâmica completa.
+- Cenários `BHV-026` a `BHV-034` formalizados antes das mutações.
+- Vínculo/desvínculo e fusão condicionados a dump MariaDB restaurado em banco
+  temporário; exclusão de ticket permanece fora da execução planejada.
+
 ## Próximo passo proposto
 
-1. derivar pelo menos três opções arquiteturais das evidências consolidadas;
-2. comparar riscos de atualização, segurança, integração e migração;
-3. apresentar recomendação e ADR do Portão D ao responsável, sem antecipar a
+1. concluir e revisar a matriz complementar `BHV-026` a `BHV-034`;
+2. derivar pelo menos três opções arquiteturais das evidências consolidadas;
+3. comparar riscos de atualização, segurança, integração e migração;
+4. apresentar recomendação e ADR do Portão D ao responsável, sem antecipar a
    decisão de versões ou integração do frontend.
 
 ## Estado dos portões

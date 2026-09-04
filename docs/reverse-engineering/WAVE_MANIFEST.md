@@ -249,3 +249,19 @@ classificou como médio o bypass de tipo/tamanho no upload staff e como baixo
 isolado, médio no contrato, o mapeamento 413/415 para 500. A lacuna de fechamento
 por `task:status` foi testada pelo integrador e confirmada em runtime, com
 reabertura da fixture. Nenhum arquivo ou sistema foi alterado pelo revisor.
+
+## Onda 8 — menus e ações secundárias do ticket
+
+**Estado:** em execução pelo agente principal.
+
+**Motivo da reabertura:** a revisão solicitada pelo responsável identificou
+que a matriz anterior validou o ciclo principal, mas não esgotou menus
+contextuais e ações encadeadas. A nova passagem cobre sistematicamente menu e
+submenus do ticket, ações da thread, operações em massa, vínculo, fusão e
+criação derivada de ticket/tarefa.
+
+**Estratégia:** a enumeração e os testes compartilham sessão, fixtures e estado
+relacional; por isso a execução inicial permanece em agente único. Revisão
+independente será avaliada após estabilização da matriz. As mutações usam dados
+fictícios; vínculo/desvínculo e fusão obedecem ao plano de dump e rollback de
+`BEHAVIORAL_ANALYSIS.md`. Nenhuma exclusão de ticket será executada nesta onda.

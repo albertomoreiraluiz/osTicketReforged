@@ -64,6 +64,15 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-023 | administração de usuário | administrador | mutável | concluído | edição reversível e nota persistente |
 | BHV-024 | perfil do agente | administrador | mutável | concluído | fuso horário alterado e restaurado |
 | BHV-025 | filas e paginação | administrador | leitura/mutável reversível | concluído | páginas, limite, overflow e restauração |
+| BHV-026 | menus e submenus do ticket | administrador/agente | leitura | em execução | ações por estado, papel e contexto |
+| BHV-027 | vínculo e desvínculo de tickets | administrador | mutável com rollback | planejado | hierarquia visual, eventos e reversão |
+| BHV-028 | fusão de tickets | administrador | mutável com rollback | planejado | modos de thread, participantes, estados e tarefas |
+| BHV-029 | criação de ticket a partir de entrada | administrador | mutável | planejado | prefill, origem e nova thread |
+| BHV-030 | ações das entradas da thread | administrador | leitura/mutável | planejado | destinatários, cabeçalhos, edição, histórico e reenvio |
+| BHV-031 | criação de tarefa a partir de entrada | administrador | mutável | planejado | prefill, anexos e vínculo ao ticket |
+| BHV-032 | ações secundárias do ticket | administrador/agente | leitura/mutável reversível | planejado | flags, campos, formulários, referências e colaboradores |
+| BHV-033 | ações em massa da fila | administrador | leitura/mutável reversível | planejado | seleção, disponibilidade e efeitos por ação |
+| BHV-034 | exportações compostas | administrador | leitura | planejado | PDFs e ZIPs com notas, anexos e tarefas |
 
 ## Regras de evidência
 
@@ -76,6 +85,35 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 - Correlacionar toda divergência com o catálogo estático correspondente antes de
   classificá-la como defeito.
 - Atualizar este documento e os catálogos afetados a cada conjunto de testes.
+
+## Onda 8 — cobertura complementar de menus e ações encadeadas
+
+A revisão posterior ao fechamento da Onda 7 identificou que a varredura ampla
+de páginas e o ciclo principal do ticket não demonstraram todos os comandos
+expostos por menus contextuais. Esta onda reabre somente a cobertura
+comportamental necessária, sem alterar o core nem antecipar decisões do
+frontend futuro.
+
+O catálogo inicial abrange o menu superior do ticket, seus submenus, campos
+editáveis inline, ações em massa da fila e o menu de cada entrada da thread.
+Serão exercitados prioritariamente vínculo, fusão, criação de ticket e tarefa a
+partir de uma entrada, edição/histórico/reenvio, flags operacionais e variantes
+de exportação. A ação **Excluir ticket** será apenas mapeada; sua execução não
+é necessária para demonstrar os demais contratos.
+
+### Plano de segurança e rollback para BHV-027 e BHV-028
+
+- criar tickets fictícios exclusivos, identificados pelo prefixo da Onda 8;
+- capturar dump integral do MariaDB imediatamente antes da primeira alteração
+  de relação e validar sua restauração em banco temporário isolado;
+- registrar IDs e contagens sanitizadas de tickets, threads, tarefas,
+  participantes e eventos antes de cada operação;
+- testar primeiro vínculo visual, cuja reversão funcional é o desvínculo;
+- testar fusão sem marcar **Excluir ticket** e sem apagar tarefa filha;
+- verificar a reversão por desvínculo quando o contrato a suportar; se o estado
+  anterior não for recuperado integralmente, restaurar o dump validado;
+- interromper antes de qualquer exclusão não prevista, divergência de escopo ou
+  impossibilidade de garantir rollback.
 
 ## Achados iniciais
 
