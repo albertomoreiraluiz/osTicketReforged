@@ -173,5 +173,22 @@ Ferramentas futuras devem recusar operações mutáveis enquanto as permissões 
 ## Validação pendente
 
 PHP CLI, módulos, configuração do Apache e gravação do log PHP já foram
-validados. Restam a instalação web, o ciclo HTTP, o banco somente leitura e as
-contas funcionais. Nenhuma implantação do osTicket foi executada nesta tarefa.
+validados.
+
+Em 2026-09-04, a distribuição limpa da baseline `v1.18.4` foi preparada pelo
+módulo nativo `manage.php deploy --setup` em
+`C:\xampp\htdocs\osTicketReforged`. O staging foi extraído diretamente da tag
+Git, evitando copiar `.env`, `.codex`, documentação do Reforged, MkDocs ou
+metadados Git para o webroot. Foram verificados 2.250 arquivos, presença do
+instalador/schema e igualdade SHA-256 de `include/class.ticket.php` com a
+baseline. `include/ost-config.php` foi criado, ainda sem credenciais, a partir
+de `include/ost-sampleconfig.php` e está gravável pelo ambiente local.
+
+URL prevista para iniciar a instalação com Apache na porta configurada:
+`http://localhost/osTicketReforged/setup/`.
+
+Restam a execução do instalador pelo responsável, o ciclo HTTP, a conexão com o
+banco de homologação e as contas funcionais. Após a instalação, a permissão de
+gravação de `include/ost-config.php` deve ser removida e `setup/` deve ser
+desabilitado ou removido da cópia de homologação conforme orientação do
+instalador.

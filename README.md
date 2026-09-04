@@ -21,7 +21,8 @@ estáticas e revisão independente; o Portão C aprofunda contratos exaustivos.
 
 Próximas etapas:
 
-1. o responsável instalar o osTicket no ambiente de homologação;
+1. o responsável abrir `http://localhost/osTicketReforged/setup/` e instalar o
+   osTicket na distribuição limpa já preparada;
 2. executar a fase comportamental e atualizar os catálogos com runtime;
 3. somente depois preparar opções e decisões do Portão D.
 
