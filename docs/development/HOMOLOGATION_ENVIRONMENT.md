@@ -176,18 +176,26 @@ PHP CLI, módulos, configuração do Apache e gravação do log PHP já foram
 validados.
 
 Em 2026-09-04, a distribuição limpa da baseline `v1.18.4` foi preparada pelo
-módulo nativo `manage.php deploy --setup` em
-`C:\xampp\htdocs\osTicketReforged`. O staging foi extraído diretamente da tag
-Git, evitando copiar `.env`, `.codex`, documentação do Reforged, MkDocs ou
-metadados Git para o webroot. Foram verificados 2.250 arquivos, presença do
+módulo nativo `manage.php deploy --setup`. O staging foi extraído diretamente
+da tag Git, evitando copiar `.env`, `.codex`, documentação do Reforged, MkDocs
+ou metadados Git para o webroot. Foram verificados 2.250 arquivos, presença do
 instalador/schema e igualdade SHA-256 de `include/class.ticket.php` com a
 baseline. `include/ost-config.php` foi criado, ainda sem credenciais, a partir
 de `include/ost-sampleconfig.php` e está gravável pelo ambiente local.
 
-URL prevista para iniciar a instalação com Apache na porta configurada:
-`http://localhost/osTicketReforged/setup/`.
+O responsável moveu a distribuição para a raiz `C:\xampp\htdocs`, compatível
+com a URL de homologação definida localmente no `.env`, e reiniciou o Apache
+para carregar os módulos PHP habilitados. A URL sensível ao ambiente não é
+duplicada na documentação versionada.
 
-Restam a execução do instalador pelo responsável, o ciclo HTTP, a conexão com o
+Na primeira tentativa, o instalador recusou o schema: a assinatura esperada
+`5fb92bef17f3b603659e024c01cc7a59` corresponde ao conteúdo LF, enquanto a
+cópia Windows havia convertido `install-mysql.sql` para CRLF, gerando
+`76eb6d920994eae1ddfb8e2cae868d0b`. O schema da cópia de homologação foi
+normalizado mecanicamente para LF; o MD5 passou a coincidir exatamente com
+`include/upgrader/streams/core.sig`. Nenhum SQL foi executado nesta correção.
+
+Restam nova execução do instalador pelo responsável, o ciclo HTTP, a conexão com o
 banco de homologação e as contas funcionais. Após a instalação, a permissão de
 gravação de `include/ost-config.php` deve ser removida e `setup/` deve ser
 desabilitado ou removido da cópia de homologação conforme orientação do

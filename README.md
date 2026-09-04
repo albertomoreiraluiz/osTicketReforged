@@ -21,8 +21,8 @@ estáticas e revisão independente; o Portão C aprofunda contratos exaustivos.
 
 Próximas etapas:
 
-1. o responsável abrir `http://localhost/osTicketReforged/setup/` e instalar o
-   osTicket na distribuição limpa já preparada;
+1. o responsável repetir a instalação na URL de homologação configurada
+   localmente; a distribuição está na raiz do `htdocs` e o schema foi validado;
 2. executar a fase comportamental e atualizar os catálogos com runtime;
 3. somente depois preparar opções e decisões do Portão D.
 

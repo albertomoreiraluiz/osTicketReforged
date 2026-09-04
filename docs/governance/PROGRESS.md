@@ -29,9 +29,8 @@
 
 ## Em andamento
 
-- Distribuição limpa `v1.18.4` implantada em
-  `C:\xampp\htdocs\osTicketReforged`; instalação web aguarda execução pelo
-  responsável.
+- Distribuição limpa `v1.18.4` ativa na raiz `C:\xampp\htdocs`; Apache
+  reiniciado pelo responsável e instalação web pronta para nova tentativa.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -148,4 +147,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Catálogos exaustivos — Onda 4 | `AJAX_ROUTE_CATALOG.md`; `ORM_CATALOG.md`; `CLI_CATALOG.md`; `SIGNAL_CATALOG.md` | 229 rotas, 72 metas ORM, 14 módulos e 41 sinais integrados; Onda 4 concluída |
 | 2026-09-03 | Integridade e customização — Onda 5 | `INTEGRITY_FAILURES.md`; `REGISTRY_CATALOG.md`; `CUSTOMIZATION_MATRIX.md` | Estados parciais, 22 registries/factories e limites do core integrados; Onda 5 concluída |
 | 2026-09-03 | Revisão cruzada — Onda 6 | `REVIEW_REPORT.md`; três pareceres independentes; build estrito | Achados reconciliados; segunda passagem aprovada; Portão C concluído |
-| 2026-09-04 | Preparação da instalação web | `manage.php deploy --setup`; 2.250 arquivos; hash do core; `ost-config.php` a partir do modelo | Distribuição limpa pronta em `C:\xampp\htdocs\osTicketReforged` |
+| 2026-09-04 | Preparação da instalação web | `manage.php deploy --setup`; 2.250 arquivos; hash do core; `ost-config.php` a partir do modelo | Distribuição limpa movida pelo responsável para `C:\xampp\htdocs` |
+| 2026-09-04 | Assinatura do schema | comparação binária e MD5 do `install-mysql.sql`; `core.sig` | CRLF identificado como causa; schema de homologação normalizado para LF e assinatura validada |
