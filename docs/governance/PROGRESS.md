@@ -65,6 +65,8 @@
   agente e cliente; CSRF inválido em login redireciona com 302.
 - API nativa validada com chave local fictícia: guards 401, ticket 201/API,
   parsing inválido 400 e cron sem flag 401; chave terminou desativada.
+- Revisão independente elevou ACL composta de tarefa e capability assinada a
+  altas; POST forjado confirmou fechamento sem `task.close`, seguido de rollback.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -205,3 +207,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — allowlist e rollback | dump SHA-256; protocolos A/B; campos `.txt`; restauração a `NULL` | Bypass staff confirmado; cliente rejeita com 500; acesso ao pai não é verificado |
 | 2026-09-04 | Onda 7 — autenticação negativa | sessões isoladas; senha e CSRF inválidos; login correto subsequente | Mensagem genérica e 200 para senha; 302 para CSRF; sem bloqueio após uma falha |
 | 2026-09-04 | Onda 7 — API HTTP | chave local; JSON válido/inválido; flag de cron; banco | 401/201/400 confirmados; ticket `source=API`; chave desativada ao final |
+| 2026-09-04 | Onda 7 — revisão de segurança 1 | parecer independente; releitura do código; fechamento forjado e reabertura | ACL composta e capability altas; upload médio; contratos de erro classificados |

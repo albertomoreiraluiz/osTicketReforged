@@ -32,3 +32,20 @@ aberto. Referências, contagens e navegação foram reconciliadas; o integrador
 executou `mkdocs build --strict` e `git diff --check` com sucesso. Validações
 exclusivamente comportamentais continuam registradas e não bloqueiam o
 fechamento da análise estática.
+
+## Onda 7 — revisão independente de ACL e arquivos
+
+A instância `arquiteto-seguranca/onda-07/revisao-acl-upload` revisou em modo
+somente leitura o primeiro conjunto estabilizado de evidências comportamentais.
+
+| Severidade | Achado | Resultado |
+| --- | --- | --- |
+| alta | `postreply` sem `task.reply` e `task:status` sem `task.close` | resposta e fechamento confirmados em runtime; fixture reaberta |
+| alta | URL HMAC de arquivo não inclui principal, pai nem attachment id | cliente sem visibilidade da tarefa consumiu anexo interno com URL staff |
+| média | `ajaxUpload(true)` do staff ignora tipo e tamanho do campo | allowlist `.txt` contornada em runtime; validação básica permanece |
+| média contratual | 413/415 ausentes de `Http::header_code_verbose()` | rejeição 415 observada como HTTP 500 |
+| média | negação AJAX de `task.close` não propaga erro ao template | estado protegido, mas 200/formulário sem mensagem inequívoca |
+
+O revisor não acessou `.env`, banco ou runtime e não alterou arquivos. As
+conclusões foram relidas no código pelo integrador e incorporadas aos documentos
+canônicos; correção do core e aceite residual permanecem fora da etapa atual.

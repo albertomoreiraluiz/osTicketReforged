@@ -203,3 +203,10 @@ escritor e integrador.
 
 O revisor deve entregar fatos com caminhos e símbolos, separar inferências,
 indicar prioridade e condição de parada e não propor correção como já aprovada.
+
+**Encerramento:** parecer somente leitura entregue. O revisor confirmou como
+altos a escrita/transição de tarefa sem ACL e a capability de arquivo interno;
+classificou como médio o bypass de tipo/tamanho no upload staff e como baixo
+isolado, médio no contrato, o mapeamento 413/415 para 500. A lacuna de fechamento
+por `task:status` foi testada pelo integrador e confirmada em runtime, com
+reabertura da fixture. Nenhum arquivo ou sistema foi alterado pelo revisor.

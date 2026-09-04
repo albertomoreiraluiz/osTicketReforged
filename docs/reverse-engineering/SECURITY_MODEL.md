@@ -114,8 +114,9 @@ devem ser registrados na documentação ou em logs
 | alta de confiança | sinais entregam credenciais/tokens a plugins | contrato confirmado; governar plugins |
 | alta de confiança | `auth.login.succeeded` pode anteceder conclusão de 2FA | não usar sinal como prova de MFA concluído |
 | alta confirmada | `task.reply` oculta a UI, mas não bloqueia POST direto em `scp/tasks.php` | runtime persistiu resposta do papel sem permissão; requer correção futura e revisão independente |
+| alta confirmada | `task:status` em resposta/nota não valida `task.close` | agente sem reply/close respondeu e fechou tarefa por POST forjado |
+| alta confirmada | capability assinada não se vincula ao principal nem ao pai | cliente sem visibilidade da tarefa baixou anexo interno com URL staff válida |
 | média confirmada | upload staff chama `ajaxUpload(true)` | com allowlist `.txt`, staff aceitou `.php` e cliente rejeitou |
-| média confirmada | arquivo assinado não verifica o objeto pai | cliente sem visibilidade da tarefa baixou anexo interno com URL staff válida |
 | média potencial | validação de upload difere entre Web e API/e-mail | upload Web e serving iniciais confirmados; API/e-mail pendentes |
 | média potencial | falha ao registrar sessão termina com mensagem bruta | induzir somente em ambiente descartável |
 | baixa | `file.php:42` usa `$thisuser`, enquanto o portal define `$thisclient` | sem bypass demonstrado |
@@ -155,13 +156,22 @@ CSRF funcionou como proteção contra origem externa, mas não substitui a ACL d
 ação para um agente autenticado. Uma API ou frontend futuro deverá impor a
 permissão no servidor e jamais derivá-la apenas da visibilidade do controle.
 
-A mesma matriz mostrou que `task.close` bloqueia a mutação: a tentativa do
-agente manteve `closed` nulo. Contudo, `TicketsAjaxAPI::changeStatus()` registra
+A rota `TicketsAjaxAPI::changeStatus()` bloqueou a mutação: a tentativa do
+agente manteve `closed` nulo. Contudo, o método registra
 a negação em `$errors['err']`, enquanto o template de status apresenta
 `$info['error']` (`include/ajax.tasks.php:823-878`;
 `include/staff/templates/task-status.tmpl.php:12-14`). O resultado observado foi
 HTTP `200`, formulário reapresentado e nenhuma mensagem `#msg_error`. A ACL
 funcionou, mas o contrato de erro é ambíguo para clientes HTTP e para a interface.
+
+Essa conclusão não se estende aos outros controladores. `scp/tasks.php:42-82`
+permite que `postreply` e `postnote` avancem após mero acesso ao objeto;
+`Task::postReply()` e `Task::postNote()` encaminham `task:status` a
+`Task::setStatus()` sem `Task::PERM_CLOSE`
+(`include/class.task.php:570-645,971-1023`). O agente sem `task.reply` e sem
+`task.close` enviou resposta forjada com estado `closed`, persistiu a entrada e
+fechou a tarefa. A conta administrativa reabriu a fixture. A falha composta de
+autorização é alta e confirmada.
 
 ## Upload e download de arquivo — Onda 7
 

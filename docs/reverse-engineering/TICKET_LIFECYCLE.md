@@ -89,6 +89,14 @@ administrativa, fechar e reabrir responderam `201`, alteraram `closed` e
 persistiram as duas notas de transição. A fixture terminou novamente aberta e
 nenhuma exclusão foi executada.
 
+Essa proteção é específica de `TicketsAjaxAPI::changeStatus()`. Em contraste,
+`scp/tasks.php` aceita `task:status` nos fluxos `postreply` e `postnote`, e
+`Task::postReply()`/`Task::postNote()` chamam `setStatus()` sem validar
+`task.close` (`scp/tasks.php:42-82`; `include/class.task.php:570-645,971-1023`).
+O runtime confirmou que um `postreply` forjado pelo agente sem ambas as
+permissões persistiu resposta e fechou a tarefa. A reabertura administrativa
+restaurou a fixture ao estado aberto.
+
 ## Atualização, status e exclusão
 
 `Ticket::update()` exige `ticket.edit`, valida campos base e dinâmicos, salva

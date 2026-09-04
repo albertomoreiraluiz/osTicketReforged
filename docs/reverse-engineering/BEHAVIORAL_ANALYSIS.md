@@ -263,6 +263,15 @@ aberta. Esses resultados distinguem três contratos: nota permitida, resposta
 indevidamente permitida e transição corretamente negada, mas com feedback HTTP
 e visual ambíguo.
 
+A negação acima vale somente para o endpoint AJAX de mudança de status. O
+revisor independente identificou que `postreply` e `postnote` encaminham
+`task:status` a `Task::setStatus()` sem validar a permissão de transição. Um novo
+POST forjado do agente, combinando `a=postreply` e `task:status=closed`, respondeu
+`200`, persistiu a resposta e fechou a tarefa mesmo sem `task.reply` ou
+`task.close`. O administrador reabriu a fixture por AJAX com `201`, e a leitura
+do banco confirmou o retorno ao estado aberto. A escalada composta está
+confirmada em runtime.
+
 ### BHV-010 — upload, associação e download inicial
 
 Dois arquivos textuais inertes foram enviados: um `.txt` e outro nomeado com
