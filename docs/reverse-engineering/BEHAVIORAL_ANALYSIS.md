@@ -467,6 +467,28 @@ embora o formulário e o controlador final sejam tradicionais. A limpeza de
 draft afetou zero linha, como exigido pela pré-condição, e nenhuma ação de
 rollback foi necessária.
 
+#### Plano de rollback BHV-011-D — mensagem do colaborador com coletor local
+
+Antes da mensagem, o ticket 4 deve permanecer aberto, acessível ao cliente
+fictício que participa como colaborador, sem entrada com o novo marcador e com
+zero draft no namespace `ticket.client.4`. Um snapshot local ignorado registrará
+estado, contadores da thread, relógios de mensagem/resposta, quantidade de drafts
+e ausência do marcador; seu hash SHA-256 será preservado na evidência.
+
+O controlador do portal chama `Draft::deleteForNamespace('ticket.client.' .
+$ticket->getId())` depois de `postMessage()`. Portanto, o ensaio somente poderá
+prosseguir se a consulta comprovar zero draft: assim, a limpeza prevista não
+remove conteúdo preexistente. O coletor ficará restrito a `127.0.0.1:25`, sem
+relay, conteúdo ou endereços persistidos, e classificará destinatários apenas
+como cliente autenticado, domínio reservado `example.com` ou lado interno.
+
+Depois do POST serão exigidos exatamente uma nova entrada `M` do colaborador,
+incremento unitário da thread, atualização de `lastmessage`, preservação de
+`lastresponse`, ticket aberto e draft ainda vazio. O coletor será encerrado e a
+porta novamente verificada. Qualquer divergência interrompe o fluxo; a entrada
+funcional não será apagada sem um novo plano destrutivo e uma garantia de
+rollback válida.
+
 ### BHV-012 — API HTTP nativa
 
 Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou
