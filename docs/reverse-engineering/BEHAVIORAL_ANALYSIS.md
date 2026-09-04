@@ -54,6 +54,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
 | BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
 | BHV-015 | base de conhecimento | administrador/anônimo | mutável | concluído | categoria, artigo, publicação, configuração e busca |
+| BHV-016 | respostas prontas | administrador | mutável/leitura | concluído | cadastro, listagem e carregamento no editor |
 
 ## Regras de evidência
 
@@ -442,6 +443,20 @@ da base listou a categoria, a página da categoria listou a FAQ, o artigo mostro
 pergunta e resposta e a busca pelo marcador retornou o item, todos em sessão
 anônima. As fixtures e a configuração ativa foram mantidas para os próximos
 cenários; nenhuma exclusão ocorreu.
+
+### BHV-016 — respostas prontas
+
+Com Respostas Prontas habilitadas, o formulário administrativo criou uma
+fixture ativa, global a todos os departamentos e sem anexos. Ela apareceu na
+listagem e foi preservada para reutilização. A persistência confirmou o terceiro
+registro da instalação, com `isenabled=1` e `dept_id=0`.
+
+Os endpoints AJAX genérico da Base de Conhecimento e contextual do ticket foram
+chamados nos formatos JSON e texto. Os quatro responderam `200` e carregaram o
+conteúdo fictício. JSON retornou as chaves `files`, `id`, `response` e `title`;
+texto entregou o corpo que o editor pode inserir diretamente. O checkpoint não
+submeteu o formulário de resposta do ticket, portanto não criou thread nem
+tentou enviar e-mail.
 
 ## Exposição local aceita na homologação
 

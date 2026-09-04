@@ -338,3 +338,12 @@ observados; não são nomes canônicos de permissões.
 | 320 | ANY | `/email/(?P<id>\d+)/auth/config/(?P<type>\w+)/(?P<auth>.+)` | `EmailAjaxAPI::configureAuth` | `ajax.email.php:18` | STAFF+ADMIN | GET/POST inválido: HTML; POST basic: config/account + 201 texto; OAuth2: config/account + 201 JSON redirect quando autoriza |
 
 Contagem da matriz: 229 linhas; 101 GET, 60 POST, 5 DELETE, 63 ANY; 13 definições ausentes.
+
+## Confirmação funcional de respostas prontas — Onda 7
+
+Uma resposta pronta ativa e global foi criada pelo formulário administrativo.
+As rotas 39 e 177 foram exercitadas em `.json` e `.txt`: todas retornaram `200`
+e o conteúdo esperado. As respostas JSON possuíam `files`, `id`, `response` e
+`title`; os contratos `.txt` devolveram HTML para inserção no editor. A rota
+contextual do ticket aplicou o mesmo conteúdo à fixture acessível sem persistir
+uma resposta.

@@ -122,3 +122,11 @@ da Base de Conhecimento. Em sessão anônima, índice, categoria, artigo e busca
 renderizaram a fixture. A mudança demonstra que navegação e roteamento público
 dependem simultaneamente da configuração global e da existência de conteúdo
 publicado.
+
+## Respostas Prontas confirmadas — Onda 7
+
+O cadastro administrativo produziu uma resposta ativa e global. No editor de
+ticket, o frontend pode obtê-la tanto pelo endpoint genérico da Base de
+Conhecimento quanto pelo endpoint contextual do ticket. As variantes JSON
+entregam metadados e corpo; as variantes de texto entregam HTML pronto para o
+editor. O carregamento é independente da submissão final da resposta.
