@@ -113,12 +113,11 @@ habilitada; portanto, os avisos históricos não são atribuídos às requisiç�
 testadas e permanecem como observação de inicialização do Apache a revisar. A
 amostra recente do log Apache não apresentou marcador de warning ou erro fatal.
 
-## Achado operacional que exige intervenção
+## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
 
-**Severidade operacional:** alta enquanto a implantação puder ser alcançada por
-outros usuários ou dispositivos.
+**Classificação:** risco aceito exclusivamente para a homologação local.
 
 `/setup/` e `/setup/install.php` responderam `200` e exibiram marcadores do
 instalador após a conclusão. No filesystem, o diretório `setup/` continua
@@ -126,16 +125,15 @@ presente e `include/ost-config.php` não está marcado como somente leitura.
 
 O comportamento não é tratado como defeito novo do core: o upstream orienta a
 remoção de `setup/` e a proteção do arquivo de configuração depois da
-instalação. A correção não foi aplicada automaticamente porque remover o
-diretório implantado é destrutivo e alterar permissões afeta a operação local.
-Até a autorização do responsável, a homologação deve permanecer restrita ao
-host local.
+instalação. Em 2026-09-04, o responsável decidiu manter `setup/` na homologação
+porque o ambiente é acessível somente em sua máquina. A permanência é aceita
+apenas neste contexto, não constitui orientação para produção e deve ser
+reavaliada se o serviço passar a aceitar conexões externas.
 
 ## Pendências imediatas
 
-1. obter autorização para remover `setup/` da implantação e proteger
-   `include/ost-config.php`;
-2. aprofundar as páginas administrativas sem alterar configuração;
+1. aprofundar as páginas administrativas sem alterar configuração;
+2. confrontar rotas AJAX de leitura com o catálogo estático;
 3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
 4. preparar identidades fictícias por papel antes da matriz de permissões;
-5. confrontar rotas AJAX de leitura com o catálogo estático.
+5. classificar e autorizar os cenários mutáveis antes de executá-los.

@@ -214,6 +214,7 @@ sobre a implantação.
 
 A verificação comportamental confirmou que ambos os riscos continuam ativos:
 as rotas do instalador responderam `200`, o diretório existe no webroot e o
-arquivo de configuração permanece gravável. A homologação deve ficar restrita
-ao host local até o responsável autorizar a remoção de `setup/` e a proteção do
-arquivo.
+arquivo de configuração permanece gravável. Em 2026-09-04, o responsável
+aceitou manter `setup/` nessa homologação por ela ser acessível somente em sua
+máquina. A exceção deixa de ser válida imediatamente se o serviço for exposto a
+outros hosts e nunca se aplica à produção.

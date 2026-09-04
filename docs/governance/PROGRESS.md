@@ -100,9 +100,10 @@ deliberados apenas na etapa a que pertencem, com base nas evidências produzidas
 
 ## Riscos conhecidos
 
-- A cópia instalada ainda expõe `/setup/` por HTTP e mantém
-  `include/ost-config.php` gravável; o endurecimento aguarda autorização por
-  envolver remoção e alteração de permissões no webroot.
+- A cópia instalada expõe `/setup/` por HTTP e mantém
+  `include/ost-config.php` gravável. O responsável aceitou essa condição somente
+  para a homologação restrita à sua máquina; ela deve ser revista antes de
+  qualquer exposição externa ou implantação de produção.
 - O carregamento das ferramentas de assistência deve ser validado separadamente do comportamento do produto.
 - Documentos de análise sem referências precisas podem virar conhecimento não verificável.
 - Alterações do core antes da matriz de customização aumentariam prematuramente o delta com o upstream.
@@ -156,4 +157,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Assinatura do schema | comparação binária e MD5 do `install-mysql.sql`; `core.sig` | CRLF identificado como causa; schema de homologação normalizado para LF e assinatura validada |
 | 2026-09-04 | Instalação funcional | confirmação do responsável; ciclo HTTP público | Banco criado e instalação concluída |
 | 2026-09-04 | Início da análise comportamental | interface pública e login administrativo por HTTP com CSRF | Página inicial em português e painel da equipe autenticado; nenhum segredo registrado |
-| 2026-09-04 | Endurecimento pós-instalação | GET sanitizado de `/setup/`; atributos locais do arquivo de configuração | Instalador ainda acessível e configuração gravável; correção aguarda autorização |
+| 2026-09-04 | Endurecimento pós-instalação | GET sanitizado de `/setup/`; atributos locais do arquivo de configuração | Instalador acessível e configuração gravável; condição submetida ao responsável |
+| 2026-09-04 | Exposição local do instalador | decisão explícita do responsável | `setup/` será mantido na homologação acessível somente pela máquina local; produção permanece fora dessa exceção |
