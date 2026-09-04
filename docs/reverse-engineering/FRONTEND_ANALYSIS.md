@@ -182,3 +182,10 @@ o mesmo padrão heterogêneo observado na organização. Já o perfil do própri
 cliente usa página e redirecionamento tradicionais. O frontend futuro precisará
 distinguir esses contratos mesmo quando ambos terminam em
 `User::updateInfo()`.
+
+## Perfil do agente confirmado — Onda 7
+
+`scp/profile.php` mantém outro contrato tradicional: formulário completo, POST
+na própria página e resposta `200`, sem JSON. A preferência de fuso foi alterada
+e restaurada em duas submissões. Esse comportamento contrasta com os diálogos
+AJAX de administração de usuário, embora ambos pertençam ao shell staff.

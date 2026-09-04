@@ -62,6 +62,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-021 | edição e nota de organização | administrador | mutável | concluído | atualização reversível e nota persistente |
 | BHV-022 | edição do ticket | administrador | mutável | concluído | assunto dinâmico alterado e restaurado |
 | BHV-023 | administração de usuário | administrador | mutável | concluído | edição reversível e nota persistente |
+| BHV-024 | perfil do agente | administrador | mutável | concluído | fuso horário alterado e restaurado |
 
 ## Regras de evidência
 
@@ -605,6 +606,19 @@ e-mail, tickets ou colaboração e não executou exclusão ou notificação.
 Comparado a BHV-019, o backend administrativo chama o mesmo
 `User::updateInfo()`, mas com o modo staff e contrato AJAX/JSON; o
 autoatendimento usa POST tradicional e redirecionamento.
+
+### BHV-024 — perfil do agente e preferência de fuso
+
+O administrador carregou `scp/profile.php`; o executor preservou todos os
+campos não sensíveis apresentados e escolheu um fuso diferente do atual. O
+primeiro POST respondeu `200` e a releitura confirmou o valor alternativo. O
+segundo POST restaurou o valor inicial, novamente com `200`, e uma nova leitura
+confirmou igualdade exata.
+
+Senha, 2FA, assinatura, identidade, papel e permissões não foram alterados. O
+fluxo corresponde a `Staff::updateProfile()` chamado por
+`scp/profile.php:20-34` e demonstra uma atualização tradicional na mesma página,
+sem JSON. Não houve exclusão ou notificação.
 
 ## Exposição local aceita na homologação
 

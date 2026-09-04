@@ -96,6 +96,10 @@ prefixo `O` da organização. A edição administrativa atualizou `user.name` e
 preservou `user.org_id`, confirmando que os formulários de pessoa e o vínculo
 organizacional podem mudar independentemente.
 
+O perfil do agente confirmou a persistência de preferência de fuso na entidade
+`staff`. O valor alternativo foi lido na requisição seguinte e depois restaurado
+ao original, sem tocar as relações de departamento, função ou equipe.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação
