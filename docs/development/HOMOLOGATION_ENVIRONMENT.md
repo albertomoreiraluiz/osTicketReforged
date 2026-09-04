@@ -211,3 +211,9 @@ Permanece como endurecimento operacional verificar a permissão de
 `include/ost-config.php` e desabilitar ou remover `setup/` da cópia de
 homologação. A remoção não será feita implicitamente por ser uma ação destrutiva
 sobre a implantação.
+
+A verificação comportamental confirmou que ambos os riscos continuam ativos:
+as rotas do instalador responderam `200`, o diretório existe no webroot e o
+arquivo de configuração permanece gravável. A homologação deve ficar restrita
+ao host local até o responsável autorizar a remoção de `setup/` e a proteção do
+arquivo.

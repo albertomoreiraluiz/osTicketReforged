@@ -23,6 +23,8 @@ prefixo identificável e as barreiras locais aprovadas.
 | Cookie de sessão | `HttpOnly` e `SameSite=Lax`; sem `Secure` no HTTP local |
 | Rotação da sessão | adiada e confirmada na primeira requisição GET após 10 segundos |
 | Logout | sessão encerrada; rota protegida voltou a apresentar login |
+| Instalador pós-instalação | ainda acessível em `/setup/` e `/setup/install.php` |
+| Configuração nativa | `include/ost-config.php` existe e permanece gravável |
 | Segredos em evidências | nenhum valor, cookie ou token registrado |
 
 ## Matriz de execução
@@ -111,10 +113,29 @@ habilitada; portanto, os avisos históricos não são atribuídos às requisiç�
 testadas e permanecem como observação de inicialização do Apache a revisar. A
 amostra recente do log Apache não apresentou marcador de warning ou erro fatal.
 
+## Achado operacional que exige intervenção
+
+### BHV-SEC-001 — instalador acessível após a instalação
+
+**Severidade operacional:** alta enquanto a implantação puder ser alcançada por
+outros usuários ou dispositivos.
+
+`/setup/` e `/setup/install.php` responderam `200` e exibiram marcadores do
+instalador após a conclusão. No filesystem, o diretório `setup/` continua
+presente e `include/ost-config.php` não está marcado como somente leitura.
+
+O comportamento não é tratado como defeito novo do core: o upstream orienta a
+remoção de `setup/` e a proteção do arquivo de configuração depois da
+instalação. A correção não foi aplicada automaticamente porque remover o
+diretório implantado é destrutivo e alterar permissões afeta a operação local.
+Até a autorização do responsável, a homologação deve permanecer restrita ao
+host local.
+
 ## Pendências imediatas
 
-1. aprofundar as páginas administrativas sem alterar configuração;
-2. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
-3. preparar identidades fictícias por papel antes da matriz de permissões;
-4. confrontar rotas AJAX de leitura com o catálogo estático;
-5. classificar os cenários mutáveis antes de executá-los.
+1. obter autorização para remover `setup/` da implantação e proteger
+   `include/ost-config.php`;
+2. aprofundar as páginas administrativas sem alterar configuração;
+3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
+4. preparar identidades fictícias por papel antes da matriz de permissões;
+5. confrontar rotas AJAX de leitura com o catálogo estático.
