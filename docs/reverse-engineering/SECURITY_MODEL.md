@@ -107,6 +107,7 @@ devem ser registrados na documentação ou em logs
 | alta potencial | `bootstrap.php:23-31` força `display_errors=1` contra comentário | provocar erro controlado depois |
 | alta de confiança | sinais entregam credenciais/tokens a plugins | contrato confirmado; governar plugins |
 | alta de confiança | `auth.login.succeeded` pode anteceder conclusão de 2FA | não usar sinal como prova de MFA concluído |
+| alta confirmada | `task.reply` oculta a UI, mas não bloqueia POST direto em `scp/tasks.php` | runtime persistiu resposta do papel sem permissão; requer correção futura e revisão independente |
 | média potencial | arquivo assinado não verifica o objeto pai | testar acesso cruzado |
 | média potencial | validação de upload difere entre Web e API/e-mail | testar conteúdo/serving |
 | média potencial | falha ao registrar sessão termina com mensagem bruta | induzir somente em ambiente descartável |
@@ -129,3 +130,20 @@ e não visualizou a nota interna. A fronteira de confidencialidade por tipo de
 entrada funcionou no cenário. A capacidade de nota do papel de visualização deve
 ser considerada ao desenhar equivalências futuras de ACL; o nome do papel não
 implica ausência total de escrita.
+
+## Falha confirmada de autorização em resposta de tarefa — Onda 7
+
+**Prioridade:** alta. **Estado:** confirmado em homologação, sem correção nesta
+etapa documental.
+
+O papel `Apenas visualização` não possui `task.reply` e o template não renderiza
+o formulário de atualização. Ainda assim, uma requisição POST manual com sessão
+válida e CSRF correto foi aceita e persistiu entrada `R` da tarefa. A causa é a
+ausência de `Task::PERM_REPLY` no `case postreply` de `scp/tasks.php:47-72`; o
+método `Task::postReply()` em `include/class.task.php:1004-1051` também não
+constitui uma fronteira de autorização. O único uso no fluxo é condicional de
+renderização em `include/staff/templates/task-view.tmpl.php:560-567`.
+
+CSRF funcionou como proteção contra origem externa, mas não substitui a ACL da
+ação para um agente autenticado. Uma API ou frontend futuro deverá impor a
+permissão no servidor e jamais derivá-la apenas da visibilidade do controle.

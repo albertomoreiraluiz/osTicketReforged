@@ -68,6 +68,20 @@ thread/descrição, evento, assignment e notificações
 **Fato observado:** tarefa não integra a unidade de persistência da criação
 inicial do ticket.
 
+Na Onda 7, o endpoint nativo criou uma tarefa vinculada (`object_type=T`) ao
+ticket fictício, aberta, no departamento esperado e atribuída ao agente de
+visualização. Administrador e agente atribuído viram a tarefa; o cliente não
+recebeu seu título no portal. O mesmo agente recebeu `403` no formulário AJAX de
+criação, confirmando `task.create` nessa superfície.
+
+A permissão `task.reply`, porém, foi aplicada somente à apresentação. O template
+omite o formulário sem a permissão
+(`include/staff/templates/task-view.tmpl.php:560-567`), mas o POST direto
+`a=postreply` alcança `Task::postReply()` sem guarda equivalente
+(`scp/tasks.php:47-72`; `include/class.task.php:1004-1051`). O runtime persistiu
+uma resposta do agente sem essa permissão. Esse é um fato observado de
+autorização, não uma conclusão baseada somente na leitura do template.
+
 ## Atualização, status e exclusão
 
 `Ticket::update()` exige `ticket.edit`, valida campos base e dinâmicos, salva

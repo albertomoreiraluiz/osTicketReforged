@@ -41,7 +41,9 @@ de rollback.
 | BHV-006 | AJAX/PJAX | administrador/agente | leitura | iniciado | contrato HTTP e erros sanitizados |
 | BHV-007 | logs PHP e Apache | sistema | leitura | iniciado | ausência/presença de falhas correlatas |
 | BHV-008 | ticket de teste | papéis fictícios | mutável | iniciado | ciclo e persistência controlados |
-| BHV-009 | anexos, e-mail e tarefas | papéis fictícios | mutável | pendente | efeitos controlados por subsistema |
+| BHV-009 | tarefas vinculadas | papéis fictícios | mutável | iniciado | criação, visibilidade e ACL por ação |
+| BHV-010 | anexos e arquivos | papéis fictícios | mutável | pendente | persistência, serving e limites |
+| BHV-011 | e-mail | papéis fictícios | mutável | pendente | efeitos controlados sem entrega externa acidental |
 
 ## Regras de evidência
 
@@ -212,6 +214,33 @@ para Resolvido (`status_id=2`) e depois de volta para Aberto (`status_id=1`).
 Cada transição usou lock recém-adquirido e foi confirmada na persistência. O
 ticket permaneceu disponível como fixture ativa; nenhuma exclusão foi executada.
 
+### BHV-009 — tarefa vinculada e autorização de resposta
+
+O administrador criou pelo endpoint nativo uma única tarefa fictícia vinculada
+ao ticket ativo, no departamento Suporte e atribuída ao agente de visualização.
+A persistência confirmou o vínculo polimórfico (`object_type=T`), a atribuição e
+o estado aberto. A referência não secreta pode ser mantida localmente em
+`OSTR_TEST_TASK_NUMBER`; nenhuma tentativa de criação foi repetida depois que o
+banco confirmou a primeira operação.
+
+Administrador e agente atribuído visualizaram a tarefa por `scp/tasks.php`,
+enquanto o cliente não recebeu seu título na tela do ticket. O agente sem
+`task.create` recebeu `403` ao acessar diretamente o formulário AJAX de nova
+tarefa. Isso confirma separadamente escopo de leitura, confidencialidade do
+portal e permissão de criação.
+
+**Fato observado — falha de enforcement:** o papel sem `task.reply` não recebeu
+o formulário `#task_reply`, mas um POST manual para `scp/tasks.php` com
+`a=postreply`, CSRF válido e manutenção do estado aberto respondeu `200` e
+persistiu exatamente uma entrada `type=R` atribuída ao agente. O controlador
+entra em `case postreply` sem consultar o papel
+(`scp/tasks.php:47-72`), e `Task::postReply()` também não valida
+`Task::PERM_REPLY` (`include/class.task.php:1004-1051`). A permissão aparece
+somente na renderização do formulário
+(`include/staff/templates/task-view.tmpl.php:560-567`). Portanto, ocultar a ação
+na interface não impede a escrita por requisição forjada. O cenário não enviou
+e-mail, não fechou a tarefa e não executou exclusão.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
@@ -234,5 +263,6 @@ reavaliada se o serviço passar a aceitar conexões externas.
 1. aprofundar as páginas administrativas sem alterar configuração;
 2. ampliar a amostra de rotas AJAX válidas por família;
 3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
-4. testar resposta, nota, status e tarefas no ticket fictício;
-5. preparar anexos controlados e observar persistência/limites.
+4. concluir nota, status e transições da tarefa fictícia;
+5. preparar anexos controlados e observar persistência/limites;
+6. classificar e revisar independentemente a falha de `task.reply`.
