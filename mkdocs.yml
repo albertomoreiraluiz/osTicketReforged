@@ -73,6 +73,7 @@ nav:
       - Matriz de customização: reverse-engineering/CUSTOMIZATION_MATRIX.md
       - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
       - Revisão cruzada: reverse-engineering/REVIEW_REPORT.md
+      - Análise comportamental: reverse-engineering/BEHAVIORAL_ANALYSIS.md
   - Governança:
       - Contexto: governance/PROJECT_CONTEXT.md
       - Progresso: governance/PROGRESS.md

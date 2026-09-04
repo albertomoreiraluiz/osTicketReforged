@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-04.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável resultante: `main`.
-- Etapa: engenharia reversa — inventário e análise estática concluídos.
+- Etapa: engenharia reversa — análise comportamental em execução.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -26,11 +26,14 @@
   logs e toolchain local inventariados.
 - Snapshot rastreável do guia oficial de instalação, índice de ERDs, quatorze
   diagramas PDF e licença incorporado a partir de `osTicket/docs`.
+- Instalação web concluída pelo responsável, com banco criado e painel ativo.
+- Interface pública e autenticação administrativa confirmadas em runtime, sem
+  registrar credenciais, cookies ou tokens.
 
 ## Em andamento
 
-- Distribuição limpa `v1.18.4` ativa na raiz `C:\xampp\htdocs`; Apache
-  reiniciado pelo responsável e instalação web pronta para nova tentativa.
+- Onda 7 comportamental iniciada sobre a distribuição `v1.18.4` instalada na
+  raiz `C:\xampp\htdocs`.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -70,11 +73,10 @@
 
 ## Próximo passo proposto
 
-1. aguardar o responsável instalar o osTicket na homologação;
-2. executar testes comportamentais de interface, sessão, permissões, uploads,
+1. executar testes comportamentais de interface, sessão, permissões, uploads,
    e-mail e riscos priorizados em ambiente descartável;
-3. atualizar os mesmos catálogos com fatos observados em runtime;
-4. somente depois preparar opções do Portão D e decisões de integração.
+2. atualizar os mesmos catálogos com fatos observados em runtime;
+3. somente depois preparar opções do Portão D e decisões de integração.
 
 ## Estado dos portões
 
@@ -149,3 +151,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Revisão cruzada — Onda 6 | `REVIEW_REPORT.md`; três pareceres independentes; build estrito | Achados reconciliados; segunda passagem aprovada; Portão C concluído |
 | 2026-09-04 | Preparação da instalação web | `manage.php deploy --setup`; 2.250 arquivos; hash do core; `ost-config.php` a partir do modelo | Distribuição limpa movida pelo responsável para `C:\xampp\htdocs` |
 | 2026-09-04 | Assinatura do schema | comparação binária e MD5 do `install-mysql.sql`; `core.sig` | CRLF identificado como causa; schema de homologação normalizado para LF e assinatura validada |
+| 2026-09-04 | Instalação funcional | confirmação do responsável; ciclo HTTP público | Banco criado e instalação concluída |
+| 2026-09-04 | Início da análise comportamental | interface pública e login administrativo por HTTP com CSRF | Página inicial em português e painel da equipe autenticado; nenhum segredo registrado |

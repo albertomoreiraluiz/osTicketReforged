@@ -2,10 +2,10 @@
 
 ## Status
 
-Infraestrutura-base **Preparada** e contrato local **Aceito**. A instalação
-funcional do osTicket ainda depende dos dados do banco e da definição de sua
-localização sob o Apache. A persistência definitiva de conexões permanece
-**A definir (TBD)**.
+Infraestrutura **Ativa**, instalação funcional **Concluída** e contrato local
+**Aceito**. O osTicket responde sob o Apache, o banco foi criado e a fase de
+análise comportamental está em execução. A persistência definitiva de conexões
+permanece **A definir (TBD)**.
 
 ## Decisão
 
@@ -26,6 +26,12 @@ extensões carregadas nem os testes funcionais no runtime instalado.
 - `.env.example`: contrato versionado, sempre sem segredos;
 - `include/ost-config.php`: configuração nativa do osTicket, ignorada pelo Git;
 - `.local/`: artefatos locais, logs coletados e resultados sanitizados, ignorados.
+
+As variáveis `OSTR_ADMIN_ACCOUNT` e `OSTR_ADMIN_PASSWORD` guardam exclusivamente
+a conta administrativa criada pelo instalador para autenticação das ferramentas
+na homologação. Seus valores não podem aparecer em documentação, saída de
+comando, artefato, Issue, commit ou Pull Request. As variáveis `OSTR_TEST_*`
+continuam reservadas a identidades fictícias por papel nos cenários funcionais.
 
 ## Ordem segura de preenchimento
 
@@ -195,8 +201,13 @@ cópia Windows havia convertido `install-mysql.sql` para CRLF, gerando
 normalizado mecanicamente para LF; o MD5 passou a coincidir exatamente com
 `include/upgrader/streams/core.sig`. Nenhum SQL foi executado nesta correção.
 
-Restam nova execução do instalador pelo responsável, o ciclo HTTP, a conexão com o
-banco de homologação e as contas funcionais. Após a instalação, a permissão de
-gravação de `include/ost-config.php` deve ser removida e `setup/` deve ser
-desabilitado ou removido da cópia de homologação conforme orientação do
-instalador.
+Em 2026-09-04, o responsável concluiu o instalador e confirmou a criação do
+banco. A página pública respondeu com sucesso e a autenticação administrativa
+foi validada com formulário protegido por CSRF, redirecionando ao Painel de
+Controle da Equipe. A validação registrou somente estado HTTP e título da tela;
+credenciais, cookie de sessão e token CSRF não foram exibidos nem persistidos.
+
+Permanece como endurecimento operacional verificar a permissão de
+`include/ost-config.php` e desabilitar ou remover `setup/` da cópia de
+homologação. A remoção não será feita implicitamente por ser uma ação destrutiva
+sobre a implantação.

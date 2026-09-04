@@ -18,10 +18,10 @@ Produzir a documentação técnica necessária para escolher, sem antecipação,
 
 ## Pré-condição de homologação
 
-A infraestrutura-base local está preparada com XAMPP, Apache, PHP 8.2,
-extensões necessárias, logs e toolchain Node.js/pnpm. A instalação funcional do
-osTicket, com banco e ciclo HTTP, será validada antes dos testes dinâmicos que a
-exigirem; isso não bloqueia o início do inventário estático da Onda 1.
+A infraestrutura local está ativa com XAMPP, Apache, PHP 8.2, extensões
+necessárias e logs. A instalação funcional, o banco, o ciclo HTTP público e a
+autenticação administrativa foram confirmados; a Onda 7 executa agora a
+validação comportamental controlada.
 
 ## Fontes externas de apoio
 
@@ -74,10 +74,9 @@ aprofundamento do Portão C. Eles não são pré-condição retroativa do Portã
 - limitações de extensão e possíveis alterações do core classificadas;
 - dúvidas críticas resolvidas ou explicitamente registradas.
 
-**Estado:** concluído em 2026-09-03 para o escopo estático, após seis ondas,
-catálogos exaustivos e revisão cruzada sem achado alto ou médio aberto. Testes
-comportamentais permanecem como fase subsequente dependente da instalação pelo
-responsável.
+**Estado:** escopo estático concluído em 2026-09-03, após seis ondas, catálogos
+exaustivos e revisão cruzada sem achado alto ou médio aberto. A instalação foi
+concluída em 2026-09-04 e a validação comportamental constitui a Onda 7.
 
 ### Portão D — Decisão arquitetural
 

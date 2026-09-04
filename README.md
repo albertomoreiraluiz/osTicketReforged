@@ -8,22 +8,22 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Engenharia reversa — análise estática concluída |
+| Etapa atual | Engenharia reversa — análise comportamental em execução |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
 | Portão D — Decisão arquitetural | Não iniciado |
 
-Ambiente-base de homologação concluído: XAMPP local, PHP 8.2, extensões, logs e
-toolchain Node.js/pnpm inventariados. O snapshot oficial de referência e o
-portal MkDocs estão preparados. O Portão B foi concluído após três ondas
-estáticas e revisão independente; o Portão C aprofunda contratos exaustivos.
+Ambiente de homologação instalado e ativo: XAMPP local, PHP 8.2, MariaDB,
+extensões e logs preparados. A interface pública e a autenticação administrativa
+foram confirmadas por observação em runtime. O snapshot oficial de referência e
+o portal MkDocs permanecem no fluxo obrigatório de atualização.
 
 Próximas etapas:
 
-1. o responsável repetir a instalação na URL de homologação configurada
-   localmente; a distribuição está na raiz do `htdocs` e o schema foi validado;
-2. executar a fase comportamental e atualizar os catálogos com runtime;
+1. executar a matriz comportamental somente leitura e atualizar os catálogos;
+2. executar cenários mutáveis controlados apenas quando necessários e autorizados
+   pelas barreiras da homologação;
 3. somente depois preparar opções e decisões do Portão D.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em

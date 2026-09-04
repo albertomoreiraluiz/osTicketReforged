@@ -154,10 +154,38 @@ validou contagens, links, diff e build MkDocs estrito.
 
 ## Restrições da fase
 
-- A análise é exclusivamente estática enquanto o osTicket não estiver
-  instalado.
-- Reprodução comportamental da interface e navegação ficam para a próxima
-  fase, após a instalação pelo responsável.
+- As Ondas 1 a 6 foram exclusivamente estáticas porque o osTicket ainda não
+  estava instalado.
+- A partir da Onda 7, o runtime instalado pode ser observado de forma
+  controlada, com evidências sanitizadas e sem exposição de segredos.
 - Angular e PrimeNG permanecem fora do escopo deste inventário.
 - Segredos e valores de `.env` não constituem evidência documental e não devem
-  ser lidos ou registrados.
+  ser registrados. Somente o agente principal pode consumir as variáveis
+  estritamente necessárias aos testes autorizados.
+
+## Onda 7 — validação comportamental da baseline
+
+**Estado:** em execução.
+
+**Objetivo:** confrontar os contratos estáticos já documentados com o
+comportamento observável da instalação `v1.18.4`, começando por cenários somente
+leitura e separando explicitamente qualquer cenário mutável.
+
+**Execução inicial pelo agente principal:**
+
+- confirmar disponibilidade da interface pública;
+- autenticar no painel administrativo usando o `.env` local sem expor segredo;
+- inventariar navegação, respostas HTTP, sessão, guards e erros de runtime;
+- registrar resultados sanitizados no portal a cada conjunto concluído;
+- não alterar core, configuração funcional ou dados durante a passagem somente
+  leitura.
+
+### Critérios de encerramento
+
+- superfícies pública, cliente, equipe e administração confrontadas com o
+  catálogo estático;
+- controles de autenticação, sessão, CSRF e autorização observados por papel;
+- logs PHP/Apache correlacionados sem dados pessoais ou segredos;
+- cenários mutáveis necessários executados apenas após classificação explícita;
+- divergências e lacunas refletidas nos catálogos e na matriz de evidências;
+- documentação, links e build MkDocs estrito aprovados.
