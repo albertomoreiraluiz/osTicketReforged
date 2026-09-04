@@ -446,6 +446,27 @@ gerado continha 47 blocos de tabela e zero linhas. Em
 referenciando a consulta de colunas (`include/class.export.php:807-836`). Esse
 arquivo não é garantia de rollback e não será usado.
 
+**Resultado do protocolo C:** o snapshot alvo ignorado registrou 218 bytes,
+SHA-256 `CE5C269FEF0583480780DB520C84505D2D9C54A29EA25E9E532137C95DCC7D2F`,
+ticket aberto, marcador ausente e zero draft. A primeira submissão sem o lock
+adquirido pelo JavaScript retornou a validação de bloqueio, sem entrada ou
+mensagem SMTP. Depois de `POST ajax.php/lock/ticket/{id}` responder `200`, a
+releitura do formulário trouxe `lockCode` válido e a resposta foi aceita com
+`200`.
+
+O banco confirmou exatamente uma nova entrada `type=R`, `staff_id` do
+administrador, `user_id=0`, ticket ainda aberto e `isanswered=1`. A contagem da
+thread aumentou em uma, `thread.lastresponse` passou a coincidir com a resposta
+e `thread.lastmessage` não mudou. O namespace de draft continuou vazio. O
+coletor recebeu uma mensagem com um destinatário `example.com` e nenhum de
+outro domínio, coerente com `reply-to=user`; ele foi encerrado e a porta 25
+voltou a ficar fechada.
+
+O resultado evidencia que o lock AJAX faz parte do fluxo funcional do editor,
+embora o formulário e o controlador final sejam tradicionais. A limpeza de
+draft afetou zero linha, como exigido pela pré-condição, e nenhuma ação de
+rollback foi necessária.
+
 ### BHV-012 — API HTTP nativa
 
 Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou

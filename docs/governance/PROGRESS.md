@@ -100,6 +100,10 @@
   nova abertura Web; ticket persistido e porta 25 fechada ao final.
 - Segunda abertura Web classificou o único envio como alerta administrativo;
   autoresposta ausente por configuração global desativada, sem armazenar endereço.
+- Resposta staff com lock AJAX persistiu uma única `R`, marcou ticket respondido
+  e enviou somente ao proprietário fictício pelo coletor local.
+- Exportador CLI integral rejeitado como backup: runtime produziu schemas sem
+  linhas por reutilização incorreta de `$res` em `DatabaseExporter::dump()`.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -258,3 +262,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — perfil do agente | formulário completo; fuso alternativo; duas releituras | Dois `200`; preferência alternativa confirmada e valor inicial restaurado; nenhum campo sensível alterado |
 | 2026-09-04 | Onda 7 — notificação de abertura Web | coletor `127.0.0.1:25` sem relay; formulário público; banco; `syslog` | Uma mensagem/um destinatário aceito; ticket Web aberto persistido; sem erro de mailer; coletor encerrado e tipo da notificação ainda não classificado |
 | 2026-09-04 | Onda 7 — classificação de notificação | coletor efêmero com classificação de domínio; nova abertura Web; configuração | Única mensagem destinada ao lado interno; alerta administrativo ativo, autoresponder global desligado e departamento sem gerente; porta fechada ao final |
+| 2026-09-04 | Onda 7 — resposta staff notificada | plano prévio; snapshot SHA-256; lock AJAX; POST de resposta; banco; coletor local | Sem lock, validação sem efeito; com lock, uma `R`, ticket aberto/respondido, `lastresponse` atualizado, draft vazio e uma mensagem ao proprietário |
+| 2026-09-04 | Onda 7 — exportador de backup | export CLI comprimido; inspeção sem expor conteúdo; `class.export.php` | 47 schemas e zero linhas; artefato rejeitado para rollback; causa é `SELECT *` sem atribuição a `$res` |

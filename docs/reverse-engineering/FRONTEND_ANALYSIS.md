@@ -189,3 +189,12 @@ distinguir esses contratos mesmo quando ambos terminam em
 na própria página e resposta `200`, sem JSON. A preferência de fuso foi alterada
 e restaurada em duas submissões. Esse comportamento contrasta com os diálogos
 AJAX de administração de usuário, embora ambos pertençam ao shell staff.
+
+## Editor de resposta e lock confirmados — Onda 7
+
+Carregar a tela não basta quando o modo de lock depende de atividade: o
+JavaScript chama `ajax.php/lock/ticket/{id}`, recebe ID/código e só então o
+formulário tradicional pode responder. Sem essa etapa, o backend devolveu a
+mensagem de lock e manteve o texto no editor; com o código válido, redirecionou
+e mostrou a nova resposta. Uma reprodução futura precisa modelar esse estado
+intermediário, não apenas os campos visíveis do formulário.

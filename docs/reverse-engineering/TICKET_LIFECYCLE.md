@@ -203,3 +203,11 @@ interno. O autoresponder global estava desligado, embora tópico e departamento
 o permitissem; o alerta de novo ticket e o destinatário administrador estavam
 ativos. O gerente estava selecionado na política, mas o departamento não tinha
 gerente, resultando em um único destinatário efetivo.
+
+Na resposta staff com e-mail, o primeiro POST sem aquisição AJAX de lock foi
+recusado sem persistência. Depois do lock, `reply-to=user` criou uma entrada
+`R`, manteve o ticket aberto, mudou `isanswered` para verdadeiro e atualizou
+`thread.lastresponse`; `thread.lastmessage` permaneceu apontando para a última
+mensagem do cliente. O transporte local recebeu uma mensagem destinada ao
+domínio reservado do proprietário. Isso confirma separadamente os relógios de
+mensagem e resposta da thread.

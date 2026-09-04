@@ -38,6 +38,12 @@ gerente no departamento e alerta a membros desabilitado. O comportamento
 observado corresponde aos ramos de `Ticket::onNewTicket()` em
 `include/class.ticket.php:1679-1771`.
 
+Uma resposta staff com `reply-to=user` percorreu o mesmo fallback local e gerou
+uma mensagem para o domínio reservado do proprietário, sem destinatário
+interno. A entrada `R` foi persistida antes da confirmação do resultado e o
+ticket permaneceu aberto/respondido. O coletor não armazenou endereço,
+cabeçalho ou corpo e foi encerrado ao final.
+
 ## Arquivos, storage e anexos
 
 `AttachmentFile` representa conteúdo/metadados, `Attachment` associa o arquivo
