@@ -211,3 +211,10 @@ recusado sem persistência. Depois do lock, `reply-to=user` criou uma entrada
 mensagem do cliente. O transporte local recebeu uma mensagem destinada ao
 domínio reservado do proprietário. Isso confirma separadamente os relógios de
 mensagem e resposta da thread.
+
+Quando o colaborador publicou outra mensagem no portal, uma nova entrada `M`
+atualizou `lastmessage`, preservou `lastresponse` e marcou o ticket como não
+respondido. A notificação foi enviada somente ao proprietário; o autor não
+recebeu autoresposta e nenhum agente recebeu alerta porque o ticket não tinha
+atribuído, respondente anterior ou gerente elegível. O namespace de draft do
+cliente estava vazio antes e depois da limpeza automática do controlador.

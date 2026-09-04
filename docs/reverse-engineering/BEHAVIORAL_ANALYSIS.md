@@ -489,6 +489,32 @@ porta novamente verificada. Qualquer divergência interrompe o fluxo; a entrada
 funcional não será apagada sem um novo plano destrutivo e uma garantia de
 rollback válida.
 
+**Resultado do protocolo D:** o snapshot alvo ignorado registrou 248 bytes,
+SHA-256 `21C34ED1975F6E2830D20BCED45ADD5BF39B3DCC33FF8B23E7DB843CD05DD7A8`,
+ticket aberto, colaborador ativo, marcador ausente e zero draft. O POST do
+portal respondeu `200`, voltou à tela do ticket e exibiu a mensagem marcada.
+
+O banco confirmou exatamente uma nova entrada `type=M`, `user_id` do
+colaborador e `staff_id=0`. A thread aumentou em uma entrada,
+`thread.lastmessage` passou a coincidir com a nova mensagem e
+`thread.lastresponse` foi preservado. O ticket continuou aberto, passou a não
+respondido e o namespace de draft permaneceu vazio; a limpeza prevista afetou
+zero linha.
+
+O coletor recebeu uma mensagem com um destinatário `example.com`, sem o cliente
+autor e sem lado interno. A chave persistida `message_autoresponder` está
+desligada; `message_autoresponder_collabs` não possui linha própria, mas o
+padrão efetivo da configuração é verdadeiro (`include/class.config.php:244`).
+Em `Ticket::postMessage()`, o retorno antecipado de `onMessage()` impede a
+autoresposta, mas não altera a variável local que governa a chamada seguinte a
+`notifyCollaborators()` (`include/class.ticket.php:3195-3202`). Por isso o
+proprietário recebeu o aviso da mensagem do colaborador.
+
+Embora o alerta de nova mensagem esteja ativo para último respondente e
+atribuído, o ticket não possuía resposta staff, agente, equipe ou gerente de
+departamento; o conjunto interno ficou vazio. O coletor foi encerrado e a porta
+25 voltou a ficar fechada. Nenhuma ação de rollback foi necessária.
+
 ### BHV-012 — API HTTP nativa
 
 Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou

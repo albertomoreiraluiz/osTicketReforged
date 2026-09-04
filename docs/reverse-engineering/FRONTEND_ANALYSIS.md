@@ -198,3 +198,9 @@ formulário tradicional pode responder. Sem essa etapa, o backend devolveu a
 mensagem de lock e manteve o texto no editor; com o código válido, redirecionou
 e mostrou a nova resposta. Uma reprodução futura precisa modelar esse estado
 intermediário, não apenas os campos visíveis do formulário.
+
+No portal do cliente, o editor de mensagem do colaborador não usa o lock staff.
+O formulário tradicional com CSRF enviou a mensagem, redirecionou para
+`/tickets.php` e exibiu o novo conteúdo. O backend marcou o ticket como não
+respondido e limpou o namespace de draft do ticket, que estava vazio pela
+pré-condição do ensaio.

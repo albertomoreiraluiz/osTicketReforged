@@ -44,6 +44,15 @@ interno. A entrada `R` foi persistida antes da confirmação do resultado e o
 ticket permaneceu aberto/respondido. O coletor não armazenou endereço,
 cabeçalho ou corpo e foi encerrado ao final.
 
+Uma mensagem Web publicada por colaborador produziu uma única notificação ao
+proprietário `example.com`. Não houve autoresposta ao autor porque
+`message_autoresponder=0`; o aviso aos demais participantes permaneceu efetivo
+pelo padrão verdadeiro de `message_autoresponder_collabs`. O alerta interno
+estava ativo, mas não tinha destinatário concreto: o ticket não estava
+atribuído, não possuía respondente staff e o departamento não tinha gerente.
+Essa separação confirma que autoresposta, aviso a colaboradores e alerta staff
+são ramos distintos do mesmo `postMessage()`.
+
 ## Arquivos, storage e anexos
 
 `AttachmentFile` representa conteúdo/metadados, `Attachment` associa o arquivo
