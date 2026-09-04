@@ -85,4 +85,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Configuração PHP | backup datado, validação de módulos, gravação no log e `httpd.exe -t` | Extensões e diagnóstico de homologação aplicados |
 | 2026-09-03 | Fronteira do frontend | ADR 0001; GOV-011 | `frontend/` reservado para Angular e PrimeNG |
 | 2026-09-03 | Homologação-base | `.env.example`; guia de homologação; validações PHP/Apache | Preparada; instalação funcional aguarda banco e localização web |
-| 2026-09-03 | Integração da homologação-base | PR #2 | Aberta e preparada para merge |
+| 2026-09-03 | Integração da homologação-base | PR #2; merge `8786c271` | Concluída |
