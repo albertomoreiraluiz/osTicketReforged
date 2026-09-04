@@ -127,3 +127,8 @@ persistida, mas conseguiu publicar nota interna. O `case postnote` em
 adquiriu lock via AJAX e publicou resposta sem envio de e-mail. O cliente viu a
 resposta, mas não a nota interna. Assim, tipo de entrada e autorização de escrita
 são fronteiras distintas no ciclo observado.
+
+Duas notas administrativas exercitaram transições reversíveis: Aberto para
+Resolvido e Resolvido para Aberto. O `status_id` persistido mudou de `1` para `2`
+e retornou a `1`. O cenário confirma fechamento e reabertura por nota com lock,
+sem exclusão e preservando o ticket como fixture para tarefas e anexos.

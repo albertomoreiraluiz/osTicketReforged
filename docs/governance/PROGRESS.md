@@ -50,6 +50,8 @@
   agente restrito, alterando sua visibilidade de ausente para presente.
 - Agente sem permissão de resposta teve POST negado sem persistência, mas pôde
   criar nota interna; cliente viu resposta administrativa e não viu a nota.
+- Transições Aberto → Resolvido → Aberto confirmadas por notas administrativas,
+  locks válidos e leitura do estado persistido; ticket permanece ativo.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -183,3 +185,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | CLI de cliente | `manage.php user import`; `manage.php user activate` | Importação concluída; ativação fatal por `UserAccount::create()` inexistente |
 | 2026-09-04 | Onda 7 — ticket inicial | formulário público, AJAX de tópico, persistência e atribuição AJAX | Ticket fictício aberto e atribuído; escopo `assigned_only` confirmado antes/depois |
 | 2026-09-04 | Onda 7 — thread e ACL | resposta negada do agente; nota interna; resposta administrativa; visão do cliente | `ticket.reply` aplicado; nota interna permitida ao papel; conteúdo interno oculto do cliente |
+| 2026-09-04 | Onda 7 — transições | notas administrativas com lock; estados 1 e 2 | Fechamento e reabertura confirmados; fixture preservada, sem exclusão |

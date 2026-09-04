@@ -207,6 +207,11 @@ conter uma resposta. No portal, o cliente visualizou essa resposta e não
 visualizou a nota interna, confirmando a fronteira entre entradas públicas e
 internas.
 
+O administrador também publicou notas internas alterando o ticket de Aberto
+para Resolvido (`status_id=2`) e depois de volta para Aberto (`status_id=1`).
+Cada transição usou lock recém-adquirido e foi confirmada na persistência. O
+ticket permaneceu disponível como fixture ativa; nenhuma exclusão foi executada.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
