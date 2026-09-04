@@ -164,3 +164,12 @@ temporário/restauração confirmou que o mesmo contrato serve às duas alteraç
 Já o painel de notas recebe um fragmento HTML com `200` e o injeta na coleção da
 tela. A área administrativa combina, portanto, respostas JSON para entidade e
 HTML para conteúdo incremental na mesma página.
+
+## Edição tradicional de ticket confirmada — Onda 7
+
+A edição de ticket não usa o padrão de diálogo AJAX da organização. O formulário
+completo envia uma ação relativa `tickets.php?...` e retorna `200` após o
+redirecionamento. Essa URL só é correta quando resolvida a partir do shell
+`/scp`; resolvê-la a partir da raiz conduz ao portal público. O assunto dinâmico
+foi alterado e restaurado, confirmando que o frontend deve preservar tanto os
+campos atuais quanto o contexto da URL relativa.

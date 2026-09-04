@@ -88,6 +88,10 @@
   a tela agregou usuário e ticket por relação derivada, sem exclusão.
 - Nome da organização alterado e restaurado por AJAX; nota administrativa única
   persistida como fixture polimórfica, sem exclusão.
+- Assunto de ticket alterado e restaurado pelo formulário tradicional; a visão
+  dinâmica terminou com o original e sem marcador temporário.
+- Transporte de saída inspecionado: sem SMTP cadastrado, fallback local sem
+  listener e sem coletor; notificações permanecem pendentes sem inferência.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -240,3 +244,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — perfil do cliente | formulário dinâmico; POST com CSRF; releitura Web; banco; restauração | Nome fictício persistiu e apareceu no perfil; valor original restaurado exatamente; nenhum marcador residual, e-mail ou exclusão |
 | 2026-09-04 | Onda 7 — organização | diálogo AJAX; criação JSON; associação de usuário; detalhe; banco | Uma organização persistida; usuário ligado por `org_id`; ticket existente apareceu pela relação do proprietário; fixtures preservadas |
 | 2026-09-04 | Onda 7 — edição e nota de organização | formulário AJAX; alteração/restauração; nota rápida; banco | Dois `201` restauraram o nome; nota retornou HTML `200` e persistiu uma vez com `ext_id=O{id}` |
+| 2026-09-04 | Onda 7 — edição de ticket | formulário completo; ação relativa; dois POSTs; `ticket__cdata` | Assunto temporário apareceu e foi restaurado; resolução correta depende do contexto `/scp`; nenhuma notificação ou exclusão |
+| 2026-09-04 | Onda 7 — pré-condição de notificações | `email_account`; PHP mail; porta local; `syslog` | Sem SMTP ativo ou listener/coleção; ausência de erro não prova envio; ensaio aguarda coletor local sem relay |

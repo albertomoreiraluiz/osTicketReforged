@@ -86,6 +86,11 @@ registro é uma anotação rápida diretamente associada à entidade por esse
 identificador textual. A edição do nome atualiza a própria organização via
 formulário dinâmico e não cria uma nova versão da entidade.
 
+Na edição administrativa do ticket, o assunto continuou sendo uma resposta do
+formulário materializada em `ticket__cdata`, e não uma coluna de `ticket`. A
+alteração temporária e a restauração apareceram imediatamente nessa visão; o
+registro final reteve somente o assunto original.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação

@@ -60,6 +60,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-019 | edição do perfil do cliente | cliente | mutável | concluído | formulário dinâmico, persistência e restauração |
 | BHV-020 | organização e vínculo de usuário | administrador | mutável | concluído | criação, associação e agregação de ticket |
 | BHV-021 | edição e nota de organização | administrador | mutável | concluído | atualização reversível e nota persistente |
+| BHV-022 | edição do ticket | administrador | mutável | concluído | assunto dinâmico alterado e restaurado |
 
 ## Regras de evidência
 
@@ -381,6 +382,21 @@ necessária e funcionou como capability; o resultado não demonstra descoberta
 ou enumeração da URL, mas confirma que `file.php` aceita qualquer cliente
 autenticado que a receba sem cruzar acesso ao pai.
 
+### BHV-011 — pré-condição do transporte de e-mail
+
+A inspeção não destrutiva encontrou zero conta SMTP cadastrada ou ativa em
+`email_account`. O fallback do PHP aponta para `localhost:25`, sem
+`sendmail_path` e sem `mail.log`; uma conexão TCP local à porta 25 falhou. Esse
+estado impede entrega externa pela configuração observada, mas também não
+oferece um coletor capaz de provar destinatários, cabeçalhos e quantidade de
+mensagens.
+
+A abertura pública já executada não produziu `Mailer Error` em `syslog` no
+intervalo correlato nem em toda a tabela. Ausência de log não prova envio nem
+supressão, portanto BHV-011 permanece pendente. O próximo ensaio de notificação
+exige um coletor SMTP estritamente local, observável e sem relay; até lá nenhum
+novo envio será disparado.
+
 ### BHV-012 — API HTTP nativa
 
 Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou
@@ -551,6 +567,25 @@ O painel de notas submeteu um texto fictício a
 a persistência final confirmou exatamente uma linha em `note` com `ext_id=O{id}`.
 A repetição consulta primeiro o painel e não duplica a fixture. A nota é mantida
 como histórico funcional; não houve exclusão nem notificação.
+
+### BHV-022 — edição reversível do ticket
+
+O formulário tradicional `scp/tickets.php?id={id}&a=edit` foi carregado com os
+campos centrais e dinâmicos do ticket. O campo cujo valor correspondia ao
+assunto foi alterado para um marcador fictício e submetido com o restante do
+estado selecionado. O POST respondeu `200`, redirecionou dentro de `/scp` e o
+marcador reapareceu no formulário de edição.
+
+Uma segunda submissão restaurou o assunto original. A releitura do formulário e
+da visão materializada `ticket__cdata` confirmou o original e zero ocorrência
+do marcador temporário. O ensaio não alterou proprietário, organização, estado
+ou conteúdo da thread e não executou exclusão ou envio de e-mail.
+
+A primeira versão local do executor resolveu a ação relativa `tickets.php` na
+raiz pública e recebeu o login do cliente; o banco confirmou que essa tentativa
+não persistiu nada. A correção para o contexto `/scp` demonstra que ações
+relativas dependem do shell de origem e precisam ser preservadas em qualquer
+reprodução futura.
 
 ## Exposição local aceita na homologação
 

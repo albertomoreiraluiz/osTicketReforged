@@ -17,6 +17,13 @@ outra identidade configurada e, por fim, `mail()`
 (`include/class.mailer.php:30-60,580-639`). Message-ID assinado, referências,
 token de thread, cabeçalhos de supressão e CID compõem o threading/entrega.
 
+Na homologação da Onda 7, não há conta SMTP em `email_account`; o fallback do
+PHP aponta somente para `localhost:25`, onde nenhuma conexão é aceita, e não há
+`sendmail_path` ou `mail.log`. Esse isolamento evita relay externo pela
+configuração observada, mas a validação comportamental de notificações depende
+da inclusão futura de um coletor SMTP local que registre as mensagens sem
+entregá-las.
+
 ## Arquivos, storage e anexos
 
 `AttachmentFile` representa conteúdo/metadados, `Attachment` associa o arquivo

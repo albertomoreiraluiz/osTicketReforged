@@ -183,3 +183,10 @@ diálogo de colaboradores, `thread_collaborator` ganhou uma relação, lista e t
 passaram a incluir o ticket e o cliente publicou uma mensagem `M`. A operação
 preservou o usuário proprietário e atualizou `thread.lastmessage` para a nova
 mensagem.
+
+O mesmo segundo ticket percorreu a edição administrativa tradicional. O assunto
+dinâmico foi alterado e restaurado em dois POSTs `a=edit`; a visão
+`ticket__cdata` terminou com o valor original e sem marcador temporário. A ação
+relativa `tickets.php` precisou ser resolvida no contexto `/scp`, evidenciando
+que o shell faz parte do contrato de navegação mesmo quando o controlador final
+é o mesmo arquivo.
