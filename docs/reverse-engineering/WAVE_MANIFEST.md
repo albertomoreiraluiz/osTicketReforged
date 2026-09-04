@@ -81,6 +81,19 @@ execução, banco, navegador ou leitura de `.env`. A revisão confirmou as
 contagens fundamentais e identificou correções de rotas, sinais, referências e
 separação entre Portões B e C.
 
+## Onda 4 — catálogos exaustivos do Portão C
+
+**Estado:** em execução.
+
+| Instância | Perfil permanente | Missão | Escrita | Integrador |
+| --- | --- | --- | --- | --- |
+| `arquiteto-api/onda-04/matriz-ajax` | Arquiteto de API | extração reproduzível e matriz de rotas AJAX | nenhuma | agente principal |
+| `engenheiro-dados/onda-04/catalogo-orm` | Engenheiro de Dados | catálogo das 72 metas ORM e relações | nenhuma | agente principal |
+| `engenheiro-reversa/onda-04/cli-sinais` | Engenheiro de Engenharia Reversa | contratos dos 14 módulos CLI e 41 sinais | nenhuma | agente principal |
+
+As restrições das ondas anteriores permanecem: leitura apenas, sem `.env`,
+runtime, banco, UI, commits ou subagentes.
+
 ## Restrições da fase
 
 - A análise é exclusivamente estática enquanto o osTicket não estiver

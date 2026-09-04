@@ -31,6 +31,8 @@
 
 - Portão C iniciado para catálogos exaustivos, matriz de customização e limites
   de extensão do core.
+- Onda 4 iniciada para matriz AJAX reproduzível, 72 metadados ORM, 14 módulos
+  CLI e contratos dos 41 sinais.
 - Onda 1 do inventário estático formalizada para ciclo de requisição, modelo de
   persistência e extensibilidade, sem execução da interface ou leitura de
   segredos locais.
@@ -138,3 +140,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Cobertura transversal — Onda 3 | `FRONTEND_ANALYSIS.md`; `TRANSVERSAL_SUBSYSTEMS.md` | Frontend e subsistemas documentados sem execução |
 | 2026-09-03 | Revisão independente — Onda 3 | parecer do Engenheiro de QA; matriz e documentos corrigidos | Contagens-base validadas; aprofundamentos separados do Portão B |
 | 2026-09-03 | Fechamento do Portão B | plano 0001; matriz de evidências; três ondas e revisão QA | Inventário estrutural concluído; Portão C iniciado |
+| 2026-09-03 | Onda 4 do aprofundamento | `docs/reverse-engineering/WAVE_MANIFEST.md` | Três catálogos exaustivos somente leitura registrados |
