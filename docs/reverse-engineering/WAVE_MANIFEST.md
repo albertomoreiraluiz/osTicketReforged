@@ -32,6 +32,24 @@ As três missões entregaram evidências sem alterar o workspace nem acessar
 `.env`. Os resultados foram integrados em `REQUEST_LIFECYCLE.md`,
 `DATABASE_ARCHITECTURE.md`, `PLUGIN_ARCHITECTURE.md` e `HOOKS.md`.
 
+## Onda 2 — contratos críticos
+
+**Estado:** em execução.
+
+| Instância | Perfil permanente | Missão | Leitura autorizada | Escrita | Revisão/integrador |
+| --- | --- | --- | --- | --- | --- |
+| `engenheiro-php-senior/onda-02/ciclo-ticket` | Engenheiro PHP Sênior | rastrear criação, atualização, thread, tarefa e exclusão do ticket | código versionado e documentação vigente | nenhuma | agente principal |
+| `arquiteto-seguranca/onda-02/controles-acesso` | Arquiteto de Segurança | mapear autenticação, autorização, CSRF, sessões, 2FA, API keys e fronteiras de confiança | código versionado e documentação vigente | nenhuma | agente principal |
+| `arquiteto-api/onda-02/contratos-integracao` | Arquiteto de API | catalogar API, AJAX, formatos, dispatch, autenticação e efeitos observáveis | código versionado e documentação vigente | nenhuma | agente principal |
+
+### Critérios de encerramento
+
+- ciclo central do ticket rastreado por chamadores e efeitos;
+- matriz estática de controles por superfície;
+- rotas de integração normalizadas até o nível suportado pelo código;
+- achados suspeitos separados de defeitos confirmados;
+- integração documental, build estrito e diff estabilizado.
+
 ## Restrições da fase
 
 - A análise é exclusivamente estática enquanto o osTicket não estiver

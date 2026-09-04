@@ -44,6 +44,8 @@
   upgrades e integridade manual sem FKs físicas.
 - Onda 1 concluída: arquitetura de plugins, estados de instância, persistência,
   dispatchers e catálogo de 41 sinais literais documentados.
+- Onda 2 iniciada para contratos críticos: ciclo do ticket, controles de
+  segurança e superfícies de API/AJAX.
 
 ## Próximo passo proposto
 
@@ -112,3 +114,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Superfícies HTTP estáticas | `docs/reverse-engineering/HTTP_SURFACES.md`; controladores e dispatchers da baseline | Portal, equipe, API e aplicações delimitados sem reprodução comportamental |
 | 2026-09-03 | Ciclos e persistência — Onda 1 | `REQUEST_LIFECYCLE.md`; `DATABASE_ARCHITECTURE.md` | Cadeias web/CLI e modelo lógico/físico documentados; validação dinâmica adiada |
 | 2026-09-03 | Extensibilidade — Onda 1 | `PLUGIN_ARCHITECTURE.md`; `HOOKS.md` | Ciclo de plugins, registries e sinais mapeados; contratos individuais seguem pendentes |
+| 2026-09-03 | Onda 2 do inventário | `docs/reverse-engineering/WAVE_MANIFEST.md` | Três missões críticas somente leitura registradas |
