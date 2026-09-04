@@ -86,6 +86,8 @@
   fluxo; persistência final não reteve o marcador fictício.
 - Organização fictícia criada e associada ao proprietário do ticket anônimo;
   a tela agregou usuário e ticket por relação derivada, sem exclusão.
+- Nome da organização alterado e restaurado por AJAX; nota administrativa única
+  persistida como fixture polimórfica, sem exclusão.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -237,3 +239,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — abertura anônima e colaboração | TLD rejeitado/aceito; novo usuário/ticket; diálogo staff; portal do cliente; thread | `.invalid`/`.test` rejeitados sem persistência; ticket Web criado com `example.com`; colaborador ganhou lista/tela e publicou `M`, preservando proprietário e estado |
 | 2026-09-04 | Onda 7 — perfil do cliente | formulário dinâmico; POST com CSRF; releitura Web; banco; restauração | Nome fictício persistiu e apareceu no perfil; valor original restaurado exatamente; nenhum marcador residual, e-mail ou exclusão |
 | 2026-09-04 | Onda 7 — organização | diálogo AJAX; criação JSON; associação de usuário; detalhe; banco | Uma organização persistida; usuário ligado por `org_id`; ticket existente apareceu pela relação do proprietário; fixtures preservadas |
+| 2026-09-04 | Onda 7 — edição e nota de organização | formulário AJAX; alteração/restauração; nota rápida; banco | Dois `201` restauraram o nome; nota retornou HTML `200` e persistiu uma vez com `ext_id=O{id}` |

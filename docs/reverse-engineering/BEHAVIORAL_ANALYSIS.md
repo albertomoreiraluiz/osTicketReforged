@@ -59,6 +59,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-018 | abertura anônima e colaboração | anônimo/admin/cliente | mutável | concluído | validação, associação, visibilidade e resposta |
 | BHV-019 | edição do perfil do cliente | cliente | mutável | concluído | formulário dinâmico, persistência e restauração |
 | BHV-020 | organização e vínculo de usuário | administrador | mutável | concluído | criação, associação e agregação de ticket |
+| BHV-021 | edição e nota de organização | administrador | mutável | concluído | atualização reversível e nota persistente |
 
 ## Regras de evidência
 
@@ -536,6 +537,20 @@ O comportamento confirma que `User::setOrganization()` persiste a relação
 (`include/class.user.php:143-157`), enquanto a aba de tickets deriva seu conjunto
 por `ticket.user__org` (`include/staff/templates/tickets.tmpl.php:15-19`), sem
 copiar `org_id` para o ticket.
+
+### BHV-021 — edição reversível e nota de organização
+
+O diálogo `ajax.php/orgs/{id}/edit` carregou o formulário dinâmico já
+preenchido. O nome foi trocado temporariamente e restaurado em uma segunda
+submissão; ambas responderam `201 application/json`, e a resposta final trouxe
+o nome original. O banco permaneceu com uma única organização sob o marcador
+definitivo.
+
+O painel de notas submeteu um texto fictício a
+`ajax.php/orgs/{id}/note`. A resposta `200` devolveu o fragmento HTML da nota, e
+a persistência final confirmou exatamente uma linha em `note` com `ext_id=O{id}`.
+A repetição consulta primeiro o painel e não duplica a fixture. A nota é mantida
+como histórico funcional; não houve exclusão nem notificação.
 
 ## Exposição local aceita na homologação
 

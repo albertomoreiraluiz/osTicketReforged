@@ -158,3 +158,9 @@ usuários, tickets e notas. Depois de associar um usuário existente, a mesma te
 passou a apresentar o usuário e o ticket de sua propriedade. O painel de
 tickets, portanto, é uma visão derivada da organização atual do proprietário,
 e não uma associação gravada diretamente no ticket.
+
+O link de edição abre outro diálogo AJAX e espera `201` em JSON; o ciclo
+temporário/restauração confirmou que o mesmo contrato serve às duas alterações.
+Já o painel de notas recebe um fragmento HTML com `200` e o injeta na coleção da
+tela. A área administrativa combina, portanto, respostas JSON para entidade e
+HTML para conteúdo incremental na mesma página.

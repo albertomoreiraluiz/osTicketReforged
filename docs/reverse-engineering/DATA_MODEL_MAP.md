@@ -80,6 +80,12 @@ coluna de organização em `ticket`: ela filtra tickets pela relação
 organização imediatamente após o vínculo do proprietário, sem mutação no
 registro do ticket.
 
+A nota administrativa da organização utiliza a tabela polimórfica `note` com
+`ext_id=O{id}` e `staff_id` do autor. Diferentemente da thread do ticket, o
+registro é uma anotação rápida diretamente associada à entidade por esse
+identificador textual. A edição do nome atualiza a própria organização via
+formulário dinâmico e não cria uma nova versão da entidade.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação
