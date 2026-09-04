@@ -173,3 +173,12 @@ redirecionamento. Essa URL só é correta quando resolvida a partir do shell
 `/scp`; resolvê-la a partir da raiz conduz ao portal público. O assunto dinâmico
 foi alterado e restaurado, confirmando que o frontend deve preservar tanto os
 campos atuais quanto o contexto da URL relativa.
+
+## Administração do usuário confirmada — Onda 7
+
+O detalhe do usuário combina edição em diálogo AJAX, organização, tickets e
+notas. A edição retornou JSON com `201`, enquanto a nota retornou HTML com `200`,
+o mesmo padrão heterogêneo observado na organização. Já o perfil do próprio
+cliente usa página e redirecionamento tradicionais. O frontend futuro precisará
+distinguir esses contratos mesmo quando ambos terminam em
+`User::updateInfo()`.

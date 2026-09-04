@@ -61,6 +61,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-020 | organização e vínculo de usuário | administrador | mutável | concluído | criação, associação e agregação de ticket |
 | BHV-021 | edição e nota de organização | administrador | mutável | concluído | atualização reversível e nota persistente |
 | BHV-022 | edição do ticket | administrador | mutável | concluído | assunto dinâmico alterado e restaurado |
+| BHV-023 | administração de usuário | administrador | mutável | concluído | edição reversível e nota persistente |
 
 ## Regras de evidência
 
@@ -586,6 +587,24 @@ raiz pública e recebeu o login do cliente; o banco confirmou que essa tentativa
 não persistiu nada. A correção para o contexto `/scp` demonstra que ações
 relativas dependem do shell de origem e precisam ser preservadas em qualquer
 reprodução futura.
+
+### BHV-023 — edição administrativa e nota de usuário
+
+O administrador abriu `ajax.php/users/{id}/edit`, alterou temporariamente o nome
+do usuário anônimo e restaurou o valor original pelo endpoint
+`ajax.php/users/{id}`. As duas respostas foram `201 application/json` e
+refletiram o valor correspondente. A verificação final no banco encontrou o
+nome original, zero marcador temporário e a organização anterior preservada.
+
+O painel do usuário recebeu uma nota fictícia por
+`ajax.php/users/{id}/note`. A resposta `200` devolveu o fragmento HTML e a tabela
+`note` reteve exatamente um registro com `ext_id=U{id}`. A repetição evita
+duplicação após consultar a tela. O ensaio não alterou conta, senha, endereço de
+e-mail, tickets ou colaboração e não executou exclusão ou notificação.
+
+Comparado a BHV-019, o backend administrativo chama o mesmo
+`User::updateInfo()`, mas com o modo staff e contrato AJAX/JSON; o
+autoatendimento usa POST tradicional e redirecionamento.
 
 ## Exposição local aceita na homologação
 

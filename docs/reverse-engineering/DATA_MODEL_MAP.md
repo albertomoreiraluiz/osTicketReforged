@@ -91,6 +91,11 @@ formulário materializada em `ticket__cdata`, e não uma coluna de `ticket`. A
 alteração temporária e a restauração apareceram imediatamente nessa visão; o
 registro final reteve somente o assunto original.
 
+A nota rápida do usuário reutilizou `note` com `ext_id=U{id}`, paralela ao
+prefixo `O` da organização. A edição administrativa atualizou `user.name` e
+preservou `user.org_id`, confirmando que os formulários de pessoa e o vínculo
+organizacional podem mudar independentemente.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação

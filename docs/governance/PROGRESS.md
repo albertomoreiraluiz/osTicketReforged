@@ -92,6 +92,8 @@
   dinâmica terminou com o original e sem marcador temporário.
 - Transporte de saída inspecionado: sem SMTP cadastrado, fallback local sem
   listener e sem coletor; notificações permanecem pendentes sem inferência.
+- Usuário anônimo editado e restaurado pelo diálogo staff; organização
+  preservada e nota rápida única persistida como fixture.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -246,3 +248,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — edição e nota de organização | formulário AJAX; alteração/restauração; nota rápida; banco | Dois `201` restauraram o nome; nota retornou HTML `200` e persistiu uma vez com `ext_id=O{id}` |
 | 2026-09-04 | Onda 7 — edição de ticket | formulário completo; ação relativa; dois POSTs; `ticket__cdata` | Assunto temporário apareceu e foi restaurado; resolução correta depende do contexto `/scp`; nenhuma notificação ou exclusão |
 | 2026-09-04 | Onda 7 — pré-condição de notificações | `email_account`; PHP mail; porta local; `syslog` | Sem SMTP ativo ou listener/coleção; ausência de erro não prova envio; ensaio aguarda coletor local sem relay |
+| 2026-09-04 | Onda 7 — administração de usuário | diálogo AJAX; dois POSTs; detalhe; banco; nota rápida | Nome restaurado por dois `201`; `org_id` preservado; uma nota `U{id}` retornada em HTML `200` |
