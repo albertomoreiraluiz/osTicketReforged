@@ -592,6 +592,29 @@ e e-mail estão cobertos para criação. Cron autorizado continua pendente porqu
 somente será executado depois de backup verificável que cubra banco e
 filesystem, conforme GOV-014.
 
+#### Plano de rollback BHV-012-A — cron HTTP autorizado
+
+Antes de autorizar cron, será inventariado o conjunto que cada rotina pode
+excluir: locks expirados, drafts antigos, sessões expiradas, resets vencidos,
+logs fora da retenção e arquivos temporários órfãos. Também serão conferidos os
+backends efetivamente usados pelos registros de arquivo. Qualquer backend de
+filesystem exige cópia adicional do diretório correspondente antes de avançar.
+
+O banco integral será exportado por `mariadb-dump` 10.11 para artefato local
+ignorado, sem expor credenciais, e receberá hash SHA-256. A validade será
+demonstrada restaurando o dump em um banco temporário de nome fixo e comparando
+as contagens das tabelas centrais com a origem. Esse banco existe somente para
+verificação e sua remoção após sucesso fica planejada neste protocolo; como ele
+é derivado integralmente do dump, pode ser recriado pelo mesmo comando.
+
+Somente depois dessas garantias a chave existente será temporariamente marcada
+ativa, com `can_exec_cron`, preservando as demais flags. Um único
+`POST /api/tasks/cron` será executado e a chave restaurada em `finally`. Estado
+HTTP, candidatos antes/depois, log de cron e integridade dos tickets serão
+verificados. Se a restauração do dump ou a comparação falhar, o cron não será
+executado. Se o cron divergir das limpezas previstas, a homologação será
+restaurada integralmente pelo dump antes de qualquer continuação.
+
 ### BHV-013 — exportação PDF
 
 As exportações do ticket na sessão administrativa, da tarefa nas sessões de
