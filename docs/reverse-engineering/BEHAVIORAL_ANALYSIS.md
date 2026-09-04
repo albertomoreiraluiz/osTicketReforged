@@ -44,6 +44,7 @@ de rollback.
 | BHV-009 | tarefas vinculadas | papéis fictícios | mutável | iniciado | criação, visibilidade e ACL por ação |
 | BHV-010 | anexos e arquivos | papéis fictícios | mutável | iniciado | persistência, serving e limites |
 | BHV-011 | e-mail | papéis fictícios | mutável | pendente | efeitos controlados sem entrega externa acidental |
+| BHV-012 | API HTTP nativa | chave fictícia local | mutável | iniciado | autenticação, flags, parsing e persistência |
 
 ## Regras de evidência
 
@@ -339,6 +340,19 @@ conseguiu consumir a URL assinada obtida na sessão staff. A assinatura continua
 necessária e funcionou como capability; o resultado não demonstra descoberta
 ou enumeração da URL, mas confirma que `file.php` aceita qualquer cliente
 autenticado que a receba sem cruzar acesso ao pai.
+
+### BHV-012 — API HTTP nativa
+
+Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou
+uma chave fictícia restrita ao IP local e apenas à criação de tickets. Sem chave
+ou com chave inválida, o endpoint JSON respondeu `401`; com a fixture válida,
+respondeu `201` e o banco confirmou um ticket `source=API`. O payload usou dados
+fictícios e desabilitou alertas e autoresposta.
+
+JSON malformado retornou `400`. A tentativa de executar cron com a mesma chave,
+sem `can_exec_cron`, retornou `401`, confirmando a autorização por flag. A chave
+foi desativada ao final, sem exclusão, e seu valor não foi registrado. XML,
+e-mail e cron autorizado permanecem fora deste checkpoint.
 
 ## Exposição local aceita na homologação
 

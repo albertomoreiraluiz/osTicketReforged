@@ -63,6 +63,8 @@
   cliente convertida de 415 para 500 e ausência de ACL do pai em URL assinada.
 - Tentativa inválida isolada e recuperação por login correto confirmadas para
   agente e cliente; CSRF inválido em login redireciona com 302.
+- API nativa validada com chave local fictícia: guards 401, ticket 201/API,
+  parsing inválido 400 e cron sem flag 401; chave terminou desativada.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -202,3 +204,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — arquivos inicial | uploads staff/cliente; associação em thread; URL assinada; três contextos de acesso | Configuração sem allowlist aceita extensões; TXT associado e serving básico confirmado |
 | 2026-09-04 | Onda 7 — allowlist e rollback | dump SHA-256; protocolos A/B; campos `.txt`; restauração a `NULL` | Bypass staff confirmado; cliente rejeita com 500; acesso ao pai não é verificado |
 | 2026-09-04 | Onda 7 — autenticação negativa | sessões isoladas; senha e CSRF inválidos; login correto subsequente | Mensagem genérica e 200 para senha; 302 para CSRF; sem bloqueio após uma falha |
+| 2026-09-04 | Onda 7 — API HTTP | chave local; JSON válido/inválido; flag de cron; banco | 401/201/400 confirmados; ticket `source=API`; chave desativada ao final |

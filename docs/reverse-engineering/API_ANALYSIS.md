@@ -106,3 +106,17 @@ observados continuaram mistos entre JSON e `text/html`.
 **Inferência sustentada:** a API nativa é orientada a comandos, não CRUD. AJAX é
 interno, sem versão e acoplado a templates; não está classificado como contrato
 público estável.
+
+## Confirmação comportamental — Onda 7
+
+Sem `X-API-Key` e com valor inválido, `POST /api/tickets.json` respondeu `401`.
+Uma chave fictícia ativa, vinculada ao endereço local `::1` e somente à flag
+`can_create_tickets`, foi criada pelo painel administrativo sem registrar seu
+valor na documentação. Com JSON válido e alertas/autoresposta desabilitados, a
+API respondeu `201` com uma referência de ticket; o banco confirmou exatamente
+um ticket com `source=API`.
+
+JSON deliberadamente malformado respondeu `400`. A mesma chave foi recusada em
+`POST /api/tasks/cron` com `401`, confirmando que autenticação válida não
+substitui a flag por operação. Ao final, a chave foi desativada e preservada
+apenas como fixture auditável; nenhum segredo foi impresso ou versionado.
