@@ -44,3 +44,9 @@ A passagem encontrou três divergências correlatas no vínculo: mutação visua
 com resposta `404`, flag residual no antigo pai após desvínculo e erro fatal ao
 renderizar o evento relacional. Elas são evidência da baseline e não foram
 corrigidas no core durante o inventário.
+
+As evidências detalhadas da repetição corretiva estão disponíveis nos dossiês
+[BHV-027 — vínculo e desvínculo](evidence/BHV-027-linked-tickets.md) e
+[BHV-029 — ticket a partir de resposta](evidence/BHV-029-ticket-from-response.md),
+acompanhadas de registros JSON sanitizados. Essa repetição corrigiu a lacuna de
+descoberta causada por saídas originalmente mantidas apenas em `.local/`.

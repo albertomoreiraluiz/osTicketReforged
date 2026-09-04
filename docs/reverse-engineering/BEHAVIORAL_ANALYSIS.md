@@ -65,9 +65,9 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-024 | perfil do agente | administrador | mutável | concluído | fuso horário alterado e restaurado |
 | BHV-025 | filas e paginação | administrador | leitura/mutável reversível | concluído | páginas, limite, overflow e restauração |
 | BHV-026 | menus e submenus do ticket | administrador | leitura | concluído | ações renderizadas e condições estáticas por contexto |
-| BHV-027 | vínculo e desvínculo de tickets | administrador | mutável com rollback | concluído | hierarquia visual, eventos e reversão |
+| BHV-027 | vínculo e desvínculo de tickets | administrador | mutável com rollback | concluído | [dossiê versionado](evidence/BHV-027-linked-tickets.md) |
 | BHV-028 | fusão de tickets | administrador | mutável com rollback | concluído | modos de thread, estados e apresentação |
-| BHV-029 | criação de ticket a partir de entrada | administrador | mutável | concluído | prefill, origem e nova thread |
+| BHV-029 | criação de ticket a partir de entrada | administrador | mutável | concluído | [dossiê versionado sobre resposta `R`](evidence/BHV-029-ticket-from-response.md) |
 | BHV-030 | ações das entradas da thread | administrador | leitura/mutável | concluído no recorte | destinatários, edição/histórico e formulário de reenvio |
 | BHV-031 | criação de tarefa a partir de entrada | administrador | mutável | concluído | prefill, vínculo e notas cruzadas |
 | BHV-032 | ações secundárias do ticket | administrador | leitura/mutável reversível | concluído no recorte | diálogos e flag respondido; demais comandos catalogados |
@@ -222,6 +222,9 @@ pois a entrada `R` possui `staff_id` e não `user_id`; após seleção explícit
 solicitante, o segundo ticket derivado foi criado. Esse detalhe explica por que
 “criar ticket da resposta” exige uma interação adicional em relação ao mesmo
 comando sobre uma mensagem do cliente.
+
+Uma repetição corretiva, com resultados sanitizados e rollback binário, está
+publicada no [dossiê BHV-029](evidence/BHV-029-ticket-from-response.md).
 
 ### Checkpoint 3 — ações de entrada, secundárias, massa e exportação
 

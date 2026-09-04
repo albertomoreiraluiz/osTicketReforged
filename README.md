@@ -25,6 +25,9 @@ Oito cenários complementares foram concluídos no recorte declarado, incluindo
 vínculo, fusão e criação de ticket ou tarefa a partir da thread; ações em massa
 ficaram mapeadas sem efeito em lote. A revisão final foi aprovada e integrada
 pela PR #9.
+Os cenários de vínculo/desvínculo e criação de ticket a partir de uma resposta
+foram repetidos sob rollback binário e agora possuem dossiês e JSON sanitizados
+no [índice de evidências comportamentais](docs/reverse-engineering/evidence/README.md).
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 

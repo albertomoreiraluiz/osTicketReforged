@@ -74,6 +74,10 @@ nav:
       - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
       - Revisão cruzada: reverse-engineering/REVIEW_REPORT.md
       - Análise comportamental: reverse-engineering/BEHAVIORAL_ANALYSIS.md
+      - Evidências comportamentais:
+          - Protocolo e índice: reverse-engineering/evidence/README.md
+          - BHV-027 — tickets vinculados: reverse-engineering/evidence/BHV-027-linked-tickets.md
+          - BHV-029 — ticket de resposta: reverse-engineering/evidence/BHV-029-ticket-from-response.md
   - Governança:
       - Contexto: governance/PROJECT_CONTEXT.md
       - Progresso: governance/PROGRESS.md
