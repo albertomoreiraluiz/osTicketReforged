@@ -8,7 +8,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Onda 8 complementar em execução: menus e ações secundárias |
+| Etapa atual | Onda 8 encerrada: oito cenários concluídos e um mapeado |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
@@ -20,14 +20,16 @@ foram confirmadas por observação em runtime. O snapshot oficial de referência
 o portal MkDocs permanecem no fluxo obrigatório de atualização.
 
 A Onda 7 concluiu 25 cenários funcionais. Uma revisão de cobertura abriu a Onda
-8 para demonstrar menus contextuais e ações encadeadas ainda não exercitadas,
-incluindo vínculo, fusão e criação de ticket ou tarefa a partir da thread.
+8 para demonstrar menus contextuais e ações encadeadas ainda não exercitadas.
+Oito cenários complementares foram concluídos no recorte declarado, incluindo
+vínculo, fusão e criação de ticket ou tarefa a partir da thread; ações em massa
+ficaram mapeadas sem efeito em lote. A revisão final está em curso.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 
 Próximas etapas:
 
-1. concluir e revisar os cenários `BHV-026` a `BHV-034` da Onda 8;
+1. integrar o fechamento revisado da matriz `BHV-026` a `BHV-034`;
 2. consolidar as evidências em pelo menos três opções arquiteturais;
 3. comparar riscos de atualização, integração, segurança e migração;
 4. manter exclusões condicionadas a plano, backup verificável e rollback

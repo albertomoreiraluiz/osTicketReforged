@@ -252,7 +252,7 @@ reabertura da fixture. Nenhum arquivo ou sistema foi alterado pelo revisor.
 
 ## Onda 8 — menus e ações secundárias do ticket
 
-**Estado:** em execução pelo agente principal.
+**Estado:** encerrada após segunda passagem QA aprovada.
 
 **Motivo da reabertura:** a revisão solicitada pelo responsável identificou
 que a matriz anterior validou o ciclo principal, mas não esgotou menus
@@ -265,3 +265,22 @@ relacional; por isso a execução inicial permanece em agente único. Revisão
 independente será avaliada após estabilização da matriz. As mutações usam dados
 fictícios; vínculo/desvínculo e fusão obedecem ao plano de dump e rollback de
 `BEHAVIORAL_ANALYSIS.md`. Nenhuma exclusão de ticket será executada nesta onda.
+
+**Resultado da execução:** oito cenários complementares concluídos no recorte
+declarado e um (`BHV-033`) mapeado sem execução em lote. Foram
+confirmados menus contextuais, vínculo/desvínculo, os dois modos de fusão,
+criação de ticket e tarefa a partir de entradas, edição/histórico, condições de
+reenvio/destinatários, ações secundárias, menu em massa e exportações compostas.
+O core não foi alterado e nenhuma exclusão foi executada.
+
+**Primeiro parecer QA:** fechamento bloqueado por desvio do plano de rollback e
+critérios que excediam a evidência. O estado pós-teste foi preservado em segundo
+dump; o dump pré-relação foi restaurado na homologação com paridade nas
+contagens de seis tabelas. Critérios de papel, participantes/tarefas na fusão,
+anexos, reenvio, ações secundárias, massa e exportação foram estreitados ao
+recorte efetivamente observado.
+
+**Segundo parecer QA:** aprovado após confirmar o rollback reconciliado, o
+estreitamento dos critérios ao que foi observado, o registro das divergências
+relacionais e a coerência entre matriz, progresso, plano e portal. Nenhum
+achado alto ou médio permanece aberto no fechamento documental.

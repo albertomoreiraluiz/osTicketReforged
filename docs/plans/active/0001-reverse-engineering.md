@@ -20,8 +20,9 @@ Produzir a documentação técnica necessária para escolher, sem antecipação,
 
 A infraestrutura local está ativa com XAMPP, Apache, PHP 8.2, extensões
 necessárias e logs. A instalação funcional, o banco, o ciclo HTTP público e a
-autenticação administrativa foram confirmados; a Onda 7 concluiu a validação
-funcional controlada, revisada independentemente sem bloqueio restante.
+autenticação administrativa foram confirmados. A Onda 7 concluiu a validação
+funcional inicial; a Onda 8 complementar executou os menus e ações encadeadas
+omitidos na primeira matriz e está em revisão independente.
 
 ## Fontes externas de apoio
 
@@ -83,8 +84,11 @@ aprofundamento do Portão C. Eles não são pré-condição retroativa do Portã
 exaustivos e revisão cruzada sem achado alto ou médio aberto. A instalação foi
 concluída em 2026-09-04; os 25 cenários da validação comportamental da Onda 7
 foram concluídos, aprovados na revisão documental final e integrados pela PR #6.
-O trabalho restante deste plano é o Portão D, que depende da comparação de
-opções e da decisão explícita do responsável.
+Uma revisão de cobertura abriu nove cenários complementares da Onda 8: oito
+foram concluídos no recorte declarado e ações em massa ficaram mapeadas sem
+efeito em lote. Nenhuma exclusão ocorreu. Depois da revisão independente e do
+fechamento, o trabalho restante deste plano volta a ser o Portão D, dependente
+da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural
 

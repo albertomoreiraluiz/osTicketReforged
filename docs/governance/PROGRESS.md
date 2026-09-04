@@ -158,10 +158,38 @@
 - Cenários `BHV-026` a `BHV-034` formalizados antes das mutações.
 - Vínculo/desvínculo e fusão condicionados a dump MariaDB restaurado em banco
   temporário; exclusão de ticket permanece fora da execução planejada.
+- Dump integral de 1.132.907 bytes restaurado com as três fixtures em banco
+  temporário antes das relações.
+- Vínculo visual persistiu pai/filho, mas retornou `404`; desvínculo retornou
+  `201` e deixou flags residuais no antigo pai.
+- A renderização do evento de vínculo registrou fatal em
+  `LinkedEvent::getDescription()` por divergência na quantidade de argumentos;
+  eventos de fusão e desvínculo compartilham a mesma construção estática.
+- Fusão com threads separadas retornou `201`, manteve pai aberto e fechou o
+  filho sem exclusão; depois, o modo combinado também foi exercitado.
+- Modos combinado e separado alternados com `201`; ambos apresentaram as duas
+  mensagens no pai, e a fixture terminou no modo separado.
+- Ticket derivado de mensagem herdou o solicitante; ticket derivado de resposta
+  exigiu seleção explícita. Ambos preservaram o corpo e registraram referências.
+- Tarefa derivada criada com descrição predefinida, vínculo ao ticket e notas
+  cruzadas; edição/histórico de entrada confirmados.
+- Diálogos e condições de destinatários, cabeçalhos e reenvio mapeados; envio
+  redundante não repetido porque o transporte já foi coberto em BHV-011.
+- Ações secundárias e em massa catalogadas; respondido/não respondido foi
+  alternado e restaurado. A marcação de vencido foi negada e não persistiu.
+- Três PDFs e dois ZIPs válidos confirmados; o ZIP com tarefas continha dois
+  documentos, contra um no arquivo sem tarefas.
+- A primeira revisão independente bloqueou o fechamento por desvio no momento
+  do rollback e critérios amplos demais. Um dump pós-teste preservou a evidência
+  e o dump pré-relação foi restaurado; seis contagens de tabelas ficaram iguais
+  à base de verificação e as três fixtures voltaram ao estado independente.
+- Oito cenários complementares foram concluídos no recorte declarado;
+  `BHV-033` permanece mapeado, sem alegação de efeito em lote. Segunda revisão
+  documental permanece antes do fechamento da onda.
 
 ## Próximo passo proposto
 
-1. concluir e revisar a matriz complementar `BHV-026` a `BHV-034`;
+1. integrar o fechamento revisado da matriz complementar `BHV-026` a `BHV-034`;
 2. derivar pelo menos três opções arquiteturais das evidências consolidadas;
 3. comparar riscos de atualização, segurança, integração e migração;
 4. apresentar recomendação e ADR do Portão D ao responsável, sem antecipar a
