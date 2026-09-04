@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-04.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável resultante: `main`, sincronizada após a PR #6.
-- Etapa: Onda 8 complementar em execução antes da preparação do Portão D.
+- Etapa: Onda 8 integrada pela PR #9; preparação das opções do Portão D.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -148,7 +148,7 @@
 - Revisão QA independente concluída; contagens fundamentais confirmadas e
   inconsistências documentais em correção.
 
-## Onda 8 em execução
+## Onda 8 concluída e integrada
 
 - Revisão de cobertura solicitada para menus e submenus que não receberam
   ensaio comportamental específico na Onda 7.
@@ -185,14 +185,13 @@
   à base de verificação e as três fixtures voltaram ao estado independente.
 - Oito cenários complementares foram concluídos no recorte declarado;
   `BHV-033` permanece mapeado, sem alegação de efeito em lote. Segunda revisão
-  documental permanece antes do fechamento da onda.
+  documental aprovada e fechamento integrado pela PR #9.
 
 ## Próximo passo proposto
 
-1. integrar o fechamento revisado da matriz complementar `BHV-026` a `BHV-034`;
-2. derivar pelo menos três opções arquiteturais das evidências consolidadas;
-3. comparar riscos de atualização, segurança, integração e migração;
-4. apresentar recomendação e ADR do Portão D ao responsável, sem antecipar a
+1. derivar pelo menos três opções arquiteturais das evidências consolidadas;
+2. comparar riscos de atualização, segurança, integração e migração;
+3. apresentar recomendação e ADR do Portão D ao responsável, sem antecipar a
    decisão de versões ou integração do frontend.
 
 ## Estado dos portões
@@ -292,6 +291,7 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — autenticação negativa | sessões isoladas; senha e CSRF inválidos; login correto subsequente | Mensagem genérica e 200 para senha; 302 para CSRF; sem bloqueio após uma falha |
 | 2026-09-04 | Onda 7 — API HTTP | chave local; JSON válido/inválido; flag de cron; banco | 401/201/400 confirmados; ticket `source=API`; chave desativada ao final |
 | 2026-09-04 | Onda 7 — revisão de segurança 1 | parecer independente; releitura do código; fechamento forjado e reabertura | ACL composta e capability altas; upload médio; contratos de erro classificados |
+| 2026-09-04 | Onda 8 — menus e ações encadeadas | PR #9; `BHV-026`–`BHV-034`; três passagens QA; rollback verificado | oito cenários concluídos no recorte, massa mapeada, divergências relacionais registradas |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |

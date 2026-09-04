@@ -283,4 +283,5 @@ recorte efetivamente observado.
 **Segundo parecer QA:** aprovado após confirmar o rollback reconciliado, o
 estreitamento dos critérios ao que foi observado, o registro das divergências
 relacionais e a coerência entre matriz, progresso, plano e portal. Nenhum
-achado alto ou médio permanece aberto no fechamento documental.
+achado alto ou médio permanece aberto no fechamento documental. A Onda 8 foi
+integrada em `main` pela PR #9.

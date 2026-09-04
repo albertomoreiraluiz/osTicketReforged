@@ -38,7 +38,7 @@ restaurado previamente e nenhuma exclusão. Oito cenários foram concluídos no
 recorte declarado; ações em massa ficaram mapeadas, sem efeito em lote
 observado. Após um desvio de sequência apontado pelo QA, o dump pré-relação foi
 restaurado na homologação com paridade de seis contagens. A segunda passagem do
-parecer independente permanece em curso.
+parecer independente foi aprovada e integrada pela PR #9.
 
 A passagem encontrou três divergências correlatas no vínculo: mutação visual
 com resposta `404`, flag residual no antigo pai após desvínculo e erro fatal ao
