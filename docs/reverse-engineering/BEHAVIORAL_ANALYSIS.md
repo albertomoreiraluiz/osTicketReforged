@@ -38,7 +38,7 @@ de rollback.
 | BHV-003 | painel e menus da equipe | administrador | leitura | concluído na passagem inicial | telas, links e guards observados |
 | BHV-004 | portal do cliente | anônimo/cliente | leitura/sessão | pendente | login, consulta e guards |
 | BHV-005 | matriz de permissões | agente/admin | leitura | pendente | diferenças de menu e resposta |
-| BHV-006 | AJAX/PJAX | administrador/agente | leitura | pendente | contrato HTTP e erros sanitizados |
+| BHV-006 | AJAX/PJAX | administrador/agente | leitura | iniciado | contrato HTTP e erros sanitizados |
 | BHV-007 | logs PHP e Apache | sistema | leitura | iniciado | ausência/presença de falhas correlatas |
 | BHV-008 | ticket de teste | papéis fictícios | mutável | pendente | ciclo e persistência controlados |
 | BHV-009 | anexos, e-mail e tarefas | papéis fictícios | mutável | pendente | efeitos controlados por subsistema |
@@ -114,6 +114,33 @@ fatal, banco, sessão ou filesystem. No PHP CLI atual, a extensão responde como
 habilitada; portanto, os avisos históricos não são atribuídos às requisições
 testadas e permanecem como observação de inicialização do Apache a revisar. A
 amostra recente do log Apache não apresentou marcador de warning ou erro fatal.
+
+### BHV-003 — varredura administrativa ampliada
+
+Uma passagem autenticada percorreu 31 rotas operacionais e administrativas por
+GET. Todas responderam `200`, preservaram a sessão, não reapresentaram o login e
+não exibiram marcador de erro fatal. O log PHP não cresceu durante a passagem.
+O log configurado do Apache recebeu registros das requisições, sem marcador de
+nível `emerg`, `alert`, `crit`, `error`, `warn`, `notice`, `info` ou erro PHP na
+amostra correlacionada.
+
+### BHV-006 — primeira passagem AJAX
+
+As rotas autenticadas `/config/scp` e `/config/links` responderam `200` como
+`application/json`. `/config/date-format`, buscas de usuários e organizações e
+`/content/context` devolveram `400` quando seus parâmetros obrigatórios foram
+omitidos; com parâmetros inofensivos, responderam `200`. Os resultados vazios
+de busca foram entregues com corpo mínimo e `text/html`, enquanto o contexto de
+variáveis usou `application/json`. Isso confirma a heterogeneidade de tipos de
+resposta descrita estaticamente.
+
+Sem sessão, `/config/scp` retornou `403`. Um POST autenticado sem token CSRF
+retornou `400`, exatamente pelo guard global de `scp/staff.inc.php`.
+
+Cinco alvos classificados estaticamente como ausentes foram alcançados em
+runtime: as quatro rotas de relatório de visão geral e `/orgs/1` retornaram
+`500`. Isso confirma o efeito previsto para esse subconjunto; não houve tentativa
+de executar as rotas mutáveis com métodos ausentes.
 
 ## Exposição local aceita na homologação
 

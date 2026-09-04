@@ -96,6 +96,12 @@ Achados e validações futuras:
 2. a documentação histórica diz que API keys servem à API HTTP sem configuração
    especial, enquanto o código exige flags por operação;
 
+Na primeira passagem comportamental da Onda 7, cinco dos treze alvos ausentes
+foram confirmados com resposta `500`: as quatro rotas de relatório e a consulta
+de organização por ID. Configuração sem sessão retornou `403`, POST autenticado
+sem CSRF retornou `400`, e rotas de leitura com parâmetros válidos responderam
+`200`. Os tipos observados continuaram mistos entre JSON e `text/html`.
+
 **Inferência sustentada:** a API nativa é orientada a comandos, não CRUD. AJAX é
 interno, sem versão e acoplado a templates; não está classificado como contrato
 público estável.

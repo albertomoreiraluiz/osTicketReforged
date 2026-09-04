@@ -83,8 +83,17 @@ Treze folhas apontam para alvo ausente na baseline:
 Para os nove métodos ausentes em controllers carregáveis, o dispatcher produz
 500 após `access()` (`include/class.dispatcher.php:139-155`). As quatro rotas de
 relatório falham antes, no `include_once`/construção do controller ausente
-(`include/class.dispatcher.php:163-175`); o status efetivo desse grupo permanece
-para a fase dinâmica. A ausência dos 13 alvos é fato estático.
+(`include/class.dispatcher.php:163-175`). A Onda 7 confirmou resposta `500` nas
+quatro rotas desse grupo. A ausência dos 13 alvos é fato estático.
+
+### Confirmação comportamental parcial — Onda 7
+
+Em 2026-09-04, uma sessão administrativa alcançou as quatro rotas de relatório
+de visão geral e `/orgs/1`; todas retornaram `500`, confirmando o status previsto
+para esses cinco alvos ausentes. Rotas válidas de configuração responderam
+`200`; parâmetros obrigatórios ausentes produziram `400`; acesso anônimo a uma
+rota de configuração produziu `403`; e POST autenticado sem CSRF produziu
+`400`. Os oito alvos ausentes restantes ainda não foram acionados em runtime.
 
 Três regex de filas concatenam `search` diretamente ao ID, sem barra, e
 `/admin/role/{id}/perms` é irmã de `quick-add`. Esses detalhes comprovam por

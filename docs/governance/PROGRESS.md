@@ -36,6 +36,10 @@
 
 - Onda 7 comportamental iniciada sobre a distribuição `v1.18.4` instalada na
   raiz `C:\xampp\htdocs`.
+- Varredura autenticada de 31 páginas concluída sem falha HTTP, formulário de
+  login, erro fatal ou novo registro no log PHP.
+- Primeira passagem AJAX confirmou guards 400/403, respostas heterogêneas e
+  cinco alvos ausentes retornando 500 em runtime.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -163,3 +167,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Exposição local do instalador | decisão explícita do responsável | `setup/` será mantido na homologação acessível somente pela máquina local; produção permanece fora dessa exceção |
 | 2026-09-04 | Autorização de dados da Onda 7 | GOV-014; decisão explícita do responsável | Criação e edição funcionais autorizadas na homologação; exclusões exigem plano, backup verificável e rollback |
 | 2026-09-04 | Consolidação da engenharia reversa | PR #5 | Inventário estático, homologação e início da Onda 7 submetidos para integração em `main` |
+| 2026-09-04 | Integração documental | PR #5; merge `9feda032` | Engenharia reversa estática e início comportamental integrados em `main` |
+| 2026-09-04 | Onda 7 — páginas e AJAX | 31 páginas autenticadas; rotas AJAX válidas, inválidas e cinco alvos ausentes | Páginas estáveis; guards e status dinâmicos registrados; oito alvos ausentes seguem pendentes |
