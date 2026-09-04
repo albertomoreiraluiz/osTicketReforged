@@ -17,4 +17,4 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-011 | 2026-09-03 | Aceito | O novo frontend ficará isolado em `frontend/` e usará Angular com PrimeNG; versões e integração serão decididas posteriormente. | `docs/adr/0001-frontend-angular-primeng.md` |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
-a GOV-011 foram formalizadas pela PR #2.
+a GOV-011 foram formalizadas e integradas pela PR #2.
