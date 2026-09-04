@@ -33,6 +33,8 @@
   de extensão do core.
 - Onda 5 concluída com integridade de ticket/tarefa, 16 registries/factories e
   matriz de customização, em três missões somente leitura.
+- Onda 6 iniciada para revisão cruzada de integridade, superfícies, segurança e
+  cobertura do Portão C, sem execução dinâmica.
 - Onda 4 concluída com matriz das 229 folhas AJAX, catálogo das 72 declarações
   ORM, contratos dos 14 módulos CLI e dos 41 sinais.
 - Onda 1 do inventário estático formalizada para ciclo de requisição, modelo de

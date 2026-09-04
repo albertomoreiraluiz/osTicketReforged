@@ -127,6 +127,24 @@ resultados estão em `INTEGRITY_FAILURES.md`, `REGISTRY_CATALOG.md` e
 `CUSTOMIZATION_MATRIX.md`. Possíveis órfãos e estados parciais permanecem
 inferências fortes até testes controlados após a instalação.
 
+## Onda 6 — revisão cruzada do Portão C
+
+**Estado:** em execução.
+
+**Justificativa:** o volume e a criticidade exigem revisão por instâncias
+distintas das produtoras de cada artefato. Cada especialista revisa domínios
+produzidos por outro perfil; não há nova produção paralela nem ownership de
+arquivo.
+
+| Instância | Perfil permanente | Missão de revisão | Escrita | Integrador |
+| --- | --- | --- | --- | --- |
+| `arquiteto-api/onda-06/revisao-integridade` | Arquiteto de API | revisar falhas/órfãos e registries, buscando evidência insuficiente e efeito em contratos | nenhuma | agente principal |
+| `engenheiro-dados/onda-06/revisao-superficies` | Engenheiro de Dados | revisar AJAX, sinais e segurança, confrontando efeitos com persistência/schema | nenhuma | agente principal |
+| `engenheiro-reversa/onda-06/revisao-cobertura` | Engenheiro de Engenharia Reversa | auditar cobertura global, ORM, CLI e matriz de customização contra plano/Portão C | nenhuma | agente principal |
+
+Achado crítico, contradição ou referência inválida deve ser entregue com
+correção proposta; testes dinâmicos não serão executados nesta onda.
+
 ## Restrições da fase
 
 - A análise é exclusivamente estática enquanto o osTicket não estiver
