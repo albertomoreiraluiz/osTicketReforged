@@ -72,6 +72,8 @@
   as exportações específicas da tarefa refletiram seu histórico autorizado.
 - Escopo da Onda 7 ajustado por GOV-015 para priorizar fluxos funcionais fiéis
   entre frontend e backend, sem ampliar testes dedicados a segurança.
+- Buscas e listas do cliente/SCP validadas com resultados positivos e negativos,
+  filtros de estado/tópico, ordenação, lookup e formulário avançado.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -216,3 +218,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |
+| 2026-09-04 | Onda 7 — buscas e filtros | cliente e SCP; número/termo ausente; estado, tópico, ordem, lookup e diálogo avançado | Resultados positivos e negativos coerentes; filtros do cliente persistem em sessão e precisam ser limpos entre composições; nenhuma mutação |

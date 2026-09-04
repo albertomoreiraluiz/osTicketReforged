@@ -52,6 +52,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-011 | e-mail | papéis fictícios | mutável | pendente | efeitos controlados sem entrega externa acidental |
 | BHV-012 | API HTTP nativa | chave fictícia local | mutável | iniciado | autenticação, flags, parsing e persistência |
 | BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
+| BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
 
 ## Regras de evidência
 
@@ -124,6 +125,13 @@ fatal, banco, sessão ou filesystem. No PHP CLI atual, a extensão responde como
 habilitada; portanto, os avisos históricos não são atribuídos às requisições
 testadas e permanecem como observação de inicialização do Apache a revisar. A
 amostra recente do log Apache não apresentou marcador de warning ou erro fatal.
+
+Em uma passagem posterior, o log PHP continuou sem crescimento, mas o log de
+erros do Apache continha repetições sem timestamp de `VirtualProtect() failed
+[87] Parâmetro incorreto`. As linhas não trazem rota, stack trace ou marcador do
+osTicket; três leituras públicas isoladas imediatamente depois não aumentaram o
+arquivo. A origem e a correlação permanecem ambientais e indeterminadas, sem
+ser atribuídas a um fluxo funcional específico.
 
 ### BHV-003 — varredura administrativa ampliada
 
@@ -239,7 +247,8 @@ apareceu imediatamente tanto na tela do cliente quanto na visão staff. O backen
 criou exatamente uma entrada pública `type=M` vinculada ao usuário, atualizou
 `thread.lastmessage` para a mensagem mais recente e manteve o ticket aberto com
 `isanswered=0`, coerente com item aguardando resposta da equipe. Não houve novo
-registro nos logs PHP ou Apache.
+registro no log PHP nem erro do osTicket identificado no log Apache; as mensagens
+ambientais `VirtualProtect()` são tratadas separadamente em BHV-007.
 
 ### BHV-009 — tarefa vinculada e autorização de resposta
 
@@ -394,6 +403,22 @@ registro do anexo e transições de fechamento e reabertura. O resultado confirm
 a filtragem entre exportação de ticket e de tarefa no cenário observado; não
 generaliza a conclusão para outros objetos ou permissões. Os documentos ficaram
 somente na área local ignorada pelo Git e não integram as evidências versionadas.
+
+### BHV-014 — buscas, filtros e ordenação
+
+Na lista do cliente, a visualização padrão e a busca pelo número mostraram o
+ticket ativo; um termo inexistente retirou a linha. Depois de limpar o estado de
+busca mantido na sessão, o filtro `open` mostrou a fixture e `closed` não a
+mostrou. O tópico correto incluiu o ticket, um tópico inexistente o excluiu, e
+as ordenações ascendente e descendente por número responderam `200` preservando
+a linha. Com uma única fixture visível, o teste confirma o contrato e o estado
+de sessão, mas não compara a posição relativa de múltiplos itens.
+
+No SCP, lista padrão e busca simples pelo número mostraram o ticket, enquanto o
+termo inexistente não produziu sua linha. O lookup AJAX pelo número respondeu
+`200` com resultados estruturados e incluiu a fixture; o termo inexistente
+retornou lista vazia. O diálogo AJAX de busca avançada respondeu `200` com seu
+formulário. Nenhuma dessas operações alterou registros.
 
 ## Exposição local aceita na homologação
 

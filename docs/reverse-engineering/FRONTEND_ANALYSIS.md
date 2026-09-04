@@ -98,3 +98,17 @@ conversa pública, e nem ele nem o ticket staff incorporam a thread da tarefa. A
 duas exportações da tarefa exibem o histórico interno desse objeto, inclusive
 notas, anexo e mudanças de estado, conforme o acesso do administrador e do
 agente atribuído no cenário testado.
+
+## Listas e buscas confirmadas — Onda 7
+
+O portal manteve filtros de tickets na sessão do cliente. Busca positiva e
+negativa, estados aberto/fechado, tópico presente/ausente e ordenação por número
+foram reproduzidos pela interface HTTP. Limpar os filtros foi necessário antes
+de alternar estado ou tópico, confirmando que os controles se compõem sobre o
+estado salvo em `client:Q`.
+
+No SCP, a busca simples criou uma fila ad hoc: número existente retornou a linha
+do ticket e termo inexistente não retornou a fixture. O typeahead AJAX entregou
+JSON estruturado para o número e lista vazia para o termo ausente; a busca
+avançada carregou como formulário AJAX. Esses resultados confirmam os dois
+caminhos de pesquisa observáveis sem criar uma fila salva.
