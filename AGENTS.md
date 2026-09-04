@@ -45,7 +45,11 @@ Marque explicitamente cada conclusão relevante como **Fato observado**, **Infer
 - Nunca faça commit diretamente em `main`, `develop`, `master` ou `1.18.x`.
 - Use branch dedicada e Pull Request para `main`.
 - Mantenha commits pequenos e separe documentação, extensões e alterações inevitáveis do core.
-- Não faça rebase, reset destrutivo, force-push, merge, release ou exclusão sem autorização explícita.
+- Push para branches dedicadas, criação de Pull Request e merge validado em
+  `main` possuem autorização permanente por GOV-016. Interrompa antes de merge
+  quando houver conflito, validação falha, impacto não revisado ou risco
+  material. Rebase, reset destrutivo, force-push, release e exclusão continuam
+  exigindo autorização específica.
 - Atualizações do upstream entram por branch própria, comparação da nova release, validação e Pull Request.
 - Imediatamente antes de criar qualquer Pull Request, releia e atualize `README.md`, `docs/governance/PROGRESS.md`, plano ativo, decisões/ADRs, documentação técnica afetada e `docs/changes/` quando houver código. Só abra o PR depois de confirmar que esses documentos descrevem o estado que será integrado.
 
@@ -168,4 +172,4 @@ Pare e solicite decisão quando houver:
 
 ## Critério de conclusão de uma tarefa
 
-Uma tarefa só está concluída quando o escopo solicitado foi atendido, o diff foi revisado, as validações proporcionais passaram, as fontes foram citadas, progresso e documentos afetados foram atualizados e riscos remanescentes foram informados. Commit, push, Pull Request e merge são ações distintas e dependem da autorização correspondente.
+Uma tarefa só está concluída quando o escopo solicitado foi atendido, o diff foi revisado, as validações proporcionais passaram, as fontes foram citadas, progresso e documentos afetados foram atualizados e riscos remanescentes foram informados. Commit, push, Pull Request e merge são ações distintas; push de branch dedicada, PR e merge validado são cobertos por GOV-016, enquanto ações arriscadas continuam dependendo de autorização específica.

@@ -19,8 +19,11 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-013 | 2026-09-03 | Aceito | O portal MkDocs integra o fluxo documental obrigatório: navegação deve acompanhar documentos relevantes e o build estrito deve passar antes da conclusão e de cada PR documental. | `AGENTS.md`; `docs/governance/DOCUMENTATION_POLICY.md`; `docs/development/DOCUMENTATION_PORTAL.md` |
 | GOV-014 | 2026-09-04 | Aceito | Alterações funcionais necessárias à análise comportamental estão previamente autorizadas somente no banco descartável de homologação. Toda exclusão exige plano anterior à execução, backup verificável e garantia de rollback; produção, schema e core permanecem fora da autorização. | `AGENTS.md`; `docs/reverse-engineering/BEHAVIORAL_ANALYSIS.md`; decisão explícita do responsável |
 | GOV-015 | 2026-09-04 | Aceito | A Onda 7 deve priorizar a reprodução fiel dos fluxos funcionais entre frontend e backend. Novos ensaios ofensivos ou dedicados a segurança ficam fora da passagem comportamental; a fase própria de segurança ocorrerá somente após o mapeamento e inventário completos. Achados já confirmados permanecem registrados como contexto. | `docs/reverse-engineering/BEHAVIORAL_ANALYSIS.md`; `docs/reverse-engineering/WAVE_MANIFEST.md`; decisão explícita do responsável |
+| GOV-016 | 2026-09-04 | Aceito | Push para branch dedicada, criação de PR e merge validado em `main` estão previamente autorizados no fluxo normal. A autorização não alcança ações excessivamente arriscadas, conflitos, validações falhas, impacto não revisado, force-push, release, reset destrutivo ou exclusões. | `AGENTS.md`; decisão explícita do responsável |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2. GOV-012 e GOV-013, o
 inventário técnico e GOV-014 são consolidados pela PR #5. GOV-015 e o
 encerramento da Onda 7 foram integrados pela PR #6.
+GOV-016 formaliza a autorização operacional permanente concedida depois desse
+encerramento.
