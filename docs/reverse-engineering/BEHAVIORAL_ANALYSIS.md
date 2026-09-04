@@ -63,6 +63,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-022 | edição do ticket | administrador | mutável | concluído | assunto dinâmico alterado e restaurado |
 | BHV-023 | administração de usuário | administrador | mutável | concluído | edição reversível e nota persistente |
 | BHV-024 | perfil do agente | administrador | mutável | concluído | fuso horário alterado e restaurado |
+| BHV-025 | filas e paginação | administrador | leitura/mutável reversível | concluído | páginas, limite, overflow e restauração |
 
 ## Regras de evidência
 
@@ -735,6 +736,29 @@ Senha, 2FA, assinatura, identidade, papel e permissões não foram alterados. O
 fluxo corresponde a `Staff::updateProfile()` chamado por
 `scp/profile.php:20-34` e demonstra uma atualização tradicional na mesma página,
 sem JSON. Não houve exclusão ou notificação.
+
+### BHV-025 — filas e paginação
+
+A preferência `max_page_size` do administrador foi temporariamente alterada
+pelo formulário real de perfil para cinco registros e confirmada por releitura.
+Com seis tickets visíveis na fila padrão, `scp/tickets.php` respondeu `200`,
+renderizou cinco linhas e ofereceu navegação para a página 2. `p=2` respondeu
+`200`, manteve a fila e renderizou a sexta linha. Ao final, a preferência
+original foi restaurada por novo POST e confirmada na tela.
+
+O parâmetro fora do intervalo `p=99` também respondeu `200`, mas expôs uma
+inconsistência da baseline: nenhuma linha foi renderizada enquanto o paginador
+voltou a indicar a página 1. O template constrói `Pagenate` com
+`PHP_INT_MAX` e executa `paginateSimple()` antes de calcular o total real; a
+consulta já recebe o offset da página 99. Somente depois `setTotal()` reposiciona
+o estado visual para o início
+(`include/staff/templates/queue-tickets.tmpl.php:87-126`), tarde demais para
+refazer a consulta.
+
+Esse resultado deve ser preservado no inventário como comportamento conhecido,
+mas não define o frontend revitalizado: a futura paginação deve normalizar ou
+rejeitar uma página inválida de forma coerente com as linhas exibidas. O ensaio
+não criou, apagou ou alterou tickets.
 
 ## Exposição local aceita na homologação
 

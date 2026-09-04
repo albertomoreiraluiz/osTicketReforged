@@ -204,3 +204,16 @@ O formulário tradicional com CSRF enviou a mensagem, redirecionou para
 `/tickets.php` e exibiu o novo conteúdo. O backend marcou o ticket como não
 respondido e limpou o namespace de draft do ticket, que estava vazio pela
 pré-condição do ensaio.
+
+## Filas e paginação confirmadas — Onda 7
+
+Com a preferência do agente temporariamente ajustada para cinco itens, a fila
+staff dividiu seis tickets em cinco linhas na página 1 e uma linha na página 2.
+O link preservou a fila corrente e usou o parâmetro `p`; a preferência original
+foi restaurada após o ensaio.
+
+Uma página muito acima do total revelou um estado incoerente: `p=99` retornou
+`200`, mostrou a navegação como página 1 e deixou a tabela vazia. O offset é
+aplicado quando o total ainda vale `PHP_INT_MAX`; o total verdadeiro corrige o
+paginador somente depois da consulta. A reprodução futura não deve copiar essa
+inconsistência visual sem uma decisão explícita de compatibilidade.
