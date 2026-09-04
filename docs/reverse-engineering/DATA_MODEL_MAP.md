@@ -50,6 +50,15 @@ associações polimórficas, `__cdata` e cascatas manuais já estão consolidada
 [Arquitetura de persistência](DATABASE_ARCHITECTURE.md). O catálogo individual
 das 72 declarações ainda pertence ao aprofundamento.
 
+## Confirmação do domínio de conhecimento — Onda 7
+
+O banco instalado começou sem registros em `faq_category`, `faq` e `faq_topic`.
+O fluxo administrativo criou uma categoria, uma FAQ e um vínculo ao tópico de
+ajuda. A edição da FAQ alterou `ispublished` de interno para público; a categoria
+permaneceu pública. A exposição no portal ainda dependeu separadamente da chave
+`config(namespace=core, key=enable_kb)`, confirmando que persistência, publicação
+do conteúdo e habilitação global são três estados distintos.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação

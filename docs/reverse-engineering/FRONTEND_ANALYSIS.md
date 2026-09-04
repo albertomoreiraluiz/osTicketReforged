@@ -112,3 +112,13 @@ do ticket e termo inexistente não retornou a fixture. O typeahead AJAX entregou
 JSON estruturado para o número e lista vazia para o termo ausente; a busca
 avançada carregou como formulário AJAX. Esses resultados confirmam os dois
 caminhos de pesquisa observáveis sem criar uma fila salva.
+
+## Base de Conhecimento confirmada — Onda 7
+
+Categoria pública e FAQ publicada não bastam para disponibilizar o módulo quando
+`enable_kb=0`: as rotas sob `/kb/` retornam à página inicial. Depois de habilitar
+o módulo pelo formulário administrativo, o shell público passou a incluir o link
+da Base de Conhecimento. Em sessão anônima, índice, categoria, artigo e busca
+renderizaram a fixture. A mudança demonstra que navegação e roteamento público
+dependem simultaneamente da configuração global e da existência de conteúdo
+publicado.

@@ -53,6 +53,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-012 | API HTTP nativa | chave fictícia local | mutável | iniciado | autenticação, flags, parsing e persistência |
 | BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
 | BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
+| BHV-015 | base de conhecimento | administrador/anônimo | mutável | concluído | categoria, artigo, publicação, configuração e busca |
 
 ## Regras de evidência
 
@@ -419,6 +420,28 @@ termo inexistente não produziu sua linha. O lookup AJAX pelo número respondeu
 `200` com resultados estruturados e incluiu a fixture; o termo inexistente
 retornou lista vazia. O diálogo AJAX de busca avançada respondeu `200` com seu
 formulário. Nenhuma dessas operações alterou registros.
+
+### BHV-015 — base de conhecimento
+
+O estado inicial tinha zero categorias, FAQs e vínculos com tópicos; a
+configuração global `enable_kb=0` ocultava o módulo público. Pelo formulário
+administrativo, foi criada uma categoria pública fictícia e uma FAQ inicialmente
+interna, vinculada ao tópico geral. A persistência confirmou uma categoria, uma
+FAQ e um vínculo. A rota pública não exibiu o artigo enquanto ele estava
+interno.
+
+A mesma FAQ foi editada pelo formulário normal para `ispublished=1`. O banco
+registrou a mudança, mas a rota pública continuou redirecionando para a página
+inicial enquanto `enable_kb` permanecia desligado. Isso confirma que publicação
+do artigo e habilitação global são condições independentes e cumulativas.
+
+O formulário administrativo de configurações foi então salvo com Base de
+Conhecimento ativa, Respostas Prontas preservadas e exigência de login
+desativada. Depois disso, o menu público expôs `/kb/index.php`, a página inicial
+da base listou a categoria, a página da categoria listou a FAQ, o artigo mostrou
+pergunta e resposta e a busca pelo marcador retornou o item, todos em sessão
+anônima. As fixtures e a configuração ativa foram mantidas para os próximos
+cenários; nenhuma exclusão ocorreu.
 
 ## Exposição local aceita na homologação
 
