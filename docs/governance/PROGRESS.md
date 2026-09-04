@@ -33,6 +33,11 @@
   executáveis, bootstrap e matriz inicial de evidências.
 - Mapas iniciais de componentes, entrypoints, dados e pontos de extensão
   produzidos diretamente da baseline.
+- Onda 1 do inventário estático formalizada para ciclo de requisição, modelo de
+  persistência e extensibilidade, sem execução da interface ou leitura de
+  segredos locais.
+- Superfícies HTTP centrais interpretadas estaticamente, incluindo controles do
+  portal, guarda da equipe, ações de ticket e dimensão inicial do AJAX.
 
 ## Próximo passo proposto
 
@@ -97,3 +102,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Portal documental | ADR 0002; `mkdocs.yml`; build estrito e inspeção local | Validado com MkDocs 1.6.1 e Material 9.7.7 |
 | 2026-09-03 | Inventário inicial | árvore da baseline; entrypoints; bootstrap; matriz de evidências | Portão B iniciado; conclusão ainda bloqueada pelas lacunas registradas |
 | 2026-09-03 | Mapas do Portão B | componentes; 46 scripts diretos e dispatcher de apps no SCP; 14 módulos CLI; 67 tabelas; 99 patches SQL; plugins e sinais | Mapeamento inicial ampliado; rastreamento profundo ainda não iniciado |
+| 2026-09-03 | Onda 1 do inventário | `docs/reverse-engineering/WAVE_MANIFEST.md` | Três missões somente leitura registradas; integração documental centralizada |
+| 2026-09-03 | Superfícies HTTP estáticas | `docs/reverse-engineering/HTTP_SURFACES.md`; controladores e dispatchers da baseline | Portal, equipe, API e aplicações delimitados sem reprodução comportamental |

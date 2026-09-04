@@ -4,9 +4,9 @@
 | --- | --- | --- | --- |
 | Estrutura do repositório | árvore da baseline, contagens e decomposição de `include/` | Mapeado inicialmente | refinar limites entre core e bibliotecas |
 | Bootstrap | `bootstrap.php`, `main.inc.php`, `osTicket::start()` | Inicial | rastrear criação de sessão, configuração e falhas |
-| Portal do usuário | catálogo dos entrypoints e `client.inc.php` | Mapeado inicialmente | matriz de páginas, ações e permissões |
-| Painel da equipe | 47 scripts, guards comuns e AJAX | Mapeado inicialmente | catálogo completo de rotas, menus e operações |
-| API | entrypoints e dispatcher de `api/http.php` | Mapeado inicialmente | catálogo de rotas, autenticação e formatos |
+| Portal do usuário | controladores centrais, pré-condições e ações estáticas | Em aprofundamento | completar recursos auxiliares e matriz de permissões |
+| Painel da equipe | guarda comum, ações centrais de ticket e 256 registros sintáticos de rotas AJAX | Em aprofundamento | normalizar rotas, métodos, controladores e permissões |
+| API | duas famílias nativas de endpoint e dispatcher extensível | Em aprofundamento | autenticação, formatos, erros e efeitos |
 | CLI/cron/pipe | 14 módulos CLI e entrypoints de integração | Mapeado inicialmente | controles e efeitos de cada comando |
 | Domínio | modelos centrais localizados por área | Mapeado inicialmente | relações, serviços e ciclo do ticket |
 | Banco | 67 tabelas, 99 patches, 72 constantes e ERDs externos | Mapeado inicialmente | chaves, relações e comparação com ERDs |
