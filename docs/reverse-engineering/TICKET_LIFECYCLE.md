@@ -1,5 +1,8 @@
 # Ciclo de vida do ticket
 
+> O tratamento de falhas, ausência de transação, estados parciais e órfãos foi
+> aprofundado em [Falhas, atomicidade e órfãos](INTEGRITY_FAILURES.md).
+
 ## Entradas de criação
 
 | Origem | Adaptador | Guarda e chamada central |

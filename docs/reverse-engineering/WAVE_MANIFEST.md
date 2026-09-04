@@ -104,7 +104,7 @@ permanecem achados estáticos, reservados à confirmação posterior.
 
 ## Onda 5 — integridade, registries e limites de customização
 
-**Estado:** em execução.
+**Estado:** concluída e integrada documentalmente.
 
 **Justificativa:** as três frentes percorrem mecanismos independentes e
 extensos. A separação permite revisão especializada sem ownership concorrente;
@@ -119,6 +119,13 @@ o agente principal permanece único redator e integrador.
 As missões devem citar definição, registro, consumidor, identidade, efeito e
 limite. Achados suspeitos permanecem fatos estáticos ou inferências; nenhuma
 arquitetura futura será escolhida nesta onda.
+
+### Encerramento
+
+As missões foram concluídas sem runtime, banco, UI, rede ou `.env`. Os
+resultados estão em `INTEGRITY_FAILURES.md`, `REGISTRY_CATALOG.md` e
+`CUSTOMIZATION_MATRIX.md`. Possíveis órfãos e estados parciais permanecem
+inferências fortes até testes controlados após a instalação.
 
 ## Restrições da fase
 

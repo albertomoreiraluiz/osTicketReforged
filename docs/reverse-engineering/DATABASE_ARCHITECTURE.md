@@ -1,5 +1,9 @@
 # Arquitetura de persistência
 
+> A ordem de persistência, compensações ausentes e referências potencialmente
+> órfãs estão catalogadas em
+> [Falhas, atomicidade e órfãos](INTEGRITY_FAILURES.md).
+
 ## Estado físico da baseline
 
 | Evidência | Resultado estático |

@@ -8,18 +8,16 @@
 | Painel da equipe | guarda comum, ações centrais e 229 folhas AJAX catalogadas individualmente | Mapeado estaticamente | confirmar respostas e controles na fase comportamental |
 | API/AJAX | API nativa, 12 rotas cliente e matriz integral das 229 folhas staff | Mapeado estaticamente | validar os 13 alvos ausentes após instalação |
 | CLI/cron/pipe | contratos, efeitos e pré-condições dos 14 módulos; cron/pipe aprofundados | Mapeado estaticamente | executar somente cenários futuros controlados |
-| Domínio | criação multicanal, ticket/thread/task/forms, update/status/delete | Em aprofundamento | limpeza de órfãos, atomicidade e outros agregados |
+| Domínio | criação multicanal, ticket/thread/task/forms, update/status/delete, falhas e órfãos | Mapeado estaticamente | injetar falhas após instalação descartável |
 | Banco | schema sem FKs, catálogo das 72 metas ORM, relações, cdata, cascatas e evolução | Mapeado estaticamente | validar engines/índices após instalação |
-| Plugins e sinais | ciclo/persistência, catálogo individual dos 41 sinais, dispatchers e registries | Em aprofundamento | completar matriz de customização e registries |
+| Plugins e sinais | ciclo/persistência, 41 sinais, 16 registries/factories e matriz de customização | Mapeado estaticamente | revisão cruzada dos limites de extensão |
 | Autenticação/autorização | identidade, sessão, ACL, CSRF, 2FA, reset, API keys, arquivos e uploads | Em aprofundamento | testes controlados dos riscos priorizados |
 | Frontend PHP | shells cliente/SCP, navegação, templates, assets, widgets e PJAX | Mapeado estaticamente | matriz de telas e acessibilidade após instalação |
 
 ## Lacunas do aprofundamento estático — Portão C
 
-- tratamento estático de falhas e órfãos no ticket e tarefa;
-- matriz de customização e limites entre extensão e alteração do core;
-- catálogo individual dos registries que não usam `Signal`;
 - normalização transversal das referências de evidência.
+- revisão independente final de cobertura, segurança e limites do core.
 
 ## Validações reservadas à fase comportamental
 

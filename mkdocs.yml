@@ -53,6 +53,7 @@ nav:
       - Frontend PHP existente: reverse-engineering/FRONTEND_ANALYSIS.md
       - Ciclo inicial de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
       - Ciclo do ticket: reverse-engineering/TICKET_LIFECYCLE.md
+      - Falhas e órfãos: reverse-engineering/INTEGRITY_FAILURES.md
       - Subsistemas transversais: reverse-engineering/TRANSVERSAL_SUBSYSTEMS.md
       - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
       - Arquitetura de persistência: reverse-engineering/DATABASE_ARCHITECTURE.md
@@ -62,8 +63,10 @@ nav:
       - Catálogo CLI: reverse-engineering/CLI_CATALOG.md
       - Pontos de extensão: reverse-engineering/EXTENSION_POINTS.md
       - Arquitetura de plugins: reverse-engineering/PLUGIN_ARCHITECTURE.md
+      - Registries e factories: reverse-engineering/REGISTRY_CATALOG.md
       - Visão geral dos sinais: reverse-engineering/HOOKS.md
       - Catálogo de sinais: reverse-engineering/SIGNAL_CATALOG.md
+      - Matriz de customização: reverse-engineering/CUSTOMIZATION_MATRIX.md
       - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
   - Governança:
       - Contexto: governance/PROJECT_CONTEXT.md

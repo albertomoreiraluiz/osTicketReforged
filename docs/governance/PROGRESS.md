@@ -31,8 +31,8 @@
 
 - Portão C iniciado para catálogos exaustivos, matriz de customização e limites
   de extensão do core.
-- Onda 5 iniciada para integridade de ticket/tarefa, registries externos a
-  `Signal` e matriz de customização, em três missões somente leitura.
+- Onda 5 concluída com integridade de ticket/tarefa, 16 registries/factories e
+  matriz de customização, em três missões somente leitura.
 - Onda 4 concluída com matriz das 229 folhas AJAX, catálogo das 72 declarações
   ORM, contratos dos 14 módulos CLI e dos 41 sinais.
 - Onda 1 do inventário estático formalizada para ciclo de requisição, modelo de
@@ -67,9 +67,9 @@
 
 ## Próximo passo proposto
 
-1. analisar tratamento de falhas e órfãos em ticket e tarefa;
-2. consolidar matriz de customização e limites do core;
-3. catalogar registries externos ao barramento de sinais;
+1. executar revisão independente final de cobertura e segurança do Portão C;
+2. normalizar evidências e reconciliar qualquer contradição encontrada;
+3. preparar o dossiê comparativo sem escolher arquitetura antes da revisão;
 4. receber os dados de banco e validar a instalação web somente antes dos testes
    dinâmicos que dependam deles;
 5. manter Angular, PrimeNG e decisões de integração fora da etapa atual.
@@ -80,7 +80,7 @@
 | --- | --- | --- | --- |
 | A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
 | B — Inventário | Concluído | três ondas estáticas, portal e revisão QA independente | nenhum |
-| C — Análise profunda | Em andamento | ciclos, dados, plugins, segurança, API, frontend, subsistemas e catálogos exaustivos | falhas/órfãos, registries e matriz de customização |
+| C — Análise profunda | Em andamento | ciclos, dados, plugins, segurança, API, frontend, catálogos, falhas, registries e customização | revisão independente final e reconciliação |
 | D — Decisão arquitetural | Não iniciado | nenhuma | Portão C e aprovação do ADR |
 
 ## Decisões futuras, fora da preparação atual
@@ -143,3 +143,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Fechamento do Portão B | plano 0001; matriz de evidências; três ondas e revisão QA | Inventário estrutural concluído; Portão C iniciado |
 | 2026-09-03 | Onda 4 do aprofundamento | `docs/reverse-engineering/WAVE_MANIFEST.md` | Três catálogos exaustivos somente leitura registrados |
 | 2026-09-03 | Catálogos exaustivos — Onda 4 | `AJAX_ROUTE_CATALOG.md`; `ORM_CATALOG.md`; `CLI_CATALOG.md`; `SIGNAL_CATALOG.md` | 229 rotas, 72 metas ORM, 14 módulos e 41 sinais integrados; Onda 4 concluída |
+| 2026-09-03 | Integridade e customização — Onda 5 | `INTEGRITY_FAILURES.md`; `REGISTRY_CATALOG.md`; `CUSTOMIZATION_MATRIX.md` | Estados parciais, 16 registries/factories e limites do core integrados; Onda 5 concluída |
