@@ -50,7 +50,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-009 | tarefas vinculadas | papéis fictícios | mutável | iniciado | criação, visibilidade e ACL por ação |
 | BHV-010 | anexos e arquivos | papéis fictícios | mutável | iniciado | persistência, serving e limites |
 | BHV-011 | e-mail | papéis fictícios | mutável | iniciado | coletor local, abertura Web e contagem sem relay |
-| BHV-012 | API HTTP nativa | chave fictícia local | mutável | iniciado | autenticação, flags, parsing e persistência |
+| BHV-012 | API HTTP nativa | chave fictícia local | mutável | concluído | JSON, XML, e-mail, cron, flags e persistência |
 | BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
 | BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
 | BHV-015 | base de conhecimento | administrador/anônimo | mutável | concluído | categoria, artigo, publicação, configuração e busca |
@@ -614,6 +614,26 @@ HTTP, candidatos antes/depois, log de cron e integridade dos tickets serão
 verificados. Se a restauração do dump ou a comparação falhar, o cron não será
 executado. Se o cron divergir das limpezas previstas, a homologação será
 restaurada integralmente pelo dump antes de qualquer continuação.
+
+**Resultado do protocolo A:** antes do cron havia zero lock, draft, reset,
+log ou arquivo órfão elegível, 12 sessões expiradas, oito tickets, 29 entradas
+de thread e quatro arquivos, todos no backend `D`. O dump MariaDB integral
+registrou 649.453 bytes e SHA-256
+`53DAE03B39564A9D5E047119B90D0B33045961DDFC3E2E7C893E8222D590242C`.
+
+A restauração em banco temporário reproduziu oito tickets, 29 entradas e 72
+tabelas. As contagens coincidiram com a origem e o banco derivado foi removido
+conforme o plano. Com essa garantia, a chave foi temporariamente ativada para
+cron e `POST /api/tasks/cron` respondeu `200` com `Completed`.
+
+Depois da execução, as 12 sessões expiradas deixaram de existir. Todos os
+demais conjuntos elegíveis continuaram em zero; tickets, entradas e arquivos
+mantiveram suas contagens. A chave foi restaurada para inativa, criação de
+ticket permitida e cron desabilitado. Nenhum registro `Cron Job` foi persistido,
+coerente com `debug` não armazenado pela configuração atual. Como a única
+exclusão coincidiu exatamente com o inventário prévio, não foi necessário
+restaurar a homologação. O dump verificável permanece apenas na área local
+ignorada. Com JSON, XML, RFC 822 e cron exercitados, BHV-012 está concluído.
 
 ### BHV-013 — exportação PDF
 

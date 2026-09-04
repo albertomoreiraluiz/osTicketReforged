@@ -63,8 +63,9 @@
   cliente convertida de 415 para 500 e ausência de ACL do pai em URL assinada.
 - Tentativa inválida isolada e recuperação por login correto confirmadas para
   agente e cliente; CSRF inválido em login redireciona com 302.
-- API nativa validada com chave local fictícia: guards 401, ticket 201/API,
-  parsing inválido 400 e cron sem flag 401; chave terminou desativada.
+- API nativa validada com chave local fictícia: guards 401, JSON/XML/e-mail
+  `201`, parsing inválido 400, cron sem flag 401 e cron autorizado `200` após
+  backup restaurável; chave terminou desativada e sem permissão de cron.
 - Revisão independente elevou ACL composta de tarefa e capability assinada a
   altas; POST forjado confirmou fechamento sem `task.close`, seguido de rollback.
 - Exportações PDF de ticket/tarefa em sessões staff, agente e cliente retornaram
@@ -267,4 +268,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — filas e paginação | preferência temporária 5; fila com 6 tickets; páginas 1, 2 e 99; restauração | Divisão 5+1 confirmada; página fora do intervalo fica vazia apesar de indicar página 1; preferência original restaurada |
 | 2026-09-04 | Onda 7 — atribuição e nota notificadas | plano prévio; snapshot SHA-256; atribuição; lock; nota; liberação; coletor | Uma `N`, relógios de mensagem/resposta preservados, draft vazio e atribuição restaurada; zero e-mail pelas políticas efetivas |
 | 2026-09-04 | Onda 7 — API XML e e-mail | chave temporariamente ativa; XML; RFC 822; banco; coletor; restauração | Dois `201`; tickets `API` e `Email` com entrada `M`; zero saída no recorte; flags originais da chave restauradas |
+| 2026-09-04 | Onda 7 — cron HTTP autorizado | inventário; dump SHA-256; restauração em banco temporário; cron; pós-check | `200 Completed`; 12 sessões expiradas removidas, demais candidatos zero, dados funcionais preservados e chave restaurada |
 | 2026-09-04 | Onda 7 — exportador de backup | export CLI comprimido; inspeção sem expor conteúdo; `class.export.php` | 47 schemas e zero linhas; artefato rejeitado para rollback; causa é `SELECT *` sem atribuição a `$res` |

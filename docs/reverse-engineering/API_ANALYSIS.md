@@ -136,3 +136,17 @@ configurada. O cron autorizado permanece deliberadamente não executado:
 `Cron::run()` chama rotinas de limpeza de locks, drafts, sessões, resets e
 arquivos órfãos (`include/class.cron.php:28-119`), exigindo backup verificável
 também do filesystem.
+
+O pré-inventário do cron encontrou somente 12 sessões expiradas; locks, drafts,
+resets, logs antigos e arquivos órfãos estavam zerados. Todos os arquivos
+persistidos usavam backend `D`. Um dump MariaDB integral foi restaurado em banco
+temporário e reproduziu as contagens de oito tickets, 29 entradas e 72 tabelas
+antes de o banco de verificação ser removido.
+
+Com rollback demonstrável, a chave recebeu `can_exec_cron` temporariamente e
+`POST /api/tasks/cron` respondeu `200 Completed`. As 12 sessões expiradas foram
+removidas; os demais candidatos permaneceram zerados e as contagens funcionais
+não mudaram. O formulário restaurou a chave para inativa e sem cron. A execução
+não gravou `Cron Job` em `syslog`, pois o evento usa o caminho de debug, não
+persistido pela configuração observada. Os quatro contratos HTTP nativos ficam,
+assim, confirmados em runtime.

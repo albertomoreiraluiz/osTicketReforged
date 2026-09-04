@@ -67,6 +67,14 @@ foi classificada como bounce ou autoresposta. Como o `To` fictício não
 correspondia a uma identidade configurada, o ensaio não caracteriza a recepção
 por mailbox real nem seus avisos; o coletor de saída permaneceu sem mensagens.
 
+O cron HTTP autorizado foi executado somente após dump integral restaurado e
+comparado. O inventário anterior identificou 12 sessões expiradas e nenhum outro
+candidato. A resposta foi `200 Completed`; depois, sessões expiradas estavam
+zeradas e locks, drafts, resets, logs antigos e arquivos órfãos continuaram
+zerados. Tickets, entradas e arquivos foram preservados. Isso confirma que
+`Cron::run()` compõe fetch, monitoramento e limpezas, mas os efeitos concretos
+dependem do estado elegível em cada execução.
+
 ## Arquivos, storage e anexos
 
 `AttachmentFile` representa conteúdo/metadados, `Attachment` associa o arquivo
