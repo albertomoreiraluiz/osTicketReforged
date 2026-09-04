@@ -423,6 +423,29 @@ O segundo coletor também foi encerrado e a porta 25 voltou a ficar fechada.
 Esse checkpoint conclui a notificação da abertura Web; respostas staff,
 mensagens do cliente e demais gatilhos ainda pertencem a BHV-011.
 
+#### Plano de rollback BHV-011-C — resposta staff com coletor local
+
+Antes da resposta, o ticket alvo deve estar aberto, sem entrada com o marcador
+e com zero draft em `ticket.response.{id}` para o administrador. Um snapshot
+local ignorado registrará essas três pré-condições e terá hash SHA-256. O
+coletor será ligado somente em `127.0.0.1:25`, sem relay, e classificará
+destinatários apenas como `example.com` ou outro domínio, sem armazenar valores
+ou conteúdo.
+
+O POST normal usará `reply-to=user`, manterá o estado aberto, não selecionará
+colaboradores e não anexará arquivos. O controlador chama
+`Draft::deleteForNamespace()` após sucesso; como a pré-condição exige zero linha,
+a limpeza não pode apagar conteúdo preexistente. Depois do POST serão verificados
+draft ainda vazio, uma única resposta marcada, ticket aberto e coletor
+encerrado. Qualquer divergência interrompe o fluxo; não será tentada limpeza da
+resposta sem novo plano destrutivo.
+
+O exportador nativo foi avaliado para backup integral, mas rejeitado: o dump
+gerado continha 47 blocos de tabela e zero linhas. Em
+`DatabaseExporter::dump()`, o `SELECT *` não é atribuído a `$res`, que continua
+referenciando a consulta de colunas (`include/class.export.php:807-836`). Esse
+arquivo não é garantia de rollback e não será usado.
+
 ### BHV-012 — API HTTP nativa
 
 Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou

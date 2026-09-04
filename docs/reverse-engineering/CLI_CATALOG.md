@@ -42,6 +42,10 @@ e `user` apenas quando envia ativação.
   `include/cli/modules/package.php:86-90` implementa apenas ZIP.
 - `include/cli/modules/export.php:51,76` procura
   `include/cli/modules/importer/`, diretório ausente na baseline.
+- `DatabaseExporter::dump()` executa `db_query("select * from $t")` sem atribuir
+  o retorno; o laço seguinte reutiliza `$res` da consulta de colunas
+  (`include/class.export.php:807-836`). Na Onda 7, um export integral produziu
+  47 schemas e zero linhas, portanto não constitui backup restaurável.
 - `include/cli/modules/org.php:48` contém item `email` sem valor explícito na
   chamada a `Organization::fromVars()`; efeito pendente.
 - `include/cli/modules/user.php:95` chama `UserAccount::create()` ao ativar um
