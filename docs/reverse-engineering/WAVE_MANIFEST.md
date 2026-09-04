@@ -34,7 +34,7 @@ As três missões entregaram evidências sem alterar o workspace nem acessar
 
 ## Onda 2 — contratos críticos
 
-**Estado:** em execução.
+**Estado:** concluída e integrada documentalmente.
 
 | Instância | Perfil permanente | Missão | Leitura autorizada | Escrita | Revisão/integrador |
 | --- | --- | --- | --- | --- | --- |
@@ -49,6 +49,12 @@ As três missões entregaram evidências sem alterar o workspace nem acessar
 - rotas de integração normalizadas até o nível suportado pelo código;
 - achados suspeitos separados de defeitos confirmados;
 - integração documental, build estrito e diff estabilizado.
+
+### Encerramento
+
+As missões foram concluídas sem runtime, banco, interface ou leitura de
+`.env`. Os resultados estão em `TICKET_LIFECYCLE.md`, `API_ANALYSIS.md` e
+`SECURITY_MODEL.md`.
 
 ## Restrições da fase
 

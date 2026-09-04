@@ -47,7 +47,10 @@ nav:
       - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
       - Catálogo de entrypoints: reverse-engineering/ENTRYPOINT_CATALOG.md
       - Superfícies HTTP: reverse-engineering/HTTP_SURFACES.md
+      - APIs e AJAX: reverse-engineering/API_ANALYSIS.md
+      - Modelo de segurança: reverse-engineering/SECURITY_MODEL.md
       - Ciclo inicial de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
+      - Ciclo do ticket: reverse-engineering/TICKET_LIFECYCLE.md
       - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
       - Arquitetura de persistência: reverse-engineering/DATABASE_ARCHITECTURE.md
       - Instalação e upgrades: reverse-engineering/INSTALLATION_UPGRADE.md

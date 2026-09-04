@@ -48,6 +48,10 @@
   segurança e superfícies de API/AJAX.
 - Instalação e upgrader interpretados estaticamente, incluindo ordem de
   persistência, assinaturas e lotes de patches.
+- Ciclo central do ticket rastreado nas entradas Web, agente, API e e-mail, com
+  thread, tarefas, formulários, status e exclusão.
+- Onda 2 concluída com API nativa, 12 rotas AJAX do cliente, 229 rotas-folha do
+  staff e modelo estático de segurança por camadas.
 
 ## Próximo passo proposto
 
@@ -118,3 +122,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Extensibilidade — Onda 1 | `PLUGIN_ARCHITECTURE.md`; `HOOKS.md` | Ciclo de plugins, registries e sinais mapeados; contratos individuais seguem pendentes |
 | 2026-09-03 | Onda 2 do inventário | `docs/reverse-engineering/WAVE_MANIFEST.md` | Três missões críticas somente leitura registradas |
 | 2026-09-03 | Instalação e evolução | `INSTALLATION_UPGRADE.md`; instalador e upgrader da baseline | Fluxos estáticos registrados; execução reservada para homologação instalada |
+| 2026-09-03 | Ciclo do ticket — Onda 2 | `TICKET_LIFECYCLE.md`; classes e adaptadores centrais | Pipeline multicanal e riscos de atomicidade documentados estaticamente |
+| 2026-09-03 | API e segurança — Onda 2 | `API_ANALYSIS.md`; `SECURITY_MODEL.md` | Contratos e riscos estáticos integrados; testes dinâmicos permanecem adiados |
