@@ -108,7 +108,8 @@ devem ser registrados na documentação ou em logs
 | alta de confiança | sinais entregam credenciais/tokens a plugins | contrato confirmado; governar plugins |
 | alta de confiança | `auth.login.succeeded` pode anteceder conclusão de 2FA | não usar sinal como prova de MFA concluído |
 | alta confirmada | `task.reply` oculta a UI, mas não bloqueia POST direto em `scp/tasks.php` | runtime persistiu resposta do papel sem permissão; requer correção futura e revisão independente |
-| média potencial | arquivo assinado não verifica o objeto pai | testar acesso cruzado |
+| média confirmada | upload staff chama `ajaxUpload(true)` | com allowlist `.txt`, staff aceitou `.php` e cliente rejeitou |
+| média confirmada | arquivo assinado não verifica o objeto pai | cliente sem visibilidade da tarefa baixou anexo interno com URL staff válida |
 | média potencial | validação de upload difere entre Web e API/e-mail | upload Web e serving iniciais confirmados; API/e-mail pendentes |
 | média potencial | falha ao registrar sessão termina com mensagem bruta | induzir somente em ambiente descartável |
 | baixa | `file.php:42` usa `$thisuser`, enquanto o portal define `$thisclient` | sem bypass demonstrado |
@@ -165,12 +166,18 @@ não confirma bypass de tipo específico da equipe, embora
 `DynamicFormsAjaxAPI::attach()` envie `true` a `ajaxUpload()` quando existe
 `$thisstaff`, desabilitando ali as verificações de tipo e tamanho
 (`include/ajax.forms.php:392-415`; `include/class.forms.php:3899-3932`). Esse
-risco só pode ser classificado dinamicamente após configurar uma restrição e
-comparar os canais com rollback.
+risco foi confirmado com configuração temporária `.txt`: o staff aceitou o
+`.php` inerte, enquanto o cliente o rejeitou. `Http::response(415, ...)` chegou
+como `500`, pois `include/class.http.php:17-32` não mapeia 413/415 e usa 500 no
+default. Configuração e banco foram restaurados ao estado anterior verificado.
 
 Um TXT associado à nota da tarefa foi entregue com disposition `attachment`.
 Com a autenticação de arquivos efetiva pelo default, acesso anônimo apresentou
 login, cliente e equipe autenticados receberam o arquivo, e assinatura alterada
 retornou `404` em sessão válida. Isso confirma autenticação geral e integridade
 HMAC no cenário, mas ainda não prova autorização contra o objeto pai: uma URL
-válida não é cruzada por `file.php` com acesso ao ticket ou tarefa.
+válida não é cruzada por `file.php` com acesso ao ticket ou tarefa. O runtime
+confirmou esse limite: o cliente dono do ticket não via a tarefa nem a nota
+interna, mas baixou o TXT usando a URL válida capturada na visão staff. A URL
+assinada é uma capability difícil de adivinhar; o risco depende de vazamento ou
+compartilhamento, não de enumeração demonstrada.

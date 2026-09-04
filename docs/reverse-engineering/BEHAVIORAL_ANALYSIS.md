@@ -312,6 +312,23 @@ linhas atualizadas e verificação posterior dos dois valores nulos; divergênci
 interrompe o teste e preserva o dump. Nenhuma exclusão ou mudança de schema faz
 parte deste protocolo.
 
+**Resultado do protocolo B:** a primeira pré-condição para string vazia falhou
+sem alterar dados e foi corrigida para `NULL`. Com `.txt` aplicado diretamente
+aos dois campos, o TXT recebeu `200` nos dois canais. O `.php` inerte recebeu
+`200` no canal staff e foi rejeitado pelo canal cliente com a mensagem
+`File type is not allowed`, confirmando que o argumento `true` do caminho staff
+contorna a allowlist. A rejeição do cliente saiu como HTTP `500`, porque
+`Http::header_code_verbose()` não possui o código `415` e usa `500` no caso
+default (`include/class.http.php:17-32`). O bloco `finally` restaurou exatamente
+duas configurações para `NULL` e a consulta confirmou os dois valores nulos.
+
+O download do TXT interno também confirmou a lacuna de autorização do objeto
+pai: o cliente autenticado, que não visualiza a tarefa nem sua nota interna,
+conseguiu consumir a URL assinada obtida na sessão staff. A assinatura continua
+necessária e funcionou como capability; o resultado não demonstra descoberta
+ou enumeração da URL, mas confirma que `file.php` aceita qualquer cliente
+autenticado que a receba sem cruzar acesso ao pai.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação

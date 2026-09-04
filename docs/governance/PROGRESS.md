@@ -59,6 +59,8 @@
   fechar/reabrir confirmadas; a fixture terminou aberta, sem exclusão.
 - Upload Web aceitou TXT e extensão `.php` sob configuração permissiva; TXT foi
   associado à tarefa, entregue como attachment, protegido por login e assinatura.
+- Ensaio com dump e rollback confirmou bypass staff de allowlist, rejeição do
+  cliente convertida de 415 para 500 e ausência de ACL do pai em URL assinada.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -196,3 +198,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — tarefa vinculada e ACL | criação AJAX; três identidades; POST direto; persistência da thread | Tarefa única confirmada; `task.create` negado ao agente, mas resposta persistiu sem `task.reply` |
 | 2026-09-04 | Onda 7 — tarefa, nota e estado | nota do agente; fechamento negado; fechamento/reabertura administrativos; banco | Nota persistida; ACL de status preservada com feedback ambíguo; tarefa novamente aberta |
 | 2026-09-04 | Onda 7 — arquivos inicial | uploads staff/cliente; associação em thread; URL assinada; três contextos de acesso | Configuração sem allowlist aceita extensões; TXT associado e serving básico confirmado |
+| 2026-09-04 | Onda 7 — allowlist e rollback | dump SHA-256; protocolos A/B; campos `.txt`; restauração a `NULL` | Bypass staff confirmado; cliente rejeita com 500; acesso ao pai não é verificado |

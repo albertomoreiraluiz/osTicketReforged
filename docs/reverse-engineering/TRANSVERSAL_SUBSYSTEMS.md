@@ -37,6 +37,11 @@ Achados para teste:
   ainda não foi isolado;
 - a configuração instalada não restringe `allowed_filetypes`; TXT e conteúdo
   textual inerte nomeado `.php` foram aceitos nos canais Web de equipe e cliente;
+- com allowlist `.txt` temporária e rollback verificado, o cliente rejeitou
+  `.php`, mas staff aceitou por `ajaxUpload(true)`; a rejeição declarada como 415
+  tornou-se HTTP 500 pela tabela incompleta de `Http::header_code_verbose()`;
+- cliente sem visibilidade da tarefa baixou seu anexo interno ao receber URL
+  staff assinada, confirmando capability sem autorização contra o objeto pai;
 - `include/class.file.php:493-495` contém condição
   `if (!$bks[0]->getBkChar() !== 'D')`, cuja precedência aparenta sempre
   adicionar fallback; não classificada como defeito.
