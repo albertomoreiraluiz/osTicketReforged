@@ -17,6 +17,7 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-011 | 2026-09-03 | Aceito | O novo frontend ficará isolado em `frontend/` e usará Angular com PrimeNG; versões e integração serão decididas posteriormente. | `docs/adr/0001-frontend-angular-primeng.md` |
 | GOV-012 | 2026-09-03 | Aceito | A documentação humana da engenharia reversa será publicada localmente por MkDocs Material; ferramentas de símbolos e API serão complementares e específicas ao recorte. | `docs/adr/0002-documentation-toolchain.md`; `mkdocs.yml` |
 | GOV-013 | 2026-09-03 | Aceito | O portal MkDocs integra o fluxo documental obrigatório: navegação deve acompanhar documentos relevantes e o build estrito deve passar antes da conclusão e de cada PR documental. | `AGENTS.md`; `docs/governance/DOCUMENTATION_POLICY.md`; `docs/development/DOCUMENTATION_PORTAL.md` |
+| GOV-014 | 2026-09-04 | Aceito | Alterações funcionais necessárias à análise comportamental estão previamente autorizadas somente no banco descartável de homologação. Toda exclusão exige plano anterior à execução, backup verificável e garantia de rollback; produção, schema e core permanecem fora da autorização. | `AGENTS.md`; `docs/reverse-engineering/BEHAVIORAL_ANALYSIS.md`; decisão explícita do responsável |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2.

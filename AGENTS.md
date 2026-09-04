@@ -64,12 +64,17 @@ A etapa ativa é engenharia reversa documental. Até uma decisão arquitetural a
 - não criar a aplicação Angular;
 - não implementar uma API completa;
 - não alterar o core PHP;
-- não alterar esquema ou dados de banco;
+- não alterar esquema do banco;
 - não adicionar dependências de produção;
 - não implementar plugins ou funcionalidades futuras;
 - não apresentar arquitetura proposta como decidida.
 
-São permitidos inventário, análise estática, execução local não destrutiva, documentação, diagramas e testes exploratórios que não persistam mudanças no produto.
+São permitidos inventário, análise estática, documentação, diagramas e testes
+exploratórios na homologação local. Durante a Onda 7, alterações funcionais de
+dados necessárias à análise comportamental estão previamente autorizadas no
+banco descartável de homologação, desde que usem dados fictícios e sejam
+documentadas. Exclusões exigem plano prévio, backup verificável e garantia de
+rollback; a autorização não alcança produção, mudanças de schema ou core.
 
 ## Engenharia reversa baseada em evidências
 
@@ -140,7 +145,9 @@ Antes de trabalho técnico não trivial, avalie o uso de subagentes conforme `.c
 ## Segurança e dados
 
 - Nunca exponha credenciais, cookies, tokens, chaves, dados pessoais ou configuração sensível.
-- Não use banco de produção e não execute operações mutáveis em banco sem autorização explícita.
+- Não use banco de produção. Na Onda 7, a autorização explícita para mutações
+  funcionais limita-se ao banco descartável de homologação e às condições de
+  rollback registradas em GOV-014.
 - Não contorne autenticação, autorização, CSRF, ACL, escopo de ticket ou validação de upload.
 - Não suponha que uma API ou frontend novo possa ignorar os controles existentes.
 - Mudanças futuras em autenticação, autorização, sessão, API, upload ou dados sensíveis exigem revisão independente de segurança.

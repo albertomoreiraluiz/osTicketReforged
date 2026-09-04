@@ -7,9 +7,11 @@ instalação descartável de homologação. Cada observação deve registrar dat
 papel, superfície, ação, resultado e relação com o contrato estático, sem
 copiar credenciais, cookies, tokens, dados pessoais ou conteúdo sensível.
 
-A execução começa por navegação somente leitura. Cenários que criem, editem ou
-excluam registros são classificados separadamente e devem usar dados fictícios,
-prefixo identificável e as barreiras locais aprovadas.
+A execução começa por navegação somente leitura. Conforme GOV-014, cenários que
+criem ou editem registros estão previamente autorizados somente no banco
+descartável de homologação e devem usar dados fictícios e prefixo identificável.
+Exclusões permanecem condicionadas a plano prévio, backup verificável e garantia
+de rollback.
 
 ## Estado da instalação
 
@@ -136,4 +138,4 @@ reavaliada se o serviço passar a aceitar conexões externas.
 2. confrontar rotas AJAX de leitura com o catálogo estático;
 3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
 4. preparar identidades fictícias por papel antes da matriz de permissões;
-5. classificar e autorizar os cenários mutáveis antes de executá-los.
+5. preparar backup e rollback antes de qualquer cenário de exclusão.

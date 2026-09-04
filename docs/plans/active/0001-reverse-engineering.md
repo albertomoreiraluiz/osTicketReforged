@@ -43,6 +43,11 @@ baseline `v1.18.4` prevalecem, e divergências devem ser registradas.
 - migrations e alterações de dados;
 - escolha da arquitetura antes da matriz de evidências.
 
+Mutações funcionais necessárias aos testes comportamentais não constituem
+implementação do produto: GOV-014 as autoriza somente no banco descartável de
+homologação, com dados fictícios. Exclusões exigem plano prévio, backup
+verificável e garantia de rollback; mudança de schema permanece fora do escopo.
+
 ## Portões
 
 ### Portão A — Governança pronta

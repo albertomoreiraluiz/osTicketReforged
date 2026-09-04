@@ -22,8 +22,8 @@ o portal MkDocs permanecem no fluxo obrigatório de atualização.
 Próximas etapas:
 
 1. executar a matriz comportamental somente leitura e atualizar os catálogos;
-2. executar cenários mutáveis controlados apenas quando necessários e autorizados
-   pelas barreiras da homologação;
+2. executar cenários mutáveis controlados no banco descartável de homologação;
+   exclusões exigem plano, backup verificável e rollback conforme GOV-014;
 3. somente depois preparar opções e decisões do Portão D.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em

@@ -176,6 +176,13 @@ OSTR_DEPLOY_CONFIRMATION=
 
 Ferramentas futuras devem recusar operações mutáveis enquanto as permissões continuarem falsas. Alterar uma variável não substitui a autorização exigida pela governança.
 
+GOV-014 registra a autorização do responsável para mutações funcionais
+necessárias à Onda 7 exclusivamente no banco descartável de homologação. As
+ferramentas podem ajustar localmente as barreiras para cada execução controlada,
+sem versionar o `.env`. Mudança de schema continua proibida. Antes de qualquer
+exclusão, devem existir plano, backup verificável e procedimento de rollback;
+sem essas três evidências, a exclusão não pode ser executada.
+
 ## Validação pendente
 
 PHP CLI, módulos, configuração do Apache e gravação do log PHP já foram
