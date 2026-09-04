@@ -42,7 +42,7 @@ de rollback.
 | BHV-007 | logs PHP e Apache | sistema | leitura | iniciado | ausência/presença de falhas correlatas |
 | BHV-008 | ticket de teste | papéis fictícios | mutável | iniciado | ciclo e persistência controlados |
 | BHV-009 | tarefas vinculadas | papéis fictícios | mutável | iniciado | criação, visibilidade e ACL por ação |
-| BHV-010 | anexos e arquivos | papéis fictícios | mutável | pendente | persistência, serving e limites |
+| BHV-010 | anexos e arquivos | papéis fictícios | mutável | iniciado | persistência, serving e limites |
 | BHV-011 | e-mail | papéis fictícios | mutável | pendente | efeitos controlados sem entrega externa acidental |
 
 ## Regras de evidência
@@ -251,6 +251,28 @@ aberta. Esses resultados distinguem três contratos: nota permitida, resposta
 indevidamente permitida e transição corretamente negada, mas com feedback HTTP
 e visual ambíguo.
 
+### BHV-010 — upload, associação e download inicial
+
+Dois arquivos textuais inertes foram enviados: um `.txt` e outro nomeado com
+extensão `.php`, mas sem código. Ambos receberam `200` tanto no endpoint da
+equipe quanto no portal do cliente. A instalação não possui valor persistido
+para `allowed_filetypes`; assim, a configuração efetiva é permissiva e o
+resultado não demonstra, por si só, bypass exclusivo do caminho staff.
+
+O TXT foi associado pelo fluxo nativo a uma nota da tarefa. A persistência
+confirmou uma associação `ost_attachment.type=H` à entrada da thread. Sua URL
+assinada entregou o conteúdo como `Content-Disposition: attachment` ao
+administrador e ao cliente autenticado. Sem autenticação, a mesma URL respondeu
+`200` com o formulário de login e sem conteúdo de download. Com sessão válida,
+alterar a assinatura produziu `404`. Nenhuma URL, chave ou assinatura foi
+registrada como evidência.
+
+O arquivo de extensão `.php` não foi associado a uma entrada e permanece como
+upload temporário sujeito ao coletor de arquivos órfãos. Não foi executado nem
+servido inline. A confirmação de allowlist e limite de tamanho exige cenário
+com configuração restritiva controlada; até lá, o parâmetro de bypass no fluxo
+staff permanece achado estático condicional.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
@@ -273,5 +295,5 @@ reavaliada se o serviço passar a aceitar conexões externas.
 1. aprofundar as páginas administrativas sem alterar configuração;
 2. ampliar a amostra de rotas AJAX válidas por família;
 3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
-4. preparar anexos controlados e observar persistência/limites;
+4. concluir limites, MIME e acesso cruzado de anexos sob configuração controlada;
 5. classificar e revisar independentemente a falha de `task.reply`.

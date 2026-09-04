@@ -32,6 +32,11 @@ Cron remove arquivos temporários órfãos com mais de um dia.
 Achados para teste:
 
 - `file.php` valida URL HMAC, mas não demonstra o vínculo do usuário ao objeto;
+- a Onda 7 confirmou TXT associado à thread, download forçado como attachment,
+  login para anônimo e `404` após adulterar assinatura; acesso cruzado ao objeto
+  ainda não foi isolado;
+- a configuração instalada não restringe `allowed_filetypes`; TXT e conteúdo
+  textual inerte nomeado `.php` foram aceitos nos canais Web de equipe e cliente;
 - `include/class.file.php:493-495` contém condição
   `if (!$bks[0]->getBkChar() !== 'D')`, cuja precedência aparenta sempre
   adicionar fallback; não classificada como defeito.
