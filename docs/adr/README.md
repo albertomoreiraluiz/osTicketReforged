@@ -11,4 +11,7 @@ Status permitidos:
 
 Cada ADR deve conter contexto, evidências do código, opções consideradas, decisão, consequências, riscos de atualização e referências. Apenas aprovação explícita do responsável permite mudar uma proposta para `Aceito`.
 
-Nenhuma decisão arquitetural foi aceita até o momento.
+Decisões aceitas:
+
+- `0001-frontend-angular-primeng.md` — frontend separado em `frontend/`, com
+  Angular e PrimeNG.

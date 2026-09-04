@@ -16,6 +16,13 @@ Produzir a documentação técnica necessária para escolher, sem antecipação,
 - rastreamento de classes, fluxos, banco, plugins, hooks, autenticação, API e frontend;
 - documentação e revisão independente.
 
+## Pré-condição de homologação
+
+A infraestrutura-base local está preparada com XAMPP, Apache, PHP 8.2,
+extensões necessárias, logs e toolchain Node.js/pnpm. A instalação funcional do
+osTicket, com banco e ciclo HTTP, será validada antes dos testes dinâmicos que a
+exigirem; isso não bloqueia o início do inventário estático da Onda 1.
+
 ## Fora do escopo
 
 - alteração funcional do core;

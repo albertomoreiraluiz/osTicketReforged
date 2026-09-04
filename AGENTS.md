@@ -90,7 +90,7 @@ Não conclua pela aparência do nome de um arquivo. Registre dúvidas não resol
 
 - `docs/governance/PROJECT_CONTEXT.md`: missão, escopo e restrições duradouras.
 - `docs/governance/PROGRESS.md`: ponto de retomada corrente e evidências de conclusão.
-- `docs/governance/MULTI_AGENT_WORKFLOW.md`: protocolo de delegação, ownership e integração.
+- `.codex/MULTI_AGENT_WORKFLOW.md`: protocolo de delegação, ownership e integração.
 - `docs/plans/active/`: planos em execução; mova para `completed/` apenas quando os critérios forem cumpridos.
 - `docs/adr/`: decisões arquiteturais; propostas permanecem `Proposto` até aprovação explícita.
 - Documentos de engenharia reversa ficarão em `docs/reverse-engineering/`.
@@ -138,6 +138,8 @@ Antes de trabalho técnico não trivial, avalie o uso de subagentes conforme `.c
 - Não contorne autenticação, autorização, CSRF, ACL, escopo de ticket ou validação de upload.
 - Não suponha que uma API ou frontend novo possa ignorar os controles existentes.
 - Mudanças futuras em autenticação, autorização, sessão, API, upload ou dados sensíveis exigem revisão independente de segurança.
+- O `.env` da raiz é exclusivo de ferramentas locais, nunca é lido pelo osTicket e nunca é versionado. Não imprima seu conteúdo nem exponha seus valores em comandos, logs, Issues ou Pull Requests.
+- O arquivo versionado `.env.example` contém somente o contrato e valores não secretos. A persistência definitiva de conexões permanece TBD até decisão formal.
 
 ## Condições de parada
 

@@ -22,18 +22,22 @@
 - Configuração e documentação de agentes isoladas em `.codex/`, sem inclusão no código executável do osTicket.
 - Leitura documental no início de toda tarefa e varredura documental anterior a todo PR aprovadas como obrigatórias.
 - Governança formalizada e integrada pela PR #1.
+- Infraestrutura-base de homologação preparada com XAMPP, PHP 8.2, extensões,
+  logs e toolchain local inventariados.
 
 ## Em andamento
 
-- Preparação da Onda 1 de inventário somente leitura.
+- Fechamento documental da homologação-base e revisão das etapas e decisões
+  pendentes antes da Onda 1.
 
 ## Próximo passo proposto
 
-1. validar o carregamento da governança em um novo chat iniciado na raiz;
-2. registrar a avaliação de necessidade e a composição da Onda 1;
-3. iniciar o inventário somente leitura;
-4. criar documentos de engenharia reversa apenas com evidência suficiente;
-5. atualizar este arquivo ao final de cada unidade verificável.
+1. revisar com o responsável as etapas e decisões pendentes;
+2. receber do responsável somente os dados de banco no `.env` local;
+3. definir e validar a instalação local do osTicket sob o Apache;
+4. registrar a avaliação de necessidade e a composição da Onda 1;
+5. iniciar o inventário somente leitura;
+6. preparar o bootstrap de `frontend/` somente na etapa autorizada.
 
 ## Estado dos portões
 
@@ -50,6 +54,7 @@
 - Política de proteção obrigatória de `main` no GitHub — **Proposto**.
 - Arquitetura de plugin, API e frontend — **A definir (TBD)** após engenharia reversa.
 - Primeiro módulo a migrar — **A definir (TBD)**.
+- Persistência definitiva de conexões e segredos — **A definir (TBD)**.
 
 ## Riscos conhecidos
 
@@ -70,3 +75,14 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Governança inicial | arquivos locais; validação TOML e referências | Produzido, em revisão |
 | 2026-09-03 | Perfis e políticas | aprovação explícita do responsável; `DECISIONS.md` | Aprovado, aguardando integração |
 | 2026-09-03 | Portão A | PR #1 | Concluído |
+| 2026-09-03 | Contrato local de homologação | `.env.example` e `docs/development/HOMOLOGATION_ENVIRONMENT.md` | Produzido, aguardando preenchimento local |
+| 2026-09-03 | Configuração PHP do aaPanel | análise estática do `php.ini` fornecido; `docs/development/HOMOLOGATION_ENVIRONMENT.md` | Evidência inicial registrada; runtime ainda não validado |
+| 2026-09-03 | Plataforma de homologação | GOV-008; `docs/development/HOMOLOGATION_ENVIRONMENT.md` | XAMPP local selecionado; aaPanel retirado do escopo desta etapa |
+| 2026-09-03 | Runtime da homologação | GOV-009; requisito em `include/class.setup.php` | PHP 8.2 aceito para o XAMPP local |
+| 2026-09-03 | Inventário do XAMPP | comandos `php`, `httpd` e leitura das configurações; guia de homologação | Caminhos e runtime registrados; serviços estavam parados |
+| 2026-09-03 | Transporte da homologação | GOV-010; `.env.example` | Execução local; SSH e FTP fora do escopo |
+| 2026-09-03 | Toolchain local disponível | Node.js 24.19.0 e pnpm 11.17.0; guia de homologação | Caminhos preenchidos localmente; Angular ainda não selecionado |
+| 2026-09-03 | Configuração PHP | backup datado, validação de módulos, gravação no log e `httpd.exe -t` | Extensões e diagnóstico de homologação aplicados |
+| 2026-09-03 | Fronteira do frontend | ADR 0001; GOV-011 | `frontend/` reservado para Angular e PrimeNG |
+| 2026-09-03 | Homologação-base | `.env.example`; guia de homologação; validações PHP/Apache | Preparada; instalação funcional aguarda banco e localização web |
+| 2026-09-03 | Integração da homologação-base | PR #2 | Aberta e preparada para merge |
