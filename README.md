@@ -26,10 +26,11 @@ fase própria depois do mapeamento e do inventário completos.
 
 Próximas etapas:
 
-1. executar a matriz comportamental somente leitura e atualizar os catálogos;
-2. executar cenários mutáveis controlados no banco descartável de homologação;
-   exclusões exigem plano, backup verificável e rollback conforme GOV-014;
-3. somente depois preparar opções e decisões do Portão D.
+1. completar os fluxos funcionais de ticket, organização, administração e filas;
+2. caracterizar notificações em modo controlado, sem entrega externa acidental;
+3. consolidar a matriz comportamental e os catálogos; exclusões continuam
+   condicionadas a plano, backup verificável e rollback conforme GOV-014;
+4. somente depois preparar opções e decisões do Portão D.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
 `frontend/`; versões e integração serão definidas após a análise correspondente.

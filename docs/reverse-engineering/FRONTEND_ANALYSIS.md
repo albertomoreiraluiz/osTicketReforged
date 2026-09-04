@@ -139,3 +139,13 @@ do cliente passou a listar e renderizar o ticket sem novo login. O formulário d
 resposta permaneceu o mesmo e a mensagem do colaborador surgiu na thread. Assim,
 o frontend do portal compõe a lista com propriedade e colaboração, enquanto o
 backend preserva o proprietário original.
+
+## Perfil do cliente confirmado — Onda 7
+
+`profile.php` renderiza os dados de contato por formulários dinâmicos: os nomes
+HTTP dos campos variam entre requisições e não equivalem diretamente a `name`,
+`email` ou `phone`. O fluxo normal com CSRF alterou um nome fictício,
+redirecionou para a lista de tickets e apresentou o novo valor ao reabrir a
+tela. A repetição restaurou o valor original, demonstrando que integrações
+futuras deverão descobrir ou reproduzir o contrato dos formulários, em vez de
+fixar nomes de parâmetros observados em uma única resposta.

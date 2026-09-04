@@ -57,6 +57,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-016 | respostas prontas | administrador | mutável/leitura | concluído | cadastro, listagem e carregamento no editor |
 | BHV-017 | atribuição e liberação | administrador/agente | mutável | concluído | eventos, visibilidade e restauração da fixture |
 | BHV-018 | abertura anônima e colaboração | anônimo/admin/cliente | mutável | concluído | validação, associação, visibilidade e resposta |
+| BHV-019 | edição do perfil do cliente | cliente | mutável | concluído | formulário dinâmico, persistência e restauração |
 
 ## Regras de evidência
 
@@ -497,6 +498,25 @@ atualizou `thread.lastmessage`. O proprietário original não mudou; ticket
 aberto e `isanswered=0` também foram preservados. As fixtures permanecem para
 cenários posteriores, sem exclusão.
 
+### BHV-019 — edição e restauração do perfil do cliente
+
+O cliente autenticado abriu `profile.php` e recebeu os campos de contato com
+nomes dinâmicos, além de preferências e credenciais. O campo textual de nome foi
+alterado para um marcador fictício pelo POST normal com CSRF. A operação
+respondeu `200`, redirecionou para `tickets.php` e o valor reapareceu ao reabrir
+o perfil, confirmando o ciclo frontend/backend.
+
+Uma segunda submissão restaurou exatamente o valor original e repetiu o
+redirecionamento. A leitura final do banco confirmou o cliente existente e zero
+linha com o marcador temporário. O fluxo corresponde a `profile.php:30-36`, que
+atualiza primeiro a conta e depois chama `User::updateInfo()`, e à validação dos
+campos editáveis em `include/class.user.php:540-599`. Não houve alteração de
+senha, e-mail, exclusão ou envio de notificação.
+
+O log PHP não foi modificado pelo ensaio. O log do Apache continuou recebendo
+somente ocorrências ambientais de `VirtualProtect() failed [87]`, sem rota,
+timestamp ou stack correlacionável ao perfil.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
@@ -516,8 +536,7 @@ reavaliada se o serviço passar a aceitar conexões externas.
 
 ## Pendências imediatas
 
-1. reproduzir os fluxos normais ainda não cobertos de ticket e cliente;
-2. observar buscas, filas, paginação e filtros pela interface;
-3. percorrer cadastro e publicação da base de conhecimento com fixtures;
-4. caracterizar efeitos de notificações sem entrega externa acidental;
-5. ampliar os fluxos administrativos de leitura e edição não destrutiva.
+1. reproduzir os fluxos normais ainda não cobertos de ticket e organização;
+2. caracterizar efeitos de notificações sem entrega externa acidental;
+3. ampliar os fluxos administrativos de leitura e edição não destrutiva;
+4. consolidar filas e paginação com o conjunto crescente de fixtures.

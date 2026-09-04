@@ -66,6 +66,13 @@ cliente existente gerou uma única linha em `thread_collaborator`, sem substitui
 como `type=M` com seu `user_id`, e `thread.lastmessage` acompanhou a entrada mais
 recente.
 
+Na edição do perfil, o nome público percorreu o formulário dinâmico do usuário,
+mas foi materializado no atributo principal `user.name` por
+`User::updateInfo()`. O valor temporário apareceu na releitura Web e foi
+restaurado pelo mesmo contrato; a consulta final não encontrou o marcador. Isso
+distingue os atributos centrais `name`/`user_email` das respostas adicionais
+persistidas por `DynamicFormEntry::saveAnswers()`.
+
 ## Relação com a documentação oficial
 
 Os 14 ERDs incorporados são referência auxiliar por assunto. Como a publicação
