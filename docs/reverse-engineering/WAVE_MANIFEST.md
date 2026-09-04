@@ -189,3 +189,17 @@ leitura e separando explicitamente qualquer cenário mutável.
 - cenários mutáveis necessários executados apenas após classificação explícita;
 - divergências e lacunas refletidas nos catálogos e na matriz de evidências;
 - documentação, links e build MkDocs estrito aprovados.
+
+### Revisão independente de segurança — checkpoint 1
+
+**Justificativa:** a execução produziu achados estabilizados de autorização,
+upload e capability que exigem especialista diferente do redator. O paralelismo
+é limitado a uma missão somente leitura; o agente principal permanece único
+escritor e integrador.
+
+| Instância | Perfil permanente | Missão de revisão | Leitura autorizada | Escrita | Integrador |
+| --- | --- | --- | --- | --- | --- |
+| `arquiteto-seguranca/onda-07/revisao-acl-upload` | Arquiteto de Segurança e IAM | revisar evidências de `task.reply`, `task.close`, allowlist/HTTP e arquivo assinado; classificar prioridade e lacunas | código versionado, diff e documentação da Onda 7; sem `.env`, banco ou runtime | nenhuma | agente principal |
+
+O revisor deve entregar fatos com caminhos e símbolos, separar inferências,
+indicar prioridade e condição de parada e não propor correção como já aprovada.
