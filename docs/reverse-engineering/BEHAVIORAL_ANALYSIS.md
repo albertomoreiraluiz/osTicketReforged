@@ -49,7 +49,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-008 | ticket de teste | papéis fictícios | mutável | iniciado | ciclo e persistência controlados |
 | BHV-009 | tarefas vinculadas | papéis fictícios | mutável | iniciado | criação, visibilidade e ACL por ação |
 | BHV-010 | anexos e arquivos | papéis fictícios | mutável | iniciado | persistência, serving e limites |
-| BHV-011 | e-mail | papéis fictícios | mutável | pendente | efeitos controlados sem entrega externa acidental |
+| BHV-011 | e-mail | papéis fictícios | mutável | iniciado | coletor local, abertura Web e contagem sem relay |
 | BHV-012 | API HTTP nativa | chave fictícia local | mutável | iniciado | autenticação, flags, parsing e persistência |
 | BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
 | BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
@@ -393,11 +393,21 @@ estado impede entrega externa pela configuração observada, mas também não
 oferece um coletor capaz de provar destinatários, cabeçalhos e quantidade de
 mensagens.
 
-A abertura pública já executada não produziu `Mailer Error` em `syslog` no
-intervalo correlato nem em toda a tabela. Ausência de log não prova envio nem
-supressão, portanto BHV-011 permanece pendente. O próximo ensaio de notificação
-exige um coletor SMTP estritamente local, observável e sem relay; até lá nenhum
-novo envio será disparado.
+A abertura pública anterior não produziu `Mailer Error` em `syslog` no intervalo
+correlato nem em toda a tabela. Como ausência de log não prova envio nem
+supressão, foi iniciado um coletor SMTP mínimo em `127.0.0.1:25`, sem relay e
+programado para registrar somente contagem de mensagens e destinatários.
+
+Com o coletor ativo, uma nova abertura Web fictícia respondeu `200` sem erro de
+formulário e persistiu exatamente um ticket aberto, `source=Web`, ligado ao
+usuário já existente. O coletor aceitou uma mensagem com um destinatário;
+`syslog` permaneceu sem `Mailer Error`. Como endereços e conteúdo não foram
+capturados, a evidência não distingue autoresposta de alerta interno. O processo
+do coletor foi encerrado e a porta 25 voltou a recusar conexões.
+
+BHV-011 avança para iniciado. Restam correlacionar tipos de notificação e
+gatilhos adicionais com um coletor local que classifique destinatários sem
+armazenar seus valores.
 
 ### BHV-012 — API HTTP nativa
 

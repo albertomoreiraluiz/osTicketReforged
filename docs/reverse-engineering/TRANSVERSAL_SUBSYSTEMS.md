@@ -24,6 +24,12 @@ configuração observada, mas a validação comportamental de notificações dep
 da inclusão futura de um coletor SMTP local que registre as mensagens sem
 entregá-las.
 
+Esse coletor foi executado temporariamente na Onda 7, sem relay. Durante uma
+abertura Web, recebeu uma mensagem com um destinatário e retornou sucesso SMTP;
+o ticket foi persistido e não houve `Mailer Error`. O coletor foi encerrado ao
+fim do ensaio. Como ele não armazenou endereços ou conteúdo, a classificação do
+tipo de notificação continua pendente.
+
 ## Arquivos, storage e anexos
 
 `AttachmentFile` representa conteúdo/metadados, `Attachment` associa o arquivo

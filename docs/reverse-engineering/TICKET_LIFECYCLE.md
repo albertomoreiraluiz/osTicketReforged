@@ -190,3 +190,10 @@ dinâmico foi alterado e restaurado em dois POSTs `a=edit`; a visão
 relativa `tickets.php` precisou ser resolvida no contexto `/scp`, evidenciando
 que o shell faz parte do contrato de navegação mesmo quando o controlador final
 é o mesmo arquivo.
+
+Uma terceira abertura pública foi executada com coletor SMTP restrito a
+`127.0.0.1`, sem relay. O ticket Web aberto foi persistido para o usuário
+fictício existente e o coletor aceitou uma mensagem com um destinatário. Isso
+confirma que o ciclo de criação pode alcançar o transporte de saída sem impedir
+a persistência. O ensaio não registrou endereços ou conteúdo, portanto não
+distingue autoresposta de alerta interno.

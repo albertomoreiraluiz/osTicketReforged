@@ -96,6 +96,8 @@
   preservada e nota rápida única persistida como fixture.
 - Fuso do perfil administrativo alterado e restaurado por dois POSTs
   tradicionais; credenciais, 2FA e permissões preservados.
+- Coletor SMTP local sem relay capturou uma mensagem/um destinatário durante
+  nova abertura Web; ticket persistido e porta 25 fechada ao final.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -252,3 +254,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — pré-condição de notificações | `email_account`; PHP mail; porta local; `syslog` | Sem SMTP ativo ou listener/coleção; ausência de erro não prova envio; ensaio aguarda coletor local sem relay |
 | 2026-09-04 | Onda 7 — administração de usuário | diálogo AJAX; dois POSTs; detalhe; banco; nota rápida | Nome restaurado por dois `201`; `org_id` preservado; uma nota `U{id}` retornada em HTML `200` |
 | 2026-09-04 | Onda 7 — perfil do agente | formulário completo; fuso alternativo; duas releituras | Dois `200`; preferência alternativa confirmada e valor inicial restaurado; nenhum campo sensível alterado |
+| 2026-09-04 | Onda 7 — notificação de abertura Web | coletor `127.0.0.1:25` sem relay; formulário público; banco; `syslog` | Uma mensagem/um destinatário aceito; ticket Web aberto persistido; sem erro de mailer; coletor encerrado e tipo da notificação ainda não classificado |
