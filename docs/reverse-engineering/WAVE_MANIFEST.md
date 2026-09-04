@@ -168,8 +168,11 @@ validou contagens, links, diff e build MkDocs estrito.
 **Estado:** em execução.
 
 **Objetivo:** confrontar os contratos estáticos já documentados com o
-comportamento observável da instalação `v1.18.4`, começando por cenários somente
-leitura e separando explicitamente qualquer cenário mutável.
+comportamento funcional observável da instalação `v1.18.4`, reproduzindo os
+fluxos normais entre frontend e backend, começando por cenários somente leitura
+e separando explicitamente qualquer cenário mutável. Por GOV-015, novos testes
+ofensivos ou dedicados a segurança não integram esta passagem e serão tratados
+em fase própria somente após o mapeamento e o inventário completos.
 
 **Execução inicial pelo agente principal:**
 
@@ -189,6 +192,9 @@ leitura e separando explicitamente qualquer cenário mutável.
 - cenários mutáveis necessários executados apenas após classificação explícita;
 - divergências e lacunas refletidas nos catálogos e na matriz de evidências;
 - documentação, links e build MkDocs estrito aprovados.
+
+Os achados de segurança já obtidos permanecem evidência histórica da baseline,
+sem direcionar a sequência funcional restante.
 
 ### Revisão independente de segurança — checkpoint 1
 

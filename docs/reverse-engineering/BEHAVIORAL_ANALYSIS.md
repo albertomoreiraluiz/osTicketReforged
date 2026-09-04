@@ -13,6 +13,12 @@ descartável de homologação e devem usar dados fictícios e prefixo identific�
 Exclusões permanecem condicionadas a plano prévio, backup verificável e garantia
 de rollback.
 
+Por GOV-015, a passagem atual observa o uso funcional normal da interface em
+conjunto com seus efeitos no backend. Testes ofensivos ou dedicados a explorar
+controles de segurança não serão ampliados nesta onda e pertencem a uma fase
+posterior ao mapeamento e ao inventário completos. Os achados já confirmados
+continuam registrados, mas não orientam os próximos cenários funcionais.
+
 ## Estado da instalação
 
 | Verificação | Resultado observado em 2026-09-04 |
@@ -400,8 +406,8 @@ reavaliada se o serviço passar a aceitar conexões externas.
 
 ## Pendências imediatas
 
-1. aprofundar as páginas administrativas sem alterar configuração;
-2. ampliar a amostra de rotas AJAX válidas por família;
-3. validar expiração longa e limiar de tentativas somente com protocolo próprio;
-4. concluir limites, MIME e acesso cruzado de anexos sob configuração controlada;
-5. classificar e revisar independentemente a falha de `task.reply`.
+1. reproduzir os fluxos normais ainda não cobertos de ticket e cliente;
+2. observar buscas, filas, paginação e filtros pela interface;
+3. percorrer cadastro e publicação da base de conhecimento com fixtures;
+4. caracterizar efeitos de notificações sem entrega externa acidental;
+5. ampliar os fluxos administrativos de leitura e edição não destrutiva.

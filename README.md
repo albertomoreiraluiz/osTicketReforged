@@ -19,6 +19,11 @@ extensões e logs preparados. A interface pública e a autenticação administra
 foram confirmadas por observação em runtime. O snapshot oficial de referência e
 o portal MkDocs permanecem no fluxo obrigatório de atualização.
 
+A Onda 7 prioriza agora a reprodução fiel dos fluxos funcionais entre frontend
+e backend. Achados de segurança já confirmados continuam documentados, sem novos
+ensaios ofensivos nesta passagem comportamental. A auditoria de segurança terá
+fase própria depois do mapeamento e do inventário completos.
+
 Próximas etapas:
 
 1. executar a matriz comportamental somente leitura e atualizar os catálogos;
