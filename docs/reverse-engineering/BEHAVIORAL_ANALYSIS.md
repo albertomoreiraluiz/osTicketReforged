@@ -368,11 +368,18 @@ e-mail e cron autorizado permanecem fora deste checkpoint.
 
 As exportações do ticket na sessão administrativa, da tarefa nas sessões de
 administrador e agente atribuído e do ticket no portal do cliente responderam
-`200` como `application/pdf`. Os quatro corpos começaram por `%PDF` e tiveram
-tamanho não nulo. A validação confirma carregamento do gerador e acesso básico
-por papel; não afirma ainda equivalência de conteúdo nem ausência de campos
-internos no PDF do cliente. Nenhum documento autenticado foi persistido como
-evidência.
+`200` como `application/pdf`. Os quatro corpos começaram por `%PDF`, tiveram
+tamanho não nulo e foram submetidos a extração textual e inspeção visual local.
+
+O PDF do cliente contém a mensagem inicial e a resposta pública, sem título ou
+thread da tarefa, nota interna, resposta forjada ou referência ao anexo interno.
+O PDF do ticket staff também não incorpora o conteúdo da tarefa vinculada. Os
+PDFs da tarefa para administrador e agente atribuído têm duas páginas legíveis e
+incluem o histórico da própria tarefa, como notas internas, resposta forjada,
+registro do anexo e transições de fechamento e reabertura. O resultado confirma
+a filtragem entre exportação de ticket e de tarefa no cenário observado; não
+generaliza a conclusão para outros objetos ou permissões. Os documentos ficaram
+somente na área local ignorada pelo Git e não integram as evidências versionadas.
 
 ## Exposição local aceita na homologação
 

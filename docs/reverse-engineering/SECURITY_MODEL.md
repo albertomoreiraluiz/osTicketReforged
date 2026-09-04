@@ -197,3 +197,10 @@ confirmou esse limite: o cliente dono do ticket não via a tarefa nem a nota
 interna, mas baixou o TXT usando a URL válida capturada na visão staff. A URL
 assinada é uma capability difícil de adivinhar; o risco depende de vazamento ou
 compartilhamento, não de enumeração demonstrada.
+
+As exportações PDF mantiveram a fronteira de conteúdo no cenário testado. O PDF
+do cliente trouxe apenas a conversa pública do ticket e omitiu tarefa, notas,
+resposta e anexo internos. A exportação do ticket staff também não incorporou a
+thread da tarefa, enquanto os PDFs específicos da tarefa apresentaram seu
+histórico ao administrador e ao agente atribuído. Essa filtragem não reduz o
+risco independente da capability assinada descrito acima.

@@ -68,7 +68,8 @@
 - Revisão independente elevou ACL composta de tarefa e capability assinada a
   altas; POST forjado confirmou fechamento sem `task.close`, seguido de rollback.
 - Exportações PDF de ticket/tarefa em sessões staff, agente e cliente retornaram
-  documentos válidos; conteúdo interno ainda requer inspeção específica.
+  documentos válidos e legíveis; o ticket do cliente omitiu conteúdo interno e
+  as exportações específicas da tarefa refletiram seu histórico autorizado.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -210,4 +211,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — autenticação negativa | sessões isoladas; senha e CSRF inválidos; login correto subsequente | Mensagem genérica e 200 para senha; 302 para CSRF; sem bloqueio após uma falha |
 | 2026-09-04 | Onda 7 — API HTTP | chave local; JSON válido/inválido; flag de cron; banco | 401/201/400 confirmados; ticket `source=API`; chave desativada ao final |
 | 2026-09-04 | Onda 7 — revisão de segurança 1 | parecer independente; releitura do código; fechamento forjado e reabertura | ACL composta e capability altas; upload médio; contratos de erro classificados |
-| 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME e magic bytes | Quatro PDFs válidos; nenhum conteúdo autenticado persistido |
+| 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
