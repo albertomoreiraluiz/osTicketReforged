@@ -7,7 +7,7 @@ alteram arquivos e não criam agentes descendentes.
 
 ## Onda 1 — fundações arquiteturais
 
-**Estado:** em execução.
+**Estado:** concluída e integrada documentalmente.
 
 **Justificativa:** as três frentes percorrem conjuntos extensos e independentes
 da baseline. A separação reduz omissões sem criar decisões concorrentes.
@@ -25,6 +25,12 @@ da baseline. A separação reduz omissões sem criar decisões concorrentes.
 - resultados integrados ao portal documental;
 - `mkdocs build --strict` e `git diff --check` aprovados;
 - diff estabilizado antes da próxima onda.
+
+### Encerramento
+
+As três missões entregaram evidências sem alterar o workspace nem acessar
+`.env`. Os resultados foram integrados em `REQUEST_LIFECYCLE.md`,
+`DATABASE_ARCHITECTURE.md`, `PLUGIN_ARCHITECTURE.md` e `HOOKS.md`.
 
 ## Restrições da fase
 

@@ -38,6 +38,12 @@
   segredos locais.
 - Superfícies HTTP centrais interpretadas estaticamente, incluindo controles do
   portal, guarda da equipe, ações de ticket e dimensão inicial do AJAX.
+- Ciclos web e CLI corrigidos e aprofundados; configuração, sessão, dispatcher
+  e fronteiras de bibliotecas agora possuem evidência estática verificável.
+- Persistência aprofundada com relações ORM, associações polimórficas, cdata,
+  upgrades e integridade manual sem FKs físicas.
+- Onda 1 concluída: arquitetura de plugins, estados de instância, persistência,
+  dispatchers e catálogo de 41 sinais literais documentados.
 
 ## Próximo passo proposto
 
@@ -104,3 +110,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Mapas do Portão B | componentes; 46 scripts diretos e dispatcher de apps no SCP; 14 módulos CLI; 67 tabelas; 99 patches SQL; plugins e sinais | Mapeamento inicial ampliado; rastreamento profundo ainda não iniciado |
 | 2026-09-03 | Onda 1 do inventário | `docs/reverse-engineering/WAVE_MANIFEST.md` | Três missões somente leitura registradas; integração documental centralizada |
 | 2026-09-03 | Superfícies HTTP estáticas | `docs/reverse-engineering/HTTP_SURFACES.md`; controladores e dispatchers da baseline | Portal, equipe, API e aplicações delimitados sem reprodução comportamental |
+| 2026-09-03 | Ciclos e persistência — Onda 1 | `REQUEST_LIFECYCLE.md`; `DATABASE_ARCHITECTURE.md` | Cadeias web/CLI e modelo lógico/físico documentados; validação dinâmica adiada |
+| 2026-09-03 | Extensibilidade — Onda 1 | `PLUGIN_ARCHITECTURE.md`; `HOOKS.md` | Ciclo de plugins, registries e sinais mapeados; contratos individuais seguem pendentes |

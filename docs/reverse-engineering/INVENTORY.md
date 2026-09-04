@@ -14,6 +14,10 @@
 As contagens descrevem a árvore Git da baseline, não o diretório de trabalho do
 Reforged.
 
+Para reproduzir o commit de uma tag anotada, use `git rev-parse
+v1.18.4^{commit}`. `git rev-parse v1.18.4` retorna o objeto da tag, não o
+commit referenciado.
+
 ## Superfícies executáveis localizadas
 
 | Superfície | Entry point ou bootstrap | Evidência inicial |
@@ -49,6 +53,8 @@ Reforged.
   `osTicket::start()`.
 - **Aplicação:** classe `osTicket` em `include/class.osticket.php:30` e método
   `start()` em `include/class.osticket.php:676`.
+- **Sessões:** orquestração em `include/class.ostsession.php` e handlers em
+  `include/class.session.php`.
 - **Domínio de tickets:** classe `Ticket` em `include/class.ticket.php:39`,
   baseada em `VerySimpleModel` e associada a `RestrictedAccess`, `Threadable` e
   `Searchable`.
@@ -69,3 +75,7 @@ Esta unidade confirma localização e encadeamento inicial. Ainda não confirma:
 - cobertura e estabilidade dos hooks;
 - compatibilidade dos ERDs oficiais com `v1.18.4`;
 - fronteiras seguras para customização.
+
+O CLI constitui uma exceção ao bootstrap web: `manage.php` carrega
+`bootstrap.php` e `cli.inc.php`, e cada módulo decide se conecta ao banco ou
+executa `osTicket::start()`.

@@ -44,6 +44,11 @@ agente já autenticada.
 | `apps/dispatcher.php` | aplicações registradas | seleção, autenticação e extensão |
 | `scp/apps/dispatcher.php` | aplicações no contexto da equipe | controles herdados do SCP |
 
+O `.htaccess` da API reescreve caminhos não físicos para `api/http.php`, e o
+dispatcher consome `PATH_INFO`. O core registra duas famílias nativas e pode
+receber `/auth/ext` por listener interno do sinal `api`
+(`include/class.auth.php:787-798`).
+
 ## CLI
 
 `manage.php` carrega 14 módulos em `include/cli/modules/`: `agent`, `cron`,
@@ -54,11 +59,16 @@ agente já autenticada.
 não apenas bibliotecas. Efeitos e requisitos serão classificados antes de usar
 qualquer comando mutável.
 
+O bootstrap é seletivo: nove módulos conectam ao banco e seis iniciam
+`osTicket`; a mera presença do módulo não prova uma inicialização uniforme.
+
 ## Dispatchers observados
 
 - API HTTP: `api/http.php` cria padrões, emite `Signal::send('api', ...)` e
   resolve o caminho.
 - AJAX do usuário: `ajax.php` emite `ajax.client` antes da resolução.
+- Aplicações do usuário: `apps/dispatcher.php` também reutiliza o sinal
+  `ajax.client`.
 - AJAX da equipe: `scp/ajax.php` agrega dezenas de grupos de rotas.
 - Funções de construção: `patterns()`, `url()`, `url_post()`, `url_get()` e
   `url_delete()` em `include/class.dispatcher.php:179-204`.

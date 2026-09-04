@@ -4,13 +4,15 @@
 
 ```mermaid
 flowchart LR
-    HTTP[HTTP / CLI / e-mail] --> EP[Entrypoints]
-    EP --> BOOT[Bootstrap comum]
+    HTTP[HTTP / e-mail] --> EP[Entrypoints web]
+    CLI[CLI] --> CLIBOOT[Bootstrap modular CLI]
+    EP --> BOOT[main.inc.php + bootstrap]
     BOOT --> SURF[Cliente / SCP / API / AJAX / CLI]
     SURF --> CTRL[Controllers e dispatchers]
     CTRL --> DOMAIN[Classes de domínio]
     DOMAIN --> ORM[VerySimpleModel / QuerySet]
     ORM --> DB[(MySQL ou MariaDB)]
+    CLIBOOT --> DOMAIN
     SIGNAL[Signal] -. extensão .-> CTRL
     PLUGIN[PluginManager] -. extensão .-> DOMAIN
 ```
@@ -63,7 +65,13 @@ um arquivo pode declarar vários símbolos.
 `include/`, inclusive árvores `vendor/`. Elas não devem ser confundidas com o
 core em futuras métricas ou documentação automática.
 
-**Inferência:** a ausência de um manifesto Composer único na raiz e a presença
-de dependências incorporadas por componente indicam um modelo de distribuição
-empacotado. A cadeia exata de atualização dessas bibliotecas ainda precisa ser
-rastreada antes de propor mudanças.
+Não existe manifesto Composer na raiz. Laminas Mail e mPDF possuem manifests e
+autoloaders próprios incorporados; são carregados explicitamente por
+`include/class.email.php:14` e `include/class.pdf.php:16-22`. O core também
+usa `include/UniversalClassLoader.php`, carregado por
+`include/class.osticket.php:25-26`, e mantém bibliotecas PEAR pelo
+`include_path` definido em `bootstrap.php:380-386`.
+
+**Inferência sustentada:** a distribuição combina core, templates, código PEAR,
+árvores Composer incorporadas e upgrader em `include/`; métricas e alterações
+de dependência devem preservar essas fronteiras.

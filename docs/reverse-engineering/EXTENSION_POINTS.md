@@ -8,9 +8,9 @@
 **Fato observado:** o mecanismo permite conectar callbacks por nome de sinal e
 emitir eventos com objeto e dados associados.
 
-**Pendente:** catálogo de todos os nomes emitidos, momento, payload, mutabilidade
-e garantias de ordem. A simples presença de `Signal::send()` não prova que um
-fluxo possa ser customizado integralmente sem alteração do core.
+O [catálogo inicial de sinais](HOOKS.md) confirma 41 nomes literais emitidos,
+mas momento, payload, mutabilidade e segurança ainda precisam ser relacionados
+individualmente.
 
 ## Plugins
 
@@ -21,10 +21,8 @@ fluxo possa ser customizado integralmente sem alteração do core.
 | `Plugin` | `include/class.plugin.php:543` | modelo e ciclo do pacote instalado |
 | `PluginInstance` | `include/class.plugin.php:1006` | instância configurável de plugin |
 
-O carregamento pode registrar namespaces de biblioteca
-(`include/class.plugin.php:705`). Métodos de instalação, desinstalação,
-habilitação e bootstrap foram localizados, mas seus efeitos e transações ainda
-não foram analisados profundamente.
+O ciclo, os estados, a persistência e os riscos estão detalhados na
+[arquitetura de plugins](PLUGIN_ARCHITECTURE.md).
 
 ## Extensão de rotas
 
@@ -32,9 +30,9 @@ Antes de resolver a API HTTP, `api/http.php` emite o sinal `api` com o
 dispatcher. O AJAX do cliente emite `ajax.client`. Esses pontos sugerem registro
 adicional de rotas por listeners.
 
-**Inferência:** plugins podem ampliar certas superfícies sem editar seus
-entrypoints. Isso será confirmado rastreando quem conecta listeners, quando os
-plugins são inicializados e quais controles de autenticação permanecem ativos.
+**Fato observado:** plugins carregados podem ampliar essas superfícies sem
+editar os entrypoints. A segurança continua dependente da guarda da superfície,
+do `Controller::access()` e das verificações do método registrado.
 
 ## Critério para classificar um ponto como seguro
 
