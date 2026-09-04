@@ -20,4 +20,5 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-014 | 2026-09-04 | Aceito | Alterações funcionais necessárias à análise comportamental estão previamente autorizadas somente no banco descartável de homologação. Toda exclusão exige plano anterior à execução, backup verificável e garantia de rollback; produção, schema e core permanecem fora da autorização. | `AGENTS.md`; `docs/reverse-engineering/BEHAVIORAL_ANALYSIS.md`; decisão explícita do responsável |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
-a GOV-011 foram formalizadas e integradas pela PR #2.
+a GOV-011 foram formalizadas e integradas pela PR #2. GOV-012 e GOV-013, o
+inventário técnico e GOV-014 são consolidados pela PR #5.
