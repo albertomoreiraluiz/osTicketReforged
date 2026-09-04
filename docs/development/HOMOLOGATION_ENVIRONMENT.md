@@ -183,6 +183,33 @@ sem versionar o `.env`. Mudança de schema continua proibida. Antes de qualquer
 exclusão, devem existir plano, backup verificável e procedimento de rollback;
 sem essas três evidências, a exclusão não pode ser executada.
 
+### Restauração segura do MariaDB no Windows
+
+Arquivos SQL de backup são artefatos binários do ponto de vista da automação.
+É proibido restaurá-los com `ReadLine()`, `WriteLine()`, `Get-Content`, pipeline
+textual ou qualquer `StreamReader`/`StreamWriter`: essas camadas podem recodificar
+UTF-8 e substituir caracteres multibyte por `?`.
+
+O procedimento obrigatório deve:
+
+1. produzir o dump com `--default-character-set=utf8mb4` e preservar sua saída
+   em stream binário;
+2. restaurar primeiro em banco temporário por cópia direta de
+   `FileStream` para `StandardInput.BaseStream`;
+3. validar bytes conhecidos com `HEX()`, além de contagens e fixtures;
+4. criar um novo dump binário do estado ativo antes de restaurá-lo;
+5. restaurar o banco ativo somente após a validação temporária;
+6. comparar novamente bytes, contagens e fixtures entre banco ativo e temporário.
+
+Em 2026-09-04, uma restauração textual violou esse requisito e converteu grande
+parte dos acentos do banco em `??`. O dump de origem permanecia íntegro. O
+estado corrompido foi preservado em dump binário, o dump íntegro foi validado
+em nova base temporária e restaurado por streams binários. Sete tabelas de
+controle ficaram com contagens idênticas, as três fixtures da Onda 8 retornaram
+ao estado esperado e `ç` foi confirmado como bytes UTF-8 `C3 A7` no banco ativo.
+A tela administrativa de logs respondeu `200`, apresentou `serviço` em UTF-8 e
+não continha a sequência corrompida `servi??o`.
+
 ## Validação pendente
 
 PHP CLI, módulos, configuração do Apache e gravação do log PHP já foram

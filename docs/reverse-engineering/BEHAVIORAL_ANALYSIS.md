@@ -150,6 +150,16 @@ as três fixtures reapareceram abertas, independentes, sem flags e com uma
 entrada cada. Isso satisfaz a garantia de rollback e reconcilia o desvio de
 sequência descrito abaixo.
 
+Essa primeira restauração, embora preservasse contagens, foi posteriormente
+identificada como inválida para conteúdo textual: o executor transportou o SQL
+por `ReadLine()`/`WriteLine()` e substituiu caracteres UTF-8 multibyte por `?`.
+A base temporária usada na comparação sofrera a mesma conversão, produzindo uma
+falsa paridade. O dump original continha os bytes corretos e foi restaurado
+novamente por streams binários após backup do estado afetado. A nova validação
+comparou sete tabelas e confirmou por `HEX()` a sequência `C3 A7` no banco
+temporário e no ativo. A garantia de rollback passa a depender também de
+integridade de bytes, conforme GOV-017.
+
 O vínculo visual definiu o primeiro ticket como pai e o segundo como filho,
 com ordenação e flags correspondentes. Apesar da mutação bem-sucedida, o POST
 respondeu `404`: `Ticket::merge()` aplica `manageMerge()`, mas retorna `false`
