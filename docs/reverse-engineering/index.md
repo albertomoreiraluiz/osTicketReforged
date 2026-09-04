@@ -45,6 +45,8 @@ baseline antes de aprofundar comportamento, riscos ou opções de customização
 29. [Matriz de customização](CUSTOMIZATION_MATRIX.md)
 30. [Matriz de evidências](EVIDENCE_MATRIX.md)
 31. [Revisão cruzada do Portão C](REVIEW_REPORT.md)
+32. [Análise comportamental](BEHAVIORAL_ANALYSIS.md)
+33. [Evidências comportamentais](evidence/README.md)
 
 O Portão B está concluído. Estes documentos agora sustentam o aprofundamento
 do Portão C e serão atualizados a cada unidade analisada.

@@ -1,0 +1,37 @@
+{
+  "scenario": "BHV-029",
+  "baseline": "v1.18.4",
+  "executed_on": "2026-09-04",
+  "source": {
+    "ticket_id": 5,
+    "entry_id": 25,
+    "entry_type": "R",
+    "staff_id": 1,
+    "body_length": 58
+  },
+  "form": {
+    "page_http_status": 200,
+    "dynamic_form_http_status": 200,
+    "initial_uid_present": false,
+    "explicit_user_selection_required": true
+  },
+  "created": {
+    "http_status_after_redirect": 200,
+    "redirect_has_ticket_id": true,
+    "ticket_id_during_test": 12,
+    "selected_user_match": true,
+    "staff_id": 1,
+    "source": "Phone",
+    "status_id": 1,
+    "response_body_binary_match_count": 1,
+    "entry_types": ["M", "N", "R", "N"],
+    "source_ticket_note_count": 1,
+    "derived_ticket_note_count": 2
+  },
+  "rollback": {
+    "seven_table_counts_match": true,
+    "utf8_sample_matches": true,
+    "temporary_ticket_removed_by_full_restore": true,
+    "source_response_restored": true
+  }
+}

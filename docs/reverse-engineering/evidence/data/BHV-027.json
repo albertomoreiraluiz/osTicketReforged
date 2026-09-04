@@ -1,0 +1,39 @@
+{
+  "scenario": "BHV-027",
+  "baseline": "v1.18.4",
+  "executed_on": "2026-09-04",
+  "fixtures": { "parent_ticket_id": 9, "child_ticket_id": 10 },
+  "before": {
+    "parent": { "ticket_pid": 0, "sort": 0, "status_id": 1, "flags": 0 },
+    "child": { "ticket_pid": 0, "sort": 0, "status_id": 1, "flags": 0 },
+    "relation_events": 0
+  },
+  "link": {
+    "http_status": 404,
+    "success_marker": false,
+    "parent": { "ticket_pid": 0, "sort": 0, "status_id": 1, "flags": 24 },
+    "child": { "ticket_pid": 9, "sort": 1, "status_id": 1, "flags": 8 },
+    "relation_events": 2
+  },
+  "unlink": {
+    "http_status": 201,
+    "success_marker": true,
+    "parent": { "ticket_pid": 0, "sort": 0, "status_id": 1, "flags": 24 },
+    "child": { "ticket_pid": 0, "sort": 1, "status_id": 1, "flags": 0 },
+    "relation_events": 4
+  },
+  "render": {
+    "http_status": 200,
+    "parent_message_visible": true,
+    "child_message_visible": false,
+    "php_log_error": "ArgumentCountError: 5 arguments are required, 4 given",
+    "source": "include/class.thread.php:2690"
+  },
+  "rollback": {
+    "seven_table_counts_match": true,
+    "utf8_sample_matches": true,
+    "parent_restored": { "ticket_pid": 0, "sort": 0, "flags": 0 },
+    "child_restored": { "ticket_pid": 0, "sort": 0, "flags": 0 },
+    "relation_events": 0
+  }
+}
