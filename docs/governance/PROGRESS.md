@@ -40,6 +40,12 @@
   login, erro fatal ou novo registro no log PHP.
 - Passagem AJAX confirmou guards 400/403, respostas heterogêneas e todos os
   treze alvos ausentes retornando 500 em runtime, sem alcançar persistência.
+- Fixtures fictícias de administrador, agente somente visualização e cliente
+  autenticado disponíveis; segredos permanecem apenas no `.env` ignorado.
+- Matriz inicial confirmou isolamento entre sessões de cliente/equipe, menu
+  restrito do agente e `403` em AJAX administrativo.
+- CLI `user activate` confirmou erro fatal por chamada ao método inexistente
+  `UserAccount::create()`; importação de usuário funcionou.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -169,3 +175,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Consolidação da engenharia reversa | PR #5 | Inventário estático, homologação e início da Onda 7 submetidos para integração em `main` |
 | 2026-09-04 | Integração documental | PR #5; merge `9feda032` | Engenharia reversa estática e início comportamental integrados em `main` |
 | 2026-09-04 | Onda 7 — páginas e AJAX | 31 páginas autenticadas; rotas AJAX válidas, inválidas e treze alvos ausentes | Páginas estáveis; guards registrados; todos os alvos ausentes confirmados com 500 sem persistência |
+| 2026-09-04 | Onda 7 — identidades e permissões | criação administrativa de agente; importação/registro de cliente; três sessões | Agente de visualização e cliente autenticados; fronteiras iniciais confirmadas sem expor credenciais |
+| 2026-09-04 | CLI de cliente | `manage.php user import`; `manage.php user activate` | Importação concluída; ativação fatal por `UserAccount::create()` inexistente |

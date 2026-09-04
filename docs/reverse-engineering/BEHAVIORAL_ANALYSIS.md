@@ -36,8 +36,8 @@ de rollback.
 | BHV-001 | página inicial pública | anônimo | leitura | concluído | status, título e navegação |
 | BHV-002 | login `scp` | administrador | sessão | concluído | CSRF presente e painel autenticado |
 | BHV-003 | painel e menus da equipe | administrador | leitura | concluído na passagem inicial | telas, links e guards observados |
-| BHV-004 | portal do cliente | anônimo/cliente | leitura/sessão | pendente | login, consulta e guards |
-| BHV-005 | matriz de permissões | agente/admin | leitura | pendente | diferenças de menu e resposta |
+| BHV-004 | portal do cliente | anônimo/cliente | leitura/sessão | concluído na passagem inicial | login, consulta e guards |
+| BHV-005 | matriz de permissões | agente/admin | leitura | iniciado | diferenças de menu e resposta |
 | BHV-006 | AJAX/PJAX | administrador/agente | leitura | iniciado | contrato HTTP e erros sanitizados |
 | BHV-007 | logs PHP e Apache | sistema | leitura | iniciado | ausência/presença de falhas correlatas |
 | BHV-008 | ticket de teste | papéis fictícios | mutável | pendente | ciclo e persistência controlados |
@@ -145,6 +145,40 @@ alteração de usuário do ticket, pesquisas/filas e coluna de fila. Foram usado
 IDs e nomes fictícios; como o dispatcher falhou na resolução do método, nenhum
 fluxo de persistência foi alcançado. O log PHP não cresceu durante essa passagem.
 
+### BHV-004 — sessão do cliente
+
+Uma identidade fictícia foi importada, recebeu conta local confirmada e teve as
+credenciais armazenadas somente no `.env`. A autenticação do cliente entregou
+sessão válida para `tickets.php`, `profile.php`, `open.php` e `view.php`, todas
+com resposta `200` e sem marcador fatal. A mesma sessão não autenticou
+`scp/index.php`, que apresentou o login da equipe. A configuração AJAX pública
+do cliente respondeu `200` como JSON.
+
+### BHV-005 — agente de visualização
+
+Uma identidade fictícia foi criada pelo fluxo administrativo com departamento
+primário Suporte, papel `Apenas visualização` e restrição a itens atribuídos. A
+senha foi definida pelo endpoint administrativo nativo e mantida somente no
+`.env`. O login funcionou, mas a navegação inicial expôs apenas a área de
+tickets. Requisições diretas a páginas administrativas retornaram ao Painel de
+Controle da Equipe, sem conteúdo de administração, enquanto a busca AJAX
+`/users/staff` respondeu `403`. Isso demonstra que o status HTTP `200` isolado
+não prova autorização: títulos, menus e conteúdo final também precisam ser
+verificados.
+
+### BHV-CLI-001 — ativação de cliente pelo CLI
+
+Após importar o cliente fictício, `manage.php user --id=<id> activate` terminou
+com erro fatal porque `include/cli/modules/user.php:95` chama
+`UserAccount::create()`, método inexistente na baseline. O método disponível é
+`ClientAccount::createForUser()` e já é usado pelo fluxo web em `account.php`.
+O defeito impede ativar via CLI um usuário que ainda não possua conta.
+
+A fixture foi concluída pelo registro web e por atualização direcionada da
+própria conta para o backend nativo `client`. Nenhum schema, registro alheio ou
+dado real foi alterado. Essa preparação não é evidência do fluxo normal de
+registro e permanece separada dos resultados comportamentais do cliente.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
@@ -167,5 +201,5 @@ reavaliada se o serviço passar a aceitar conexões externas.
 1. aprofundar as páginas administrativas sem alterar configuração;
 2. ampliar a amostra de rotas AJAX válidas por família;
 3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
-4. preparar identidades fictícias por papel antes da matriz de permissões;
-5. iniciar cenários funcionais de criação e edição com rastreabilidade.
+4. aprofundar a matriz de permissões com tickets atribuídos e não atribuídos;
+5. iniciar o ciclo funcional de ticket com rastreabilidade.
