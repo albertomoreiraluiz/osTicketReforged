@@ -197,3 +197,9 @@ fictício existente e o coletor aceitou uma mensagem com um destinatário. Isso
 confirma que o ciclo de criação pode alcançar o transporte de saída sem impedir
 a persistência. O ensaio não registrou endereços ou conteúdo, portanto não
 distingue autoresposta de alerta interno.
+
+A classificação subsequente confirmou que a mensagem da abertura foi alerta
+interno. O autoresponder global estava desligado, embora tópico e departamento
+o permitissem; o alerta de novo ticket e o destinatário administrador estavam
+ativos. O gerente estava selecionado na política, mas o departamento não tinha
+gerente, resultando em um único destinatário efetivo.

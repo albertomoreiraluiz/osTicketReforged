@@ -98,6 +98,8 @@
   tradicionais; credenciais, 2FA e permissões preservados.
 - Coletor SMTP local sem relay capturou uma mensagem/um destinatário durante
   nova abertura Web; ticket persistido e porta 25 fechada ao final.
+- Segunda abertura Web classificou o único envio como alerta administrativo;
+  autoresposta ausente por configuração global desativada, sem armazenar endereço.
 - Portão C concluído com catálogos exaustivos, matriz de customização, limites
   do core e revisão cruzada independente.
 - Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
@@ -255,3 +257,4 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — administração de usuário | diálogo AJAX; dois POSTs; detalhe; banco; nota rápida | Nome restaurado por dois `201`; `org_id` preservado; uma nota `U{id}` retornada em HTML `200` |
 | 2026-09-04 | Onda 7 — perfil do agente | formulário completo; fuso alternativo; duas releituras | Dois `200`; preferência alternativa confirmada e valor inicial restaurado; nenhum campo sensível alterado |
 | 2026-09-04 | Onda 7 — notificação de abertura Web | coletor `127.0.0.1:25` sem relay; formulário público; banco; `syslog` | Uma mensagem/um destinatário aceito; ticket Web aberto persistido; sem erro de mailer; coletor encerrado e tipo da notificação ainda não classificado |
+| 2026-09-04 | Onda 7 — classificação de notificação | coletor efêmero com classificação de domínio; nova abertura Web; configuração | Única mensagem destinada ao lado interno; alerta administrativo ativo, autoresponder global desligado e departamento sem gerente; porta fechada ao final |

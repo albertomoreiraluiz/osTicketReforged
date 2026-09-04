@@ -409,6 +409,20 @@ BHV-011 avança para iniciado. Restam correlacionar tipos de notificação e
 gatilhos adicionais com um coletor local que classifique destinatários sem
 armazenar seus valores.
 
+Na passagem seguinte, o coletor classificou o domínio do comando SMTP em
+memória e descartou o valor imediatamente. Outra abertura Web persistiu um novo
+ticket fictício aberto e produziu uma mensagem para um destinatário fora de
+`example.com`, sem mensagem para o endereço reservado do solicitante. A
+configuração explica o resultado: `ticket_autoresponder=0`, enquanto o alerta
+de novo ticket está ativo para administrador e gerente; o departamento não
+possui gerente, membros estão desmarcados e o tópico/departamento não bloqueiam
+autoresposta. Portanto, o único envio observado foi o alerta administrativo, e
+a ausência de autoresposta decorre da chave global.
+
+O segundo coletor também foi encerrado e a porta 25 voltou a ficar fechada.
+Esse checkpoint conclui a notificação da abertura Web; respostas staff,
+mensagens do cliente e demais gatilhos ainda pertencem a BHV-011.
+
 ### BHV-012 — API HTTP nativa
 
 Antes do cenário, a instalação não possuía chaves de API. O painel nativo criou

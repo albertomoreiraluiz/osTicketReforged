@@ -30,6 +30,14 @@ o ticket foi persistido e não houve `Mailer Error`. O coletor foi encerrado ao
 fim do ensaio. Como ele não armazenou endereços ou conteúdo, a classificação do
 tipo de notificação continua pendente.
 
+Uma segunda passagem classificou apenas o domínio do destinatário em memória.
+O envio foi para o lado interno, não para o solicitante `example.com`. O estado
+persistido confirmou `ticket_autoresponder=0`, alerta global de novo ticket
+ativo, alerta administrativo ativo, alerta de gerente habilitado porém sem
+gerente no departamento e alerta a membros desabilitado. O comportamento
+observado corresponde aos ramos de `Ticket::onNewTicket()` em
+`include/class.ticket.php:1679-1771`.
+
 ## Arquivos, storage e anexos
 
 `AttachmentFile` representa conteúdo/metadados, `Attachment` associa o arquivo
