@@ -147,3 +147,11 @@ renderização em `include/staff/templates/task-view.tmpl.php:560-567`.
 CSRF funcionou como proteção contra origem externa, mas não substitui a ACL da
 ação para um agente autenticado. Uma API ou frontend futuro deverá impor a
 permissão no servidor e jamais derivá-la apenas da visibilidade do controle.
+
+A mesma matriz mostrou que `task.close` bloqueia a mutação: a tentativa do
+agente manteve `closed` nulo. Contudo, `TicketsAjaxAPI::changeStatus()` registra
+a negação em `$errors['err']`, enquanto o template de status apresenta
+`$info['error']` (`include/ajax.tasks.php:823-878`;
+`include/staff/templates/task-status.tmpl.php:12-14`). O resultado observado foi
+HTTP `200`, formulário reapresentado e nenhuma mensagem `#msg_error`. A ACL
+funcionou, mas o contrato de erro é ambíguo para clientes HTTP e para a interface.

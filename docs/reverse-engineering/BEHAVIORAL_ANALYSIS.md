@@ -241,6 +241,16 @@ somente na renderização do formulário
 na interface não impede a escrita por requisição forjada. O cenário não enviou
 e-mail, não fechou a tarefa e não executou exclusão.
 
+O formulário de nota permaneceu visível ao mesmo papel e uma nota controlada foi
+persistida. Já o POST direto de fechamento sem `task.close` respondeu `200`,
+reapresentou o formulário e manteve a tarefa aberta; o corpo não trouxe
+`#msg_error`. O administrador fechou e reabriu a tarefa pelos endpoints AJAX,
+recebendo `201` nas duas operações. A coluna `closed` e as notas de transição
+confirmaram os estados fechado e aberto; ao fim, a fixture voltou a ficar
+aberta. Esses resultados distinguem três contratos: nota permitida, resposta
+indevidamente permitida e transição corretamente negada, mas com feedback HTTP
+e visual ambíguo.
+
 ## Exposição local aceita na homologação
 
 ### BHV-SEC-001 — instalador acessível após a instalação
@@ -263,6 +273,5 @@ reavaliada se o serviço passar a aceitar conexões externas.
 1. aprofundar as páginas administrativas sem alterar configuração;
 2. ampliar a amostra de rotas AJAX válidas por família;
 3. validar expiração e tentativas inválidas sem acionar bloqueio destrutivo;
-4. concluir nota, status e transições da tarefa fictícia;
-5. preparar anexos controlados e observar persistência/limites;
-6. classificar e revisar independentemente a falha de `task.reply`.
+4. preparar anexos controlados e observar persistência/limites;
+5. classificar e revisar independentemente a falha de `task.reply`.

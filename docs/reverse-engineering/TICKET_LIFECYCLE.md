@@ -82,6 +82,13 @@ omite o formulário sem a permissão
 uma resposta do agente sem essa permissão. Esse é um fato observado de
 autorização, não uma conclusão baseada somente na leitura do template.
 
+O agente também publicou nota interna, ação que a própria tela oferece mesmo sem
+`task.reply`. Sua tentativa direta de fechamento não alterou a tarefa, mas o
+AJAX respondeu `200` e reapresentou o formulário sem erro visível. Com a conta
+administrativa, fechar e reabrir responderam `201`, alteraram `closed` e
+persistiram as duas notas de transição. A fixture terminou novamente aberta e
+nenhuma exclusão foi executada.
+
 ## Atualização, status e exclusão
 
 `Ticket::update()` exige `ticket.edit`, valida campos base e dinâmicos, salva
