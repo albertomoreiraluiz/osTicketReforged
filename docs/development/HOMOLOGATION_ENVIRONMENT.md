@@ -2,10 +2,10 @@
 
 ## Status
 
-Infraestrutura-base **Preparada** e contrato local **Aceito**. A instalação
-funcional do osTicket ainda depende dos dados do banco e da definição de sua
-localização sob o Apache. A persistência definitiva de conexões permanece
-**A definir (TBD)**.
+Infraestrutura **Ativa**, instalação funcional **Concluída** e contrato local
+**Aceito**. O osTicket responde sob o Apache, o banco foi criado e a fase de
+análise comportamental está em execução. A persistência definitiva de conexões
+permanece **A definir (TBD)**.
 
 ## Decisão
 
@@ -26,6 +26,12 @@ extensões carregadas nem os testes funcionais no runtime instalado.
 - `.env.example`: contrato versionado, sempre sem segredos;
 - `include/ost-config.php`: configuração nativa do osTicket, ignorada pelo Git;
 - `.local/`: artefatos locais, logs coletados e resultados sanitizados, ignorados.
+
+As variáveis `OSTR_ADMIN_ACCOUNT` e `OSTR_ADMIN_PASSWORD` guardam exclusivamente
+a conta administrativa criada pelo instalador para autenticação das ferramentas
+na homologação. Seus valores não podem aparecer em documentação, saída de
+comando, artefato, Issue, commit ou Pull Request. As variáveis `OSTR_TEST_*`
+continuam reservadas a identidades fictícias por papel nos cenários funcionais.
 
 ## Ordem segura de preenchimento
 
@@ -170,8 +176,52 @@ OSTR_DEPLOY_CONFIRMATION=
 
 Ferramentas futuras devem recusar operações mutáveis enquanto as permissões continuarem falsas. Alterar uma variável não substitui a autorização exigida pela governança.
 
+GOV-014 registra a autorização do responsável para mutações funcionais
+necessárias à Onda 7 exclusivamente no banco descartável de homologação. As
+ferramentas podem ajustar localmente as barreiras para cada execução controlada,
+sem versionar o `.env`. Mudança de schema continua proibida. Antes de qualquer
+exclusão, devem existir plano, backup verificável e procedimento de rollback;
+sem essas três evidências, a exclusão não pode ser executada.
+
 ## Validação pendente
 
 PHP CLI, módulos, configuração do Apache e gravação do log PHP já foram
-validados. Restam a instalação web, o ciclo HTTP, o banco somente leitura e as
-contas funcionais. Nenhuma implantação do osTicket foi executada nesta tarefa.
+validados.
+
+Em 2026-09-04, a distribuição limpa da baseline `v1.18.4` foi preparada pelo
+módulo nativo `manage.php deploy --setup`. O staging foi extraído diretamente
+da tag Git, evitando copiar `.env`, `.codex`, documentação do Reforged, MkDocs
+ou metadados Git para o webroot. Foram verificados 2.250 arquivos, presença do
+instalador/schema e igualdade SHA-256 de `include/class.ticket.php` com a
+baseline. `include/ost-config.php` foi criado, ainda sem credenciais, a partir
+de `include/ost-sampleconfig.php` e está gravável pelo ambiente local.
+
+O responsável moveu a distribuição para a raiz `C:\xampp\htdocs`, compatível
+com a URL de homologação definida localmente no `.env`, e reiniciou o Apache
+para carregar os módulos PHP habilitados. A URL sensível ao ambiente não é
+duplicada na documentação versionada.
+
+Na primeira tentativa, o instalador recusou o schema: a assinatura esperada
+`5fb92bef17f3b603659e024c01cc7a59` corresponde ao conteúdo LF, enquanto a
+cópia Windows havia convertido `install-mysql.sql` para CRLF, gerando
+`76eb6d920994eae1ddfb8e2cae868d0b`. O schema da cópia de homologação foi
+normalizado mecanicamente para LF; o MD5 passou a coincidir exatamente com
+`include/upgrader/streams/core.sig`. Nenhum SQL foi executado nesta correção.
+
+Em 2026-09-04, o responsável concluiu o instalador e confirmou a criação do
+banco. A página pública respondeu com sucesso e a autenticação administrativa
+foi validada com formulário protegido por CSRF, redirecionando ao Painel de
+Controle da Equipe. A validação registrou somente estado HTTP e título da tela;
+credenciais, cookie de sessão e token CSRF não foram exibidos nem persistidos.
+
+Permanece como endurecimento operacional verificar a permissão de
+`include/ost-config.php` e desabilitar ou remover `setup/` da cópia de
+homologação. A remoção não será feita implicitamente por ser uma ação destrutiva
+sobre a implantação.
+
+A verificação comportamental confirmou que ambos os riscos continuam ativos:
+as rotas do instalador responderam `200`, o diretório existe no webroot e o
+arquivo de configuração permanece gravável. Em 2026-09-04, o responsável
+aceitou manter `setup/` nessa homologação por ela ser acessível somente em sua
+máquina. A exceção deixa de ser válida imediatamente se o serviço for exposto a
+outros hosts e nunca se aplica à produção.

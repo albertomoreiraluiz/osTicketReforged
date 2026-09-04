@@ -24,6 +24,10 @@ Documentação do produto e documentação das ferramentas de assistência são 
 10. Documentação divergente, link quebrado, decisão oculta ou progresso desatualizado bloqueia a conclusão da tarefa.
 11. Toda nova tarefa ou retomada começa pela releitura da documentação aplicável; conhecimento anterior do agente não dispensa essa etapa.
 12. Antes de criar qualquer Pull Request, execute uma varredura documental final e atualize README, progresso, plano, decisões, ADRs, documentação afetada e registro de mudança.
+13. O portal MkDocs faz parte do fluxo documental obrigatório: documentos
+    relevantes devem estar alcançáveis pela navegação, e toda alteração em
+    `docs/` deve ser validada com `mkdocs build --strict` antes da conclusão e
+    antes de qualquer Pull Request.
 
 ## Rastreabilidade mínima de uma alteração de código
 
@@ -54,6 +58,7 @@ O autor só pode criar o Pull Request depois de verificar:
 - documentação funcional e técnica sincronizada com o diff;
 - registro em `docs/changes/` para toda alteração de código;
 - links, referências e estado Git validados.
+- navegação do portal coerente e `mkdocs build --strict` aprovado;
 
 Se o número do PR for necessário como evidência, abra o PR somente após o conteúdo inicial estar atualizado e acrescente o número em um commit subsequente antes do merge.
 

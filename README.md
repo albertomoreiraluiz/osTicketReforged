@@ -8,22 +8,23 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Engenharia reversa — preparação do inventário |
+| Etapa atual | Engenharia reversa — análise comportamental em execução |
 | Portão A — Governança | Concluído pela PR #1 |
-| Portão B — Inventário | Pronto para iniciar |
-| Portão C — Análise profunda | Não iniciado |
+| Portão B — Inventário | Concluído — estrutura verificada e revisada |
+| Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
 | Portão D — Decisão arquitetural | Não iniciado |
 
-Ambiente-base de homologação concluído: XAMPP local, PHP 8.2, extensões, logs e
-toolchain Node.js/pnpm inventariados. O snapshot oficial de referência também
-está preparado. Em andamento: composição do inventário da Onda 1.
+Ambiente de homologação instalado e ativo: XAMPP local, PHP 8.2, MariaDB,
+extensões e logs preparados. A interface pública e a autenticação administrativa
+foram confirmadas por observação em runtime. O snapshot oficial de referência e
+o portal MkDocs permanecem no fluxo obrigatório de atualização.
 
 Próximas etapas:
 
-1. registrar a composição da Onda 1;
-2. iniciar o inventário estático e somente leitura;
-3. preencher banco e localização web quando forem necessários aos testes
-   dinâmicos posteriores.
+1. executar a matriz comportamental somente leitura e atualizar os catálogos;
+2. executar cenários mutáveis controlados no banco descartável de homologação;
+   exclusões exigem plano, backup verificável e rollback conforme GOV-014;
+3. somente depois preparar opções e decisões do Portão D.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
 `frontend/`; versões e integração serão definidas após a análise correspondente.
@@ -39,6 +40,7 @@ Fontes operacionais:
 - [plano proposto de engenharia reversa](docs/plans/active/0001-reverse-engineering.md).
 - [ambiente de homologação](docs/development/HOMOLOGATION_ENVIRONMENT.md).
 - [snapshot da documentação oficial](docs/upstream/osticket-docs/README.md).
+- [portal da engenharia reversa](docs/index.md).
 
 ---
 

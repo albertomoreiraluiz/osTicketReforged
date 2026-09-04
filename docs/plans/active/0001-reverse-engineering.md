@@ -18,10 +18,10 @@ Produzir a documentação técnica necessária para escolher, sem antecipação,
 
 ## Pré-condição de homologação
 
-A infraestrutura-base local está preparada com XAMPP, Apache, PHP 8.2,
-extensões necessárias, logs e toolchain Node.js/pnpm. A instalação funcional do
-osTicket, com banco e ciclo HTTP, será validada antes dos testes dinâmicos que a
-exigirem; isso não bloqueia o início do inventário estático da Onda 1.
+A infraestrutura local está ativa com XAMPP, Apache, PHP 8.2, extensões
+necessárias e logs. A instalação funcional, o banco, o ciclo HTTP público e a
+autenticação administrativa foram confirmados; a Onda 7 executa agora a
+validação comportamental controlada.
 
 ## Fontes externas de apoio
 
@@ -43,6 +43,11 @@ baseline `v1.18.4` prevalecem, e divergências devem ser registradas.
 - migrations e alterações de dados;
 - escolha da arquitetura antes da matriz de evidências.
 
+Mutações funcionais necessárias aos testes comportamentais não constituem
+implementação do produto: GOV-014 as autoriza somente no banco descartável de
+homologação, com dados fictícios. Exclusões exigem plano prévio, backup
+verificável e garantia de rollback; mudança de schema permanece fora do escopo.
+
 ## Portões
 
 ### Portão A — Governança pronta
@@ -57,11 +62,26 @@ baseline `v1.18.4` prevalecem, e divergências devem ser registradas.
 - entrypoints e fluxos principais identificados;
 - mapa inicial de documentos e evidências criado.
 
+Execução atual:
+
+- árvore e tecnologias contabilizadas na baseline;
+- superfícies, bootstraps e dispatchers principais localizados;
+- mapas iniciais de componentes, entrypoints, dados e extensão produzidos;
+- relações centrais, frontend PHP e subsistemas transversais localizados;
+- revisão independente executada e correções documentais em integração.
+
+Catálogos exaustivos de cada rota, metadado ORM e payload de sinal pertencem ao
+aprofundamento do Portão C. Eles não são pré-condição retroativa do Portão B.
+
 ### Portão C — Análise profunda concluída
 
 - plugins, hooks, domínio, banco, autenticação, autorização, API e frontend documentados;
 - limitações de extensão e possíveis alterações do core classificadas;
 - dúvidas críticas resolvidas ou explicitamente registradas.
+
+**Estado:** escopo estático concluído em 2026-09-03, após seis ondas, catálogos
+exaustivos e revisão cruzada sem achado alto ou médio aberto. A instalação foi
+concluída em 2026-09-04 e a validação comportamental constitui a Onda 7.
 
 ### Portão D — Decisão arquitetural
 

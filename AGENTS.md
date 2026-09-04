@@ -64,12 +64,17 @@ A etapa ativa é engenharia reversa documental. Até uma decisão arquitetural a
 - não criar a aplicação Angular;
 - não implementar uma API completa;
 - não alterar o core PHP;
-- não alterar esquema ou dados de banco;
+- não alterar esquema do banco;
 - não adicionar dependências de produção;
 - não implementar plugins ou funcionalidades futuras;
 - não apresentar arquitetura proposta como decidida.
 
-São permitidos inventário, análise estática, execução local não destrutiva, documentação, diagramas e testes exploratórios que não persistam mudanças no produto.
+São permitidos inventário, análise estática, documentação, diagramas e testes
+exploratórios na homologação local. Durante a Onda 7, alterações funcionais de
+dados necessárias à análise comportamental estão previamente autorizadas no
+banco descartável de homologação, desde que usem dados fictícios e sejam
+documentadas. Exclusões exigem plano prévio, backup verificável e garantia de
+rollback; a autorização não alcança produção, mudanças de schema ou core.
 
 ## Engenharia reversa baseada em evidências
 
@@ -94,6 +99,9 @@ Não conclua pela aparência do nome de um arquivo. Registre dúvidas não resol
 - `docs/plans/active/`: planos em execução; mova para `completed/` apenas quando os critérios forem cumpridos.
 - `docs/adr/`: decisões arquiteturais; propostas permanecem `Proposto` até aprovação explícita.
 - Documentos de engenharia reversa ficarão em `docs/reverse-engineering/`.
+- O portal MkDocs definido em `mkdocs.yml` é uma representação obrigatória da
+  documentação versionada: novos documentos relevantes devem entrar na
+  navegação e o build estrito deve permanecer válido.
 
 Ao concluir uma unidade relevante, atualize no mesmo PR o progresso, o plano e documentos afetados. O registro deve indicar data, branch, baseline, evidências, concluído, em andamento, próximo passo, dúvidas e riscos. Não use porcentagens subjetivas.
 
@@ -104,6 +112,9 @@ Ao concluir uma unidade relevante, atualize no mesmo PR o progresso, o plano e d
 - Toda decisão do projeto deve ser formalizada no GitHub: Issue ou discussão para contexto quando aplicável, documento versionado para o conteúdo normativo e Pull Request para revisão e rastreabilidade.
 - Decisões arquiteturais duradouras usam ADR numerado. Decisões de governança usam `docs/governance/DECISIONS.md`.
 - O `README.md` da raiz deve sempre indicar baseline, etapa atual, estado dos portões, trabalho em andamento e próximas etapas, com links para os detalhes.
+- Toda alteração documental deve avaliar impacto em `mkdocs.yml`; quando o
+  portal estiver configurado, execute `python -m mkdocs build --strict` com o
+  ambiente documentado antes de concluir a tarefa e antes de abrir PR.
 - Antes de qualquer alteração de código, consulte README, contexto, progresso, plano, decisões, ADRs, especificações, Issues e Pull Requests aplicáveis.
 - Implementações devem cumprir decisões `Aceito`; não reabra perguntas já respondidas. Só solicite nova decisão quando houver conflito, ambiguidade material, evidência nova ou escopo realmente não decidido.
 - Se surgir uma decisão durante a implementação, pause o trecho afetado, registre a proposta, obtenha aprovação, formalize-a e somente então prossiga.
@@ -134,7 +145,9 @@ Antes de trabalho técnico não trivial, avalie o uso de subagentes conforme `.c
 ## Segurança e dados
 
 - Nunca exponha credenciais, cookies, tokens, chaves, dados pessoais ou configuração sensível.
-- Não use banco de produção e não execute operações mutáveis em banco sem autorização explícita.
+- Não use banco de produção. Na Onda 7, a autorização explícita para mutações
+  funcionais limita-se ao banco descartável de homologação e às condições de
+  rollback registradas em GOV-014.
 - Não contorne autenticação, autorização, CSRF, ACL, escopo de ticket ou validação de upload.
 - Não suponha que uma API ou frontend novo possa ignorar os controles existentes.
 - Mudanças futuras em autenticação, autorização, sessão, API, upload ou dados sensíveis exigem revisão independente de segurança.
