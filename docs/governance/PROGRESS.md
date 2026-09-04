@@ -59,6 +59,9 @@
   fechar/reabrir confirmadas; a fixture terminou aberta, sem exclusão.
 - Upload Web aceitou TXT e extensão `.php` sob configuração permissiva; TXT foi
   associado à tarefa, entregue como attachment, protegido por login e assinatura.
+- Limite temporário de 256 KiB confirmou cliente `200/500` abaixo/acima do
+  limite e bypass staff também para tamanho; os campos foram restaurados a
+  `NULL` e somente os dois uploads aceitos persistiram como temporários `D`.
 - Ensaio com dump e rollback confirmou bypass staff de allowlist, rejeição do
   cliente convertida de 415 para 500 e ausência de ACL do pai em URL assinada.
 - Tentativa inválida isolada e recuperação por login correto confirmadas para
@@ -269,4 +272,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Onda 7 — atribuição e nota notificadas | plano prévio; snapshot SHA-256; atribuição; lock; nota; liberação; coletor | Uma `N`, relógios de mensagem/resposta preservados, draft vazio e atribuição restaurada; zero e-mail pelas políticas efetivas |
 | 2026-09-04 | Onda 7 — API XML e e-mail | chave temporariamente ativa; XML; RFC 822; banco; coletor; restauração | Dois `201`; tickets `API` e `Email` com entrada `M`; zero saída no recorte; flags originais da chave restauradas |
 | 2026-09-04 | Onda 7 — cron HTTP autorizado | inventário; dump SHA-256; restauração em banco temporário; cron; pós-check | `200 Completed`; 12 sessões expiradas removidas, demais candidatos zero, dados funcionais preservados e chave restaurada |
+| 2026-09-04 | Onda 7 — limite de upload | configuração temporária 256 KiB; cliente abaixo/acima; staff acima; `finally`; banco | Cliente `200/500`, staff `200`; bypass inclui tamanho; dois arquivos temporários `D`; configurações novamente `NULL` |
 | 2026-09-04 | Onda 7 — exportador de backup | export CLI comprimido; inspeção sem expor conteúdo; `class.export.php` | 47 schemas e zero linhas; artefato rejeitado para rollback; causa é `SELECT *` sem atribuição a `$res` |

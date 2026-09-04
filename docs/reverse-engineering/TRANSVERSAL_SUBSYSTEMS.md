@@ -91,13 +91,16 @@ Achados para teste:
 
 - `file.php` valida URL HMAC, mas não demonstra o vínculo do usuário ao objeto;
 - a Onda 7 confirmou TXT associado à thread, download forçado como attachment,
-  login para anônimo e `404` após adulterar assinatura; acesso cruzado ao objeto
-  ainda não foi isolado;
+  login para anônimo e `404` após adulterar assinatura; o acesso cruzado foi
+  confirmado depois com cliente sem visibilidade do objeto pai;
 - a configuração instalada não restringe `allowed_filetypes`; TXT e conteúdo
   textual inerte nomeado `.php` foram aceitos nos canais Web de equipe e cliente;
 - com allowlist `.txt` temporária e rollback verificado, o cliente rejeitou
   `.php`, mas staff aceitou por `ajaxUpload(true)`; a rejeição declarada como 415
   tornou-se HTTP 500 pela tabela incompleta de `Http::header_code_verbose()`;
+- com limite temporário de 256 KiB, o cliente aceitou 1 KiB e rejeitou 262.145
+  bytes, enquanto staff aceitou 262.145 bytes pelo mesmo bypass; o `413`
+  declarado também se tornou HTTP 500 e as configurações voltaram a `NULL`;
 - cliente sem visibilidade da tarefa baixou seu anexo interno ao receber URL
   staff assinada, confirmando capability sem autorização contra o objeto pai;
 - `include/class.file.php:493-495` contém condição

@@ -43,13 +43,13 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-002 | login `scp` | administrador | sessão | concluído | CSRF presente e painel autenticado |
 | BHV-003 | painel e menus da equipe | administrador | leitura | concluído na passagem inicial | telas, links e guards observados |
 | BHV-004 | portal do cliente | anônimo/cliente | leitura/sessão | concluído na passagem inicial | login, consulta e guards |
-| BHV-005 | matriz de permissões | agente/admin | leitura | iniciado | diferenças de menu e resposta |
-| BHV-006 | AJAX/PJAX | administrador/agente | leitura | iniciado | contrato HTTP e erros sanitizados |
-| BHV-007 | logs PHP e Apache | sistema | leitura | iniciado | ausência/presença de falhas correlatas |
-| BHV-008 | ticket de teste | papéis fictícios | mutável | iniciado | ciclo e persistência controlados |
-| BHV-009 | tarefas vinculadas | papéis fictícios | mutável | iniciado | criação, visibilidade e ACL por ação |
-| BHV-010 | anexos e arquivos | papéis fictícios | mutável | iniciado | persistência, serving e limites |
-| BHV-011 | e-mail | papéis fictícios | mutável | iniciado | coletor local, abertura Web e contagem sem relay |
+| BHV-005 | matriz de permissões | agente/admin | leitura | concluído | diferenças de menu e resposta |
+| BHV-006 | AJAX/PJAX | administrador/agente | leitura | concluído | contratos HTTP, guards e tipos heterogêneos |
+| BHV-007 | logs PHP e Apache | sistema | leitura | concluído no escopo funcional | correlação por janela e ruído ambiental separado |
+| BHV-008 | ticket de teste | papéis fictícios | mutável | concluído | ciclo, thread, estado e persistência |
+| BHV-009 | tarefas vinculadas | papéis fictícios | mutável | concluído | criação, visibilidade, estado e ACL por ação |
+| BHV-010 | anexos e arquivos | papéis fictícios | mutável | concluído | persistência, serving, allowlist e tamanho |
+| BHV-011 | e-mail | papéis fictícios | mutável | concluído no ambiente local | entrada HTTP e saída por coletor sem relay |
 | BHV-012 | API HTTP nativa | chave fictícia local | mutável | concluído | JSON, XML, e-mail, cron, flags e persistência |
 | BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
 | BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
@@ -384,6 +384,22 @@ conseguiu consumir a URL assinada obtida na sessão staff. A assinatura continua
 necessária e funcionou como capability; o resultado não demonstra descoberta
 ou enumeração da URL, mas confirma que `file.php` aceita qualquer cliente
 autenticado que a receba sem cruzar acesso ao pai.
+
+Para completar o limite de tamanho, as configurações nulas dos campos de thread
+foram temporariamente substituídas por limite de 262.144 bytes, sem restrição de
+extensão, e restauradas em `finally`. O portal do cliente aceitou um TXT inerte
+de 1.024 bytes com `200` e rejeitou 262.145 bytes. A rejeição interna usa
+`Http::response(413)`, mas chegou como `500` porque
+`Http::header_code_verbose()` também não mapeia `413`.
+
+O canal staff aceitou o arquivo de 262.145 bytes com `200`. A diferença decorre
+de `DynamicFormsAjaxAPI::attach()`, que chama `ajaxUpload(true)` para staff; o
+mesmo `!$bypass` condiciona validação de extensão e tamanho
+(`include/ajax.forms.php:392-413`; `include/class.forms.php:3903-3924`). O banco
+registrou somente o arquivo pequeno do cliente e o arquivo grande staff, ambos
+temporários no backend `D`; o grande rejeitado não foi persistido. As duas
+configurações terminaram novamente `NULL`. Persistência, serving, allowlist e
+limite ficam cobertos, encerrando BHV-010.
 
 ### BHV-011 — pré-condição do transporte de e-mail
 
@@ -885,7 +901,8 @@ reavaliada se o serviço passar a aceitar conexões externas.
 
 ## Pendências imediatas
 
-1. reproduzir os fluxos normais ainda não cobertos de ticket e administração;
-2. caracterizar efeitos de notificações sem entrega externa acidental;
-3. ampliar os fluxos administrativos de leitura e edição não destrutiva;
-4. consolidar filas e paginação com o conjunto crescente de fixtures.
+1. auditar a cobertura comportamental contra todas as superfícies funcionais
+   catalogadas e identificar lacunas reais, sem reabrir cenários concluídos;
+2. consolidar o estado final das fixtures, logs e artefatos locais da Onda 7;
+3. atualizar README, plano e manifesto para o fechamento documental da onda;
+4. preparar revisão independente antes de qualquer proposta do Portão D.
