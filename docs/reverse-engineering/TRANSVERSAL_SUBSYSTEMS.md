@@ -61,6 +61,12 @@ alerta no departamento. A nota interna também não enviou: a chave mestre
 último respondente. A ausência foi medida com o coletor ativo e não inferida de
 logs.
 
+Na entrada HTTP, um RFC 822 mínimo passou por `ApiEmailDataParser`, persistiu um
+ticket `source=Email` e vinculou os cabeçalhos à entrada inicial. A mensagem não
+foi classificada como bounce ou autoresposta. Como o `To` fictício não
+correspondia a uma identidade configurada, o ensaio não caracteriza a recepção
+por mailbox real nem seus avisos; o coletor de saída permaneceu sem mensagens.
+
 ## Arquivos, storage e anexos
 
 `AttachmentFile` representa conteúdo/metadados, `Attachment` associa o arquivo

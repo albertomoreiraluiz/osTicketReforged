@@ -120,3 +120,19 @@ JSON deliberadamente malformado respondeu `400`. A mesma chave foi recusada em
 `POST /api/tasks/cron` com `401`, confirmando que autenticação válida não
 substitui a flag por operação. Ao final, a chave foi desativada e preservada
 apenas como fixture auditável; nenhum segredo foi impresso ou versionado.
+
+Na ampliação comportamental, a chave foi habilitada temporariamente pelo mesmo
+formulário e restaurada em `finally`. `POST /api/tickets.xml` aceitou a raiz
+`ticket`, atributos booleanos e mensagem `text/plain`, respondeu `201` e criou
+ticket `source=API`. `POST /api/tickets.email` aceitou uma mensagem RFC 822
+fictícia, respondeu `201` e criou ticket `source=Email` com cabeçalhos ligados à
+entrada original. O parser não a classificou como bounce ou autoresposta.
+
+O ensaio XML suprimiu alertas e autoresposta no payload. O RFC 822 usou um
+destinatário fictício que não corresponde à identidade do sistema e não gerou
+saída no coletor local; portanto, a criação por e-mail está confirmada, mas o
+resultado não prova notificações para uma mensagem recebida pela identidade
+configurada. O cron autorizado permanece deliberadamente não executado:
+`Cron::run()` chama rotinas de limpeza de locks, drafts, sessões, resets e
+arquivos órfãos (`include/class.cron.php:28-119`), exigindo backup verificável
+também do filesystem.

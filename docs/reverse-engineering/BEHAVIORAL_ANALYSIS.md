@@ -570,6 +570,28 @@ sem `can_exec_cron`, retornou `401`, confirmando a autorização por flag. A cha
 foi desativada ao final, sem exclusão, e seu valor não foi registrado. XML,
 e-mail e cron autorizado permanecem fora deste checkpoint.
 
+Uma passagem posterior reutilizou a única chave existente sem revelar seu
+valor. O formulário administrativo habilitou temporariamente a chave e
+`can_create_tickets`, preservando a flag de cron desabilitada. Um documento XML
+com `<ticket>`, mensagem `text/plain`, `alert=false` e `autorespond=false`
+respondeu `201`; o banco confirmou exatamente um ticket aberto `source=API` e
+uma entrada inicial `M`.
+
+Um RFC 822 mínimo enviado a `tickets.email` também respondeu `201`. O ticket
+persistiu aberto como `source=Email`, com cabeçalhos associados à entrada `M`;
+a classificação do core confirmou que não era bounce nem autoresposta. O
+destinatário fictício do cabeçalho não era uma identidade configurada do
+sistema. Com coletor local ativo, nenhum envio foi observado. Esse resultado
+confirma parsing e criação, mas não generaliza a política de notificações para
+mensagem dirigida a uma identidade interna real.
+
+Em `finally`, o mesmo formulário restaurou as flags originais; a releitura e o
+banco confirmaram chave desativada, criação permitida e cron desabilitado. XML
+e e-mail estão cobertos para criação. Cron autorizado continua pendente porque
+`Cron::run()` pode apagar locks, drafts, sessões, resets e arquivos órfãos; ele
+somente será executado depois de backup verificável que cubra banco e
+filesystem, conforme GOV-014.
+
 ### BHV-013 — exportação PDF
 
 As exportações do ticket na sessão administrativa, da tarefa nas sessões de
