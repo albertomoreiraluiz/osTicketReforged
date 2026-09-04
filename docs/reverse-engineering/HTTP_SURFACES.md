@@ -8,9 +8,8 @@ comportamento visual nem o resultado em execução.
 
 Foram inspecionados os controladores públicos principais, o login da equipe,
 os guardas compartilhados e os dispatchers de API e AJAX. A contagem
-reproduzível de `url*(` em `scp/ajax.php` retorna 256 registros sintáticos.
-A classificação de folhas permanece em reconciliação por divergência entre o
-total especializado e a soma por grupo.
+reproduzível de `url*(` em `scp/ajax.php` retorna 256 registros sintáticos:
+27 agrupadores e 229 rotas-folha, confirmados por árvore balanceada.
 
 ## Portal do usuário
 
@@ -71,7 +70,7 @@ matriz de autorização (`scp/tickets.php:159-456`).
 | Superfície | Registro estático | Extensão anterior à resolução | Guarda observada |
 | --- | --- | --- | --- |
 | API pública | criação de ticket em `/tickets.(xml|json|email)` e cron em `/tasks/cron` | sinal `api` | `api/api.inc.php`; controles específicos ainda em análise |
-| AJAX da equipe | 256 declarações sintáticas em grupos aninhados | sinal `ajax.scp` | `scp/staff.inc.php` e CSRF para métodos mutáveis |
+| AJAX da equipe | 229 folhas em 27 agrupadores aninhados | sinal `ajax.scp` | `scp/staff.inc.php` e CSRF para métodos mutáveis |
 | Aplicações da equipe | `Dispatcher` vazio preenchido por assinantes | `apps.admin` ou `apps.scp` | `staff.inc.php`; `admin.inc.php` no prefixo `/admin/` |
 
 As funções `patterns()`, `url()`, `url_post()`, `url_get()` e `url_delete()`
@@ -82,8 +81,9 @@ sem examinar o controlador e a guarda da superfície.
 ## Limites desta leitura
 
 - Estado de menus, respostas renderizadas e JavaScript não foi reproduzido.
-- As folhas precisam ser extraídas de modo reproduzível e cruzadas com
-  permissões, ownership, persistência e resposta.
+- As 229 folhas foram cruzadas estaticamente no
+  [catálogo AJAX](AJAX_ROUTE_CATALOG.md); respostas e controles serão
+  confirmados em execução apenas na fase comportamental.
 - Endpoints adicionados por plugins dependem dos assinantes dos sinais e serão
   cruzados com o inventário de extensibilidade.
 - Resultados HTTP, mensagens e efeitos no banco serão confirmados somente na

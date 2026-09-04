@@ -5,26 +5,21 @@
 | Estrutura do repositório | árvore da baseline, contagens e decomposição de `include/` | Mapeado inicialmente | refinar limites entre core e bibliotecas |
 | Bootstrap e sessão | cadeias web/CLI, configuração, conexão, handlers e composição de `osTicket` | Mapeado estaticamente | validar rewrite, cookies e estados de upgrade após instalação |
 | Portal do usuário | controladores centrais, pré-condições e ações estáticas | Em aprofundamento | completar recursos auxiliares e matriz de permissões |
-| Painel da equipe | guarda comum, ações centrais de ticket e 256 registros sintáticos de rotas AJAX | Em aprofundamento | normalizar rotas, métodos, controladores e permissões |
-| API/AJAX | API nativa, 12 rotas cliente e 256 declarações AJAX staff | Em aprofundamento | reconciliar folhas; mapear permissão/efeito/resposta |
-| CLI/cron/pipe | 14 módulos; cron/pipe, manutenção, e-mail e busca aprofundados | Em aprofundamento | efeitos e pré-condições dos demais comandos |
+| Painel da equipe | guarda comum, ações centrais e 229 folhas AJAX catalogadas individualmente | Mapeado estaticamente | confirmar respostas e controles na fase comportamental |
+| API/AJAX | API nativa, 12 rotas cliente e matriz integral das 229 folhas staff | Mapeado estaticamente | validar os 13 alvos ausentes após instalação |
+| CLI/cron/pipe | contratos, efeitos e pré-condições dos 14 módulos; cron/pipe aprofundados | Mapeado estaticamente | executar somente cenários futuros controlados |
 | Domínio | criação multicanal, ticket/thread/task/forms, update/status/delete | Em aprofundamento | limpeza de órfãos, atomicidade e outros agregados |
-| Banco | schema sem FKs, 72 metas ORM, relações centrais, cdata, cascatas e evolução | Em aprofundamento | completar 72 metas e validar engines/índices após instalação |
-| Plugins e sinais | ciclo/persistência, 41 sinais literais, dispatchers e registries | Em aprofundamento | payload e segurança de cada sinal/registry |
+| Banco | schema sem FKs, catálogo das 72 metas ORM, relações, cdata, cascatas e evolução | Mapeado estaticamente | validar engines/índices após instalação |
+| Plugins e sinais | ciclo/persistência, catálogo individual dos 41 sinais, dispatchers e registries | Em aprofundamento | completar matriz de customização e registries |
 | Autenticação/autorização | identidade, sessão, ACL, CSRF, 2FA, reset, API keys, arquivos e uploads | Em aprofundamento | testes controlados dos riscos priorizados |
 | Frontend PHP | shells cliente/SCP, navegação, templates, assets, widgets e PJAX | Mapeado estaticamente | matriz de telas e acessibilidade após instalação |
 
 ## Lacunas do aprofundamento estático — Portão C
 
-- matriz método a método das rotas AJAX da equipe;
 - tratamento estático de falhas e órfãos no ticket e tarefa;
-- catálogo completo das 72 declarações ORM e invariantes polimórficas;
-- contrato individual dos 41 sinais e registries;
-- efeitos e pré-condições dos módulos CLI restantes;
+- matriz de customização e limites entre extensão e alteração do core;
+- catálogo individual dos registries que não usam `Signal`;
 - normalização transversal das referências de evidência.
-
-O catálogo de nomes de sinais foi produzido; “completo” acima significa ainda
-relacionar payload, momento, identidade e risco de cada emissão.
 
 ## Validações reservadas à fase comportamental
 

@@ -83,7 +83,7 @@ separação entre Portões B e C.
 
 ## Onda 4 — catálogos exaustivos do Portão C
 
-**Estado:** em execução.
+**Estado:** concluída e integrada documentalmente.
 
 | Instância | Perfil permanente | Missão | Escrita | Integrador |
 | --- | --- | --- | --- | --- |
@@ -93,6 +93,14 @@ separação entre Portões B e C.
 
 As restrições das ondas anteriores permanecem: leitura apenas, sem `.env`,
 runtime, banco, UI, commits ou subagentes.
+
+### Encerramento
+
+As três missões entregaram catálogos reproduzíveis sem alterar o workspace. A
+integração registra 229 folhas AJAX, 72 metadados ORM, 14 módulos CLI e 41
+sinais em `AJAX_ROUTE_CATALOG.md`, `ORM_CATALOG.md`, `CLI_CATALOG.md` e
+`SIGNAL_CATALOG.md`. Os 13 alvos AJAX ausentes e três divergências ORM
+permanecem achados estáticos, reservados à confirmação posterior.
 
 ## Restrições da fase
 

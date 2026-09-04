@@ -11,7 +11,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | Etapa atual | Engenharia reversa — análise estática profunda |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
-| Portão C — Análise profunda | Em andamento — catálogos exaustivos |
+| Portão C — Análise profunda | Em andamento — falhas, registries e customização |
 | Portão D — Decisão arquitetural | Não iniciado |
 
 Ambiente-base de homologação concluído: XAMPP local, PHP 8.2, extensões, logs e
@@ -21,8 +21,8 @@ estáticas e revisão independente; o Portão C aprofunda contratos exaustivos.
 
 Próximas etapas:
 
-1. completar rotas AJAX, sinais, metadados ORM e módulos CLI;
-2. consolidar matriz de customização e limites do core;
+1. analisar falhas e órfãos de ticket e tarefa;
+2. consolidar registries, matriz de customização e limites do core;
 3. executar a fase comportamental somente após a instalação pelo responsável.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em

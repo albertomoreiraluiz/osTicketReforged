@@ -1,4 +1,4 @@
-# Catálogo inicial de sinais
+# Visão geral dos sinais
 
 ## Contrato do barramento
 
@@ -51,8 +51,8 @@ mutabilidade nem emissões sem subscriber interno.
 `Dispatcher::resolve()` usa o primeiro matcher. Rotas anexadas depois das
 nativas não as substituem automaticamente (`include/class.dispatcher.php:29-65`).
 
-## Próximo refinamento
+## Catálogo individual
 
-Cada sinal ainda será relacionado a emissor, momento, objeto, payload,
-mutabilidade, identidade/autorização e risco. Nenhum hook está classificado como
-fronteira segura de customização nesta etapa.
+O [catálogo exaustivo](SIGNAL_CATALOG.md) relaciona os 41 nomes a emissor,
+momento, objeto, payload, subscriber interno e risco estático. Nenhum sinal é
+classificado como fronteira segura de customização apenas por existir.

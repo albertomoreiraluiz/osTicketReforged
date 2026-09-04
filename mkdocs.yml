@@ -48,6 +48,7 @@ nav:
       - Catálogo de entrypoints: reverse-engineering/ENTRYPOINT_CATALOG.md
       - Superfícies HTTP: reverse-engineering/HTTP_SURFACES.md
       - APIs e AJAX: reverse-engineering/API_ANALYSIS.md
+      - Catálogo AJAX: reverse-engineering/AJAX_ROUTE_CATALOG.md
       - Modelo de segurança: reverse-engineering/SECURITY_MODEL.md
       - Frontend PHP existente: reverse-engineering/FRONTEND_ANALYSIS.md
       - Ciclo inicial de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
@@ -55,11 +56,14 @@ nav:
       - Subsistemas transversais: reverse-engineering/TRANSVERSAL_SUBSYSTEMS.md
       - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
       - Arquitetura de persistência: reverse-engineering/DATABASE_ARCHITECTURE.md
+      - Catálogo ORM: reverse-engineering/ORM_CATALOG.md
       - Instalação e upgrades: reverse-engineering/INSTALLATION_UPGRADE.md
       - Testes da baseline: reverse-engineering/TESTING_BASELINE.md
+      - Catálogo CLI: reverse-engineering/CLI_CATALOG.md
       - Pontos de extensão: reverse-engineering/EXTENSION_POINTS.md
       - Arquitetura de plugins: reverse-engineering/PLUGIN_ARCHITECTURE.md
-      - Catálogo de sinais: reverse-engineering/HOOKS.md
+      - Visão geral dos sinais: reverse-engineering/HOOKS.md
+      - Catálogo de sinais: reverse-engineering/SIGNAL_CATALOG.md
       - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
   - Governança:
       - Contexto: governance/PROJECT_CONTEXT.md

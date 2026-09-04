@@ -47,10 +47,9 @@ O sinal `ajax.client` permite rotas adicionais e também preenche
 
 ## AJAX da equipe
 
-`scp/ajax.php:36-322` contém 256 chamadas sintáticas `url*()`, entre folhas e
-matchers estruturais. Uma primeira classificação apontou 229 folhas, mas a soma
-da tabela por grupos retorna 231. A quantidade de folhas permanece **em
-reconciliação**; 256 é a única contagem fechada desta unidade.
+`scp/ajax.php:36-322` contém 256 chamadas sintáticas `url*()`: 27 agrupadores
+e 229 folhas. A revisão por árvore balanceada corrigiu dois supercounts da
+tabela anterior: Tickets possui 53, e Admin 7.
 
 | Grupo | Folhas | Grupo | Folhas |
 | --- | ---: | --- | ---: |
@@ -60,19 +59,20 @@ reconciliação**; 256 é a única contagem fechada desta unidade.
 | Listas | 11 | Plugins | 4 |
 | Relatórios | 4 | Usuários | 28 |
 | Organizações | 22 | Locks | 3 |
-| Tickets | 54 | Tarefas | 20 |
+| Tickets | 53 | Tarefas | 20 |
 | Threads | 8 | Drafts | 7 |
 | Exportação | 1 | Notas | 4 |
 | Sequências | 3 | Upgrader | 1 |
 | Ajuda | 2 | i18n | 5 |
-| Admin | 8 | Staff | 8 |
+| Admin | 7 | Staff | 8 |
 | Filas | 7 | E-mail | 3 |
 
-A decomposição provisória indica 101 GET, 60 POST, 5 DELETE e 65 declarações sem
+A decomposição confirmada indica 101 GET, 60 POST, 5 DELETE e 63 declarações sem
 restrição de método. Toda a superfície exige agente válido e CSRF mutável via
 `scp/staff.inc.php`; plugins, e-mail e upgrader adicionam requisito de
 administrador.
-As demais rotas ainda requerem cruzamento método a método.
+O [catálogo AJAX](AJAX_ROUTE_CATALOG.md) cruza cada uma das 229 folhas com
+verbo, regex efetiva, alvo, definição, guarda resumida e efeito/resposta.
 
 As respostas misturam HTML, texto e JSON. No SCP, somente string iniciada por
 `{` recebe `application/json`; no cliente o retorno é impresso diretamente
@@ -88,12 +88,11 @@ As respostas misturam HTML, texto e JSON. No SCP, somente string iniciada por
 
 Achados pendentes de confirmação:
 
-1. `scp/ajax.php:97` referencia `include/ajax.reports.php` e
-   `OverviewReportAjaxAPI`, nenhum deles localizado na baseline;
+1. treze folhas registradas no catálogo apontam para método ou arquivo ausente
+   na baseline, incluindo quatro rotas de relatório;
 2. a documentação histórica diz que API keys servem à API HTTP sem configuração
    especial, enquanto o código exige flags por operação;
-3. reconciliar as folhas e produzir a matriz rota → permissão → entidade →
-   efeito → resposta.
+3. confirmar os alvos ausentes e respostas reais somente na fase dinâmica.
 
 **Inferência sustentada:** a API nativa é orientada a comandos, não CRUD. AJAX é
 interno, sem versão e acoplado a templates; não está classificado como contrato
