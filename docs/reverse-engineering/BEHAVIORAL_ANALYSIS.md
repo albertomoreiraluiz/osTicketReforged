@@ -64,6 +64,15 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-023 | administração de usuário | administrador | mutável | concluído | edição reversível e nota persistente |
 | BHV-024 | perfil do agente | administrador | mutável | concluído | fuso horário alterado e restaurado |
 | BHV-025 | filas e paginação | administrador | leitura/mutável reversível | concluído | páginas, limite, overflow e restauração |
+| BHV-026 | menus e submenus do ticket | administrador | leitura | concluído | ações renderizadas e condições estáticas por contexto |
+| BHV-027 | vínculo e desvínculo de tickets | administrador | mutável com rollback | concluído | hierarquia visual, eventos e reversão |
+| BHV-028 | fusão de tickets | administrador | mutável com rollback | concluído | modos de thread, estados e apresentação |
+| BHV-029 | criação de ticket a partir de entrada | administrador | mutável | concluído | prefill, origem e nova thread |
+| BHV-030 | ações das entradas da thread | administrador | leitura/mutável | concluído no recorte | destinatários, edição/histórico e formulário de reenvio |
+| BHV-031 | criação de tarefa a partir de entrada | administrador | mutável | concluído | prefill, vínculo e notas cruzadas |
+| BHV-032 | ações secundárias do ticket | administrador | leitura/mutável reversível | concluído no recorte | diálogos e flag respondido; demais comandos catalogados |
+| BHV-033 | ações em massa da fila | administrador | leitura | mapeado estaticamente | disponibilidade e dispatch por ação; efeito em lote não testado |
+| BHV-034 | exportações compostas | administrador | leitura | concluído no recorte | PDFs e estrutura dos ZIPs com/sem tarefa |
 
 ## Regras de evidência
 
@@ -76,6 +85,179 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 - Correlacionar toda divergência com o catálogo estático correspondente antes de
   classificá-la como defeito.
 - Atualizar este documento e os catálogos afetados a cada conjunto de testes.
+
+## Onda 8 — cobertura complementar de menus e ações encadeadas
+
+A revisão posterior ao fechamento da Onda 7 identificou que a varredura ampla
+de páginas e o ciclo principal do ticket não demonstraram todos os comandos
+expostos por menus contextuais. Esta onda reabre somente a cobertura
+comportamental necessária, sem alterar o core nem antecipar decisões do
+frontend futuro.
+
+O catálogo inicial abrange o menu superior do ticket, seus submenus, campos
+editáveis inline, ações em massa da fila e o menu de cada entrada da thread.
+Serão exercitados prioritariamente vínculo, fusão, criação de ticket e tarefa a
+partir de uma entrada, edição/histórico/reenvio, flags operacionais e variantes
+de exportação. A ação **Excluir ticket** será apenas mapeada; sua execução não
+é necessária para demonstrar os demais contratos.
+
+### Plano de segurança e rollback para BHV-027 e BHV-028
+
+- criar tickets fictícios exclusivos, identificados pelo prefixo da Onda 8;
+- capturar dump integral do MariaDB imediatamente antes da primeira alteração
+  de relação e validar sua restauração em banco temporário isolado;
+- registrar IDs e contagens sanitizadas de tickets, threads, tarefas,
+  participantes e eventos antes de cada operação;
+- testar primeiro vínculo visual, cuja reversão funcional é o desvínculo;
+- testar fusão sem marcar **Excluir ticket** e sem apagar tarefa filha;
+- verificar a reversão por desvínculo quando o contrato a suportar; se o estado
+  anterior não for recuperado integralmente, restaurar o dump validado;
+- interromper antes de qualquer exclusão não prevista, divergência de escopo ou
+  impossibilidade de garantir rollback.
+
+### Checkpoint 1 — enumeração, fixtures e relações
+
+A visão de um ticket aberto e não atribuído, sob sessão administrativa,
+confirmou cinco variantes de exportação, o submenu de atribuição com
+reivindicação/agente/equipe, os comandos de fusão e vínculo e as ações de
+estado. O submenu **Mais** também expôs mudança de proprietário, marcação de
+respondido, referências, formulários, colaboradores, bloqueio do endereço e
+exclusão. Esta última permanece somente catalogada. Campos inline ofereceram
+prioridade, departamento, proprietário, origem, responsável, SLA, vencimento e
+tópico. O agente restrito não abriu a mesma fixture por sua política de tickets
+atribuídos, portanto essa diferença é de visibilidade do objeto e não ausência
+do menu no template.
+
+O menu da entrada inicial apresentou **Editar**, **Criar novo Ticket** e
+**Criar Tarefa**. O HTML liga as duas criações respectivamente a
+`tickets.php?a=open&tid={entrada}` e ao action dispatcher
+`tickets/{ticket}/thread/{entrada}/create_task`. Destinatários/cabeçalhos,
+histórico e reenvio são condicionais ao tipo, metadados, flags e autoria da
+entrada, e serão exercitados em fixtures compatíveis.
+
+Três tickets fictícios exclusivos foram criados por formulário público. Cada
+um iniciou aberto, não atribuído e com uma thread/entrada. A resposta foi `200`,
+mas a frase de confirmação esperada pelo executor anterior não apareceu; o
+banco confirmou as três criações sem ambiguidade.
+
+Antes das relações, `mariadb-dump` 10.11 gerou dump integral local com
+1.132.907 bytes. A restauração em banco temporário isolado encontrou as três
+fixtures. Após os testes, um segundo dump de 1.237.063 bytes preservou o estado
+pós-ensaio e o dump original foi restaurado na homologação. As contagens de
+`ticket`, `thread`, `thread_entry`, `task`, `thread_collaborator` e
+`thread_event` ficaram idênticas às da base temporária previamente restaurada;
+as três fixtures reapareceram abertas, independentes, sem flags e com uma
+entrada cada. Isso satisfaz a garantia de rollback e reconcilia o desvio de
+sequência descrito abaixo.
+
+O vínculo visual definiu o primeiro ticket como pai e o segundo como filho,
+com ordenação e flags correspondentes. Apesar da mutação bem-sucedida, o POST
+respondeu `404`: `Ticket::merge()` aplica `manageMerge()`, mas retorna `false`
+para o tipo visual; `updateMerge()` então traduz o retorno em “Unable to manage
+ticket”. O desvínculo respondeu `201` e removeu o `ticket_pid` e a flag do
+filho. A flag de pai/vínculo permaneceu no antigo pai, embora já não houvesse
+filho, divergindo da intenção de limpeza em `Ticket::unlink()`.
+
+Nesse ponto a execução deveria ter restaurado o dump antes da fusão, conforme o
+plano. Ela prosseguiu indevidamente sobre o pai com flag residual; o desvio foi
+identificado pela revisão independente. A reconciliação posterior restaurou o
+dump integral e comprovou paridade das seis tabelas de controle. As evidências
+dos testes continuam válidas como histórico do estado pós-ensaio preservado no
+segundo dump, mas o estado ativo não conserva nenhuma dessas mutações.
+
+Ao renderizar a thread após os eventos relacionais, o PHP registrou erro fatal
+em `LinkedEvent::getDescription()` (`include/class.thread.php:2690`): o formato
+resolvido exigiu cinco argumentos e recebeu quatro. `MergedEvent`, `LinkedEvent`
+e `UnlinkEvent` usam a mesma construção; os três permanecem uma superfície de
+risco estática até confirmação individual. O `200` inicial não prova uma thread
+completa quando a montagem alcança esse evento.
+
+Em seguida, a fusão em modo **Threads separadas**, sem excluir filho nem mover
+tarefas, respondeu `201`. O pai continuou aberto; o filho recebeu referência ao
+pai, flag de thread separada e estado resolvido. A visão materializada
+`ticket__cdata` deixou de enumerar o filho após a migração de sua thread para o
+contexto extra do pai, embora a linha base do ticket permaneça. BHV-027 está
+concluído e BHV-028 permanece aberto para comparar o modo de threads combinadas
+e a apresentação resultante sem executar exclusão.
+
+### Checkpoint 2 — modos de fusão e criações derivadas
+
+A relação existente foi alternada para **Combinar threads** e depois restaurada
+para **Threads separadas**. Os dois POSTs responderam `201`; as flags mudaram de
+forma coerente em pai e filho. Nos dois modos, a tela do pai apresentou as
+mensagens de ambas as fixtures. O modo combinado terminou com flags `17/1` e o
+separado, estado final escolhido para rastreabilidade, com `18/2`. Foram
+registrados três eventos relacionais nas threads. Nenhum filho ou tarefa foi
+excluído. Isso encerra BHV-028.
+
+No fluxo **Criar Tarefa**, o GET do action dispatcher respondeu `200`, mostrou
+o formulário e preencheu a descrição com o corpo da entrada. A primeira
+submissão, sem os selects internos, respondeu `200` com erro genérico; repetida
+com opções válidas do formulário, respondeu `201` e criou uma tarefa ligada ao
+ticket. O backend acrescentou uma nota “Tarefa criada a partir da linha de
+entrada” tanto no ticket quanto na tarefa. Assim, a relação não é apenas o
+`object_id` da tarefa: existe também navegação cruzada registrada nas threads.
+
+No fluxo **Criar novo Ticket**, a primeira página preencheu usuário, mas não
+renderizou os campos do ticket enquanto o tópico estava vazio. A seleção do
+tópico chamou `/form/help-topic/{id}`; esse endpoint exige `Referer` e então
+recuperou da sessão o corpo da entrada. A submissão criou um novo ticket com
+origem `Phone`, atribuído ao agente criador, mesma pessoa solicitante e uma
+mensagem inicial contendo o corpo original. Notas de referência foram gravadas
+no ticket de origem e no derivado.
+
+O cenário foi repetido especificamente sobre uma resposta administrativa. O
+corpo da resposta também foi recuperado, mas o formulário não herdou usuário,
+pois a entrada `R` possui `staff_id` e não `user_id`; após seleção explícita do
+solicitante, o segundo ticket derivado foi criado. Esse detalhe explica por que
+“criar ticket da resposta” exige uma interação adicional em relação ao mesmo
+comando sobre uma mensagem do cliente.
+
+### Checkpoint 3 — ações de entrada, secundárias, massa e exportação
+
+Editar a mensagem de origem respondeu `201`, criou nova entrada com flag de
+edição, preservou a posição lógica e ocultou a anterior. **Ver histórico** sobre
+a nova entrada respondeu `200` e mostrou o corpo original. Em uma resposta
+administrativa, o menu mudou para **Edit and Resend** e também expôs
+**View Email Recipients**; ambos os diálogos responderam `200`. A instalação não
+possui cabeçalho bruto nessa resposta, portanto **View Email Headers** não foi
+exibido, coerente com `TEA_ShowEmailHeaders::isVisible()` e sua restrição extra
+a administradores.
+
+O comando visual **Criar novo Ticket** navega diretamente para
+`tickets.php?a=open&tid={entrada}`. Invocar `create_ticket` pelo dispatcher de
+actions não é o caminho usado pela interface e produz redirecionamento relativo
+inválido dentro de `/scp/ajax.php/...`, observado como `400`; o fluxo normal por
+navegação direta foi o utilizado e concluído em BHV-029. O envio efetivo de
+**Save and Resend** não foi repetido: BHV-011 já demonstrou o transporte local,
+e nesta onda o objetivo era mapear disponibilidade, formulário, mutação de
+entrada e contrato de reenvio sem gerar notificação redundante.
+
+Os diálogos de mudança de usuário, formulários e referências responderam `200`.
+A marcação respondeu ao estado corrente: quando já respondido, a primeira ação
+de “respondido” devolveu o formulário com aviso (`200`); a alternância para não
+respondido e a restauração para respondido retornaram `201`. Marcar como vencido
+usa POST tradicional em `tickets.php`, retorna a tela `200` com confirmação e
+não oferece comando simétrico no menu. A releitura do banco confirmou
+`isoverdue=0`: o administrador não era gerente do departamento e a operação foi
+negada apesar do retorno de página `200`. Banir e
+desbanir endereço, remover referências/formulários e excluir ticket foram
+catalogados sem execução por envolverem remoção de relação ou registro.
+
+Na fila, o menu em massa oferece reivindicar, atribuir a agente/equipe, fundir,
+vincular, transferir e excluir. Os contratos de atribuição, transferência,
+status, fusão e vínculo já foram exercitados individualmente; a camada em massa
+itera a seleção e agrega o resultado, portanto foi mantida somente leitura para
+evitar duplicar mutações sem ampliar o comportamento conhecido. Exclusão em
+massa permanece fora de escopo.
+
+As três variantes PDF retornaram `200 application/pdf`, com tamanhos distintos
+ao incluir notas e eventos. O ZIP sem tarefas retornou
+`200 application/zip`, 63.826 bytes e um PDF; o ZIP com tarefas retornou
+126.795 bytes e dois PDFs, confirmando um documento adicional para a tarefa.
+Não foi alegada inspeção do conteúdo de anexos dentro dos arquivos. O recorte
+funcional de BHV-026 a BHV-032 e BHV-034 foi concluído; BHV-033 permanece
+mapeado estaticamente porque nenhum efeito em lote foi executado.
 
 ## Achados iniciais
 
@@ -902,8 +1084,9 @@ reavaliada se o serviço passar a aceitar conexões externas.
 
 ## Encerramento funcional
 
-Os 25 cenários da matriz estão concluídos. A auditoria transversal não encontrou
-lacuna funcional que exija novo ensaio nesta onda; referências a concorrência,
+Os 25 cenários originais e oito dos nove cenários complementares estão
+concluídos no recorte declarado. BHV-033 permanece mapeado estaticamente, sem
+alegação de efeito em lote. Referências a concorrência,
 injeção de falhas, acessibilidade e novos testes de segurança permanecem
 deliberadamente reservadas a fases próprias e não anulam a evidência obtida.
 
@@ -913,6 +1096,8 @@ temporários do teste de limite no backend `D`, campos restaurados a configuraç
 nenhum listener SMTP. Fixtures e artefatos locais ignorados permanecem
 disponíveis para rastreabilidade. Nenhuma exclusão adicional foi executada.
 
-O próximo gate é uma revisão QA independente, somente leitura, seguida da
-integração das correções documentais e do Pull Request de encerramento. Opções
-do Portão D só serão preparadas depois dessa integração.
+A revisão QA independente da Onda 8 bloqueou o primeiro fechamento, identificou
+o desvio de rollback e alegações de cobertura excessivas. O dump foi restaurado
+com paridade verificada e os critérios foram estreitados ao que efetivamente se
+observou. Uma segunda passagem QA deve confirmar essas correções antes do Pull
+Request. Opções do Portão D só serão preparadas depois dessa integração.

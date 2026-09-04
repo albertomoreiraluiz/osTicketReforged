@@ -8,7 +8,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Engenharia reversa concluída pela PR #6; preparação do Portão D |
+| Etapa atual | Onda 8 encerrada: oito cenários concluídos e um mapeado |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
@@ -19,18 +19,22 @@ extensões e logs preparados. A interface pública e a autenticação administra
 foram confirmadas por observação em runtime. O snapshot oficial de referência e
 o portal MkDocs permanecem no fluxo obrigatório de atualização.
 
-A Onda 7 concluiu a reprodução dos 25 cenários funcionais entre frontend e
-backend. Achados de segurança já confirmados continuam documentados, sem novos
-ensaios ofensivos nesta passagem comportamental. A auditoria de segurança terá
-fase própria e não altera o encerramento do inventário funcional.
+A Onda 7 concluiu 25 cenários funcionais. Uma revisão de cobertura abriu a Onda
+8 para demonstrar menus contextuais e ações encadeadas ainda não exercitadas.
+Oito cenários complementares foram concluídos no recorte declarado, incluindo
+vínculo, fusão e criação de ticket ou tarefa a partir da thread; ações em massa
+ficaram mapeadas sem efeito em lote. A revisão final está em curso.
+Achados de segurança já confirmados continuam documentados, sem novos ensaios
+ofensivos nesta passagem comportamental.
 
 Próximas etapas:
 
-1. consolidar as evidências em pelo menos três opções arquiteturais;
-2. comparar riscos de atualização, integração, segurança e migração;
-3. manter exclusões condicionadas a plano, backup verificável e rollback
+1. integrar o fechamento revisado da matriz `BHV-026` a `BHV-034`;
+2. consolidar as evidências em pelo menos três opções arquiteturais;
+3. comparar riscos de atualização, integração, segurança e migração;
+4. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
-4. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
+5. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
    versões de Angular, PrimeNG ou detalhes de integração.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
