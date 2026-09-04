@@ -2,16 +2,19 @@
 
 ## Escopo
 
-Foram identificados 16 mecanismos relevantes fora de `Signal`: 11 pontos com
-intenção explícita de extensão ou uso por plugins e cinco mecanismos internos
-de composição/dispatch. Registries vivem em memória; somente IDs, tipos e
-configurações escolhidos podem persistir no domínio.
+Foram catalogados 22 mecanismos fora de `Signal`: 12 com intenção explícita de
+extensão ou uso por plugins, cinco acessíveis porém acoplados ao core e cinco
+internos. Registries vivem em memória; somente IDs, tipos e configurações
+escolhidos podem persistir no domínio.
+
+Disponibilidade no registry não implica autorização. O consumidor deve aplicar
+identidade, escopo, permissão, CSRF e validação apropriados.
 
 ## Extensão suportada ou destinada a plugins
 
 | Mecanismo | Registro e resolução | Estado/controle | Efeito e limite |
 | --- | --- | --- | --- |
-| autenticação staff/client | `AuthenticationBackend::register()` e `process()` (`include/class.auth.php:249-266,324-340,580-585,800-805`) | ID persiste em staff/conta; backend deve devolver principal válido | suporta login/sessão, mas recebe credenciais e ordem influencia avaliação |
+| autenticação staff/client | `AuthenticationBackend::register()` e `process()` (`include/class.auth.php:249-266,324-340,580-585,800-805`) | ID persiste em `staff.backend`/`user_account.backend` (`include/class.auth.php:607-622,819-830`); backend deve devolver principal válido | suporta login/sessão, mas recebe credenciais e ordem influencia avaliação |
 | OAuth2 | `OAuth2Backend::register()`/`getBackend()` (`include/class.auth.php:168-213`) | memória e config de plugin; sessão seleciona backend | autenticação/autorização; acoplado a classe, sessão e ID composto |
 | política de senha | `PasswordPolicy`, registry base (`include/class.auth.php:1534-1570,1640`) | seleção por ID; execução em ordem reversa | recebe senhas, valida expiração e limpa sessões; sem isolamento |
 | 2FA | `TwoFactorAuthenticationBackend::register()` (`include/class.2fa.php:107-156`) | ID persiste em `staff.default_2fa` | entrega/valida OTP; depende de sessão/forms internos |
@@ -52,7 +55,8 @@ configurações escolhidos podem persistir no domínio.
 - discriminadores persistidos podem ficar sem provider se o plugin falhar ou
   for desabilitado;
 - classes de plugin recebem objetos, credenciais, arquivos ou queries internos;
-- registries estáticos dependem do bootstrap do plugin em toda requisição.
+- entradas fornecidas por plugins precisam ser registradas no bootstrap de toda
+  requisição consumidora; entradas nativas vêm do carregamento de suas classes.
 
 **Inferência:** autenticação/OAuth2, 2FA, avatar, storage, busca, apps, tipos de
 campo, matches, ações de filtro e permissões são os pontos mais explicitamente

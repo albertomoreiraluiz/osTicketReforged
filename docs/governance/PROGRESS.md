@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-03.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável resultante: `main`.
-- Etapa: engenharia reversa — análise estática profunda.
+- Etapa: engenharia reversa — inventário e análise estática concluídos.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -29,12 +29,11 @@
 
 ## Em andamento
 
-- Portão C iniciado para catálogos exaustivos, matriz de customização e limites
-  de extensão do core.
-- Onda 5 concluída com integridade de ticket/tarefa, 16 registries/factories e
+- Portão C concluído com catálogos exaustivos, matriz de customização, limites
+  do core e revisão cruzada independente.
+- Onda 5 concluída com integridade de ticket/tarefa, 22 registries/factories e
   matriz de customização, em três missões somente leitura.
-- Onda 6 iniciada para revisão cruzada de integridade, superfícies, segurança e
-  cobertura do Portão C, sem execução dinâmica.
+- Onda 6 concluída; segunda passagem aprovada sem achado alto ou médio aberto.
 - Onda 4 concluída com matriz das 229 folhas AJAX, catálogo das 72 declarações
   ORM, contratos dos 14 módulos CLI e dos 41 sinais.
 - Onda 1 do inventário estático formalizada para ciclo de requisição, modelo de
@@ -69,12 +68,11 @@
 
 ## Próximo passo proposto
 
-1. executar revisão independente final de cobertura e segurança do Portão C;
-2. normalizar evidências e reconciliar qualquer contradição encontrada;
-3. preparar o dossiê comparativo sem escolher arquitetura antes da revisão;
-4. receber os dados de banco e validar a instalação web somente antes dos testes
-   dinâmicos que dependam deles;
-5. manter Angular, PrimeNG e decisões de integração fora da etapa atual.
+1. aguardar o responsável instalar o osTicket na homologação;
+2. executar testes comportamentais de interface, sessão, permissões, uploads,
+   e-mail e riscos priorizados em ambiente descartável;
+3. atualizar os mesmos catálogos com fatos observados em runtime;
+4. somente depois preparar opções do Portão D e decisões de integração.
 
 ## Estado dos portões
 
@@ -82,7 +80,7 @@
 | --- | --- | --- | --- |
 | A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
 | B — Inventário | Concluído | três ondas estáticas, portal e revisão QA independente | nenhum |
-| C — Análise profunda | Em andamento | ciclos, dados, plugins, segurança, API, frontend, catálogos, falhas, registries e customização | revisão independente final e reconciliação |
+| C — Análise profunda | Concluído | ciclos, dados, plugins, segurança, API, frontend, catálogos, falhas, registries, customização e revisão cruzada | nenhum bloqueio estático alto/médio |
 | D — Decisão arquitetural | Não iniciado | nenhuma | Portão C e aprovação do ADR |
 
 ## Decisões futuras, fora da preparação atual
@@ -145,4 +143,5 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-03 | Fechamento do Portão B | plano 0001; matriz de evidências; três ondas e revisão QA | Inventário estrutural concluído; Portão C iniciado |
 | 2026-09-03 | Onda 4 do aprofundamento | `docs/reverse-engineering/WAVE_MANIFEST.md` | Três catálogos exaustivos somente leitura registrados |
 | 2026-09-03 | Catálogos exaustivos — Onda 4 | `AJAX_ROUTE_CATALOG.md`; `ORM_CATALOG.md`; `CLI_CATALOG.md`; `SIGNAL_CATALOG.md` | 229 rotas, 72 metas ORM, 14 módulos e 41 sinais integrados; Onda 4 concluída |
-| 2026-09-03 | Integridade e customização — Onda 5 | `INTEGRITY_FAILURES.md`; `REGISTRY_CATALOG.md`; `CUSTOMIZATION_MATRIX.md` | Estados parciais, 16 registries/factories e limites do core integrados; Onda 5 concluída |
+| 2026-09-03 | Integridade e customização — Onda 5 | `INTEGRITY_FAILURES.md`; `REGISTRY_CATALOG.md`; `CUSTOMIZATION_MATRIX.md` | Estados parciais, 22 registries/factories e limites do core integrados; Onda 5 concluída |
+| 2026-09-03 | Revisão cruzada — Onda 6 | `REVIEW_REPORT.md`; três pareceres independentes; build estrito | Achados reconciliados; segunda passagem aprovada; Portão C concluído |

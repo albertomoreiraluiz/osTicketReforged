@@ -80,9 +80,11 @@ Treze folhas apontam para alvo ausente na baseline:
   (`scp/ajax.php:215-217`);
 - fila: `addColumn` (`scp/ajax.php:311`).
 
-O dispatcher produz 500 para alvo não callable
-(`include/class.dispatcher.php:152-155`). Isso é achado estático; confirmação
-com request real permanece para a fase dinâmica.
+Para os nove métodos ausentes em controllers carregáveis, o dispatcher produz
+500 após `access()` (`include/class.dispatcher.php:139-155`). As quatro rotas de
+relatório falham antes, no `include_once`/construção do controller ausente
+(`include/class.dispatcher.php:163-175`); o status efetivo desse grupo permanece
+para a fase dinâmica. A ausência dos 13 alvos é fato estático.
 
 Três regex de filas concatenam `search` diretamente ao ID, sem barra, e
 `/admin/role/{id}/perms` é irmã de `quick-add`. Esses detalhes comprovam por
@@ -131,18 +133,18 @@ observados; não são nomes canônicos de permissões.
 | 83 | GET | `/list/(?P<list>\w+)/items/(?P<id>\d+)/preview` | `DynamicFormsAjaxAPI::previewListItem` | `ajax.forms.php:138` | STAFF | item; HTML |
 | 84 | ANY | `/list/(?P<list>\w+)/item/add` | `DynamicFormsAjaxAPI::addListItem` | `ajax.forms.php:250` | STAFF | item; HTML/status |
 | 85 | ANY | `/list/(?P<list>\w+)/import` | `DynamicFormsAjaxAPI::importListItems` | `ajax.forms.php:283` | STAFF | itens; HTML/status |
-| 86 | ANY | `/list/(?P<list>\w+)/manage` | `DynamicFormsAjaxAPI::massManageListItems` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
+| 86 | ANY | `/list/(?P<list>\w+)/manage` | `DynamicFormsAjaxAPI::massManageListItems` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
 | 87 | POST | `/list/(?P<list>\w+)/delete` | `DynamicFormsAjaxAPI::deleteItems` | `ajax.forms.php:357` | STAFF | itens; status |
 | 88 | POST | `/list/(?P<list>\w+)/disable` | `DynamicFormsAjaxAPI::disableItems` | `ajax.forms.php:311` | STAFF | itens; status |
 | 89 | POST | `/list/(?P<list>\w+)/enable` | `DynamicFormsAjaxAPI::undisableItems` | `ajax.forms.php:334` | STAFF | itens; status |
 | 92 | GET | `/plugins/(?P<id>\d+)/instances` | `PluginsAjaxAPI::getInstances` | `ajax.plugins.php:28` | STAFF+ADMIN | instância; HTML |
 | 93 | ANY | `/plugins/(?P<id>\d+)/instances/(?P<iid>\d+)/update` | `PluginsAjaxAPI::updateInstance` | `ajax.plugins.php:34` | STAFF+ADMIN | instância; HTML/JSON201 |
 | 94 | ANY | `/plugins/(?P<id>\d+)/instances/add` | `PluginsAjaxAPI::addInstance` | `ajax.plugins.php:47` | STAFF+ADMIN | instância; HTML/JSON201 |
-| 95 | POST | `/plugins/(?P<id>\d+)/instances/(\w+)` | `PluginsAjaxAPI::actions` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
-| 99 | GET | `/report/overview/graph` | `OverviewReportAjaxAPI::getPlotData` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
-| 100 | GET | `/report/overview/table/groups` | `OverviewReportAjaxAPI::enumTabularGroups` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
-| 101 | GET | `/report/overview/table/export` | `OverviewReportAjaxAPI::downloadTabularData` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
-| 102 | GET | `/report/overview/table` | `OverviewReportAjaxAPI::getTabularData` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
+| 95 | POST | `/plugins/(?P<id>\d+)/instances/(\w+)` | `PluginsAjaxAPI::actions` | AUSENTE | STAFF+ADMIN; ALVO-AUSENTE | 403 não-admin; admin alcança erro callable |
+| 99 | GET | `/report/overview/graph` | `OverviewReportAjaxAPI::getPlotData` | AUSENTE | STAFF; ALVO-AUSENTE | falha no loading; status dinâmico TBD |
+| 100 | GET | `/report/overview/table/groups` | `OverviewReportAjaxAPI::enumTabularGroups` | AUSENTE | STAFF; ALVO-AUSENTE | falha no loading; status dinâmico TBD |
+| 101 | GET | `/report/overview/table/export` | `OverviewReportAjaxAPI::downloadTabularData` | AUSENTE | STAFF; ALVO-AUSENTE | falha no loading; status dinâmico TBD |
+| 102 | GET | `/report/overview/table` | `OverviewReportAjaxAPI::getTabularData` | AUSENTE | STAFF; ALVO-AUSENTE | falha no loading; status dinâmico TBD |
 | 105 | GET | `/users` | `UsersAjaxAPI::search` | `ajax.users.php:27` | STAFF | usuário; JSON |
 | 106 | GET | `/users/local` | `UsersAjaxAPI::search` | `ajax.users.php:27` | STAFF | usuário; JSON |
 | 107 | GET | `/users/remote` | `UsersAjaxAPI::search` | `ajax.users.php:27` | STAFF | usuário; JSON |
@@ -173,7 +175,7 @@ observados; não são nomes canônicos de permissões.
 | 132 | ANY | `/users/(?P<id>\d+)/tickets/export` | `UsersAjaxAPI::exportTickets` | `ajax.users.php:542` | STAFF | tickets usuário; export |
 | 135 | GET | `/orgs` | `OrgsAjaxAPI::search` | `ajax.orgs.php:24` | STAFF | organização; JSON |
 | 136 | GET | `/orgs/search` | `OrgsAjaxAPI::search` | `ajax.orgs.php:24` | STAFF | organização; JSON |
-| 137 | GET | `/orgs/(?P<id>\d+)` | `OrgsAjaxAPI::getOrg` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
+| 137 | GET | `/orgs/(?P<id>\d+)` | `OrgsAjaxAPI::getOrg` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
 | 138 | POST | `/orgs/(?P<id>\d+)` | `OrgsAjaxAPI::updateOrg` | `ajax.orgs.php:85` | STAFF+ORG_EDIT | organização; status |
 | 139 | POST | `/orgs/(?P<id>\d+)/profile` | `OrgsAjaxAPI::updateOrg` | `ajax.orgs.php:85` | STAFF+ORG_EDIT | perfil org; status |
 | 140 | ANY | `/orgs/(?P<id>\d+)/tickets/export` | `OrgsAjaxAPI::exportTickets` | `ajax.orgs.php:337` | STAFF | tickets org; export |
@@ -197,7 +199,7 @@ observados; não são nomes canônicos de permissões.
 | 160 | POST | `/lock/(?P<id>\d+)/ticket/(?P<tid>\d+)/renew` | `TicketsAjaxAPI::renewLock` | `ajax.tickets.php:231` | STAFF+dono-lock | lock; JSON/status |
 | 161 | POST | `/lock/(?P<id>\d+)/release` | `TicketsAjaxAPI::releaseLock` | `ajax.tickets.php:268` | STAFF+dono-lock | lock; status |
 | 164 | GET | `/tickets/(?P<tid>\d+)/change-user` | `TicketsAjaxAPI::changeUserForm` | `ajax.tickets.php:351` | STAFF+acesso-ticket | usuário ticket; HTML |
-| 165 | POST | `/tickets/(?P<tid>\d+)/change-user` | `TicketsAjaxAPI::changeUser` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
+| 165 | POST | `/tickets/(?P<tid>\d+)/change-user` | `TicketsAjaxAPI::changeUser` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
 | 166 | GET | `/tickets/(?P<tid>\d+)/user` | `TicketsAjaxAPI::viewUser` | `ajax.tickets.php:297` | STAFF+acesso-ticket | usuário; HTML |
 | 167 | POST | `/tickets/(?P<tid>\d+)/user` | `TicketsAjaxAPI::updateUser` | `ajax.tickets.php:323` | STAFF+acesso-ticket | usuário; status |
 | 168 | GET | `/tickets/(?P<tid>\d+)/preview` | `TicketsAjaxAPI::previewTicket` | `ajax.tickets.php:287` | STAFF+acesso-ticket | ticket; HTML |
@@ -242,13 +244,13 @@ observados; não são nomes canônicos de permissões.
 | 208 | GET | `/tickets/search/create` | `SearchAjaxAPI::createSearch` | `ajax.search.php:160` | STAFF | busca; HTML |
 | 209 | POST | `/tickets/search/(?P<id>\d+)/save` | `SearchAjaxAPI::saveSearch` | `ajax.search.php:176` | STAFF+dono-busca | busca; status |
 | 210 | POST | `/tickets/search/save` | `SearchAjaxAPI::saveSearch` | `ajax.search.php:176` | STAFF | busca; status |
-| 211 | DELETE | `/tickets/search/(?P<id>\d+)` | `SearchAjaxAPI::deleteSearch` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
+| 211 | DELETE | `/tickets/search/(?P<id>\d+)` | `SearchAjaxAPI::deleteSearch` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
 | 212 | GET | `/tickets/search/field/(?P<id>[\w_!:]+)` | `SearchAjaxAPI::addField` | `ajax.search.php:58` | STAFF | campo busca; HTML |
 | 213 | ANY | `/tickets/search/column/edit/(?P<id>\d+)` | `SearchAjaxAPI::editColumn` | `ajax.search.php:236` | STAFF | coluna; HTML/status |
 | 214 | ANY | `/tickets/search/sort/edit/(?P<id>\d+)` | `SearchAjaxAPI::editSort` | `ajax.search.php:259` | STAFF | ordenação; HTML/status |
-| 215 | POST | `/tickets/search(?P<id>\d+)/delete` | `SearchAjaxAPI::deleteQueues` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
-| 216 | POST | `/tickets/search(?P<id>\d+)/disable` | `SearchAjaxAPI::disableQueues` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
-| 217 | POST | `/tickets/search(?P<id>\d+)/enable` | `SearchAjaxAPI::undisableQueues` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
+| 215 | POST | `/tickets/search(?P<id>\d+)/delete` | `SearchAjaxAPI::deleteQueues` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
+| 216 | POST | `/tickets/search(?P<id>\d+)/disable` | `SearchAjaxAPI::disableQueues` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
+| 217 | POST | `/tickets/search(?P<id>\d+)/enable` | `SearchAjaxAPI::undisableQueues` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
 | 221 | GET | `/tasks/(?P<tid>\d+)/preview` | `TasksAjaxAPI::preview` | `ajax.tasks.php:181` | STAFF+acesso-task | tarefa; HTML |
 | 222 | GET | `/tasks/(?P<tid>\d+)/edit` | `TasksAjaxAPI::edit` | `ajax.tasks.php:192` | STAFF+TASK_EDIT | tarefa; HTML |
 | 223 | POST | `/tasks/(?P<tid>\d+)/edit` | `TasksAjaxAPI::edit` | `ajax.tasks.php:192` | STAFF+TASK_EDIT | tarefa; status |
@@ -317,13 +319,13 @@ observados; não são nomes canônicos de permissões.
 | 306 | ANY | `/staff/(?P<id>\d+)/reset-2fa` | `StaffAjaxAPI::reset2fA` | `ajax.staff.php:309` | STAFF+ADMIN | 2FA; status |
 | 309 | ANY | `/queue/(?P<id>\d+/)?preview` | `SearchAjaxAPI::previewQueue` | `ajax.search.php:328` | STAFF+fila-acessível | fila; HTML |
 | 310 | GET | `/queue/(?P<id>\d+)` | `SearchAjaxAPI::getQueue` | `ajax.search.php:281` | STAFF+fila-acessível | fila; JSON |
-| 311 | GET | `/queue/addColumn` | `SearchAjaxAPI::addColumn` | AUSENTE | STAFF; ALVO-AUSENTE | inacessível |
+| 311 | GET | `/queue/addColumn` | `SearchAjaxAPI::addColumn` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
 | 312 | GET | `/queue/condition/add` | `SearchAjaxAPI::addCondition` | `ajax.search.php:351` | STAFF | condição; HTML |
 | 313 | GET | `/queue/condition/addProperty` | `SearchAjaxAPI::addConditionProperty` | `ajax.search.php:379` | STAFF | condição; HTML |
 | 314 | GET | `/queue/counts` | `SearchAjaxAPI::collectQueueCounts` | `ajax.search.php:394` | STAFF | contagens; JSON |
 | 315 | ANY | `/queue/(?P<id>\d+)/delete` | `SearchAjaxAPI::deleteQueue` | `ajax.search.php:296` | STAFF+dono-fila | fila; HTML/status |
-| 318 | POST | `/email/(?P<id>\d+)/stash` | `EmailAjaxAPI::stashFormData` | `ajax.email.php:11` | STAFF+ADMIN | email/form; status201 |
-| 319 | POST | `/email/(?P<id>\d+)/auth/config/(?P<type>\w+)/delete` | `EmailAjaxAPI::deleteToken` | `ajax.email.php:46` | STAFF+ADMIN | token; status |
-| 320 | ANY | `/email/(?P<id>\d+)/auth/config/(?P<type>\w+)/(?P<auth>.+)` | `EmailAjaxAPI::configureAuth` | `ajax.email.php:18` | STAFF+ADMIN | auth email; HTML/JSON201 |
+| 318 | POST | `/email/(?P<id>\d+)/stash` | `EmailAjaxAPI::stashFormData` | `ajax.email.php:11` | STAFF+ADMIN | filtra POST em sessão `:email`; sem DB; 201 |
+| 319 | POST | `/email/(?P<id>\d+)/auth/config/(?P<type>\w+)/delete` | `EmailAjaxAPI::deleteToken` | `ajax.email.php:46` | STAFF+ADMIN | exclui config `email.*.account.*`; 201 se remove |
+| 320 | ANY | `/email/(?P<id>\d+)/auth/config/(?P<type>\w+)/(?P<auth>.+)` | `EmailAjaxAPI::configureAuth` | `ajax.email.php:18` | STAFF+ADMIN | GET/POST inválido: HTML; POST basic: config/account + 201 texto; OAuth2: config/account + 201 JSON redirect quando autoriza |
 
 Contagem da matriz: 229 linhas; 101 GET, 60 POST, 5 DELETE, 63 ANY; 13 definições ausentes.

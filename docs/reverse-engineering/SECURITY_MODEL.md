@@ -51,6 +51,12 @@ por e-mail (`include/class.auth.php:645-660`;
 `include/class.2fa.php:14-89,169-258`). O portal do cliente retorna backend 2FA
 nulo com TODO (`include/class.client.php:258-266`).
 
+O sinal `auth.login.succeeded` é emitido depois da autenticação primária e da
+criação do estado de sessão, mas antes de `onLogin`; portanto, pode ocorrer com
+2FA ainda pendente (`include/class.auth.php:645-674`;
+`include/class.usersession.php:252-259`). Ele não prova MFA nem sessão
+interativa concluída.
+
 Tokens de reset são aleatórios, persistidos no namespace `pwreset`, possuem
 janela configurável e são cancelados após uso/login. Ficam utilizáveis como
 chaves legíveis no banco; o banco e o e-mail são fronteiras confiáveis.
@@ -85,12 +91,22 @@ Como manifesto e `init()` executam PHP, plugins devem ser tratados como código
 plenamente confiável. O risco é alto na fronteira de confiança, sem afirmar que
 um plugin malicioso esteja presente.
 
+As rotas administrativas de configuração de e-mail podem persistir usuário e
+senha cifrada no namespace de configuração e alterar o backend da conta; a
+matriz completa está em `AJAX_ROUTE_CATALOG.md:318-320`. Valores sensíveis não
+devem ser registrados na documentação ou em logs
+(`include/ajax.email.php:18-57`;
+`include/class.email.php:647-655,680-735,828-870,968-1003,1409-1426`;
+`include/class.config.php:120-151`;
+`setup/inc/streams/core/install-mysql.sql:99-107,265-290`).
+
 ## Achados priorizados para homologação
 
 | Prioridade | Achado estático | Estado |
 | --- | --- | --- |
 | alta potencial | `bootstrap.php:23-31` força `display_errors=1` contra comentário | provocar erro controlado depois |
 | alta de confiança | sinais entregam credenciais/tokens a plugins | contrato confirmado; governar plugins |
+| alta de confiança | `auth.login.succeeded` pode anteceder conclusão de 2FA | não usar sinal como prova de MFA concluído |
 | média potencial | arquivo assinado não verifica o objeto pai | testar acesso cruzado |
 | média potencial | validação de upload difere entre Web e API/e-mail | testar conteúdo/serving |
 | média potencial | falha ao registrar sessão termina com mensagem bruta | induzir somente em ambiente descartável |

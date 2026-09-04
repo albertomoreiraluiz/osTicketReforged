@@ -86,13 +86,15 @@ As respostas misturam HTML, texto e JSON. No SCP, somente string iniciada por
 - `Controller::access()` é permissivo por padrão;
 - controllers no formato arquivo/classe são carregados sob demanda.
 
-Achados pendentes de confirmação:
+Achados e validações futuras:
 
-1. treze folhas registradas no catálogo apontam para método ou arquivo ausente
-   na baseline, incluindo quatro rotas de relatório;
+1. **fato observado:** treze folhas apontam para alvo ausente; nos nove métodos
+   ausentes de controllers carregáveis, requisição que passe `access()` alcança
+   o 500 explícito; nas quatro rotas de relatório, a falha antecede o teste de
+   callable durante carregamento/construção; runtime confirmará alcance e
+   resposta real;
 2. a documentação histórica diz que API keys servem à API HTTP sem configuração
    especial, enquanto o código exige flags por operação;
-3. confirmar os alvos ausentes e respostas reais somente na fase dinâmica.
 
 **Inferência sustentada:** a API nativa é orientada a comandos, não CRUD. AJAX é
 interno, sem versão e acoplado a templates; não está classificado como contrato

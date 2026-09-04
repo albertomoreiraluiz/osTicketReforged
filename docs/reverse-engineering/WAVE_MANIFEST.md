@@ -129,7 +129,7 @@ inferências fortes até testes controlados após a instalação.
 
 ## Onda 6 — revisão cruzada do Portão C
 
-**Estado:** em execução.
+**Estado:** concluída e integrada documentalmente.
 
 **Justificativa:** o volume e a criticidade exigem revisão por instâncias
 distintas das produtoras de cada artefato. Cada especialista revisa domínios
@@ -144,6 +144,13 @@ arquivo.
 
 Achado crítico, contradição ou referência inválida deve ser entregue com
 correção proposta; testes dinâmicos não serão executados nesta onda.
+
+### Encerramento
+
+A primeira passagem encontrou achados altos e médios, todos corrigidos e
+reavaliados. A segunda passagem foi aprovada pelos três revisores sem bloqueio
+alto ou médio. O relatório consolidado está em `REVIEW_REPORT.md`; o integrador
+validou contagens, links, diff e build MkDocs estrito.
 
 ## Restrições da fase
 

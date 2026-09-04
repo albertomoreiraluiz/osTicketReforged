@@ -66,7 +66,8 @@ sem confronto com o esquema e os metadados ORM da baseline 1.18.4.
 
 ## Aprofundamentos restantes
 
-1. catálogo das 72 declarações `static $meta`;
-2. invariantes de todas as relações polimórficas;
-3. engines e índices efetivos após instalação;
-4. reconciliação ERD por domínio.
+1. engines e índices efetivos após instalação;
+2. reconciliação comportamental com ERDs por domínio.
+
+O catálogo das 72 declarações e as invariantes polimórficas estão consolidados
+em `ORM_CATALOG.md` e `DATABASE_ARCHITECTURE.md`.

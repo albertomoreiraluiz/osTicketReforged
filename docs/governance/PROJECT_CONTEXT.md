@@ -66,6 +66,11 @@ Em `docs/reverse-engineering/`:
 - `CUSTOMIZATION_MATRIX.md`;
 - `ARCHITECTURE_DECISION_RECORD.md`, como dossiê comparativo e recomendação proposta.
 
+`ARCHITECTURE.md`, `DATABASE.md` e `AUTHENTICATION.md` são índices canônicos de
+síntese e apontam aos catálogos detalhados. `MIGRATION_STRATEGY.md` e
+`ARCHITECTURE_DECISION_RECORD.md` serão produzidos no Portão D, depois do
+fechamento da análise profunda; sua ausência durante o Portão C é deliberada.
+
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 
 ## Classificação das afirmações

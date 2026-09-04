@@ -8,9 +8,9 @@ declara `connect()` e `include/class.signal.php:89` declara `send()`.
 **Fato observado:** o mecanismo permite conectar callbacks por nome de sinal e
 emitir eventos com objeto e dados associados.
 
-O [catálogo inicial de sinais](HOOKS.md) confirma 41 nomes literais emitidos,
-mas momento, payload, mutabilidade e segurança ainda precisam ser relacionados
-individualmente.
+O [catálogo de sinais](SIGNAL_CATALOG.md) relaciona os 41 nomes literais a
+momento, payload, mutabilidade, subscribers e segurança. Isso não torna um hook
+seguro apenas por existir.
 
 ## Plugins
 

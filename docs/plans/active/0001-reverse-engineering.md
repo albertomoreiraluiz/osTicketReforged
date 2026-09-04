@@ -74,6 +74,11 @@ aprofundamento do Portão C. Eles não são pré-condição retroativa do Portã
 - limitações de extensão e possíveis alterações do core classificadas;
 - dúvidas críticas resolvidas ou explicitamente registradas.
 
+**Estado:** concluído em 2026-09-03 para o escopo estático, após seis ondas,
+catálogos exaustivos e revisão cruzada sem achado alto ou médio aberto. Testes
+comportamentais permanecem como fase subsequente dependente da instalação pelo
+responsável.
+
 ### Portão D — Decisão arquitetural
 
 - pelo menos três opções comparadas;

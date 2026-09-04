@@ -36,13 +36,13 @@ commit referenciado.
 
 | Diretório | Papel inicialmente observado | Estado da análise |
 | --- | --- | --- |
-| `include/` | classes do domínio, ORM, autenticação, dispatchers, templates e dependências incorporadas | localizado; classificação interna pendente |
+| `include/` | classes do domínio, ORM, autenticação, dispatchers, templates e dependências incorporadas | classificado em `PROVENANCE_MAP.md` |
 | `scp/` | controladores e páginas do Staff Control Panel | entrypoints localizados |
 | `api/` | HTTP API, cron e pipe de e-mail | entrypoints localizados |
 | `setup/` | instalador, upgrader, esquema inicial e testes históricos | fontes localizadas |
-| `apps/` | despacho de aplicações registradas | aprofundamento pendente |
-| `pages/` e `kb/` | páginas públicas e base de conhecimento | aprofundamento pendente |
-| `assets/`, `css/`, `js/`, `images/` | recursos do frontend PHP existente | inventário detalhado futuro |
+| `apps/` | despacho de aplicações registradas | dispatch e signals mapeados em API/plugins/registries |
+| `pages/` e `kb/` | páginas públicas e base de conhecimento | superfícies e composição estática mapeadas |
+| `assets/`, `css/`, `js/`, `images/` | recursos do frontend PHP existente | composição em `FRONTEND_ANALYSIS.md`; comportamento adiado |
 
 ## Núcleos técnicos localizados
 
@@ -69,13 +69,9 @@ commit referenciado.
 
 ## Limites deste documento
 
-Esta unidade confirma localização e encadeamento inicial. Ainda não confirma:
-
-- contratos completos de classes ou tabelas;
-- todas as rotas e controles de autorização;
-- cobertura e estabilidade dos hooks;
-- compatibilidade dos ERDs oficiais com `v1.18.4`;
-- fronteiras seguras para customização.
+Este arquivo preserva o inventário estrutural. Contratos completos estão nos
+catálogos especializados; ERDs oficiais são referência auxiliar e fronteiras de
+customização permanecem classificadas, não declaradas seguras por existência.
 
 O CLI constitui uma exceção ao bootstrap web: `manage.php` carrega
 `bootstrap.php` e `cli.inc.php`, e cada módulo decide se conecta ao banco ou

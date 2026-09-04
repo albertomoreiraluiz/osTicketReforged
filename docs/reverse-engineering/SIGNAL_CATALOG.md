@@ -35,7 +35,7 @@ pelos callbacks.
 | --- | --- | --- | --- | --- |
 | `auth.clean` | troca/reset de senha (`include/class.client.php:510`; `include/class.staff.php:302`; `include/class.user.php:1238`) | pessoa/usuário; variável | limpeza de sessões (`include/class.auth.php:1600`) | payload não uniforme |
 | `auth.login.failed` | após falha (`include/class.auth.php:362-366`) | nulo; usuário e senha | nenhum | **crítico:** expõe senha em claro ao subscriber |
-| `auth.login.succeeded` | após token/auth key (`include/class.auth.php:664-670`) | `Staff`; nulo | nenhum | listener recebe o principal autenticado |
+| `auth.login.succeeded` | após autenticação primária/chave e estado de sessão, antes de `onLogin` (`include/class.auth.php:645-674`) | `Staff`; nulo | nenhum | pode anteceder 2FA; não prova MFA ou sessão interativa concluída |
 | `auth.logout` | logout do agente (`include/class.auth.php:694-699`) | `Staff`; nulo | nenhum | específico do agente |
 | `auth.pwchange` | após sincronizar senha (`include/class.auth.php:490-495`; `include/class.client.php:506`) | usuário; senha nova/atual | nenhum | **crítico:** credenciais em claro e referenciadas |
 | `auth.pwreset.email` | antes do e-mail (`include/class.staff.php:1123`; `include/class.user.php:1263-1268`) | pessoa; e-mail/vars/link/log | nenhum | **crítico:** expõe link/token de recuperação |

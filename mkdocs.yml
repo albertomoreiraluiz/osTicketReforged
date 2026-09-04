@@ -42,6 +42,8 @@ nav:
   - Início: index.md
   - Engenharia reversa:
       - Visão geral: reverse-engineering/index.md
+      - Arquitetura canônica: reverse-engineering/ARCHITECTURE.md
+      - Proveniência e ownership: reverse-engineering/PROVENANCE_MAP.md
       - Ondas de inventário: reverse-engineering/WAVE_MANIFEST.md
       - Inventário da baseline: reverse-engineering/INVENTORY.md
       - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
@@ -50,12 +52,14 @@ nav:
       - APIs e AJAX: reverse-engineering/API_ANALYSIS.md
       - Catálogo AJAX: reverse-engineering/AJAX_ROUTE_CATALOG.md
       - Modelo de segurança: reverse-engineering/SECURITY_MODEL.md
+      - Autenticação e autorização: reverse-engineering/AUTHENTICATION.md
       - Frontend PHP existente: reverse-engineering/FRONTEND_ANALYSIS.md
       - Ciclo inicial de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
       - Ciclo do ticket: reverse-engineering/TICKET_LIFECYCLE.md
       - Falhas e órfãos: reverse-engineering/INTEGRITY_FAILURES.md
       - Subsistemas transversais: reverse-engineering/TRANSVERSAL_SUBSYSTEMS.md
       - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
+      - Banco e persistência: reverse-engineering/DATABASE.md
       - Arquitetura de persistência: reverse-engineering/DATABASE_ARCHITECTURE.md
       - Catálogo ORM: reverse-engineering/ORM_CATALOG.md
       - Instalação e upgrades: reverse-engineering/INSTALLATION_UPGRADE.md
@@ -68,6 +72,7 @@ nav:
       - Catálogo de sinais: reverse-engineering/SIGNAL_CATALOG.md
       - Matriz de customização: reverse-engineering/CUSTOMIZATION_MATRIX.md
       - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
+      - Revisão cruzada: reverse-engineering/REVIEW_REPORT.md
   - Governança:
       - Contexto: governance/PROJECT_CONTEXT.md
       - Progresso: governance/PROGRESS.md

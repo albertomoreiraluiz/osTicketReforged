@@ -21,6 +21,12 @@ Na API, attachments podem ser criados durante validação, antes de
 `Ticket::create()`; falha posterior deixa arquivo para coleta tardia
 (`include/api.tickets.php:70-107`).
 
+**Fato observado:** a API converte retorno nulo de `Ticket::create()` em HTTP
+500 (`include/api.tickets.php:118-132`). Isso pode ocorrer depois de a linha do
+ticket já existir e a thread falhar (`include/class.ticket.php:4378-4381`).
+**Inferência:** como não foi localizada chave de idempotência, retry automático
+pode criar duplicata, novo estado parcial e repetir attachments antecipados.
+
 `DynamicFormEntry::saveAnswers()` salva a entrada e respostas sequencialmente,
 ignorando falhas individuais (`include/class.dynamic_forms.php:1327-1379`).
 `ThreadEntry::create()` pode criar arquivo para corpo grande antes de salvar a
@@ -43,8 +49,9 @@ entry e não testa `createAttachments()` nem `saveEmailInfo()` depois dela
 
 ## Exclusão e referências órfãs
 
-Ticket e Task removem primeiro sua linha, depois thread, evento `deleted`,
-drafts, forms e CDATA. Apenas a primeira exclusão é verificada
+Task e ticket não-filho removem primeiro sua linha, depois thread, evento
+`deleted`, drafts, forms e CDATA. Ticket filho preserva a thread compartilhada
+e ajusta o pai. Apenas a primeira exclusão é verificada
 (`include/class.ticket.php:3601-3658`; `include/class.task.php:1584-1611`). Isso
 permite linha principal removida com thread/forms/drafts remanescentes e pode
 causar dereferência nula depois da remoção.
@@ -56,11 +63,14 @@ ou cascata (`setup/inc/streams/core/install-mysql.sql:665-711`) e não há colet
 cron dessas tabelas. **Inferência forte:** os metadados podem apontar para
 entries inexistentes.
 
-Ticket e Task chamam `thread->delete()` antes de `logEvent('deleted')`. O broker
+Ticket não-filho e Task chamam `thread->delete()` antes de
+`logEvent('deleted')`. O broker
 injeta a chave relacional e `ThreadEvents::log()` salva imediatamente
 (`include/class.ticket.php:3633-3639`; `include/class.task.php:1587-1597`;
 `include/class.thread.php:2322-2395`; `include/class.orm.php:2131-2145`).
-**Inferência forte:** o novo evento pode guardar ID de thread já removida.
+**Inferência:** no ticket não-filho, se o objeto removido permanecer no cache, o
+evento pode reutilizar seu ID; se `getThread()` resolver nulo, o ticket omite o
+evento. Em Task, a dereferência incondicional também pode produzir `Error`.
 
 ## Drafts e arquivos
 
@@ -71,8 +81,9 @@ coleta de arquivo seleciona somente files temporários antigos sem linha em
 draft expirado pode deixar attachment dangling que mantém o file fora da
 coleta indefinidamente.
 
-A coleta ocorre aproximadamente a cada dez crons, interrompe no primeiro
-delete falso e ainda retorna sucesso. `AttachmentFile::delete()` remove o
+A coleta é sorteada com probabilidade de 1/9 em cada `Cron::run()` elegível,
+interrompe no primeiro delete falso e ainda retorna sucesso.
+`AttachmentFile::delete()` remove o
 metadado antes do `unlink()` e ignora o retorno deste
 (`include/class.cron.php:105-119`; `include/class.file.php:162-170,709-721`).
 Conteúdo físico pode permanecer sem metadado.
@@ -89,7 +100,7 @@ Conteúdo físico pode permanecer sem metadado.
 | segundo save de update | campos/forms/notas/eventos anteriores | nenhuma |
 | delete de thread/forms/draft/cdata | ticket/task já removido | nenhuma |
 | unlink do backend | linha `file` já removida | nenhuma |
-| callback/sinal lança | tudo salvo anteriormente | nenhuma localizada |
+| callback/sinal lança | SQL/modelo e efeitos anteriores | nenhuma; exceção pode impedir resposta de sucesso e retry HTTP pode repetir o comando |
 
 ## Validação futura
 
