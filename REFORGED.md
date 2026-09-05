@@ -20,6 +20,8 @@ do frontend original, exceto setup. `INTEGRATION_CONTRACT_DESIGN.md` em
 ADR 0006 aceita mesma origem, API por recursos/ações e isolamento. A organização
 física em `REFORGED_PHYSICAL_DESIGN.md` permanece proposta: `frontend/` preservado
 e `reforged/` candidato para PHP novo; nenhuma pasta de aplicação criada.
+`REFORGED_ENTRY_SESSION_DESIGN.md` detalha entradas, sessão e publicação, ainda
+como proposta. Integração executável e contratos continuam pendentes.
 
 ## Objetivo
 

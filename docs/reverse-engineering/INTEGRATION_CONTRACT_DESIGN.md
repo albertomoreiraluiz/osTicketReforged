@@ -192,6 +192,10 @@ upgrade SCP da análise. Portal segue em plano separado.
 
 ## Próximas decisões, sem implementação automática
 
+Complemento: [Entradas, sessão e publicação](REFORGED_ENTRY_SESSION_DESIGN.md)
+aprofunda matriz por contexto, efeitos de renovação/CSRF e classes de destino.
+Não define contratos concretos nem comprova integração executável.
+
 1. Concluído: direção de mesma origem e estilo recursos/ações aceita no ADR 0006;
    discutir agora organização física candidata, não reabrir essa direção.
 2. Fechar desenho de bootstrap e matriz de guardas/estados por entrada, com

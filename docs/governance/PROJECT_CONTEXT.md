@@ -117,6 +117,9 @@ integração/contratos em `INTEGRATION_CONTRACT_DESIGN.md` distingue origem/esti
 aceitos no ADR 0006 dos detalhes propostos. `REFORGED_PHYSICAL_DESIGN.md` apresenta
 pasta PHP candidata e limites de publicação/carregamento. Bootstrap, sessão,
 convenções concretas e liberação técnica continuam no Portão D.
+`REFORGED_ENTRY_SESSION_DESIGN.md` aprofunda tipos de entrada, guardas,
+continuidade e publicação. Não é bootstrap implementado, teste novo ou aceite
+do layout candidato; orienta a especificação dos contratos ainda abertos.
 
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 

@@ -7,6 +7,8 @@ O login original foi usado como exemplo didático para a estratégia aceita no
 endpoint Reforged implementado. Reutilizar a cadeia original, e não somente a
 comparação da senha, é a fronteira confirmada; contratos e sessão ainda serão
 detalhados, sem alterar os fatos da baseline abaixo.
+O [desenho de entradas e sessão](REFORGED_ENTRY_SESSION_DESIGN.md) separa fatos
+originais, requisitos propostos e verificações futuras do Reforged.
 
 Autenticação é fornecida por registries distintos para agentes e clientes;
 sessão, CSRF, escopo do objeto e permissão da ação formam controles em camadas,

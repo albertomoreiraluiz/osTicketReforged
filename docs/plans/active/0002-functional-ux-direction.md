@@ -72,6 +72,8 @@ ao legado, exceto setup. Essa paridade não altera a liberdade de ajustar menus.
 2. Mesma origem, recursos/ações e isolamento aceitos no ADR 0006. Discutir layout
    PHP/publicação e detalhar coordenação, contratos e estado compartilhado;
    `frontend/` não foi movido ou substituído pela pasta PHP candidata.
+   A matriz de entradas/sessão/publicação distingue estados que a UX deverá
+   representar; contrato e validação executável ainda não existem.
 3. Comparar opções pertinentes, revisar e formalizar as escolhas necessárias;
    selecionar primeiro recorte somente com justificativa e aprovação.
 4. Após liberação da implementação, materializar a primeira versão funcional

@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da unidade: `codex/reforged-isolation-design`, entrada `8bd050ba` (PR #34).
+- Branch da unidade: `codex/reforged-entry-session-design`, entrada `0f23d12e` (PR #35).
 - Etapa: Portão D em andamento; ADRs 0004–0006 aceitos nos respectivos recortes, detalhes técnicos pendentes.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
@@ -223,6 +223,30 @@
   UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
+
+Unidade corrente: `REFORGED_ENTRY_SESSION_DESIGN.md`, matriz de tipos de entrada,
+reutilização/obstáculos, continuidade de sessão/CSRF e publicação por intenção.
+T01–T14 aprofundados sem afirmar cobertura de toda permissão dos 153 registros.
+Nenhum ADR novo: árvore PHP e mecanismo de publicação continuam propostos.
+Próximo passo: consolidar contratos de contexto/erros e rastrear guardas até
+mecanismos efetivamente reutilizáveis, sem copiar políticas ou implementar.
+
+Fatos reconfirmados por leitura estática: caminhos login/reset/staff/admin,
+sessão/MFA, cookie/renovação, CSRF e pontos de publicação relacionados a ROOT_PATH.
+Distintos comentários e código: refreshSession recebe padrão 60; checkCSRFToken
+não implica rotação explícita em todo caminho. Não houve teste de produto,
+acesso a banco, navegador ou alteração de servidor/core/schema.
+Principal único escritor; revisão independente `security_architect/entries/revisao`
+favorável à integração documental, sem achado crítico/alto/médio. Correção baixa:
+caminho do dispatcher explicitado como scp/apps/dispatcher.php, distinto do cliente.
+Preservadas pendências de bootstrap completo, guardas reutilizáveis, contratos e
+cache de respostas sensíveis; sem aprovação técnica por inferência.
+Validações: MkDocs estrito aprovado, 71/71 documentos na navegação, 130 Markdown
+e 327 links locais auditados; zero destino ausente do Reforged, seis herdados.
+Quinze grupos/153 atribuições, 47 arquivos SCP, 26 famílias/229 folhas AJAX
+reconciliados. Taxonomia GOV-023 preservada; diff revisado e sem erro.
+
+### Histórico — isolamento integrado pela PR #35
 
 Unidade corrente: ADR 0006 formaliza mesma origem, recursos/ações e isolamento.
 `REFORGED_PHYSICAL_DESIGN.md` propõe `reforged/` para PHP novo, mantendo `frontend/`;

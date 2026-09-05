@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/reforged-isolation-design`, entrada `8bd050ba` (PR #34),
-para registrar ADR 0006 aceito e organização física ainda proposta. Permite que uma nova sessão
+Atualizado na branch `codex/reforged-entry-session-design`, entrada `0f23d12e` (PR #35),
+para detalhar entradas/sessão/publicação sem novos aceites arquiteturais. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -163,8 +163,10 @@ Inventário e evidências da baseline permanecem preservados.
 Após a discussão, ADR 0004 aceita a estratégia de módulos novos sobre o backend
 original. ADR 0005 aceita divisão/paridade; ADR 0006 aceita mesma origem,
 recursos/ações e isolamento. Não reabrir essas decisões como indefinidas.
-Próximo passo: discutir [organização física](../reverse-engineering/REFORGED_PHYSICAL_DESIGN.md),
-depois fechar bootstrap, guardas, sessão e contratos concretos a partir
+Detalhamento corrente: [entradas, sessão e publicação](../reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md),
+com matriz por contexto e critérios futuros, ainda propostos. A árvore física
+continua candidata. Próximo passo: ligar cada guarda a um mecanismo reutilizável
+e consolidar contratos de contexto/erros, antes de fixar URLs ou implementar, a partir
 do [mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
 47 arquivos PHP do escopo (inclui dois bootstraps), 26 famílias e 229 folhas AJAX.
 GOV-026 e [Plano 0002](../plans/active/0002-functional-ux-direction.md) registram

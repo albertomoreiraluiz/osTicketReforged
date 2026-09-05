@@ -64,6 +64,8 @@ ADR 0005 aceita os módulos lógicos e paridade integral. O
 [ADR 0006](adr/0006-origem-api-isolamento-reforged.md) aceita mesma origem,
 recursos/ações e isolamento; a [organização física](reverse-engineering/REFORGED_PHYSICAL_DESIGN.md)
 é a proposta corrente. Implementação e contratos concretos continuam pendentes.
+O [desenho de entradas e sessão](reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md)
+aprofunda os critérios de carregamento e publicação dessa proposta.
 A estratégia anterior permanece somente como histórico, não como orientação ativa.
 
 Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), a

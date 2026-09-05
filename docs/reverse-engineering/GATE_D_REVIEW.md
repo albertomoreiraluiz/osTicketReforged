@@ -2,6 +2,27 @@
 
 ## Estado corrente
 
+Unidade `codex/reforged-entry-session-design`, entrada `0f23d12e` (PR #35),
+baseline v1.18.4. Principal único escritor de documentos/planos/checkpoint.
+Instância `security_architect/entries/revisao` revisa o desenho estabilizado
+de entradas/sessão/publicação, somente leitura. Justificativa: fronteira de
+identidade/guardas requer revisão independente; integrador executa auditorias
+documentais em paralelo, sem escrita compartilhada. Entradas: AGENTS, checkpoint,
+plano, ADRs 0004–0006, mapas e fontes citadas. Sem descendentes, rede, banco,
+segredos, navegador, mutações Git ou exploração. Parada no parecer com achados
+priorizados; não aceitar arquitetura nem fechar o Portão D.
+
+Parecer favorável à integração documental, sem achado crítico/alto/médio. Ajuste
+baixo incorporado: scp/apps/dispatcher.php explicitado para distinguir cliente
+e equipe; reconferência encerrou o achado. Convenção de caminhos também ressalva
+Bootstrap na raiz, conforme sugestão editorial posterior. Integrador releu fontes
+e parecer; adicionou esclarecimento de cache
+de respostas autenticadas, que não se confunde com cache de assets. Permanecem
+lacunas de bootstrap, guardas reutilizáveis e contratos/exercícios futuros de
+sessão. Não houve prova de runtime nem escolha de mecanismo executável.
+
+### Histórico — revisão da PR #35
+
 Unidade `codex/reforged-isolation-design`, entrada `8bd050ba` (PR #34), baseline
 v1.18.4. ADR 0006 formaliza somente mesma origem, recursos/ações e isolamento.
 `REFORGED_PHYSICAL_DESIGN.md` propõe layout/público/interno e critérios de
