@@ -108,8 +108,10 @@ paginação, ações em massa, vínculo/desvínculo, fusão sem exclusão e aç�
 auditáveis da thread pelo frontend. Cliente e agente restrito já tiveram seus
 percursos completos repetidos; cadastro público, SMTP visual, reenvio e
 formulários administrativos priorizados também avançaram. A comprovação do
-arquivo CSV, o link de ativação e os editores administrativos restantes
-continuam na fila. Concluída a Onda 9, o plano
+novo arquivo CSV continua como divergência de comprovação; o link de ativação
+foi concluído. Dezoito editores individuais de modelos de e-mail aguardam a
+restauração da sessão administrativa. Concluída essa passagem e a revisão
+independente da Onda 9, o plano
 dependerá da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural
