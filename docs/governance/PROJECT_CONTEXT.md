@@ -121,8 +121,10 @@ convenções concretas e liberação técnica continuam no Portão D.
 continuidade e publicação. Não é bootstrap implementado, teste novo ou aceite
 do layout candidato; orienta a especificação dos contratos ainda abertos.
 `REFORGED_GUARD_CONTRACTS.md` distingue mecanismos chamáveis e coordenação inline.
-ADR 0007 propõe tratamento limitado desta coordenação e aguarda decisão; não
-modifica os ADRs aceitos nem autoriza reimplementar algoritmos ou alterar core.
+ADR 0007 aceita o tratamento limitado desta coordenação e a análise comportamental
+dos trechos muito acoplados antes de reproduzi-los nos módulos. Complementa ADR
+0004 sem autorizar duplicar métodos reutilizáveis ou alterar core. Cada caso
+exige rastreio, evidências e critérios de equivalência, não novo aceite do princípio.
 
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 

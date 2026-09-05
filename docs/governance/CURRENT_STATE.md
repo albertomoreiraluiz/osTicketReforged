@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/reforged-guard-contracts`, entrada `1580ea20` (PR #36),
-para registrar rastreio de guardas e ADR 0007 proposto, aguardando decisão. Permite que uma nova sessão
+Atualizado na branch `codex/accept-guard-coordination`, entrada `0c259179` (PR #37),
+para registrar o aceite explícito do ADR 0007 e a diretriz comportamental. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -97,6 +97,10 @@ autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
   dos arquivos próprios. `frontend/` permanece conforme ADR 0001; `reforged/`
   para PHP é candidato, assim como seu layout interno e mapeamento web.
 
+- ADR 0007 aceita adaptação limitada da coordenação inline e análise comportamental
+  dos trechos muito acoplados antes de reproduzi-los nos módulos; mecanismos
+  reutilizáveis e core preservados, evidências por caso e implementação ainda pendentes.
+
 ## O que continua sem decisão
 
 Não apresentar como aprovado ou implementado; os itens arquiteturais agora estão
@@ -111,8 +115,6 @@ em comparação, não em execução:
 - primeiro módulo a migrar;
 - política final de release e proteção obrigatória da `main`;
 - qualquer alteração de core, schema ou implementação de produto.
-- ADR 0007: adaptação limitada da coordenação inline de guardas staff/admin;
-  não aceito. Métodos originais permanecem reutilizados; core intacto.
 
 Esses itens pertencem ao Portão D ou a decisões posteriores. Ausência de
 decisão nunca deve ser preenchida por preferência técnica do agente.
@@ -166,11 +168,12 @@ Após a discussão, ADR 0004 aceita a estratégia de módulos novos sobre o back
 original. ADR 0005 aceita divisão/paridade; ADR 0006 aceita mesma origem,
 recursos/ações e isolamento. Não reabrir essas decisões como indefinidas.
 Detalhamento corrente: [guardas e contratos](../reverse-engineering/REFORGED_GUARD_CONTRACTS.md),
-com G01–G09 rastreados e contexto/erros propostos. Intervenção necessária: decidir
-o ADR 0007 antes de fechar a adaptação das combinações/exceções inline staff/admin.
-Não falta autorização para chamar métodos; falta aceitar o tratamento da
-coordenação presa às páginas. Não gerar código nem preencher esse aceite por
-autonomia operacional. A árvore física continua candidata. Base de rastreabilidade:
+com G01–G09 rastreados e contexto/erros propostos. ADR 0007 aceito explicitamente:
+próxima ação é especificar intenções, exceções, efeitos e critérios de equivalência,
+reutilizando evidências válidas e planejando observação visual dos casos não cobertos.
+Trechos muito acoplados podem ter seu comportamento reproduzido após análise;
+não reabrir esse princípio, não presumir testes nem liberação de código.
+A árvore física continua candidata. Base de rastreabilidade:
 [mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
 47 arquivos PHP do escopo (inclui dois bootstraps), 26 famílias e 229 folhas AJAX.
 GOV-026 e [Plano 0002](../plans/active/0002-functional-ux-direction.md) registram
@@ -187,7 +190,7 @@ publicação ainda não. Não há integração executável comprovada. Funcional
 exige completar configuração/operação no painel antigo permanece pendente,
 exceto setup; não declarar paridade por oferecer link de retorno ao legado.
 
-Fontes normativas: ADRs 0004/0005/0006 em `docs/adr/`.
+Fontes normativas: ADRs 0004/0005/0006/0007 em `docs/adr/`.
 `ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md` e `GATE_D_REVIEW.md`,
 em `docs/reverse-engineering/`, preservam o histórico; o registro de revisões
 também distingue os pareceres da unidade corrente dos anteriores descartados.

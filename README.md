@@ -99,8 +99,9 @@ O [detalhamento de entradas, sessão e publicação](docs/reverse-engineering/RE
 separa os contextos de autenticação, operação e administração e seus critérios
 de integração. O [rastreio de guardas e contratos](docs/reverse-engineering/REFORGED_GUARD_CONTRACTS.md)
 identifica mecanismos reutilizáveis e combinações presas às páginas.
-**Ponto atual de decisão:** [ADR 0007 proposto](docs/adr/0007-coordenacao-guardas-controladores.md),
-adaptação limitada da coordenação staff/admin; aguarda o responsável, sem implementação.
+**Decisão aceita:** [ADR 0007](docs/adr/0007-coordenacao-guardas-controladores.md),
+adaptação da coordenação e análise comportamental dos trechos acoplados antes de
+sua reprodução. Próximo passo: matriz de intenções, efeitos e equivalência; sem implementação.
 
 Direção de UX: dashboard administrativo intuitivo, prioridade funcional e
 primeira navegação elaborada pelo agente principal, com ajustes posteriores

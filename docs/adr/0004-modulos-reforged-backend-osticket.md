@@ -88,6 +88,8 @@ como recomendação vigente. A discussão atual aprovou a fronteira, não esse p
 Cada módulo deverá rastrear entrada, validações, autorização, persistência e
 efeitos até a resposta. Regras presas ao controlador legado exigem análise e
 decisão explícita; não permitem modificar core ou duplicar lógica por conveniência.
+O ADR 0007 complementa este limite com a adaptação aceita da coordenação e a
+análise comportamental dos trechos muito acoplados antes de sua reprodução.
 Reutilização não garante atomicidade nem corrige achados herdados. Atualizações
 do upstream exigirão conferir símbolos usados e regressão dos dois painéis.
 Os fatos acima sustentam o exemplo, não provam viabilidade de todos os módulos.

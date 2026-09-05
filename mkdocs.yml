@@ -149,7 +149,7 @@ nav:
       - ADR 0004 — Módulos e backend original: adr/0004-modulos-reforged-backend-osticket.md
       - ADR 0005 — Módulos e paridade SCP: adr/0005-modulos-logicos-paridade-scp.md
       - ADR 0006 — Origem, API e isolamento: adr/0006-origem-api-isolamento-reforged.md
-      - ADR 0007 — Coordenação de guardas (proposto): adr/0007-coordenacao-guardas-controladores.md
+      - ADR 0007 — Coordenação de guardas: adr/0007-coordenacao-guardas-controladores.md
   - Ambiente e ferramentas:
       - Portal documental: development/DOCUMENTATION_PORTAL.md
       - Homologação: development/HOMOLOGATION_ENVIRONMENT.md

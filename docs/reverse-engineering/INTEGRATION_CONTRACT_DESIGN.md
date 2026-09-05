@@ -193,7 +193,8 @@ upgrade SCP da análise. Portal segue em plano separado.
 ## Próximas decisões, sem implementação automática
 
 Rastreio seguinte: [Guardas e contratos](REFORGED_GUARD_CONTRACTS.md), com proposta
-de contexto/erros e ADR 0007 ainda não aceito para a coordenação inline staff/admin.
+de contexto/erros e ADR 0007 aceito para a coordenação inline staff/admin;
+contratos concretos e provas de equivalência continuam pendentes.
 
 Complemento: [Entradas, sessão e publicação](REFORGED_ENTRY_SESSION_DESIGN.md)
 aprofunda matriz por contexto, efeitos de renovação/CSRF e classes de destino.

@@ -22,9 +22,9 @@ física em `REFORGED_PHYSICAL_DESIGN.md` permanece proposta: `frontend/` preserv
 e `reforged/` candidato para PHP novo; nenhuma pasta de aplicação criada.
 `REFORGED_ENTRY_SESSION_DESIGN.md` detalha entradas, sessão e publicação, ainda
 como proposta. Integração executável e contratos continuam pendentes.
-O rastreio em `REFORGED_GUARD_CONTRACTS.md` sustenta o ADR 0007 **Proposto**.
-É necessária decisão sobre adaptação limitada da coordenação inline de guardas;
-autonomia operacional não autoriza esse aceite. Nenhum core alterado.
+O ADR 0007 está **Aceito**: adaptar coordenação inline e analisar comportamentos
+muito acoplados antes de reproduzi-los nos módulos, reutilizando os mecanismos
+originais. Próximo passo: matriz de intenções, efeitos e equivalência. Core intacto.
 
 ## Objetivo
 

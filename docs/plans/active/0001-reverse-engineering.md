@@ -148,9 +148,11 @@ matriz por contexto e critérios futuros. O vínculo das guardas a mecanismos
 reutilizáveis foi rastreado na unidade subsequente. Contexto/erros, bootstrap
 e sessão ainda exigem escolhas técnicas; não implementar por inferência.
 Rastreio subsequente: [G01–G09 e contratos](../../reverse-engineering/REFORGED_GUARD_CONTRACTS.md).
-Intervenção necessária no [ADR 0007 proposto](../../adr/0007-coordenacao-guardas-controladores.md):
-decidir adaptação limitada de combinações/exceções inline. Contratos e código que
-dependem desse tratamento não avançam por inferência; demais decisões aceitas mantidas.
+[ADR 0007 aceito](../../adr/0007-coordenacao-guardas-controladores.md): adaptação
+de combinações/exceções inline e análise comportamental de trechos acoplados.
+Próximo passo: matriz de intenções/efeitos e critérios de equivalência, distinguindo
+evidências existentes de cenários visuais pendentes. Não reabrir o princípio
+aceito nem presumir liberação de implementação; demais decisões mantidas.
 
 Direção visual antecipada pelo responsável em GOV-026 e
 [Plano 0002](0002-functional-ux-direction.md): dashboard administrativo intuitivo,

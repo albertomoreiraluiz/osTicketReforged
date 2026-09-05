@@ -144,7 +144,7 @@ alterar o core nem restaurar banco como efeito automático de um rollback visual
 ## Critérios de verificação futura e próxima decisão
 
 Complemento: [Guardas e contratos](REFORGED_GUARD_CONTRACTS.md) rastreia métodos e
-coordenação inline; ADR 0007 proposto delimita a decisão necessária para esse trecho.
+coordenação inline; ADR 0007 aceito permite sua adaptação com análise comportamental.
 
 Nenhum cenário abaixo foi executado nesta unidade; são **Propostas de aceite**:
 
