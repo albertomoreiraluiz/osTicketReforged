@@ -2,10 +2,10 @@
 
 ## Ponto de retomada
 
-- Data de atualização: 2026-09-04.
+- Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
-- Branch estável resultante: `main`, sincronizada após a PR #6.
-- Etapa: Onda 8 integrada pela PR #9; preparação das opções do Portão D.
+- Branch estável: `main`; trabalho corrente em `codex/wave9-sequential-ui-pass`.
+- Etapa: Onda 9 em execução; repetição visual profunda anterior ao Portão D.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -316,6 +316,21 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-05 | Onda 9 — precondição natural de e-mail | Administração > E-mails > Configurações/Conta/Caixa/SMTP | coleta e SMTP desabilitados e caixa remota sem parâmetros; BHV-011 permanece backend até existir caixa IMAP/POP fictícia |
 | 2026-09-05 | Onda 9 — segunda passagem administrativa iniciada | Agentes > Adicionar Novo Agente; oito painéis | conta, acesso, quatro categorias de permissões e equipes percorridos; nenhum dado preenchido ou submetido |
 | 2026-09-05 | Onda 9 — correção de método | GOV-020; orientação do responsável | passagem será reiniciada em ordem visual estrita; todos os testes diretos anteriores entram na fila de repetição pelo frontend |
+| 2026-09-05 | Onda 9 — visitante anônimo, reinício sequencial | navegador interno; 19 componentes/estados | quatro menus percorridos em ordem; login, recuperação, KB, tópicos, abertura, consulta, atalhos e busca observados; cadastro funcional/e-mail pendentes |
+| 2026-09-05 | Onda 9 — microservidor de e-mail | SMTP/POP3 somente em `127.0.0.1`; autoteste sem relay | captura SMTP e leitura POP3 confirmadas; configuração pelo Painel aguarda nova autenticação administrativa no navegador |
+| 2026-09-05 | Onda 9 — preenchimento visual obrigatório | GOV-021; formulário administrativo renderizado | autenticação POP refeita no modal visível; valores não secretos conferidos e conta atualizada com sucesso; credenciais excluídas das evidências |
+| 2026-09-05 | Onda 9 — pausa e capacitação operacional | Wiki oficial completo no commit `b641236e`; GOV-022; modelo operacional | passagem interrompida pelo responsável; 15 páginas revisadas; fluxo principal→modal corrigido; reinício integral substitui a sequência interrompida |
+| 2026-09-05 | Onda 9 — reinício pós-Wiki, visitante | navegador interno; GOV-020–022; 22 componentes/estados | percurso reiniciado em `/index.php`; cadastro, quatro menus, KB, validações, atalhos, busca e criação funcional executados com campos visíveis; e-mail/rodapé permanecem pendentes |
+| 2026-09-05 | Onda 9 — reinício pós-Wiki, cliente | navegador interno; sessão fictícia; 16 componentes/estados | autenticação, perfil, listagem, filtros, ordenação, detalhe, edição e resposta exercitados; nova resposta pública preservada e três comportamentos marcados para repetição |
+| 2026-09-05 | Onda 9 — cliente encerrado e equipe iniciada | ticket `961630`; colaboração `807330`; shell SCP; 14 superfícies | contexto cliente coberto e sessão encerrada; shell operacional percorreu Painel, perfil, usuários/importação, organizações, tarefas e fila de tickets sem exclusão |
+| 2026-09-05 | Onda 9 — shell operacional e Administração 1–2 | SCP/KB; Eventos/Informações; sete Configurações e 11 abas internas | shell administrativo iniciado novamente pelo primeiro menu; dois grupos completos percorridos; `NaN` no gráfico e destino vazio de modelo registrados como divergências candidatas |
+| 2026-09-05 | Onda 9 — Administração 3 Gerenciar | nove submenus em ordem; estados, tabelas, ações e estados vazios | Tópicos, Filtros, SLA, Agendas, API, Páginas, Formulários, Listas e Plugins percorridos sem submissão destrutiva; grupo completo |
+| 2026-09-05 | Onda 9 — Administração 4 E-mails | cinco submenus; GOV-022; POP3/SMTP loopback; autocron de frontend | coleta/autocron salvos; caixa e SMTP revalidados ativos; diagnóstico anterior coletado naturalmente como ticket `967253`; nova entrada aguarda intervalo normal |
+| 2026-09-05 | Onda 9 — Administração 5 Agentes e mapa global | quatro submenus em ordem; agentes, equipes, funções e departamentos | quinto grupo concluído; todos os 27 submenus/abas administrativas conhecidos foram percorridos na sequência visual pós-Wiki; fluxos funcionais continuam abertos |
+| 2026-09-05 | Onda 9 — ações de entrada pelo frontend | ticket `927747`; entrada `32`; tickets `229189` e `163086` | menu visual revelou Editar/Criar Ticket/Criar Tarefa; `163086` derivado confirmado; `229189` tem evidência simultânea de POP3 e referência à entrada, em correlação; Criar Tarefa sem feedback visual, pendente de correlação |
+| 2026-09-05 | Onda 9 — vínculo de tickets pela fila | fila aberta; modal `Tickets Link`; ticket principal `903010`; relacionado `874483` | seleção, confirmação e reabertura executadas visualmente; rótulo `PRINCIPAL` e aba de relacionados com uma linha confirmados; nenhuma desvinculação executada |
+| 2026-09-05 | Onda 9 — ajuda contextual e cenário realista 01 | ajuda `advanced`; ajuda `reply_types`; ticket `990221`; portal público e SCP | textos dos dois manuais lidos na tela; incidente de impressão aberto, pesquisado, reivindicado, diagnosticado, respondido e resolvido integralmente pelo frontend; interrupção do SMTP/POP correlacionada e serviço local restabelecido; paginação inconsistente da busca registrada |
+| 2026-09-05 | Onda 9 — ações do detalhe do ticket | ticket `903010`; menus de atribuição, transferência e status | atribuição a Alberto concluída com justificativa visível e confirmada na fila/detalhe; transferência e status inventariados e cancelados antes da mutação |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |
