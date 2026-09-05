@@ -285,3 +285,35 @@ estreitamento dos critérios ao que foi observado, o registro das divergências
 relacionais e a coerência entre matriz, progresso, plano e portal. Nenhum
 achado alto ou médio permanece aberto no fechamento documental. A Onda 8 foi
 integrada em `main` pela PR #9.
+
+## Onda 9 — observação integral pelo frontend
+
+**Estado:** iniciada; cobertura anterior reaberta para validação visual.
+
+**Motivo:** a cobertura por cenários e rotas não garantiu que todas as páginas,
+regiões e ações visíveis fossem observadas. O Painel de Administração recebeu
+profundidade insuficiente, ações em massa ficaram apenas estáticas e o fluxo de
+entrada de e-mail foi exercitado diretamente no backend, não por uma
+configuração operacional completa na interface.
+
+**Método:** aplicar `INTERFACE_OBSERVATION_PROTOCOL.md` nos contextos anônimo,
+cliente, agente, administrador operacional e Administração. O percurso é
+posicional, de cima para baixo e da esquerda para a direita. Cada componente
+recebe estado explícito na matriz; chamadas diretas não encerram cenários
+visuais. Segurança permanece fora da onda.
+
+**Estratégia de agentes:** execução inicial por um único agente, porque a sessão
+visual, as abas e o estado das fixtures são compartilhados e sequenciais.
+Revisão independente será avaliada após a matriz estabilizar.
+
+**Primeiro alvo:** shell do administrador operacional, começando pela fila de
+tickets marcada pelo responsável; em seguida, Painel de Administração completo
+e demais contextos. Fixtures úteis permanecem na homologação por GOV-018.
+
+**Checkpoint administrativo de 2026-09-05:** o shell, os cinco grupos e todos
+os submenus de topo foram percorridos pelo frontend. A matriz registra 27
+páginas ou painéis na primeira passagem, incluindo as abas internas omitidas
+por uma análise baseada somente em rotas. Permanecem pendentes os formulários
+de inclusão/edição, menus de massa e submissões não destrutivas. A entrada
+natural de e-mail está bloqueada por ausência de uma caixa IMAP/POP fictícia
+configurada; a saída possui formulário de diagnóstico próprio.

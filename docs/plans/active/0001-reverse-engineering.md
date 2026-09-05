@@ -89,7 +89,9 @@ foram concluídos no recorte declarado e ações em massa ficaram mapeadas sem
 efeito em lote. Nenhuma exclusão ocorreu. A revisão independente foi aprovada e
 integrada pela PR #9. Conforme GOV-018, as fixtures de vínculo e criação de
 ticket a partir de resposta permanecem na homologação como evidência
-inspecionável pelo painel. O trabalho restante deste plano é o Portão D, dependente
+inspecionável pelo painel. A Onda 9 reabriu a cobertura comportamental para uma
+varredura integral pelo frontend natural, conforme GOV-019; portanto o Portão D
+aguarda essa matriz. O trabalho restante deste plano é dependente
 da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural

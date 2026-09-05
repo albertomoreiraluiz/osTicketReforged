@@ -22,6 +22,7 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-016 | 2026-09-04 | Aceito | Push para branch dedicada, criação de PR e merge validado em `main` estão previamente autorizados no fluxo normal. A autorização não alcança ações excessivamente arriscadas, conflitos, validações falhas, impacto não revisado, force-push, release, reset destrutivo ou exclusões. | `AGENTS.md`; decisão explícita do responsável |
 | GOV-017 | 2026-09-04 | Aceito | Dumps SQL devem ser capturados e restaurados exclusivamente por streams binários, com `utf8mb4`, restauração temporária e validação de bytes por `HEX()` antes do banco ativo. Pipelines e readers/writers textuais são proibidos para backup ou restore. | incidente de encoding da Onda 8; `docs/development/HOMOLOGATION_ENVIRONMENT.md` |
 | GOV-018 | 2026-09-04 | Aceito | Fixtures que constituem evidência de análise comportamental devem permanecer no osTicket de homologação para inspeção humana. Snapshot e rollback protegem contra falha ou desvio; não devem apagar automaticamente a evidência funcional aprovada. | esclarecimento explícito do responsável; dossiês BHV-027 e BHV-029 |
+| GOV-019 | 2026-09-04 | Aceito | A análise comportamental integral deve usar o frontend natural e percorrer cada página de cima para baixo e da esquerda para a direita, componente por componente, em contextos separados. CLI, endpoint direto, banco e código são apenas evidência complementar. | `INTERFACE_OBSERVATION_PROTOCOL.md`; orientação explícita do responsável |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2. GOV-012 e GOV-013, o
@@ -33,3 +34,6 @@ após o incidente de encoding da Onda 8.
 GOV-018 corrige o critério de evidência operacional após a constatação de que a
 restauração integral ocultou do painel os resultados que deveriam permanecer
 inspecionáveis.
+GOV-019 reabre a cobertura visual e administrativa porque os cenários anteriores
+não demonstraram exaustividade por página e, em alguns fluxos, substituíram a
+operação natural por chamadas diretas.
