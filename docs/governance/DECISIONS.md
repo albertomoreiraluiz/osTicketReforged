@@ -27,6 +27,7 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-021 | 2026-09-05 | Aceito | Em cenários de formulário da Onda 9, cada valor deve ser inserido no controle renderizado e seu estado visual conferido antes da submissão. Atribuição indireta, requisição forjada ou mutação de backend não comprova o preenchimento. Credenciais da homologação podem ser reutilizadas a partir do `.env` ou da sessão local, mas nunca documentadas, capturadas em evidência ou expostas em logs. | `INTERFACE_OBSERVATION_PROTOCOL.md`; orientação explícita do responsável |
 | GOV-022 | 2026-09-05 | Aceito | Antes de configurar dados dependentes em modal, a entidade principal deve ser salva e reaberta; depois o modal e o formulário principal são salvos e revalidados na interface. O Wiki oficial orienta o modelo funcional, mas a baseline `v1.18.4` prevalece sobre páginas históricas. | `OSTICKET_OPERATIONAL_MODEL.md`; orientação explícita do responsável |
 | GOV-023 | 2026-09-05 | Aceito | Toda evolução do MkDocs deve preservar a taxonomia orientada ao leitor integrada pela PR #25: seis contextos de primeiro nível, oito categorias recolhíveis de engenharia reversa, uma ocorrência de cada documento na navegação principal e caminhos canônicos preservados. Alteração estrutural dessa taxonomia exige nova decisão formalizada. | `AGENTS.md`; `docs/development/DOCUMENTATION_PORTAL.md`; orientação explícita do responsável |
+| GOV-024 | 2026-09-05 | Aceito | O projeto manterá um checkpoint canônico de retomada que separa fatos verificados, decisões aceitas, itens não decididos, limites e dados mutáveis. Nenhum agente pode preencher lacunas por plausibilidade; mudanças materiais de estado exigem atualização do checkpoint no mesmo PR. | `docs/governance/CURRENT_STATE.md`; `AGENTS.md`; orientação explícita do responsável |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2. GOV-012 e GOV-013, o
@@ -53,3 +54,6 @@ GOV-023 transforma a arquitetura de informação da PR #25 em regra permanente:
 novos documentos devem ampliar o acervo dentro da taxonomia por intenção do
 leitor, sem recriar uma árvore plana ou romper os caminhos que preservam o
 contexto versionado.
+GOV-024 cria um contrato explícito de retomada para reduzir deriva entre sessões:
+o checkpoint resume o estado, mas nunca supera código, ADRs ou evidência, e
+obriga o registro de lacunas em vez de completá-las por inferência não declarada.

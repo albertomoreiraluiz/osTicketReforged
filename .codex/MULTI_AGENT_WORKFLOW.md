@@ -11,6 +11,8 @@ Processo **Aceito** pelo responsável pelo projeto em 2026-09-03. A avaliação 
 - Até três subagentes podem trabalhar simultaneamente; o agente principal permanece o quarto participante.
 - Investigação, escrita e revisão ocorrem em ondas separadas.
 - Nenhuma saída de agente substitui confirmação direta no código.
+- `docs/governance/CURRENT_STATE.md` é entrada obrigatória de toda missão; cada
+  agente deve separar o que reconfirmou do que apenas herdou do checkpoint.
 - Perfis representam cargos profissionais permanentes; tarefas são missões temporárias atribuídas a esses cargos.
 - Cargo, competências, autoridade, permissões e limites não são redefinidos por missão; somente uma mudança de governança aprovada pode alterá-los.
 
@@ -31,6 +33,7 @@ Se as respostas não demonstrarem benefício claro, o agente principal executa s
 
 Antes de cada onda, o agente principal registra:
 
+- HEAD, baseline e coerência do checkpoint canônico com o estado real;
 - objetivo e escopo;
 - perfis escolhidos e motivo;
 - entradas obrigatórias;
@@ -143,12 +146,13 @@ Subagentes não podem:
 Cada retorno deve conter:
 
 1. resumo do resultado;
-2. fatos com caminhos e símbolos;
-3. inferências separadas;
-4. arquivos lidos ou alterados;
-5. validações executadas;
-6. dúvidas, riscos e condição de parada;
-7. recomendação do próximo passo, sem executá-lo fora do escopo.
+2. fatos reconfirmados e fatos apenas herdados do checkpoint;
+3. caminhos, símbolos e evidências;
+4. inferências separadas;
+5. arquivos lidos ou alterados;
+6. validações executadas;
+7. dúvidas, riscos e condição de parada;
+8. recomendação do próximo passo, sem executá-lo fora do escopo.
 
 ## Integração
 

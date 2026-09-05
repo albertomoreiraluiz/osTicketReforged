@@ -23,6 +23,11 @@ abas de contexto e categorias técnicas recolhíveis, com trilhas de leitura por
 objetivo, busca global e temas claro/escuro; os caminhos canônicos dos documentos
 continuam preservados.
 
+Novas sessões devem usar o
+[checkpoint canônico de retomada](docs/governance/CURRENT_STATE.md) para separar
+estado verificado, decisões aceitas, itens ainda não decididos e condições
+locais que precisam ser revalidadas.
+
 A Onda 7 concluiu 25 cenários funcionais. Uma revisão de cobertura abriu a Onda
 8 para demonstrar menus contextuais e ações encadeadas ainda não exercitadas.
 Oito cenários complementares foram concluídos no recorte declarado, incluindo
@@ -96,6 +101,7 @@ Fontes operacionais:
 
 - [instruções obrigatórias](AGENTS.md);
 - [contexto persistente](docs/governance/PROJECT_CONTEXT.md);
+- [checkpoint canônico de retomada](docs/governance/CURRENT_STATE.md);
 - [controle detalhado de progresso](docs/governance/PROGRESS.md);
 - [política de documentação](docs/governance/DOCUMENTATION_POLICY.md);
 - [decisões de governança](docs/governance/DECISIONS.md);

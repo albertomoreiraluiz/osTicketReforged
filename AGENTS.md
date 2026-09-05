@@ -13,10 +13,11 @@ Sequência mínima:
 1. confirme branch, `git status`, remotos e baseline;
 2. leia `REFORGED.md`;
 3. leia `docs/governance/PROJECT_CONTEXT.md`;
-4. leia `docs/governance/PROGRESS.md`;
-5. leia o plano ativo aplicável em `docs/plans/active/`;
-6. leia ADRs aceitos, documentação especializada e o `AGENTS.md` mais próximo;
-7. inspecione Issues e Pull Requests aplicáveis quando houver acesso ao GitHub.
+4. leia `docs/governance/CURRENT_STATE.md`;
+5. leia `docs/governance/PROGRESS.md`;
+6. leia o plano ativo aplicável em `docs/plans/active/`;
+7. leia ADRs aceitos, documentação especializada e o `AGENTS.md` mais próximo;
+8. inspecione Issues e Pull Requests aplicáveis quando houver acesso ao GitHub.
 
 Não trate memória de conversa como substituta dessas fontes versionadas.
 
@@ -98,6 +99,8 @@ Não conclua pela aparência do nome de um arquivo. Registre dúvidas não resol
 ## Documentação e progresso
 
 - `docs/governance/PROJECT_CONTEXT.md`: missão, escopo e restrições duradouras.
+- `docs/governance/CURRENT_STATE.md`: checkpoint canônico de retomada, decisões
+  ainda ausentes, limites e protocolo contra contexto inventado.
 - `docs/governance/PROGRESS.md`: ponto de retomada corrente e evidências de conclusão.
 - `.codex/MULTI_AGENT_WORKFLOW.md`: protocolo de delegação, ownership e integração.
 - `docs/plans/active/`: planos em execução; mova para `completed/` apenas quando os critérios forem cumpridos.
@@ -131,6 +134,19 @@ Ao concluir uma unidade relevante, atualize no mesmo PR o progresso, o plano e d
 - Se surgir uma decisão durante a implementação, pause o trecho afetado, registre a proposta, obtenha aprovação, formalize-a e somente então prossiga.
 - Divergência entre código e documentação bloqueia conclusão e merge até reconciliação explícita.
 - Não documente retrospectivamente como substituto de documentação prévia: restrições e decisões necessárias devem existir antes do código que depende delas.
+
+### Integridade do contexto
+
+- Não use conversa, memória do modelo, nomes de branch antigos ou registros
+  históricos como prova do estado atual.
+- Não transforme documento ausente, intenção futura, inferência ou proposta em
+  decisão aceita.
+- Revalide fatos mutáveis antes de usá-los e marque explicitamente o que foi
+  apenas herdado do último checkpoint.
+- Divergência entre `CURRENT_STATE.md`, progresso, plano, ADR, Git ou código
+  bloqueia o trecho afetado até reconciliação versionada.
+- Mudança de baseline, portão, arquitetura aceita, plano ativo ou limite
+  operacional material exige atualização do checkpoint no mesmo PR.
 
 ## Múltiplos agentes
 

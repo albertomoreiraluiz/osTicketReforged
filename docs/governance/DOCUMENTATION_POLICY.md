@@ -28,6 +28,9 @@ Documentação do produto e documentação das ferramentas de assistência são 
     relevantes devem estar alcançáveis pela navegação, e toda alteração em
     `docs/` deve ser validada com `mkdocs build --strict` antes da conclusão e
     antes de qualquer Pull Request.
+14. `docs/governance/CURRENT_STATE.md` é o checkpoint canônico de retomada e
+    deve ser atualizado no mesmo PR quando mudar baseline, portão, arquitetura
+    aceita, plano ativo ou limite operacional material.
 
 ## Rastreabilidade mínima de uma alteração de código
 
@@ -59,6 +62,7 @@ O autor só pode criar o Pull Request depois de verificar:
 - registro em `docs/changes/` para toda alteração de código;
 - links, referências e estado Git validados.
 - navegação do portal coerente e `mkdocs build --strict` aprovado;
+- checkpoint canônico coerente com README, progresso, plano, decisões e Git;
 
 Se o número do PR for necessário como evidência, abra o PR somente após o conteúdo inicial estar atualizado e acrescente o número em um commit subsequente antes do merge.
 

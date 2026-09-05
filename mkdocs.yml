@@ -71,6 +71,7 @@ nav:
   - Início: index.md
   - Projeto:
       - Contexto persistente: governance/PROJECT_CONTEXT.md
+      - Checkpoint de retomada: governance/CURRENT_STATE.md
       - Progresso atual: governance/PROGRESS.md
       - Plano ativo: plans/active/0001-reverse-engineering.md
       - Decisões de governança: governance/DECISIONS.md

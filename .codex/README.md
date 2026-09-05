@@ -14,4 +14,7 @@ Regras de isolamento:
 - nenhum perfil pode ser colocado em `include/`, `api/`, `apps/`, `assets/`, `css/`, `js/`, `pages/`, `scp/`, `setup/` ou outro diretório do upstream;
 - documentação funcional e arquitetural do produto permanece em `docs/`;
 - `AGENTS.md` na raiz é somente o ponto de carregamento das instruções do repositório;
+- toda retomada segue `AGENTS.md` e o checkpoint versionado em
+  `docs/governance/CURRENT_STATE.md`; memória da ferramenta não substitui essas
+  fontes;
 - alterações nesta pasta são governança de automação e devem permanecer separadas de mudanças funcionais sempre que possível.

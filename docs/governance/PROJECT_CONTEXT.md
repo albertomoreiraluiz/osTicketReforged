@@ -31,6 +31,11 @@ O objetivo não é reproduzir telas antigas nem reescrever o backend por prefer�
 
 Somente engenharia reversa e documentação. A implementação de Angular, API completa, plugins próprios, alterações do core e mudanças de banco está bloqueada até a análise e a decisão arquitetural.
 
+Os Portões A, B e C estão concluídos. A preparação documental do Portão D está
+concluída, mas sua comparação arquitetural ainda não foi iniciada. O
+[checkpoint canônico](CURRENT_STATE.md) registra o contrato de retomada e deve
+ser confrontado com Git e fontes especializadas em toda nova sessão.
+
 ## Frentes obrigatórias da análise
 
 1. inventário e bootstrap do sistema;

@@ -75,7 +75,7 @@ Execução atual:
 - superfícies, bootstraps e dispatchers principais localizados;
 - mapas iniciais de componentes, entrypoints, dados e extensão produzidos;
 - relações centrais, frontend PHP e subsistemas transversais localizados;
-- revisão independente executada e correções documentais em integração.
+- revisão independente executada e correções documentais integradas.
 
 Catálogos exaustivos de cada rota, metadado ORM e payload de sinal pertencem ao
 aprofundamento do Portão C. Eles não são pré-condição retroativa do Portão B.
@@ -118,8 +118,9 @@ de Login, além de concluir cabeçalhos MIME e um segundo `Salvar e Reenviar`.
 A matriz literal classificou todos os 2.266 caminhos da baseline, separando
 1.215 arquivos de dependências incorporadas. A revisão independente recalculou
 as contagens, confirmou zero caminho sem classificação e zero sobreposição e
-aprovou o conjunto sem achado alto ou médio. Após a integração desse checkpoint,
-o plano dependerá da comparação de opções e da decisão explícita do responsável.
+aprovou o conjunto sem achado alto ou médio. Com esse checkpoint integrado, o
+plano passou a depender da comparação de opções e da decisão explícita do
+responsável.
 
 Antes do Portão D, o portal documental foi reorganizado por intenção de leitura.
 A mudança não altera entregáveis, evidências ou decisões: mantém os caminhos
@@ -133,6 +134,10 @@ O Portão D transforma as evidências dos Portões B e C em uma escolha explíci
 de arquitetura. Ele não é uma etapa de implementação: nenhuma aplicação
 Angular, API completa, alteração de core, plugin próprio ou mudança de schema
 será iniciada durante a comparação.
+
+**Precondição de retomada:** confirmar que o
+[checkpoint canônico](../../governance/CURRENT_STATE.md) permanece coerente com
+Git, progresso, decisões e evidências antes de abrir a primeira missão.
 
 Atividades obrigatórias:
 
