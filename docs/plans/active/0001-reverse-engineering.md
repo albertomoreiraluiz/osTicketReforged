@@ -105,8 +105,11 @@ derivada `2` já foi repetido pela interface e preservado aberto. Depois disso,
 BHV-022 também foi repetido com edição e restauração visual do ticket
 `903010`. A sequência posterior reconfirmou KB, usuários, organizações, perfil,
 paginação, ações em massa, vínculo/desvínculo, fusão sem exclusão e ações
-auditáveis da thread pelo frontend; a comprovação do arquivo CSV e os contextos
-de cliente e agente restrito continuam na fila. Concluída a Onda 9, o plano
+auditáveis da thread pelo frontend. Cliente e agente restrito já tiveram seus
+percursos completos repetidos; cadastro público, SMTP visual, reenvio e
+formulários administrativos priorizados também avançaram. A comprovação do
+arquivo CSV, o link de ativação e os editores administrativos restantes
+continuam na fila. Concluída a Onda 9, o plano
 dependerá da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural

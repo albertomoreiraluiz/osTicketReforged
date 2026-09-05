@@ -17,9 +17,9 @@
 
 | Contexto | Entrada | Estado | Evidência atual | Próxima ação |
 | --- | --- | --- | --- | --- |
-| Anônimo | `/` | Em observação | cabeçalho, quatro menus, cadastro, validações e criação funcional percorridos em ordem | concluir link recebido por e-mail e rodapé externo |
-| Cliente | `/login.php` | Coberto | autenticação, perfil, lista, filtros, ordenação, tickets próprio/colaborado, criação, KB, página inicial e saída percorridos visualmente | manter três divergências candidatas na fila de correlação |
-| Equipe — agente | `/scp/` | Em observação | shell, Painel de Controle, Usuários, Tarefas, Tickets e Base de Conhecimento percorridos pelo administrador no contexto operacional | repetir as ações funcionais restantes e depois validar o papel restrito |
+| Anônimo | `/` | Em observação | cabeçalho, quatro menus, cadastro funcional, validações, criação de ticket e rodapé externo percorridos em ordem | concluir o link de confirmação recebido por e-mail |
+| Cliente | `/login.php` | Coberto | autenticação, perfil, lista, filtros, ordenação, tickets próprio/colaborado, criação, KB, página inicial e saída percorridos visualmente | correlacionar divergências de filtro, contagem e impressão |
+| Equipe — agente | `/scp/` | Coberto para o papel restrito | Painel, Diretório, Perfil, Tarefas, Tickets e FAQ percorridos como `OSTR Viewer`; nota funcional publicada | correlacionar divergências de ACL/contagem e modal vazio da FAQ |
 | Equipe — administrador | `/scp/` | Em observação | fila de tickets revelou lacunas de massa/exportação | reiniciar pelo topo e cobrir todas as abas operacionais |
 | Administração | `/scp/admin.php` | Coberto no mapa global | cinco grupos e todos os 27 submenus/abas internas percorridos em ordem pelo frontend | repetir fluxos funcionais priorizados e fechar correlações |
 
@@ -56,8 +56,20 @@ da navegação principal. Cada mudança de página reiniciou a leitura pelo topo
 **Fato observado:** a navegação anterior por rotas não havia registrado as
 mudanças condicionais do login nem a permanência do formulário dinâmico após
 `Recomeçar Formulário`. O cadastro foi exercitado até sua validação e o ticket
-foi criado pelo formulário integralmente visível. Link de acesso por e-mail e
-link externo do rodapé ainda não encerram este contexto.
+foi criado pelo formulário integralmente visível. O link externo do rodapé foi
+acionado e abriu `https://osticket.com/` em nova aba. O cadastro foi preenchido
+integralmente na tela; domínios locais e reservados de teste foram rejeitados,
+um endereço fictício sintaticamente público foi aceito e o sistema confirmou o
+envio da ativação. Login anterior à ativação exibiu `Confirmação de conta
+necessária`. O consumo do link ainda está aberto devido à corrida com o coletor
+POP3 natural, sem registrar tokens na evidência.
+
+Uma segunda repetição controlada pausou a coleta POP3 pela própria tela,
+persistiu a pausa, cadastrou outra conta fictícia e confirmou novamente a
+página de envio. A mensagem não apareceu na caixa POP esperada pelo
+microservidor; portanto o link não foi artificialmente marcado como validado.
+A coleta foi restaurada visualmente e o banner `Atualizado com sucesso este
+e-mail` confirmou o rollback da configuração.
 
 ## Cliente autenticado — passagem sequencial reiniciada
 
@@ -96,6 +108,31 @@ formulário pelo tópico e criou visualmente o ticket `961630`; o contador passo
 de três para quatro. A KB e a Página Principal preservaram o conteúdo público,
 mas mantiveram os controles autenticados. `Sair` encerrou a sessão e restaurou
 o cabeçalho e a navegação anônimos.
+
+Repetição adicional confirmou ordenação crescente e decrescente por data. A
+busca `API` reduziu visualmente a tabela a um ticket, mas manteve o resumo de
+quatro; ao combinar tópico com termo inexistente, a URL preservou os filtros e
+a tabela voltou a exibir os quatro tickets. A impressão do ticket autenticado
+não abriu visualizador nem materializou arquivo no diretório de downloads.
+
+## Equipe — agente restrito
+
+**Entrada:** `/scp/`, com credenciais locais preenchidas nos campos visíveis.
+
+| Ordem | Superfície | Resultado observável |
+| --- | --- | --- |
+| 1 | shell | somente Painel de Controle, Tarefas, tickets e Base de Conhecimento; sem Usuários, Novo Ticket ou Administração |
+| 2 | Painel/Diretório/Perfil | gráfico ainda exibiu `NaN`; dois agentes listados; Conta, Preferências e Assinatura foram lidas integralmente |
+| 3 | Tarefas | uma tarefa atribuída; uma linha `Consulta retornou 0 resultados` apareceu abaixo da linha real |
+| 4 | tarefa `1` | nota `[OSTR-W9]` publicada visualmente e persistida; seletor de status ofereceu somente `Aberto` |
+| 5 | Tickets | filas Aberto, Atribuído a mim, Equipes e Encerrado não exibiram linhas, mas mostraram totais globais incoerentes |
+| 6 | pesquisa | número `593078` retornou zero linhas e resumo `25 de cerca 500`; o link do ticket na tarefa respondeu `Acesso negado` |
+| 7 | FAQ | categoria e artigo públicos foram lidos; impressão abriu o visualizador PDF; `Gerir Acesso` abriu modal vazio |
+| 8 | Administração | o menu não existe; navegação direta a `admin.php` redirecionou ao painel operacional |
+
+**Fato observado:** a ACL impediu o acesso ao ticket e à Administração. As
+contagens e paginações, contudo, não refletem as linhas autorizadas e formam
+uma divergência candidata de apresentação, não um ensaio de segurança.
 
 ## Equipe — shell operacional com administrador
 
@@ -250,7 +287,7 @@ mesma Onda 9 e só serão encerrados com evidência de resultado.
 | 2 | `Criar novo Ticket` | seleção do tópico, assunto preenchido e criação | corpo da entrada foi pré-carregado; ticket `163086` criado com sucesso |
 | 3 | ticket derivado `163086` | inspeção da thread | mensagem copiada, nota de derivação e vínculo `#927747` exibidos |
 | 4 | ticket de origem `927747` | retorno pela fila e inspeção da thread | duas referências visíveis: `#229189` e `#163086`, ambas apresentadas como criadas a partir da entrada `32` |
-| 5 | `Criar Tarefa` | acionado no mesmo menu visível | nenhum modal, navegação ou feedback apareceu nesta tentativa; repetição/correlação pendente |
+| 5 | `Criar Tarefa` | acionado no mesmo menu visível | a correlação posterior confirmou tarefa `2` e evento `Tarefa criada a partir da linha de entrada` na thread original |
 
 **Fato observado:** `#229189` aparece na fila com o assunto
 `[OSTR-W9] Entrada natural por POP3` e remetente `Ostr W9 Sender`, mas a thread
@@ -259,6 +296,13 @@ Essa combinação permanece em correlação e não é classificada como derivaç
 manual até que percurso e persistência sejam reconciliados. A ausência de
 resposta de `Criar Tarefa` é somente comportamento visual reproduzido neste
 ponto.
+
+No ticket `967253`, uma resposta foi preenchida no editor renderizado e
+publicada com sucesso, atualizando `Última Resposta`. O menu da nova entrada
+revelou `View Email Recipients`, `Edit and Resend`, `Criar novo Ticket` e
+`Criar Tarefa`; os destinatários foram lidos em modal e `Edit and Resend` foi
+submetido sem alteração de conteúdo. A própria thread passou a exibir o selo
+`Reenviado`.
 
 ### Relações, fusão e ações auditáveis do ticket
 
@@ -422,6 +466,38 @@ visível, da esquerda para a direita; nenhuma mutação foi submetida.
 Formulários de inclusão/edição e menus `Mais` continuam pendentes. Esta
 passagem comprova o mapa e os estados das listagens, não o comportamento de
 submissão.
+
+Na segunda passagem funcional, o formulário de Equipe teve as abas `Equipe` e
+`Membros` percorridas; o de Função teve `Definição` e as permissões de Tickets,
+Tarefas e Base de Conhecimento; o de Departamento teve `Configurações` e
+`Acesso`. Todos foram cancelados sem criação. O formulário de Tópico de ajuda
+teve Informações, roteamento e Formulários percorridos, o menu em massa foi
+classificado como Habilitar/Desabilitar/Arquivo/Apagar e uma alteração
+temporária no nome de `Questões gerais` foi revertida por `Recomeçar
+Formulário`. Em Sistema, a paginação foi mudada visualmente de 25 para 30 e
+restaurada para 25 pelo botão de redefinição, sem salvar.
+
+Os editores auxiliares de Gerenciar também foram abertos pela navegação
+visível, lidos e cancelados: Filtro (regras, ações e notas), SLA, Agenda,
+chave de API, Página, Formulário e Lista. O formulário de Filtro expôs ações
+de rejeição, departamento, prioridade, SLA, equipe, agente, tópico, estado,
+endereço de resposta, autoresposta, anexo de resposta pronta e envio de
+e-mail. Plugins não oferece upload pela interface e instrui a instalação em
+`include/plugins`.
+
+Em Configurações, os anexos de Tickets e Tarefas abriram o gerenciador de
+sequências e a configuração do campo de anexos; as alterações de ensaio foram
+descartadas. Os modelos de Agentes e Usuários foram percorridos. O editor
+`E-mail de confirmação de conta` apresentou assunto, corpo e a exigência da
+variável `%{link}`. **Fato observado:** a linha `Página de Login` referencia
+`ajax.php/content//manage`, sem identificador, e não abre editor ou mensagem
+de erro ao ser acionada. O achado permanece como divergência funcional a
+correlacionar com a configuração persistida e o código.
+
+Em Empresa, as quatro abas foram relidas: Informações Básicas; seleção das
+páginas Inicial, Offline e Agradecimento; Logos distintos para cliente/equipe;
+e Fundo de acesso. Uploads de logo e fundo existem como controles visíveis,
+mas não foram submetidos por ausência de artefato de homologação aprovado.
 
 #### Agentes — formulário de inclusão
 
