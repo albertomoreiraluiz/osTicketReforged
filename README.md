@@ -51,7 +51,11 @@ reconfirmou também a Base de Conhecimento operacional e os cenários
 estados temporários e preservação das evidências funcionais. A repetição também
 confirmou paginação, ações em massa, vínculo/desvínculo, fusão visual sem
 exclusão, edição com histórico, marcações respondido/não respondido e impressão
-PDF; a materialização do arquivo CSV continua pendente de comprovação.
+PDF. Cliente e agente restrito já tiveram os percursos sequenciais repetidos;
+o cadastro público chegou à confirmação por e-mail e o SMTP visual foi
+publicado e reenviado pela thread. A materialização do arquivo CSV, o consumo
+do link de ativação e os editores administrativos restantes continuam em
+observação.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 
