@@ -267,6 +267,21 @@ renderizados, inclusive justificativa. Transferência e status foram observados
 até o ponto anterior à mutação para preservar a fixture principal enquanto os
 cenários dedicados são preparados.
 
+### Edição reversível do ticket
+
+| Ordem | Ação visual | Resultado observável |
+| ---: | --- | --- |
+| 1 | atalho `Editar` de `903010` | formulário completo exibiu usuário, origem, tópico, SLA, vencimento, resumo, prioridade e razão interna |
+| 2 | resumo alterado para `[OSTR-W9] Parent ticket actions - validação visual` e razão preenchida | ambos os valores permaneceram visíveis antes da submissão |
+| 3 | `Salvar` | mensagem `O ticket foi atualizado com sucesso`, novo assunto no cabeçalho e entrada adicional na thread |
+| 4 | nova abertura de `Editar` | formulário carregou o assunto temporário persistido |
+| 5 | restauração para `[OSTR-W8] Parent ticket actions`, com nova razão | segunda confirmação de sucesso e cabeçalho original restaurado |
+
+**Fato observado:** BHV-022 foi repetido exclusivamente pelo frontend natural.
+As duas alterações ficaram auditáveis na thread, enquanto assunto, vínculo com
+`874483`, status, departamento, SLA, prioridade e atribuição terminaram no
+estado anterior ao ensaio.
+
 ### Tarefa criada a partir de entrada
 
 | Ordem | Ação visual | Resultado observável |
