@@ -8,8 +8,8 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Onda 8 integrada pela PR #9; preparação do Portão D |
-| Observação visual | Onda 9 iniciada — cobertura integral por página e componente |
+| Etapa atual | Onda 9 — repetição visual profunda antes do Portão D |
+| Observação visual | reinício sequencial estrito e repetição dos cenários antes executados diretamente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
@@ -34,16 +34,21 @@ ticket derivado `166522`, conforme GOV-018.
 Sob GOV-019, a cobertura foi reaberta para percorrer os contextos público,
 cliente, equipe e Administração exclusivamente pelo frontend natural antes do
 Portão D. Evidência de backend não substitui comportamento visual.
+GOV-020 exige que a passagem recomece no primeiro menu e avance sem saltos;
+cenários históricos de CLI, endpoint ou método direto serão repetidos pelo
+navegador. Dependências locais, incluindo e-mail de homologação sem relay,
+podem ser parametrizadas quando necessárias.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 
 Próximas etapas:
 
-1. consolidar as evidências em pelo menos três opções arquiteturais;
-2. comparar riscos de atualização, integração, segurança e migração;
-3. manter exclusões condicionadas a plano, backup verificável e rollback
+1. concluir a matriz visual sequencial e a repetição dos cenários diretos;
+2. consolidar as evidências em pelo menos três opções arquiteturais;
+3. comparar riscos de atualização, integração, segurança e migração;
+4. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
-4. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
+5. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
    versões de Angular, PrimeNG ou detalhes de integração.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em

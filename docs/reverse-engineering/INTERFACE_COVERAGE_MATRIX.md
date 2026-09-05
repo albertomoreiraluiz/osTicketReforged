@@ -67,6 +67,27 @@ Formulários de inclusão/edição e menus `Mais` continuam pendentes. Esta
 passagem comprova o mapa e os estados das listagens, não o comportamento de
 submissão.
 
+#### Agentes — formulário de inclusão
+
+O formulário `Adicionar Novo Agente` foi aberto naturalmente e percorrido sem
+submissão. Ele possui quatro abas de primeiro nível e, dentro de permissões,
+quatro abas adicionais:
+
+| Ordem | Aba | Componentes observados |
+| --- | --- | --- |
+| 1 | Conta | avatar, nome, e-mail, telefones, usuário, definição de senha, backend, bloqueio, administrador, acesso limitado, férias e notas internas |
+| 2 | Acesso | departamento e função principais, fallback de função e acessos estendidos por departamento |
+| 3.1 | Permissões — Usuários | criar, apagar, editar, gerenciar conta e diretório |
+| 3.2 | Permissões — Organizações | criar, apagar e editar |
+| 3.3 | Permissões — Base de Conhecimento | administrar categorias e perguntas frequentes |
+| 3.4 | Permissões — Diversos | visualizar agentes/departamentos, lista negra, pesquisa ampla e estatísticas |
+| 4 | Equipes | associação a equipes e indicação de alertas por vínculo |
+
+**Fato observado:** a aba `Permissões` é um segundo nível de navegação e seu
+conteúdo muda sem alterar o fragmento final exibido na URL para cada categoria.
+Uma captura isolada dessa aba cobriria apenas `Usuários`. Os comandos Criar,
+Recomeçar e Cancelar foram classificados; nenhum dado foi preenchido ou salvo.
+
 ### Grupo Configurações — primeira passagem posicional
 
 **Estado:** as sete entradas do submenu e todas as abas internas imediatamente

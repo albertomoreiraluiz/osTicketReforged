@@ -26,6 +26,13 @@ ordem:
 O percurso reinicia no topo após navegação, submissão, modal ou mudança de
 estado que altere a composição visual.
 
+Não é permitido usar a matriz como lista aleatória de destinos. Em cada
+contexto, o percurso começa no primeiro item visual e avança somente ao item
+seguinte: menu principal da esquerda para a direita, cada submenu da esquerda
+para a direita e, dentro da página, componentes de cima para baixo. Um salto ou
+uso acidental de índice obsoleto invalida a passagem daquele grupo e exige
+reinício pelo primeiro item.
+
 ## Superfícies e contextos
 
 Serão mantidos percursos separados para:
@@ -71,6 +78,12 @@ Chamadas diretas a método, CLI, endpoint ou banco não comprovam o fluxo visual
 Quando forem usadas, a conclusão deve dizer expressamente qual camada foi
 comprovada e manter o frontend como pendência.
 
+Todos os cenários históricos executados por CLI, endpoint ou método direto
+devem constar em uma fila de repetição. Se houver operação equivalente no
+frontend, ela será novamente executada pelo navegador e somente essa passagem
+poderá encerrar o comportamento visual. Se não houver equivalente visível, a
+ausência será documentada como limite do produto.
+
 ## Formulários e eventos
 
 - Preencher campos diretamente pelo navegador quando o objetivo for submissão.
@@ -81,6 +94,10 @@ comprovada e manter o frontend como pendência.
   segurança.
 - Não usar requisições forjadas nesta passagem.
 - Configurações funcionais devem ser realizadas pelo Painel de Administração.
+- Dependências locais necessárias podem ser parametrizadas pela interface. É
+  permitido manter um microserviço de e-mail exclusivo da homologação para SMTP
+  e IMAP/POP, desde que não funcione como relay externo, use apenas dados
+  fictícios, não registre segredos e tenha execução e desligamento documentados.
 
 ## Mutações e permanência
 
