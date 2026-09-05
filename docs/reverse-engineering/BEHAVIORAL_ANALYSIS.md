@@ -633,6 +633,9 @@ de dez mensagens; SMTP ativo em `127.0.0.1:25`, sem relay externo. Coleta e
 autocron foram habilitados e salvos no Painel de Administração. O e-mail criado
 pelo Diagnóstico foi recebido pelo autocron natural do frontend e gerou o
 ticket `967253`; uma resposta e um reenvio também foram submetidos pela thread.
+Na auditoria complementar, uma segunda resposta existente do ticket `593078`
+foi aberta por `Edit and Resend` e submetida por `Salvar e Reenviar`; a entrada
+`4` foi substituída pela `104` e passou a exibir `Editado` e `Reenviado`.
 O laboratório registrou um ciclo por usar a mesma conta nos dois lados, sem
 invalidar a comprovação do fluxo natural. Isso encerra BHV-011 no recorte da
 homologação.
@@ -652,6 +655,12 @@ mostrou um catálogo de `task` ou `activity`, apesar do uso dessas famílias nos
 seis modelos da categoria. Esses achados descrevem a validação e a apresentação
 do editor padrão; não demonstram, sem um disparo correspondente, o resultado
 final de cada expansão durante o envio.
+
+O menu da entrada de e-mail `44`, no ticket `229189`, também foi reaberto na
+auditoria complementar. `View Email Headers` exibiu em modal os campos MIME,
+remetente, destinatário, data, assunto, tipo de conteúdo e codificação de
+transferência. A ação é registrada por `TEA_ViewEmailHeaders` em
+`include/class.thread_actions.php:82` e fecha a lacuna visual de cabeçalhos.
 
 A inspeção não destrutiva encontrou zero conta SMTP cadastrada ou ativa em
 `email_account`. O fallback do PHP aponta para `localhost:25`, sem
@@ -1162,11 +1171,12 @@ Referências a concorrência,
 injeção de falhas, acessibilidade e novos testes de segurança permanecem
 deliberadamente reservadas a fases próprias e não anulam a evidência obtida.
 
-O pós-check final confirmou oito tickets, 29 entradas de thread, dois uploads
-temporários do teste de limite no backend `D`, campos restaurados a configuração
-`NULL`, chave de API inativa e sem permissão de cron, zero sessão expirada e
-nenhum listener SMTP. Fixtures e artefatos locais ignorados permanecem
-disponíveis para rastreabilidade. Nenhuma exclusão adicional foi executada.
+O pós-check da Onda 8 confirmou oito tickets, 29 entradas de thread, dois
+uploads temporários do teste de limite no backend `D`, campos restaurados a
+configuração `NULL`, chave de API inativa e sem permissão de cron, zero sessão
+expirada e nenhum listener SMTP. Esse é um checkpoint histórico e não descreve
+as fixtures acrescentadas nas Ondas 8 e 9. Nenhuma exclusão adicional foi
+executada.
 
 A revisão QA independente da Onda 8 bloqueou o primeiro fechamento, identificou
 o desvio de rollback e alegações de cobertura excessivas. O dump foi restaurado

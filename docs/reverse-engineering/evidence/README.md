@@ -53,6 +53,7 @@ as fixtures no osTicket para inspeção pelo painel.
 
 - [BHV-027 — vínculo e desvínculo de tickets](BHV-027-linked-tickets.md)
 - [BHV-029 — ticket criado a partir de resposta](BHV-029-ticket-from-response.md)
+- [Auditoria complementar de fechamento da Onda 9](WAVE-09-CLOSURE-AUDIT.md)
 
 Os dados equivalentes para consumo automatizado estão em `data/`, no formato
 JSON. Os dossiês são a fonte explicativa principal.

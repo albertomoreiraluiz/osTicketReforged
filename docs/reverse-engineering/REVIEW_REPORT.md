@@ -90,3 +90,26 @@ passagem aprovou essas correções e confirmou também:
 
 Não permanece achado bloqueante. O revisor não alterou arquivos, estado do
 navegador, banco ou serviços externos. O fechamento foi submetido pela PR #23.
+
+## Onda 9 — auditoria complementar e cobertura literal
+
+A instância `qa_engineer/onda09/auditoria-complementar-final` recebeu o diff
+estabilizado em missão somente leitura. Ela revisou a reconciliação dos estados,
+o dossiê visual complementar e a nova matriz de cobertura do código-fonte.
+
+O recálculo independente sobre `git ls-tree -r --name-only v1.18.4` confirmou:
+
+- `TOTAL=2266` e soma dos 23 grupos igual a 2.266;
+- zero caminho não classificado e zero sobreposição;
+- 1.522 PHP, 57 JavaScript, 27 CSS, 9 Less e 100 SQL;
+- 1.215 arquivos nas árvores Laminas Mail, mPDF e PEAR, sendo 1.013 PHP;
+- 1.051 arquivos fora dessas árvores, sendo 509 PHP.
+
+O revisor também confirmou que a matriz limita a garantia à cobertura
+estrutural, que o dossiê não contém segredo e que CSV e Página de Login são
+tratados como divergências sem causa presumida. Links Markdown e destinos da
+navegação MkDocs estavam íntegros. `git diff --check` não apresentou erro.
+
+**Parecer:** aprovado sem achado alto ou médio. O revisor não alterou arquivos,
+banco, navegador ou serviços. A única recomendação administrativa — registrar
+o próprio parecer antes do PR — foi aplicada pelo integrador.

@@ -8,7 +8,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Onda 9 concluída; preparação comparativa do Portão D é o próximo passo |
+| Etapa atual | Onda 9 e auditoria complementar aprovadas; integração do checkpoint precede o Portão D |
 | Observação visual | sequência estrita concluída e aprovada em revisão independente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
@@ -55,7 +55,11 @@ exclusão, edição com histórico, marcações respondido/não respondido e imp
 PDF. Cliente e agente restrito já tiveram os percursos sequenciais repetidos;
 o cadastro público chegou à confirmação, ativação e login, e o SMTP visual foi
 publicado e reenviado pela thread. A materialização da exportação atual
-continua como divergência de comprovação. Os 19 modelos de e-mail do conjunto
+continua como divergência reproduzida: duas submissões encerraram o diálogo sem
+evento de download nem arquivo novo. A Página de Login também reproduziu o
+destino sem identificador e uma sobreposição vazia. Em contrapartida, a leitura
+de cabeçalhos MIME e um novo `Salvar e Reenviar` foram concluídos visualmente e
+preservados na homologação. Os 19 modelos de e-mail do conjunto
 HTML padrão foram abertos em ordem e tiveram assunto, corpo, controles e links
 de variáveis conferidos sem salvar alterações; a ajuda foi amostrada e as descrições
 já haviam sido lidas na lista. Inconsistências do validador e da referência
@@ -66,6 +70,12 @@ enquanto outro ticket de Vendas tornou-se visível pela atribuição à equipe d
 agente. As fixtures foram preservadas para inspeção no ambiente de homologação.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
+
+A [matriz de cobertura do código-fonte](docs/reverse-engineering/SOURCE_COVERAGE_MATRIX.md)
+fecha o universo literal da baseline: os 2.266 caminhos estão classificados
+sem sobra, com 1.215 arquivos de Laminas Mail, mPDF e PEAR separados como
+dependências incorporadas. Essa garantia é estrutural e não significa execução
+de toda combinação possível de configuração.
 
 Próximas etapas:
 

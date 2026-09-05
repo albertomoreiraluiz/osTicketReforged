@@ -46,6 +46,7 @@ nav:
       - Proveniência e ownership: reverse-engineering/PROVENANCE_MAP.md
       - Ondas de inventário: reverse-engineering/WAVE_MANIFEST.md
       - Inventário da baseline: reverse-engineering/INVENTORY.md
+      - Matriz de cobertura do código-fonte: reverse-engineering/SOURCE_COVERAGE_MATRIX.md
       - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
       - Catálogo de entrypoints: reverse-engineering/ENTRYPOINT_CATALOG.md
       - Superfícies HTTP: reverse-engineering/HTTP_SURFACES.md
@@ -79,6 +80,7 @@ nav:
       - Matriz de cobertura da interface: reverse-engineering/INTERFACE_COVERAGE_MATRIX.md
       - Evidências comportamentais:
           - Protocolo e índice: reverse-engineering/evidence/README.md
+          - Auditoria complementar da Onda 9: reverse-engineering/evidence/WAVE-09-CLOSURE-AUDIT.md
           - BHV-027 — tickets vinculados: reverse-engineering/evidence/BHV-027-linked-tickets.md
           - BHV-029 — ticket de resposta: reverse-engineering/evidence/BHV-029-ticket-from-response.md
   - Governança:
