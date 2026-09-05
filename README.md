@@ -8,7 +8,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Onda 9 e auditoria complementar aprovadas; integração do checkpoint precede o Portão D |
+| Etapa atual | Onda 9 e portal documental reorganizado; Portão D é o próximo passo |
 | Observação visual | sequência estrita concluída e aprovada em revisão independente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
