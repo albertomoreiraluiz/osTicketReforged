@@ -25,6 +25,8 @@ Para seguir uma requisição desde o bootstrap até os controladores e
 subsistemas:
 
 - [Arquitetura canônica](ARCHITECTURE.md);
+- [Proposta de módulos por capacidade](MODULE_CAPABILITY_PROPOSAL.md) — fronteiras
+  lógicas, dependências e pendências para discussão, não arquitetura aceita;
 - [Portão D: reinício e dossiê histórico](ARCHITECTURE_DECISION_RECORD.md);
 - [Estratégia modular aceita — ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md);
 - [Portão D: estratégia anterior descartada](MIGRATION_STRATEGY.md);

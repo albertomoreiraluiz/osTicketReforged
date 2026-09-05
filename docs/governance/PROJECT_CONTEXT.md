@@ -101,6 +101,10 @@ detalhamentos organizam operação, administração e serviços compartilhados s
 o ADR 0004. São base factual para discutir módulos antes de UX/layout/frontend,
 não contratos aprovados ou implementação autorizada.
 
+`MODULE_CAPABILITY_PROPOSAL.md` organiza esses registros em 15 capacidades
+lógicas candidatas, separadas dos menus e do empacotamento. Sua integração
+documental não aceita arquitetura; discussão e decisões do Portão D permanecem.
+
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 
 ## Classificação das afirmações

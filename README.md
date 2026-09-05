@@ -87,6 +87,10 @@ de toda combinação possível de configuração.
 
 Próximas etapas:
 
+Proposta atual para discussão: [15 agrupamentos lógicos de módulos](docs/reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md),
+com rastreabilidade dos 153 registros SCP. Não são microsserviços nem pacotes
+aprovados; bootstrap, sessão, contratos e primeiro recorte ainda serão definidos.
+
 Direção de UX: dashboard administrativo intuitivo, prioridade funcional e
 primeira navegação elaborada pelo agente principal, com ajustes posteriores
 pelo responsável ([Plano 0002](docs/plans/active/0002-functional-ux-direction.md)).

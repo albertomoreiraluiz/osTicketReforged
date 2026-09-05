@@ -89,6 +89,7 @@ nav:
           - Revisões do Portão D: reverse-engineering/GATE_D_REVIEW.md
       - Arquitetura e execução:
           - Arquitetura canônica: reverse-engineering/ARCHITECTURE.md
+          - Reforged — Módulos candidatos: reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md
           - Portão D — Reinício e histórico: reverse-engineering/ARCHITECTURE_DECISION_RECORD.md
           - Portão D — Estratégia descartada: reverse-engineering/MIGRATION_STRATEGY.md
           - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md

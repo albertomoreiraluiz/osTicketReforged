@@ -139,6 +139,11 @@ escopo e 26 famílias/229 folhas AJAX reconciliados. Revisão e validações da
 unidade ficam no mapa; pendências de viabilidade/contrato permanecem explícitas.
 Próxima discussão: agrupamentos e dependências dos módulos; depois frontend.
 
+Disponível a [proposta de 15 capacidades](../../reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md),
+com responsáveis principais pelos 153 IDs e dependências explícitas. Próximo
+critério é discussão com o responsável, não implementação. Revisão do recorte
+arquitetural não equivale ao fechamento técnico do portão.
+
 Direção visual antecipada pelo responsável em GOV-026 e
 [Plano 0002](0002-functional-ux-direction.md): dashboard administrativo intuitivo,
 prioridade funcional, primeira organização de menus pelo agente principal e

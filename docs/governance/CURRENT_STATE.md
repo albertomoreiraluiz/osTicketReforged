@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/functional-ux-direction`, entrada `6ab70064` (PR #31),
-para registrar direção de UX e delegação visual, preservando ADR 0004. Permite que uma nova sessão
+Atualizado na branch `codex/module-capability-proposal`, entrada `e68d13dc` (PR #32),
+para registrar proposta de agrupamentos sem aceitá-la como arquitetura. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -156,7 +156,8 @@ Inventário e evidências da baseline permanecem preservados.
 
 Após a discussão, ADR 0004 aceita a estratégia de módulos novos sobre o backend
 original. Não reabrir essa fronteira como indefinida. Próximo passo: detalhar com
-o responsável agrupamentos, contratos, bootstrap e integração da sessão a partir
+o responsável a [proposta de agrupamentos](../reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md)
+e, após alinhamento, contratos, bootstrap e integração da sessão a partir
 do [mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
 47 arquivos PHP do escopo (inclui dois bootstraps), 26 famílias e 229 folhas AJAX.
 GOV-026 e [Plano 0002](../plans/active/0002-functional-ux-direction.md) registram
@@ -165,6 +166,11 @@ da primeira UX ao agente principal. Navegação proposta é ajustável, não
 arquitetura aceita; sua materialização depende da liberação da implementação.
 Primeiro módulo, rota definitiva e funcionalidades do portal continuam
 sem escolha. Não implementar, alterar core/schema ou tratar pseudocódigo como API pronta.
+
+Os 15 módulos candidatos têm atribuição principal dos 153 registros do mapa,
+não 153 operações disjuntas nem 15 unidades de implantação aprovadas. Revisão
+arquitetural desta proposta verifica coerência para discussão; não substitui
+aprovação do responsável ou revisões técnicas posteriores por especialidade.
 
 Fonte normativa desta unidade: `docs/adr/0004-modulos-reforged-backend-osticket.md`.
 `ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md` e `GATE_D_REVIEW.md`,

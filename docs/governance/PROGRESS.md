@@ -224,7 +224,27 @@
 
 ## Próximo passo proposto
 
-Atualização corrente: direção de UX formalizada em GOV-026 e
+Unidade corrente: [proposta de capacidades](../reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md),
+entrada `e68d13dc`, branch `codex/module-capability-proposal`, 2026-09-05.
+Quinze agrupamentos lógicos candidatos com responsabilidades, dependências,
+alternativas de divisão e obstáculos de reutilização. Não são arquitetura aceita,
+pacotes obrigatórios ou autorização de código. Próximo passo: discutir a divisão
+com o responsável, depois detalhar integração/contratos e escolher recorte.
+
+Um único escritor e revisão independente `software_architect/module-proposal/revisao`.
+Parecer favorável à discussão, sem achado crítico/alto/médio; esclarecimentos
+editoriais de anexos e encadeamento dos IDs incorporados. Sem banco, credenciais,
+frontend, novas dependências, alterações de core ou teste comportamental.
+
+Validações: 15 grupos e 153 atribuições principais, sem IDs ausentes ou repetidos;
+universo SCP preservado; MkDocs estrito aprovado, 66/66 documentos na navegação;
+125 Markdown e 291 links locais auditados, zero destino ausente do Reforged e
+seis referências herdadas. `git diff --check` aprovado. Nenhuma decisão técnica
+aberta foi aceita por esta entrega documental.
+
+### Direção de UX — entrega da PR #32
+
+Entrega de UX: direção formalizada em GOV-026 e
 [Plano 0002](../plans/active/0002-functional-ux-direction.md), entrada `6ab70064`,
 branch `codex/functional-ux-direction`. Dashboard administrativo intuitivo,
 primeira navegação sob responsabilidade do agente principal e prioridade
