@@ -120,6 +120,9 @@ convenções concretas e liberação técnica continuam no Portão D.
 `REFORGED_ENTRY_SESSION_DESIGN.md` aprofunda tipos de entrada, guardas,
 continuidade e publicação. Não é bootstrap implementado, teste novo ou aceite
 do layout candidato; orienta a especificação dos contratos ainda abertos.
+`REFORGED_GUARD_CONTRACTS.md` distingue mecanismos chamáveis e coordenação inline.
+ADR 0007 propõe tratamento limitado desta coordenação e aguarda decisão; não
+modifica os ADRs aceitos nem autoriza reimplementar algoritmos ou alterar core.
 
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 

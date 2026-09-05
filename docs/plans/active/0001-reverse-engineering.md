@@ -144,9 +144,13 @@ lógicos e exige cobertura integral do SCP sem dependência funcional do legado,
 exceto setup. Unidade corrente: [organização física](../../reverse-engineering/REFORGED_PHYSICAL_DESIGN.md),
 ainda proposta, sob ADR 0006 aceito para mesma origem, recursos/ações e isolamento.
 Detalhamento corrente: [entradas, sessão e publicação](../../reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md),
-matriz por contexto e critérios futuros. Próximo critério: vincular guardas a
-mecanismos reutilizáveis e especificar contexto/erros, bootstrap e sessão;
-discutir as escolhas técnicas sem implementar por inferência.
+matriz por contexto e critérios futuros. O vínculo das guardas a mecanismos
+reutilizáveis foi rastreado na unidade subsequente. Contexto/erros, bootstrap
+e sessão ainda exigem escolhas técnicas; não implementar por inferência.
+Rastreio subsequente: [G01–G09 e contratos](../../reverse-engineering/REFORGED_GUARD_CONTRACTS.md).
+Intervenção necessária no [ADR 0007 proposto](../../adr/0007-coordenacao-guardas-controladores.md):
+decidir adaptação limitada de combinações/exceções inline. Contratos e código que
+dependem desse tratamento não avançam por inferência; demais decisões aceitas mantidas.
 
 Direção visual antecipada pelo responsável em GOV-026 e
 [Plano 0002](0002-functional-ux-direction.md): dashboard administrativo intuitivo,

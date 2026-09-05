@@ -2,6 +2,29 @@
 
 ## Estado corrente
 
+Unidade `codex/reforged-guard-contracts`, entrada `1580ea20` (PR #36), baseline
+v1.18.4. Principal único escritor de documentos/ADRs/planos/checkpoint.
+`reverse_engineering_engineer/guards/rastreio`: contribuição somente leitura
+de definições, chamadores e busca de agregado; não é revisão independente do
+próprio rastreio. Integrador reconferiu os métodos e pontos relevantes.
+`security_architect/guards/revisao`: revisão independente do desenho estabilizado
+e escopo do ADR 0007 proposto. Necessidade: política de coordenação e minimização
+de contexto sensível exigem revisão específica enquanto integrador valida docs.
+Entradas: AGENTS, checkpoint, plano, ADRs 0004–0006 e novo ADR proposto; mapas/fontes.
+Ambas missões sem escrita, descendentes, banco, rede, credenciais, navegador,
+runtime, exploração ou Git mutável; parar no relatório. Aceite cabe ao responsável.
+Parecer favorável à integração documental, sem achado crítico/alto/médio.
+Ajuste baixo incorporado e reconferido pelo integrador: métodos de CSRF e
+renovação têm efeitos herdados de log sensível, registrados como limite estático
+sem valores, reprodução ou autorização de alterar core. Observabilidade exige
+tratamento próprio antes do runtime. ADR 0007 permanece Proposto; equivalência,
+bootstrap, matriz de intenções e revisão de implementação continuam pendentes.
+Validações locais: MkDocs estrito, 73 documentos/73 entradas, 132 Markdown e
+340 links (zero quebra própria; seis herdadas), mapa SCP e grupos de módulos,
+além de diff sem erros de whitespace. Não houve validação comportamental nova.
+
+### Histórico — revisão da PR #36
+
 Unidade `codex/reforged-entry-session-design`, entrada `0f23d12e` (PR #35),
 baseline v1.18.4. Principal único escritor de documentos/planos/checkpoint.
 Instância `security_architect/entries/revisao` revisa o desenho estabilizado

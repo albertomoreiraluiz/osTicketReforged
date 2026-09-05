@@ -66,6 +66,8 @@ recursos/ações e isolamento; a [organização física](reverse-engineering/REF
 é a proposta corrente. Implementação e contratos concretos continuam pendentes.
 O [desenho de entradas e sessão](reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md)
 aprofunda os critérios de carregamento e publicação dessa proposta.
+O [ADR 0007 proposto](adr/0007-coordenacao-guardas-controladores.md) é o ponto
+atual de intervenção: tratamento limitado da coordenação de guardas nas páginas.
 A estratégia anterior permanece somente como histórico, não como orientação ativa.
 
 Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), a
