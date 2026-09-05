@@ -89,7 +89,8 @@ nav:
           - Revisões do Portão D: reverse-engineering/GATE_D_REVIEW.md
       - Arquitetura e execução:
           - Arquitetura canônica: reverse-engineering/ARCHITECTURE.md
-          - Reforged — Módulos candidatos: reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md
+          - Reforged — Módulos lógicos: reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md
+          - Reforged — Integração e contratos: reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md
           - Portão D — Reinício e histórico: reverse-engineering/ARCHITECTURE_DECISION_RECORD.md
           - Portão D — Estratégia descartada: reverse-engineering/MIGRATION_STRATEGY.md
           - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
@@ -143,6 +144,7 @@ nav:
       - ADR 0002 — Portal documental: adr/0002-documentation-toolchain.md
       - ADR 0003 — Coexistência e portal: adr/0003-coexistencia-paineis-portal-separado.md
       - ADR 0004 — Módulos e backend original: adr/0004-modulos-reforged-backend-osticket.md
+      - ADR 0005 — Módulos e paridade SCP: adr/0005-modulos-logicos-paridade-scp.md
   - Ambiente e ferramentas:
       - Portal documental: development/DOCUMENTATION_PORTAL.md
       - Homologação: development/HOMOLOGATION_ENVIRONMENT.md

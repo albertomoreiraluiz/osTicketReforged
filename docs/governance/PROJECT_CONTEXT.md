@@ -24,6 +24,11 @@ O novo painel contempla todo o SCP, incluindo administração. Ambos os painéis
 usam a mesma identidade e permissões; alternância sem novo login é requisito,
 cuja integração técnica de sessão ainda será validada. Não criar IAM paralelo.
 
+ADR 0005 aceita os 15 módulos lógicos e exige que o Reforged permita operar e
+configurar todas as capacidades SCP sem voltar ao frontend antigo, exceto setup.
+Coexistência é voluntária, não solução para funcionalidade faltante. Entrega
+incremental não reduz o escopo final; portal continua no planejamento separado.
+
 O objetivo não é reproduzir telas antigas nem reescrever o backend por preferência tecnológica.
 
 A direção de UX aceita prioriza funcionamento e um dashboard administrativo
@@ -101,9 +106,10 @@ detalhamentos organizam operação, administração e serviços compartilhados s
 o ADR 0004. São base factual para discutir módulos antes de UX/layout/frontend,
 não contratos aprovados ou implementação autorizada.
 
-`MODULE_CAPABILITY_PROPOSAL.md` organiza esses registros em 15 capacidades
-lógicas candidatas, separadas dos menus e do empacotamento. Sua integração
-documental não aceita arquitetura; discussão e decisões do Portão D permanecem.
+`MODULE_CAPABILITY_PROPOSAL.md` conserva o catálogo de 15 capacidades lógicas
+aceito no ADR 0005, separado dos menus e do empacotamento. Detalhamento de
+integração/contratos em `INTEGRATION_CONTRACT_DESIGN.md` permanece proposto;
+bootstrap, sessão, convenções concretas e liberação técnica continuam no Portão D.
 
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 

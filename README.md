@@ -87,9 +87,10 @@ de toda combinação possível de configuração.
 
 Próximas etapas:
 
-Proposta atual para discussão: [15 agrupamentos lógicos de módulos](docs/reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md),
-com rastreabilidade dos 153 registros SCP. Não são microsserviços nem pacotes
-aprovados; bootstrap, sessão, contratos e primeiro recorte ainda serão definidos.
+Divisão lógica aprovada: [15 módulos e cobertura integral do SCP](docs/adr/0005-modulos-logicos-paridade-scp.md),
+sem depender do frontend legado para operar/configurar, exceto setup. Não são
+15 microsserviços ou pacotes aprovados. O [desenho de integração e contratos](docs/reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md)
+apresenta propostas; bootstrap, sessão, contratos concretos e primeiro recorte seguem abertos.
 
 Direção de UX: dashboard administrativo intuitivo, prioridade funcional e
 primeira navegação elaborada pelo agente principal, com ajustes posteriores

@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/module-capability-proposal`, entrada `e68d13dc` (PR #32),
-para registrar proposta de agrupamentos sem aceitá-la como arquitetura. Permite que uma nova sessão
+Atualizado na branch `codex/scp-parity-integration-design`, entrada `2fa8e56a` (PR #33),
+para registrar ADR 0005 aceito e desenho de integração ainda proposto. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -90,6 +90,9 @@ autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
   sem duplicar regras ou encapsular HTML. O alvo é todo o SCP, inclusive
   administração; mesma identidade/permissões e alternância sem novo login.
   A integração técnica da sessão não foi escolhida ou provada.
+- ADR 0005 aceita divisão lógica M01–M15 e cobertura integral do SCP sem
+  dependência funcional do frontend legado, exceto setup. Portal separado,
+  implantação, contratos e bootstrap não são escolhidos por esse aceite.
 
 ## O que continua sem decisão
 
@@ -155,9 +158,10 @@ são históricos, não ponto de partida preferido nem prova da nova análise.
 Inventário e evidências da baseline permanecem preservados.
 
 Após a discussão, ADR 0004 aceita a estratégia de módulos novos sobre o backend
-original. Não reabrir essa fronteira como indefinida. Próximo passo: detalhar com
-o responsável a [proposta de agrupamentos](../reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md)
-e, após alinhamento, contratos, bootstrap e integração da sessão a partir
+original. ADR 0005 aceita a divisão lógica e a paridade integral do SCP.
+Não reabrir essas decisões como indefinidas. Próximo passo: discutir o
+[desenho de integração e contratos](../reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md),
+depois fechar bootstrap, guardas, sessão e contratos concretos a partir
 do [mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
 47 arquivos PHP do escopo (inclui dois bootstraps), 26 famílias e 229 folhas AJAX.
 GOV-026 e [Plano 0002](../plans/active/0002-functional-ux-direction.md) registram
@@ -167,14 +171,17 @@ arquitetura aceita; sua materialização depende da liberação da implementaç�
 Primeiro módulo, rota definitiva e funcionalidades do portal continuam
 sem escolha. Não implementar, alterar core/schema ou tratar pseudocódigo como API pronta.
 
-Os 15 módulos candidatos têm atribuição principal dos 153 registros do mapa,
-não 153 operações disjuntas nem 15 unidades de implantação aprovadas. Revisão
-arquitetural desta proposta verifica coerência para discussão; não substitui
-aprovação do responsável ou revisões técnicas posteriores por especialidade.
+Os 15 módulos lógicos aceitos têm atribuição principal dos 153 registros do mapa,
+não 153 operações disjuntas nem 15 unidades de implantação aprovadas. Recursos
+com ações explícitas e mesma origem são recomendações do desenho inicial, não
+decisões aceitas. Não há integração executável comprovada. Funcionalidade que
+exige completar configuração/operação no painel antigo permanece pendente,
+exceto setup; não declarar paridade por oferecer link de retorno ao legado.
 
-Fonte normativa desta unidade: `docs/adr/0004-modulos-reforged-backend-osticket.md`.
+Fontes normativas: ADRs 0004/0005 em `docs/adr/`.
 `ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md` e `GATE_D_REVIEW.md`,
-em `docs/reverse-engineering/`, preservam o histórico com indicação do novo ADR.
+em `docs/reverse-engineering/`, preservam o histórico; o registro de revisões
+também distingue os pareceres da unidade corrente dos anteriores descartados.
 A formalização não encerra o Portão D.
 
 O mapa não significa nova validação visual nem cobertura de todas as combinações

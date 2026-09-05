@@ -2,10 +2,13 @@
 
 ## Estado e limite
 
-**Proposta para discussão**, não ADR aceito. Data 2026-09-05, entrada `e68d13dc`
-(PR #32), branch `codex/module-capability-proposal`, baseline `v1.18.4`.
-Não inicia implementação, não escolhe framework, URLs ou primeiro módulo e não
-encerra o Portão D. Merge deste documento registra a proposta, não seu aceite.
+**Divisão lógica aceita no ADR 0005; detalhes técnicos continuam propostos.**
+Origem: 2026-09-05, entrada `e68d13dc` (PR #32), branch
+`codex/module-capability-proposal`, baseline `v1.18.4`, proposta integrada pela PR #33.
+O responsável aprovou M01–M15 posteriormente, exigindo cobertura integral do SCP
+sem dependência do frontend legado, exceto setup. O
+[ADR 0005](../adr/0005-modulos-logicos-paridade-scp.md) formaliza esse aceite.
+Não inicia implementação nem escolhe framework, URLs, pacotes ou primeiro recorte.
 
 **Decisões aceitas:** ADR 0004 fixa backend intacto, módulos/endpoints novos com
 reutilização das regras e respostas sem HTML legado; todo o SCP e coexistência.
@@ -31,11 +34,11 @@ poder evoluir sem mover regras ou criar duas implementações da mesma operaçã
 | Capacidades com coordenação explícita por caso de uso | aproxima fluxos relacionados e revela serviços compartilhados | mais fronteiras documentais; exige evitar fragmentação prematura | recomendada nesta proposta, sujeita à revisão e aprovação |
 
 Não se propõem 15 microsserviços, bancos, instalações ou pacotes obrigatórios.
-Os 15 agrupamentos abaixo são **módulos lógicos candidatos**; podem inicialmente
+Os 15 agrupamentos abaixo são **módulos lógicos aceitos**; podem inicialmente
 coexistir no mesmo artefato quando o desenho físico for decidido. Serviços de
 apoio não ganham endpoints CRUD universais só por aparecerem no mapa.
 
-## Catálogo candidato e responsabilidade principal
+## Catálogo lógico aceito e responsabilidade principal
 
 Cada ID O/A/T tem exatamente um responsável principal nesta matriz. Outros
 módulos colaboram sem assumir a mesma coordenação. A atribuição não muda o
@@ -46,7 +49,7 @@ A unicidade é editorial, não prova de 153 operações técnicas disjuntas:
 O22/O33 encaminham a T47–T52, que descrevem etapas compartilhadas. O conjunto
 evita fluxos esquecidos; não deve gerar endpoints duplicados para a mesma intenção.
 
-| ID | Capacidade candidata | Fluxos principais | Responsabilidade e fronteira |
+| ID | Capacidade lógica | Fluxos principais | Responsabilidade e fronteira |
 | --- | --- | --- | --- |
 | M01 | Integração e contexto de execução | T01–T03, T22, T41 | entrada, contexto de sessão/idioma/config de UI, dispatch e recurso público do login; não regras do ticket nem autenticador paralelo |
 | M02 | Autenticação e perfil próprio | T05–T14 | login, MFA, recuperação, logout, senha e preferências; gestão de outros agentes fica em M10 |
@@ -139,8 +142,8 @@ resposta sem template legado não significa remover conteúdo rico do usuário.
 
 ## Sequência sugerida para reduzir incerteza
 
-1. Validar os agrupamentos lógicos com o responsável; ajustar fronteiras antes
-   de escolher diretórios, pacotes ou convenções definitivas.
+1. Agrupamentos lógicos aprovados no ADR 0005; detalhar integração e contratos
+   sem reabrir essa divisão ou escolher pacotes por inferência.
 2. Delimitar desenho de M01/M02 para bootstrap, sessão/CSRF, login completo,
    expiração/MFA/logout e alternância entre painéis. É prioridade de análise,
    não escolha automática do primeiro módulo implementado.

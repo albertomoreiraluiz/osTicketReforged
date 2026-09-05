@@ -5,8 +5,8 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da formalização: `codex/modular-backend-strategy`, entrada `ad107b49` (PR #29).
-- Etapa: Portão D em andamento; estratégia aceita no ADR 0004, detalhamento pendente.
+- Branch da unidade: `codex/scp-parity-integration-design`, entrada `2fa8e56a` (PR #33).
+- Etapa: Portão D em andamento; ADRs 0004/0005 aceitos, detalhamento técnico pendente.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -223,6 +223,27 @@
   UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
+
+Unidade corrente: ADR 0005 aceito para M01–M15 e cobertura integral do SCP,
+exceto setup. Nenhuma capacidade será entregue por retorno obrigatório ao legado.
+O [desenho de integração](../reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md)
+compara alternativas e propõe recursos/ações explícitas e mesma origem; não
+aceita contratos, bootstrap, URLs, empacotamento ou primeiro recorte.
+Próximo passo: discutir essa direção técnica e detalhar guardas, sessão e contratos
+antes de qualquer implementação. Portal permanece no planejamento separado.
+
+Único escritor, contribuição API e revisão independente IAM somente leitura.
+Dois ajustes baixos incorporados e reconferidos; parecer favorável à integração
+documental, sem achados documentais abertos. Limites técnicos permanecem no
+desenho e no registro de revisões. Sem código de produto, banco ou runtime.
+
+Validação da unidade: MkDocs estrito aprovado; 68/68 documentos na navegação,
+127 Markdown e 302 links locais auditados, zero destino ausente do Reforged;
+seis referências herdadas preservadas. Quinze grupos/153 atribuições principais,
+47 arquivos SCP e 229 folhas AJAX reconciliados; `git diff --check` aprovado.
+Taxonomia GOV-023 preservada. Validação documental não comprova runtime.
+
+### Histórico — proposta da PR #33
 
 Unidade corrente: [proposta de capacidades](../reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md),
 entrada `e68d13dc`, branch `codex/module-capability-proposal`, 2026-09-05.

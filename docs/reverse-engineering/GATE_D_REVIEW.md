@@ -2,6 +2,27 @@
 
 ## Estado corrente
 
+Unidade: `codex/scp-parity-integration-design`, entrada `2fa8e56a` (PR #33).
+ADR 0005 registra aprovação do responsável para divisão lógica e paridade SCP.
+O desenho `INTEGRATION_CONTRACT_DESIGN.md` permanece proposta técnica.
+
+- `api_architect/integration/contratos`: contribuição somente leitura sobre
+  alternativas, bootstrap, comandos, formulários, lotes e autenticação/e-mail;
+  não é revisão independente das próprias recomendações.
+- `security_architect/integration/revisao`: revisão independente IAM somente
+  leitura; nenhum achado crítico, alto ou médio. Dois baixos corrigidos e
+  reconferidos: ficha externa ainda a detalhar e ciclo inicial/renovação de
+  cookie, SameSite e regeneração condicionada a GET.
+- Parecer favorável à integração documental, sem achados documentais restantes
+  nesse recorte. Guardas por entrada, ciclo completo de sessão, provedores externos,
+  autorização por objeto e tratamento de segredos exigem desenho e validação
+  próprios antes de implementação. Não comprova integração executável.
+- Integrador único escritor, releu os pareceres e reconferiu símbolos relevantes
+  de bootstrap, sessão/cookies e persistência parcial da configuração de e-mail.
+  Nenhuma missão acessou banco, navegador, credenciais ou executou exploração.
+
+### Histórico — revisão da proposta da PR #33
+
 Unidade mais recente: proposta de capacidades em `MODULE_CAPABILITY_PROPOSAL.md`,
 entrada `e68d13dc` (PR #32), branch `codex/module-capability-proposal`.
 Instância independente `software_architect/module-proposal/revisao`, cargo
