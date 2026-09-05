@@ -26,8 +26,6 @@ Decisões aceitas:
   integral do SCP sem dependência do frontend legado, exceto setup; não libera código.
 - `0006-origem-api-isolamento-reforged.md` — mesma origem, API por recursos/ações
   e isolamento dos arquivos próprios; layout PHP e bootstrap continuam pendentes.
-
-Proposta aguardando decisão:
-
 - `0007-coordenacao-guardas-controladores.md` — adaptação limitada de coordenação
-  inline staff/admin, chamando métodos originais; não aceita nem implementada.
+  inline staff/admin e análise comportamental dos trechos acoplados; aceito,
+  chamando métodos originais, sem implementação.

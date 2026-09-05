@@ -2,6 +2,15 @@
 
 ## Estado corrente
 
+Unidade `codex/accept-guard-coordination`, entrada `0c259179` (PR #37).
+Formalização do aceite explícito do responsável e diretriz de análise comportamental
+dos trechos muito acoplados. Um único agente, atualização documental sequencial;
+sem novo mecanismo, implementação ou teste de produto. Revisão do diff e validações
+documentais pelo integrador; parecer IAM anterior preservado como histórico.
+Aceite não comprova equivalência nem encerra o Portão D.
+
+### Histórico — revisão da PR #37
+
 Unidade `codex/reforged-guard-contracts`, entrada `1580ea20` (PR #36), baseline
 v1.18.4. Principal único escritor de documentos/ADRs/planos/checkpoint.
 `reverse_engineering_engineer/guards/rastreio`: contribuição somente leitura

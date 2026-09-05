@@ -14,7 +14,10 @@ pesquisados. Não é prova universal de impossibilidade ou ausência em plugins 
 O ADR 0004 já aceita coordenação de chamadas. Não é preciso reabrir esse princípio.
 A questão específica é a adaptação de combinações/exceções que só existem inline
 nos controladores. Essa decisão está delimitada no
-[ADR 0007 proposto](../adr/0007-coordenacao-guardas-controladores.md).
+[ADR 0007 aceito](../adr/0007-coordenacao-guardas-controladores.md).
+Aceite posterior à PR #37: análise comportamental dos trechos muito acoplados
+orientará sua reprodução, com rastreio e equivalência por caso. O mapa abaixo
+continua evidência estática da PR #37; não houve teste visual nesta formalização.
 
 ## Mapa de reutilização
 
@@ -117,15 +120,15 @@ Não basta escolher códigos no documento e presumir que esse emissor os suporta
 Emissor, códigos HTTP, headers e versão do contrato exigem desenho posterior;
 nenhuma alteração do helper original está autorizada.
 
-## Ponto de intervenção e trabalho preservado
+## Decisão aceita e próxima entrega
 
-O [ADR 0007](../adr/0007-coordenacao-guardas-controladores.md) pede aceite para
+O [ADR 0007](../adr/0007-coordenacao-guardas-controladores.md) aceita
 adaptar no código novo somente a coordenação inline identificada, chamando os
 mecanismos originais e documentando equivalência por intenção. Não pede alteração
 do core, reimplementação de algoritmos, novo IAM ou dispensa de permissões.
 
-Até essa decisão, não fechar combinações/permissões de regularização, escolher
-bootstrap como resolvido ou gerar endpoint executável. Os campos/erros propostos
-acima ficam disponíveis para revisão; não são aceitos por merge documental.
-Próximas entregas após decisão: matriz finita de intenções/exceções/efeitos,
-contratos e plano de validação; implementação continua sujeita ao Portão D.
+Próximas entregas: matriz finita de intenções/exceções/efeitos, contratos e plano
+de validação comportamental. Reutilizar evidências anteriores somente quando
+cobrirem o cenário; completar lacunas pelo fluxo natural do frontend original.
+Não considerar bootstrap resolvido ou endpoint autorizado por esse aceite.
+Campos/erros acima continuam propostas; implementação sujeita ao Portão D.

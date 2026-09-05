@@ -5,8 +5,8 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da unidade: `codex/reforged-guard-contracts`, entrada `1580ea20` (PR #36).
-- Etapa: Portão D em andamento; ADRs 0004–0006 aceitos nos respectivos recortes, detalhes técnicos pendentes.
+- Branch da unidade: `codex/accept-guard-coordination`, entrada `0c259179` (PR #37).
+- Etapa: Portão D em andamento; ADRs 0004–0007 aceitos nos respectivos recortes, detalhes técnicos pendentes.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -223,6 +223,18 @@
   UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
+
+**Decisão aceita em 2026-09-05:** responsável aprovou ADR 0007 e a análise
+comportamental dos trechos muito acoplados antes de reproduzi-los no módulo.
+Formalização documental por um único agente: tarefa sequencial, sem alteração
+dos mecanismos ou novo desenho executável que justifique delegação. Revisão
+IAM da proposta permanece histórica na PR #37; não é revisão desta atualização.
+Próximo passo: matriz de intenções/exceções/efeitos, evidências e critérios de
+equivalência. Cada caso exige análise; o princípio aceito não precisa ser reaberto.
+Nenhum código, runtime, banco ou core alterado. Validações desta unidade:
+MkDocs estrito, auditoria de navegação/links e diff; resultados registrados na PR.
+
+### Histórico — rastreio integrado pela PR #37
 
 Unidade corrente: `REFORGED_GUARD_CONTRACTS.md` rastreia G01–G09 e propõe campos
 de contexto e categorias de erro. Métodos individuais estão disponíveis; agregado
