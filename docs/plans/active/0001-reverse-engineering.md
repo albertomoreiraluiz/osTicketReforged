@@ -129,9 +129,44 @@ agora oferece trilhas para estado, funcionamento, evidências e evolução.
 
 ### Portão D — Decisão arquitetural
 
-- pelo menos três opções comparadas;
-- riscos de atualização e segurança avaliados;
-- estratégia de migração proposta;
+O Portão D transforma as evidências dos Portões B e C em uma escolha explícita
+de arquitetura. Ele não é uma etapa de implementação: nenhuma aplicação
+Angular, API completa, alteração de core, plugin próprio ou mudança de schema
+será iniciada durante a comparação.
+
+Atividades obrigatórias:
+
+1. consolidar restrições, capacidades e lacunas já comprovadas na baseline;
+2. formular pelo menos três opções arquiteturais completas, sem apresentar
+   preferência como decisão aceita;
+3. rastrear cada opção até as evidências de core, plugins, hooks, API, banco,
+   autenticação, autorização e frontend;
+4. comparar atualização do upstream, delta de core, segurança, integridade de
+   dados, coexistência com o frontend PHP, migração progressiva, operação,
+   observabilidade, testes e rollback;
+5. propor a sequência de migração e justificar o primeiro módulo candidato;
+6. submeter matriz, estratégia e recomendação a revisões independentes de
+   arquitetura, API, frontend, dados, segurança e qualidade conforme o impacto;
+7. apresentar recomendação e riscos residuais ao responsável pelo projeto;
+8. registrar a escolha aprovada em ADR numerado, ou registrar a rejeição e
+   reabrir somente o recorte indicado pelo responsável.
+
+Entregáveis previstos:
+
+- `docs/reverse-engineering/ARCHITECTURE_DECISION_RECORD.md`, como dossiê
+  comparativo e recomendação proposta;
+- `docs/reverse-engineering/MIGRATION_STRATEGY.md`, com coexistência, etapas,
+  dependências, rollback e primeiro módulo proposto;
+- matriz rastreável de opções versus critérios e evidências;
+- pareceres independentes e riscos residuais;
+- ADR numerado com a decisão final, somente após aprovação explícita.
+
+Critérios de saída:
+
+- pelo menos três opções comparadas em critérios comuns;
+- riscos de atualização, integração, dados e segurança avaliados;
+- estratégia de migração proposta e reversível;
+- nenhuma pendência crítica ou alta sem correção ou aceite explícito;
 - ADR aprovado explicitamente pelo responsável.
 
 Somente o Portão D libera o planejamento da implementação. Um portão não é concluído por inferência; registre evidências em `docs/governance/PROGRESS.md`.

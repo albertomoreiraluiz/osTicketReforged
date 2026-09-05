@@ -50,6 +50,31 @@ Dentro da engenharia reversa, os grupos são recolhíveis e somente a categoria
 da página atual é expandida. Essa organização reduz o volume simultâneo da
 árvore sem ocultar documentos da busca ou da navegação.
 
+### Taxonomia normativa
+
+GOV-023 torna esta arquitetura de informação obrigatória para atualizações
+futuras do portal. Os seis contextos de primeiro nível são `Início`, `Projeto`,
+`Engenharia reversa`, `Decisões arquiteturais`, `Ambiente e ferramentas` e
+`Referência oficial incorporada`.
+
+Dentro de `Engenharia reversa`, preserve as oito categorias:
+
+1. inventário e rastreabilidade;
+2. arquitetura e execução;
+3. domínio e persistência;
+4. interfaces e comportamento;
+5. APIs e automação;
+6. segurança e acesso;
+7. extensibilidade e customização;
+8. evidências comportamentais.
+
+Uma página nova deve ser classificada pela principal pergunta que responde e
+aparecer uma única vez na navegação principal. Links cruzados podem conectá-la
+a outras trilhas sem duplicar o item. Não mova ou renomeie a fonte canônica
+apenas para ajustar o menu. Uma necessidade real de novo contexto ou categoria
+exige decisão de governança registrada e atualização coordenada deste documento,
+de `mkdocs.yml`, do ADR 0002 e das instruções obrigatórias.
+
 O tema oferece abas persistentes, alternância claro/escuro, busca compartilhável,
 sumário acompanhando a leitura, navegação anterior/próxima e cópia de blocos de
 código. O stylesheet `docs/assets/stylesheets/extra.css` melhora largura de
@@ -58,6 +83,8 @@ não esconde conteúdo nem modifica o significado dos documentos.
 
 ### Regras de manutenção da navegação
 
+- preservar os seis contextos e as oito categorias definidos pela taxonomia
+  normativa;
 - não renomear ou mover arquivos apenas para reorganizar o menu;
 - classificar páginas novas pela pergunta que respondem, não pela ordem em que
   foram criadas;
