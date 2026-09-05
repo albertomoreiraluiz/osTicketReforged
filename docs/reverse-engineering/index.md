@@ -34,6 +34,8 @@ subsistemas:
   entrada, guardas, continuidade e verificações futuras;
 - [Guardas e contratos de contexto](REFORGED_GUARD_CONTRACTS.md) — definições,
   chamadores e coordenação inline aceita, com contratos propostos;
+- [Intenções e equivalência](REFORGED_INTENT_EQUIVALENCE.md) — efeitos,
+  critérios e lacunas visuais por fluxo de entrada;
 - [Portão D: reinício e dossiê histórico](ARCHITECTURE_DECISION_RECORD.md);
 - [Estratégia modular aceita — ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md);
 - [Portão D: estratégia anterior descartada](MIGRATION_STRATEGY.md);

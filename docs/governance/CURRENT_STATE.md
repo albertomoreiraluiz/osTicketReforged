@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/accept-guard-coordination`, entrada `0c259179` (PR #37),
-para registrar o aceite explícito do ADR 0007 e a diretriz comportamental. Permite que uma nova sessão
+Atualizado na branch `codex/guard-intent-matrix`, entrada `3eb3d7cf` (PR #38),
+para registrar intenções, efeitos e lacunas de equivalência visual. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -169,8 +169,12 @@ original. ADR 0005 aceita divisão/paridade; ADR 0006 aceita mesma origem,
 recursos/ações e isolamento. Não reabrir essas decisões como indefinidas.
 Detalhamento corrente: [guardas e contratos](../reverse-engineering/REFORGED_GUARD_CONTRACTS.md),
 com G01–G09 rastreados e contexto/erros propostos. ADR 0007 aceito explicitamente:
-próxima ação é especificar intenções, exceções, efeitos e critérios de equivalência,
-reutilizando evidências válidas e planejando observação visual dos casos não cobertos.
+[matriz I01–I12](../reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md) produzida,
+com efeitos, evidências reaproveitáveis e critérios. Próxima ação: completar
+observações visuais ainda não cobertas, não presumir testes pelo rótulo global.
+Nesta unidade, navegador chegou ao login sem sessão ativa; nenhuma credencial
+submetida ou falha de login demonstrada. Retomada visual requer ativação da sessão
+pelos controles renderizados, sem bridge nem exposição do segredo local.
 Trechos muito acoplados podem ter seu comportamento reproduzido após análise;
 não reabrir esse princípio, não presumir testes nem liberação de código.
 A árvore física continua candidata. Base de rastreabilidade:

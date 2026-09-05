@@ -7,6 +7,14 @@
 
 ## Legenda
 
+**Precisão do Portão D (2026-09-05):** a auditoria de
+[intenções e equivalência](REFORGED_INTENT_EQUIVALENCE.md) não localizou prova
+visual dedicada de logout staff com pós-condição, recuperação staff completa,
+senha/MFA obrigatórios e sua combinação, offline por papel, expiração ou upgrade.
+Controles observados e evidências de outras camadas não encerram esses cenários.
+As linhas históricas abaixo conservam seu alcance; não significam todas as
+combinações de configuração nem paridade já validada com o Reforged.
+
 - `Pendente`: rota ou região conhecida ainda não percorrida integralmente.
 - `Em observação`: percurso visual iniciado e ainda não fechado.
 - `Bloqueado`: percurso alcançou uma precondição externa reproduzida e

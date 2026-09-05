@@ -125,6 +125,9 @@ ADR 0007 aceita o tratamento limitado desta coordenação e a análise comportam
 dos trechos muito acoplados antes de reproduzi-los nos módulos. Complementa ADR
 0004 sem autorizar duplicar métodos reutilizáveis ou alterar core. Cada caso
 exige rastreio, evidências e critérios de equivalência, não novo aceite do princípio.
+`REFORGED_INTENT_EQUIVALENCE.md` distingue 12 intenções de entrada e suas lacunas
+visuais. Cobertura de tela não comprova todas as combinações de regularização,
+offline ou sessão; resultados históricos conservam seu alcance original.
 
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 

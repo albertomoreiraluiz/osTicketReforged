@@ -122,6 +122,9 @@ nenhuma alteração do helper original está autorizada.
 
 ## Decisão aceita e próxima entrega
 
+Detalhamento produzido em [Intenções e equivalência](REFORGED_INTENT_EQUIVALENCE.md):
+I01–I12, efeitos e evidências existentes separados de validações pendentes.
+
 O [ADR 0007](../adr/0007-coordenacao-guardas-controladores.md) aceita
 adaptar no código novo somente a coordenação inline identificada, chamando os
 mecanismos originais e documentando equivalência por intenção. Não pede alteração

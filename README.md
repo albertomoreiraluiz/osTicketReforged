@@ -101,7 +101,9 @@ de integração. O [rastreio de guardas e contratos](docs/reverse-engineering/RE
 identifica mecanismos reutilizáveis e combinações presas às páginas.
 **Decisão aceita:** [ADR 0007](docs/adr/0007-coordenacao-guardas-controladores.md),
 adaptação da coordenação e análise comportamental dos trechos acoplados antes de
-sua reprodução. Próximo passo: matriz de intenções, efeitos e equivalência; sem implementação.
+sua reprodução. A [matriz de intenções e equivalência](docs/reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md)
+detalha 12 intenções e lacunas visuais. Retomada pelo frontend depende de sessão
+autenticada; nenhuma credencial foi submetida nesta unidade. Sem implementação.
 
 Direção de UX: dashboard administrativo intuitivo, prioridade funcional e
 primeira navegação elaborada pelo agente principal, com ajustes posteriores

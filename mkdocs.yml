@@ -94,6 +94,7 @@ nav:
           - Reforged — Organização física: reverse-engineering/REFORGED_PHYSICAL_DESIGN.md
           - Reforged — Entradas e sessão: reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md
           - Reforged — Guardas e contratos: reverse-engineering/REFORGED_GUARD_CONTRACTS.md
+          - Reforged — Intenções e equivalência: reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md
           - Portão D — Reinício e histórico: reverse-engineering/ARCHITECTURE_DECISION_RECORD.md
           - Portão D — Estratégia descartada: reverse-engineering/MIGRATION_STRATEGY.md
           - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md

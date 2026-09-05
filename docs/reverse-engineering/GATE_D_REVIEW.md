@@ -2,6 +2,25 @@
 
 ## Estado corrente
 
+Unidade `codex/guard-intent-matrix`, entrada `3eb3d7cf` (PR #38), baseline v1.18.4.
+Principal único escritor e integrador. `qa_engineer/guard-matrix/evidencias`
+contribuiu auditoria documental somente leitura, enquanto principal rastreou
+coordenação. `security_architect/guard-matrix/revisao` revisou matriz estabilizada
+independentemente, enquanto principal atualizou transversais. Nenhum subagente
+executou runtime, navegador, rede, banco, escrita ou descendentes. Entradas:
+AGENTS, checkpoint, plano, ADR 0007, fontes estáticas e evidências históricas.
+Principal verificou apenas entrada visual no login, sem submissão de credenciais.
+Revisão IAM não encontrou alto/crítico; precisão média de I11 incorporada:
+checagem de link não comprova bloqueio, redirect não comprova atomicidade/locks.
+Nenhuma reprodução de falha ou código entregue. Limite operacional do navegador
+é observação do integrador, não resultado da revisão estática independente.
+Revisor reconferiu I11 e encerrou o achado médio; parecer estático aprovado.
+Validações: 74 documentos/74 entradas, 133 Markdown/350 links (zero quebra própria,
+seis herdadas), 15 grupos/153 atribuições sem sobra ou duplicação; MkDocs estrito
+e diff válidos. Nenhuma equivalência comportamental nova declarada.
+
+### Histórico — formalização da PR #38
+
 Unidade `codex/accept-guard-coordination`, entrada `0c259179` (PR #37).
 Formalização do aceite explícito do responsável e diretriz de análise comportamental
 dos trechos muito acoplados. Um único agente, atualização documental sequencial;
