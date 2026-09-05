@@ -43,7 +43,8 @@ e-mail POP3/SMTP local pela Administração, confirmou criação natural por col
 repetiu vínculo e derivação de ticket e concluiu o primeiro atendimento
 realista ponta a ponta no ticket `990221`. A tarefa derivada `2` também teve seu
 ciclo Aberto → Encerrado → Aberto, atualização, nota interna e formulários
-secundários reproduzidos pelo frontend. A matriz ainda permanece aberta para as
+secundários reproduzidos pelo frontend; BHV-022 foi repetido com edição e
+restauração visual do ticket `903010`. A matriz ainda permanece aberta para as
 demais equivalências visuais dos cenários `BHV-001` a `BHV-034`.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.

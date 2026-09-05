@@ -102,7 +102,9 @@ pelo navegador de todos os cenários antes comprovados diretamente. O trabalho
 restante deste plano é dependente
 da conclusão da repetição visual da Onda 9; o ciclo funcional da tarefa
 derivada `2` já foi repetido pela interface e preservado aberto. Depois disso,
-o plano depende da comparação de opções e da decisão explícita do responsável.
+BHV-022 também foi repetido com edição e restauração visual do ticket
+`903010`. Concluída a Onda 9, o plano dependerá da comparação de opções e da
+decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural
 
