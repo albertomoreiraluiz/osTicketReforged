@@ -22,7 +22,8 @@ leitura humana, rastreabilidade técnica e preparação de decisões arquitetura
 
 ### Entender o estado do projeto
 
-Comece pelo [contexto persistente](governance/PROJECT_CONTEXT.md), confira o
+Comece pelo [contexto persistente](governance/PROJECT_CONTEXT.md), valide o
+[checkpoint canônico](governance/CURRENT_STATE.md), confira o
 [progresso atual](governance/PROGRESS.md) e use o
 [plano ativo](plans/active/0001-reverse-engineering.md) como sequência oficial.
 

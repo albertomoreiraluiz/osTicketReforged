@@ -288,7 +288,7 @@ integrada em `main` pela PR #9.
 
 ## Onda 9 — observação integral pelo frontend
 
-**Estado:** concluída, reconciliada e submetida a revisão independente.
+**Estado:** concluída, reconciliada e aprovada em revisão independente.
 
 **Motivo:** a cobertura por cenários e rotas não garantiu que todas as páginas,
 regiões e ações visíveis fossem observadas. O Painel de Administração recebeu
