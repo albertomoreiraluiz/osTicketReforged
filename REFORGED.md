@@ -17,6 +17,9 @@ principal. Essa delegação não substitui o fechamento técnico do Portão D.
 ADR 0005 aceita a divisão lógica M01–M15 e cobertura integral do SCP sem depender
 do frontend original, exceto setup. `INTEGRATION_CONTRACT_DESIGN.md` em
 `docs/reverse-engineering/` propõe a integração e os contratos; não libera código.
+ADR 0006 aceita mesma origem, API por recursos/ações e isolamento. A organização
+física em `REFORGED_PHYSICAL_DESIGN.md` permanece proposta: `frontend/` preservado
+e `reforged/` candidato para PHP novo; nenhuma pasta de aplicação criada.
 
 ## Objetivo
 

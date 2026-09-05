@@ -137,13 +137,14 @@ de UX/layout/fluxos de exibição. Mapeamento documental, não implementação.
 Entrega estática consolidada: 153 registros em três frentes, 47 arquivos do
 escopo e 26 famílias/229 folhas AJAX reconciliados. Revisão e validações da
 unidade ficam no mapa; pendências de viabilidade/contrato permanecem explícitas.
-Agrupamentos aprovados no ADR 0005; próxima discussão: integração e contratos.
+Agrupamentos aprovados no ADR 0005; origem/estilo/isolamento no ADR 0006.
 
 O [ADR 0005](../../adr/0005-modulos-logicos-paridade-scp.md) aceita os 15 módulos
 lógicos e exige cobertura integral do SCP sem dependência funcional do legado,
-exceto setup. Unidade corrente: [desenho de integração e contratos](../../reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md),
-ainda proposto. Próximo critério: alinhar estilo contratual e hospedagem, fechar
-bootstrap/guardas/sessão e contratos concretos; não implementar por inferência.
+exceto setup. Unidade corrente: [organização física](../../reverse-engineering/REFORGED_PHYSICAL_DESIGN.md),
+ainda proposta, sob ADR 0006 aceito para mesma origem, recursos/ações e isolamento.
+Próximo critério: discutir pasta PHP/publicação e fechar bootstrap/guardas/sessão
+e contratos concretos; não implementar por inferência.
 
 Direção visual antecipada pelo responsável em GOV-026 e
 [Plano 0002](0002-functional-ux-direction.md): dashboard administrativo intuitivo,

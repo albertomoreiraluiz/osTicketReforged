@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/scp-parity-integration-design`, entrada `2fa8e56a` (PR #33),
-para registrar ADR 0005 aceito e desenho de integração ainda proposto. Permite que uma nova sessão
+Atualizado na branch `codex/reforged-isolation-design`, entrada `8bd050ba` (PR #34),
+para registrar ADR 0006 aceito e organização física ainda proposta. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -93,6 +93,9 @@ autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
 - ADR 0005 aceita divisão lógica M01–M15 e cobertura integral do SCP sem
   dependência funcional do frontend legado, exceto setup. Portal separado,
   implantação, contratos e bootstrap não são escolhidos por esse aceite.
+- ADR 0006 aceita publicação na mesma origem, API por recursos/ações e isolamento
+  dos arquivos próprios. `frontend/` permanece conforme ADR 0001; `reforged/`
+  para PHP é candidato, assim como seu layout interno e mapeamento web.
 
 ## O que continua sem decisão
 
@@ -158,9 +161,9 @@ são históricos, não ponto de partida preferido nem prova da nova análise.
 Inventário e evidências da baseline permanecem preservados.
 
 Após a discussão, ADR 0004 aceita a estratégia de módulos novos sobre o backend
-original. ADR 0005 aceita a divisão lógica e a paridade integral do SCP.
-Não reabrir essas decisões como indefinidas. Próximo passo: discutir o
-[desenho de integração e contratos](../reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md),
+original. ADR 0005 aceita divisão/paridade; ADR 0006 aceita mesma origem,
+recursos/ações e isolamento. Não reabrir essas decisões como indefinidas.
+Próximo passo: discutir [organização física](../reverse-engineering/REFORGED_PHYSICAL_DESIGN.md),
 depois fechar bootstrap, guardas, sessão e contratos concretos a partir
 do [mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
 47 arquivos PHP do escopo (inclui dois bootstraps), 26 famílias e 229 folhas AJAX.
@@ -173,12 +176,12 @@ sem escolha. Não implementar, alterar core/schema ou tratar pseudocódigo como 
 
 Os 15 módulos lógicos aceitos têm atribuição principal dos 153 registros do mapa,
 não 153 operações disjuntas nem 15 unidades de implantação aprovadas. Recursos
-com ações explícitas e mesma origem são recomendações do desenho inicial, não
-decisões aceitas. Não há integração executável comprovada. Funcionalidade que
+com ações explícitas e mesma origem foram aceitos; contratos e mecanismo de
+publicação ainda não. Não há integração executável comprovada. Funcionalidade que
 exige completar configuração/operação no painel antigo permanece pendente,
 exceto setup; não declarar paridade por oferecer link de retorno ao legado.
 
-Fontes normativas: ADRs 0004/0005 em `docs/adr/`.
+Fontes normativas: ADRs 0004/0005/0006 em `docs/adr/`.
 `ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md` e `GATE_D_REVIEW.md`,
 em `docs/reverse-engineering/`, preservam o histórico; o registro de revisões
 também distingue os pareceres da unidade corrente dos anteriores descartados.

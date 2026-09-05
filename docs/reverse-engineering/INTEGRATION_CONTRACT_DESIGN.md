@@ -2,10 +2,15 @@
 
 ## Estado e manifesto
 
-**Desenho inicial pronto para discussão; propostas técnicas não aceitas.** Data 2026-09-05, entrada
+**Direção de origem/recursos aceita no ADR 0006; demais detalhes propostos.** Origem do documento: 2026-09-05, entrada
 `2fa8e56a` (PR #33), branch `codex/scp-parity-integration-design`, baseline v1.18.4.
 ADR 0005 formaliza apenas divisão lógica e cobertura integral, exceto setup.
 Esta unidade compara integração/contratos sem implementar ou alterar core.
+
+Atualização: [ADR 0006](../adr/0006-origem-api-isolamento-reforged.md) formaliza
+mesma origem, recursos/ações e isolamento dos arquivos. A
+[organização física](REFORGED_PHYSICAL_DESIGN.md) é proposta separada; não tratar
+o restante deste desenho como aceito em bloco. O manifesto abaixo é da PR #34.
 
 O integrador é único escritor deste documento, ADRs, planos, índices e progresso.
 `api_architect/integration/contratos` analisa contratos/superfícies em leitura;
@@ -27,8 +32,8 @@ Fontes: [ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md),
 [capacidades](MODULE_CAPABILITY_PROPOSAL.md) e [mapa SCP](SCP_FLOW_MAP.md).
 Os IDs M01–M15 estão aceitos como divisão lógica, não como interfaces de chamada.
 
-**Proposta recomendada:** API orientada a recursos reais e ações explícitas de
-domínio; integração web preferencialmente na mesma origem do SCP, mantendo os
+**Decisão aceita no ADR 0006:** API orientada a recursos reais e ações explícitas de
+domínio; integração web na mesma origem do SCP, mantendo os
 mecanismos de identidade/sessão originais. Isso não escolhe diretórios, URLs,
 plugin de hospedagem, bootstrap concreto, cookies ou framework. Mesmo processo
 PHP de requisição é candidato para chamadas locais ao core; não prova ausência
@@ -38,7 +43,7 @@ de acoplamento ou efeitos de apresentação.
 
 | Alternativa | Evidência/benefício | Limite e avaliação proposta |
 | --- | --- | --- |
-| Frontend e API na mesma origem do SCP | coerente com identidade compartilhada e alternância; evita acrescentar uma fronteira entre origens | recomendada para detalhar; não elimina CSRF, validação de sessão, escopo do cookie ou tratamento de proxy/HTTPS |
+| Frontend e API na mesma origem do SCP | coerente com identidade compartilhada e alternância; evita acrescentar uma fronteira entre origens | aceita no ADR 0006; não elimina CSRF, validação de sessão, escopo do cookie ou tratamento de proxy/HTTPS |
 | Frontend/API em origem separada | poderia separar hospedagem física | requer desenho explícito de cookies, CORS, callbacks e confiança; não recomendada como ponto inicial sem necessidade concreta; não autoriza IAM paralelo |
 | Entradas novas reutilizando bootstrap/mecanismos originais | permite contratos próprios sem templates como resposta | candidata, mas não basta incluir main.inc.php: faltam guardas de staff/admin; bootstrap ainda precisa de prova e decisão |
 | Registro via ajax.scp/apps.scp/apps.admin | pontos reais em scp/ajax.php e scp/apps/dispatcher.php | alternativa a comparar; ajax.scp já exige staff, portanto não resolve login anônimo; apps carregam contexto/nav legado; não aprovação do pacote descartado da PR #28 |
@@ -61,7 +66,7 @@ e solicitar decisão; não declarar a escolha de bootstrap resolvida por esta co
 
 | Opção | Consequência | Proposta |
 | --- | --- | --- |
-| Recursos com ações de domínio | consulta/edição de recursos reais; responder, transferir, mesclar, reenviar, autorizar provedor e manter sistema continuam intenções explícitas | recomendada |
+| Recursos com ações de domínio | consulta/edição de recursos reais; responder, transferir, mesclar, reenviar, autorizar provedor e manter sistema continuam intenções explícitas | aceita no ADR 0006; contratos concretos pendentes |
 | CRUD genérico sobre ORM/tabelas | save isolado omite guardas, regras no controller, sinais e efeitos; aceita atributos fora da intenção | não recomendado; não corresponde à reutilização do fluxo aceita |
 | Replicar rotas/respostas AJAX | HTML, texto, redirects, JSON com status interno e alvos ausentes viram contrato novo | manter como rastreabilidade, não copiar como API pública |
 
@@ -187,7 +192,8 @@ upgrade SCP da análise. Portal segue em plano separado.
 
 ## Próximas decisões, sem implementação automática
 
-1. Aprovar ou ajustar direção de mesma origem e estilo recursos/ações.
+1. Concluído: direção de mesma origem e estilo recursos/ações aceita no ADR 0006;
+   discutir agora organização física candidata, não reabrir essa direção.
 2. Fechar desenho de bootstrap e matriz de guardas/estados por entrada, com
    evidência de possibilidade de reutilização sem core change.
 3. Definir convenções de contrato e representação de forms/erros/binários;
@@ -196,4 +202,5 @@ upgrade SCP da análise. Portal segue em plano separado.
    formalizar ADRs e só então liberar implementação/primeiro recorte.
 
 Pareceres desta unidade estão registrados em GATE_D_REVIEW; validações documentais
-em PROGRESS. Não existem endpoints, layout físico ou integração testada nesta entrega.
+em PROGRESS. Não existem endpoints implementados, estrutura física de aplicação
+criada ou integração executável testada nesta entrega.

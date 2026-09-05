@@ -90,7 +90,11 @@ Próximas etapas:
 Divisão lógica aprovada: [15 módulos e cobertura integral do SCP](docs/adr/0005-modulos-logicos-paridade-scp.md),
 sem depender do frontend legado para operar/configurar, exceto setup. Não são
 15 microsserviços ou pacotes aprovados. O [desenho de integração e contratos](docs/reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md)
-apresenta propostas; bootstrap, sessão, contratos concretos e primeiro recorte seguem abertos.
+separa as direções aceitas dos detalhes abertos. O [ADR 0006](docs/adr/0006-origem-api-isolamento-reforged.md)
+aceita mesma origem, recursos/ações e isolamento dos arquivos. A
+[organização física](docs/reverse-engineering/REFORGED_PHYSICAL_DESIGN.md) propõe
+`reforged/` para PHP novo, preservando `frontend/`. Bootstrap, sessão, contratos
+concretos e primeiro recorte seguem abertos; nenhuma implementação iniciada.
 
 Direção de UX: dashboard administrativo intuitivo, prioridade funcional e
 primeira navegação elaborada pelo agente principal, com ajustes posteriores
@@ -100,7 +104,7 @@ O mapeamento estático do SCP reúne 153 registros de fluxo, reconciliando os
 47 arquivos do escopo e as 229 folhas AJAX, com revisão independente. Isso não
 equivale a novas execuções visuais nem prova de reutilização universal do backend.
 
-1. discutir agrupamentos e dependências a partir do [mapa de fluxos SCP](docs/reverse-engineering/SCP_FLOW_MAP.md), detalhando contratos, bootstrap e sessão dentro do ADR 0004;
+1. discutir organização física e detalhar contratos, bootstrap e sessão sobre o [mapa de fluxos SCP](docs/reverse-engineering/SCP_FLOW_MAP.md), sem reabrir os ADRs 0004–0006;
 2. definir o primeiro recorte com evidências, sem herdar a sugestão descartada;
 3. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;

@@ -31,7 +31,7 @@ poder evoluir sem mover regras ou criar duas implementações da mesma operaçã
 | --- | --- | --- | --- |
 | Um módulo por página/rota | fácil localizar tela de origem | duplica cruzamentos página/modal/AJAX; confunde transporte com domínio | manter como rastreabilidade, não fronteira principal |
 | Apenas operação/administração/serviços gerais | poucos grupos iniciais | grupo geral acumula forms, threads, busca, arquivos e export; administração mistura capacidades com guardas diferentes | útil para leitura, insuficiente como divisão de responsabilidades |
-| Capacidades com coordenação explícita por caso de uso | aproxima fluxos relacionados e revela serviços compartilhados | mais fronteiras documentais; exige evitar fragmentação prematura | recomendada nesta proposta, sujeita à revisão e aprovação |
+| Capacidades com coordenação explícita por caso de uso | aproxima fluxos relacionados e revela serviços compartilhados | mais fronteiras documentais; exige evitar fragmentação prematura | divisão lógica aceita no ADR 0005; coordenação técnica continua proposta |
 
 Não se propõem 15 microsserviços, bancos, instalações ou pacotes obrigatórios.
 Os 15 agrupamentos abaixo são **módulos lógicos aceitos**; podem inicialmente
