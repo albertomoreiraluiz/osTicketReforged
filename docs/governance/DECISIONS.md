@@ -21,6 +21,7 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-015 | 2026-09-04 | Aceito | A Onda 7 deve priorizar a reprodução fiel dos fluxos funcionais entre frontend e backend. Novos ensaios ofensivos ou dedicados a segurança ficam fora da passagem comportamental; a fase própria de segurança ocorrerá somente após o mapeamento e inventário completos. Achados já confirmados permanecem registrados como contexto. | `docs/reverse-engineering/BEHAVIORAL_ANALYSIS.md`; `docs/reverse-engineering/WAVE_MANIFEST.md`; decisão explícita do responsável |
 | GOV-016 | 2026-09-04 | Aceito | Push para branch dedicada, criação de PR e merge validado em `main` estão previamente autorizados no fluxo normal. A autorização não alcança ações excessivamente arriscadas, conflitos, validações falhas, impacto não revisado, force-push, release, reset destrutivo ou exclusões. | `AGENTS.md`; decisão explícita do responsável |
 | GOV-017 | 2026-09-04 | Aceito | Dumps SQL devem ser capturados e restaurados exclusivamente por streams binários, com `utf8mb4`, restauração temporária e validação de bytes por `HEX()` antes do banco ativo. Pipelines e readers/writers textuais são proibidos para backup ou restore. | incidente de encoding da Onda 8; `docs/development/HOMOLOGATION_ENVIRONMENT.md` |
+| GOV-018 | 2026-09-04 | Aceito | Fixtures que constituem evidência de análise comportamental devem permanecer no osTicket de homologação para inspeção humana. Snapshot e rollback protegem contra falha ou desvio; não devem apagar automaticamente a evidência funcional aprovada. | esclarecimento explícito do responsável; dossiês BHV-027 e BHV-029 |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2. GOV-012 e GOV-013, o
@@ -29,3 +30,6 @@ encerramento da Onda 7 foram integrados pela PR #6.
 GOV-016 formaliza a autorização operacional permanente concedida depois desse
 encerramento. GOV-017 registra a correção e o procedimento binário obrigatório
 após o incidente de encoding da Onda 8.
+GOV-018 corrige o critério de evidência operacional após a constatação de que a
+restauração integral ocultou do painel os resultados que deveriam permanecer
+inspecionáveis.

@@ -225,6 +225,8 @@ comando sobre uma mensagem do cliente.
 
 Uma repetição corretiva, com resultados sanitizados e rollback binário, está
 publicada no [dossiê BHV-029](evidence/BHV-029-ticket-from-response.md).
+Após GOV-018, a evidência foi recriada e mantida no painel como ticket
+`166522`; o vínculo visual também permanece entre `903010` e `874483`.
 
 ### Checkpoint 3 — ações de entrada, secundárias, massa e exportação
 

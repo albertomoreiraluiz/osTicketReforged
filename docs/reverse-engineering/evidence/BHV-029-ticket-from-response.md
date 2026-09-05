@@ -61,13 +61,33 @@ inspeção visual: foi verificada no MariaDB com comparação `BINARY` entre a
 entrada de origem e a mensagem inicial derivada, resultando em exatamente uma
 igualdade.
 
-## Estado final
+## Rollback da repetição corretiva anterior
 
 Após a captura, o snapshot foi restaurado por streams binários. As contagens de
 sete tabelas e a amostra UTF-8 coincidiram com o banco temporário. O ticket
 temporário `12` deixou de existir, a resposta `25` reapareceu no ticket `5` e as
 fixtures relacionais voltaram ao estado inicial. Nenhuma mutação deste ensaio
 permanece ativa.
+
+Esse estado deixou de satisfazer o critério de inspeção humana definido
+posteriormente em GOV-018.
+
+## Evidência operacional mantida no osTicket
+
+Uma passagem adicional criou e manteve o ticket:
+
+| Campo | Valor visível ou persistido |
+| --- | --- |
+| número | `166522` |
+| ID interno | `12` |
+| assunto | `[OSTR-EVIDENCE] Ticket criado a partir de resposta` |
+| resposta de origem | entrada `25` do ticket `912803` |
+| origem/estado | `Phone`, aberto |
+
+O número `166522` aparece na fila administrativa. O corpo inicial mantém
+igualdade binária com a resposta `R`; o ticket conserva as entradas `M`, `N`,
+`R`, `N` e as referências produzidas pelo fluxo. O snapshot de contingência não
+foi restaurado, pois a fixture deve permanecer inspecionável no painel.
 
 ## Limitação histórica corrigida
 

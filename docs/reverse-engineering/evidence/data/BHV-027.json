@@ -30,10 +30,19 @@
     "source": "include/class.thread.php:2690"
   },
   "rollback": {
+    "applies_to_prior_corrective_run": true,
     "seven_table_counts_match": true,
     "utf8_sample_matches": true,
     "parent_restored": { "ticket_pid": 0, "sort": 0, "flags": 0 },
     "child_restored": { "ticket_pid": 0, "sort": 0, "flags": 0 },
     "relation_events": 0
+  },
+  "persistent_evidence": {
+    "parent_number": "903010",
+    "child_number": "874483",
+    "parent": { "ticket_pid": 0, "sort": 0, "flags": 24 },
+    "child": { "ticket_pid": 9, "sort": 1, "flags": 8 },
+    "visible_in_staff_queue": true,
+    "contingency_snapshot_restored": false
   }
 }

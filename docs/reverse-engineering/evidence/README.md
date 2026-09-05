@@ -19,6 +19,11 @@ Cada cenário deve registrar:
 7. limitações e divergências;
 8. rollback e estado final da homologação.
 
+Quando a fixture for necessária para inspeção humana no painel, o estado final
+deve preservá-la. Nesses casos, o rollback é mantido como contingência para
+falha ou desvio e só é executado quando a evidência não puder ser deixada em
+estado válido, conforme GOV-018.
+
 Saídas extensas, dumps SQL, cookies e segredos permanecem em `.local/`. Os
 valores necessários à auditoria humana são transcritos para o dossiê e para um
 registro JSON sanitizado. Uma conclusão não deve ser tratada como evidência
@@ -40,8 +45,9 @@ A repetição corretiva seguirá este plano antes de qualquer mutação:
 6. comparar contagens, fixtures e amostra UTF-8 entre base ativa e temporária;
 7. publicar os dossiês e registros JSON nesta área.
 
-Nenhuma exclusão funcional será exercitada. A restauração integral é o rollback
-planejado para tickets, entradas e eventos criados durante a repetição.
+Nenhuma exclusão funcional foi exercitada. A restauração integral foi usada na
+repetição corretiva anterior; após GOV-018, uma nova passagem recriou e manteve
+as fixtures no osTicket para inspeção pelo painel.
 
 ## Índice
 

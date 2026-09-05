@@ -87,7 +87,9 @@ foram concluídos, aprovados na revisão documental final e integrados pela PR #
 Uma revisão de cobertura abriu nove cenários complementares da Onda 8: oito
 foram concluídos no recorte declarado e ações em massa ficaram mapeadas sem
 efeito em lote. Nenhuma exclusão ocorreu. A revisão independente foi aprovada e
-integrada pela PR #9. O trabalho restante deste plano é o Portão D, dependente
+integrada pela PR #9. Conforme GOV-018, as fixtures de vínculo e criação de
+ticket a partir de resposta permanecem na homologação como evidência
+inspecionável pelo painel. O trabalho restante deste plano é o Portão D, dependente
 da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural

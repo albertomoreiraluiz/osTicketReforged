@@ -79,13 +79,31 @@ O ponto está em `LinkedEvent::getDescription()`
 (`include/class.thread.php:2685-2693`). O `200` da resposta, isoladamente, não é
 evidência de renderização completa.
 
-## Estado final
+## Rollback da repetição corretiva anterior
 
 O dump foi restaurado por streams binários. A base ativa e a base temporária
 voltaram a ter contagens idênticas nas sete tabelas de controle e a mesma
 amostra UTF-8. Os tickets `9` e `10` terminaram novamente independentes, com
 `pid=0`, `sort=0`, `flags=0` e zero eventos relacionais. Nenhuma mutação deste
 ensaio permanece ativa.
+
+Esse estado deixou de satisfazer o critério de inspeção humana definido
+posteriormente em GOV-018.
+
+## Evidência operacional mantida no osTicket
+
+Uma passagem adicional recriou o vínculo e o manteve na homologação:
+
+| Papel | Número visível | ID interno | Estado relacional |
+| --- | --- | --- | --- |
+| pai | `903010` | `9` | `pid=0`, `sort=0`, `flags=24` |
+| filho | `874483` | `10` | `pid=9`, `sort=1`, `flags=8` |
+
+Os dois números aparecem na fila administrativa. O vínculo continua produzindo
+o `404` já documentado e a abertura do pai continua registrando o fatal de
+`LinkedEvent` no log; esses defeitos pertencem à própria evidência da baseline.
+O snapshot binário de contingência não foi restaurado, pois o estado persistido
+correspondeu ao comportamento esperado e deve permanecer disponível no painel.
 
 ## Limitação histórica corrigida
 

@@ -28,6 +28,8 @@ pela PR #9.
 Os cenários de vínculo/desvínculo e criação de ticket a partir de uma resposta
 foram repetidos sob rollback binário e agora possuem dossiês e JSON sanitizados
 no [índice de evidências comportamentais](docs/reverse-engineering/evidence/README.md).
+Para inspeção humana, a homologação mantém o vínculo `903010`→`874483` e o
+ticket derivado `166522`, conforme GOV-018.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 
