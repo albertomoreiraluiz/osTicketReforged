@@ -4,7 +4,7 @@
 
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
-- Branch estável: `main`; trabalho corrente em `codex/wave9-task-lifecycle`.
+- Branch estável: `main`; trabalho corrente em `codex/wave9-downloads-and-closure`.
 - Etapa: Onda 9 em execução; repetição visual profunda anterior ao Portão D.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
@@ -204,10 +204,10 @@
 
 ## Próximo passo proposto
 
-1. derivar pelo menos três opções arquiteturais das evidências consolidadas;
-2. comparar riscos de atualização, segurança, integração e migração;
-3. apresentar recomendação e ADR do Portão D ao responsável, sem antecipar a
-   decisão de versões ou integração do frontend.
+1. restaurar a sessão administrativa com credencial local válida;
+2. abrir e registrar os 18 editores de modelos de e-mail restantes;
+3. obter novo parecer independente e fechar documentalmente a Onda 9;
+4. somente depois derivar opções arquiteturais para o Portão D.
 
 ## Estado dos portões
 
@@ -334,6 +334,11 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-05 | Onda 9 — Administração funcional 2 | Sistema; Tópicos; Equipes; Funções; Departamentos | redefinições, abas, permissões e ações de massa percorridas; todas as inclusões canceladas e nenhum valor temporário foi salvo |
 | 2026-09-05 | Onda 9 — Administração funcional 3 | Filtros, SLA, Agenda, API, Páginas, Formulários, Listas, Plugins e anexos de Configurações | editores lidos e cancelados; sequências e anexos inspecionados; modelo de confirmação válido e `Página de Login` sem identificador/sem editor registrados |
 | 2026-09-05 | Onda 9 — ativação pública controlada | coleta POP3, segundo cadastro fictício, rollback visual | pausa e restauração confirmadas pela interface; novo envio anunciado; mensagem ausente da caixa esperada, logo consumo do link permanece pendente sem falso positivo |
+| 2026-09-05 | Onda 9 — exportação e e-mail administrativo | fila aberta; exportação; Lista Negra; conjunto HTML padrão | 25 colunas e progresso repetidos; nenhum novo CSV materializado; formulário de bloqueio, 19 modelos e editor/ajuda de variáveis percorridos visualmente |
+| 2026-09-05 | Onda 9 — correlação do laboratório de e-mail | Eventos do Sistema; modal do log | ciclo detectado porque `root@localhost.local` é simultaneamente conta coletada e conta do sistema; evento refere respostas SMTP e não comprova ativação |
+| 2026-09-05 | Onda 9 — primeira revisão independente de fechamento | parecer QA somente leitura | bloqueou fechamento por ativação aberta, ausência da tabela BHV-001..034, trechos históricos contraditórios e próximo passo prematuro; correções documentais iniciadas na branch corrente |
+| 2026-09-05 | Onda 9 — confirmação pública concluída | caixa POP sanitizada; `pwreset.php`; login visual | rota real do link identificada sem token; confirmação consumida; login da conta fictícia abriu o portal autenticado e saída restaurou o contexto anônimo |
+| 2026-09-05 | Onda 9 — bloqueio de reautenticação administrativa | login SCP visual; `.env` sem exposição | conta principal retornou `Acesso negado`; conta administrativa de teste retornou `ID de usuário inválido`; 18 editores de modelos permanecem individualmente pendentes |
 | 2026-09-05 | Onda 9 — vínculo de tickets pela fila | fila aberta; modal `Tickets Link`; ticket principal `903010`; relacionado `874483` | seleção, confirmação e reabertura executadas visualmente; rótulo `PRINCIPAL` e aba de relacionados com uma linha confirmados; nenhuma desvinculação executada |
 | 2026-09-05 | Onda 9 — ajuda contextual e cenário realista 01 | ajuda `advanced`; ajuda `reply_types`; ticket `990221`; portal público e SCP | textos dos dois manuais lidos na tela; incidente de impressão aberto, pesquisado, reivindicado, diagnosticado, respondido e resolvido integralmente pelo frontend; interrupção do SMTP/POP correlacionada e serviço local restabelecido; paginação inconsistente da busca registrada |
 | 2026-09-05 | Onda 9 — repetição visual de BHV-031 | busca visual; ticket `927747`; entrada `32`; tarefa `2` | ação `Criar Tarefa` aberta corretamente; título/departamento/agente preenchidos na tela; descrição herdada, vínculo, reivindicação e atualização da tarefa confirmados pela interface |

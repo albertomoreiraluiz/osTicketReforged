@@ -9,19 +9,64 @@
 
 - `Pendente`: rota ou região conhecida ainda não percorrida integralmente.
 - `Em observação`: percurso visual iniciado e ainda não fechado.
+- `Bloqueado`: percurso alcançou uma precondição externa reproduzida e
+  documentada, sem conversão indevida em conclusão.
 - `Coberto`: todos os componentes visíveis foram classificados e exercitados
   quando seguro.
-- `Bloqueado`: precondição externa ou decisão necessária foi registrada.
 
 ## Percursos
 
 | Contexto | Entrada | Estado | Evidência atual | Próxima ação |
 | --- | --- | --- | --- | --- |
-| Anônimo | `/` | Em observação | cabeçalho, quatro menus, cadastro funcional, validações, criação de ticket e rodapé externo percorridos em ordem | concluir o link de confirmação recebido por e-mail |
+| Anônimo | `/` | Coberto | cabeçalho, quatro menus, cadastro, confirmação por e-mail, login pós-ativação, criação de ticket e rodapé externo percorridos em ordem | manter o ciclo de e-mail do laboratório como divergência separada |
 | Cliente | `/login.php` | Coberto | autenticação, perfil, lista, filtros, ordenação, tickets próprio/colaborado, criação, KB, página inicial e saída percorridos visualmente | correlacionar divergências de filtro, contagem e impressão |
 | Equipe — agente | `/scp/` | Coberto para o papel restrito | Painel, Diretório, Perfil, Tarefas, Tickets e FAQ percorridos como `OSTR Viewer`; nota funcional publicada | correlacionar divergências de ACL/contagem e modal vazio da FAQ |
-| Equipe — administrador | `/scp/` | Em observação | fila de tickets revelou lacunas de massa/exportação | reiniciar pelo topo e cobrir todas as abas operacionais |
-| Administração | `/scp/admin.php` | Coberto no mapa global | cinco grupos e todos os 27 submenus/abas internas percorridos em ordem pelo frontend | repetir fluxos funcionais priorizados e fechar correlações |
+| Equipe — administrador | `/scp/` | Coberto | shell e cinco menus operacionais percorridos; ações de ticket, tarefa, KB, usuários e filas repetidas visualmente | manter divergências explícitas para correlação posterior |
+| Administração | `/scp/admin.php` | Em observação | cinco grupos, 27 submenus/abas e editores funcionais percorridos em ordem; editor de Resposta aberto | abrir individualmente os outros 18 modelos após restaurar a sessão administrativa |
+
+## Rastreabilidade dos cenários comportamentais anteriores
+
+`Reproduzido` exige ação pela interface renderizada. `Observado` cobre leitura
+visual ou comando deliberadamente não submetido. `Sem equivalente` identifica
+um contrato HTTP/CLI que não possui percurso de usuário no frontend; não é
+convertido artificialmente em teste visual.
+
+| Cenário | Equivalente visual e evidência | Estado |
+| --- | --- | --- |
+| BHV-001 | percurso anônimo completo, cadastro, ativação e login | reproduzido |
+| BHV-002 | login SCP com campos visíveis e sessão administrativa | reproduzido |
+| BHV-003 | cinco menus administrativos e 27 submenus/abas em ordem | reproduzido |
+| BHV-004 | login, portal, tickets, KB, perfil e saída do cliente | reproduzido |
+| BHV-005 | sessão `OSTR Viewer`, menus reduzidos e negações visíveis | reproduzido |
+| BHV-006 | modais AJAX e transições PJAX acionados pelos controles | reproduzido |
+| BHV-007 | Eventos e Informações lidos; logs correlacionados por horário | reproduzido |
+| BHV-008 | incidente realista criado, reivindicado, respondido e resolvido | reproduzido |
+| BHV-009 | tarefas `1` e `2`, resposta/nota, vínculo e estados | reproduzido |
+| BHV-010 | anexos selecionados nos formulários e arquivo staff baixado | reproduzido no recorte visual seguro |
+| BHV-011 | Diagnóstico SMTP, autocron POP3, resposta e reenvio pela thread | reproduzido; laboratório registra ciclo |
+| BHV-012 | API JSON/XML/RFC 822 e cron não possuem interface de usuário | sem equivalente visual |
+| BHV-013 | impressão staff materializou PDF; cliente não materializou | reproduzido com divergência por papel |
+| BHV-014 | pesquisas positivas/negativas, filtros e ordenações | reproduzido |
+| BHV-015 | KB pública, staff e administrativa; busca e impressão | reproduzido |
+| BHV-016 | resposta pronta desabilitada e reativada pelo editor | reproduzido e restaurado |
+| BHV-017 | reivindicação, atribuição/liberação e eventos auditáveis | reproduzido |
+| BHV-018 | abertura anônima, colaboração e resposta autenticada | reproduzido |
+| BHV-019 | perfil do cliente editado, confirmado e restaurado | reproduzido |
+| BHV-020 | organização criada e usuário associado pela interface | reproduzido; fixture preservada |
+| BHV-021 | edição restaurada e nota da organização preservada | reproduzido |
+| BHV-022 | assunto do ticket alterado e restaurado visualmente | reproduzido |
+| BHV-023 | usuário editado/restaurado e nota administrativa preservada | reproduzido |
+| BHV-024 | fuso do agente alterado e restaurado | reproduzido |
+| BHV-025 | limite 25→5→25, quatro páginas e restauração | reproduzido |
+| BHV-026 | menus, submenus, atalhos e botões de ticket | reproduzido |
+| BHV-027 | desvínculo e novo vínculo `903010`/`874483` | reproduzido |
+| BHV-028 | fusão `924064`/`273122` sem exclusão | reproduzido |
+| BHV-029 | tickets derivados `163086` e `229189` visíveis na origem | reproduzido; correlação POP anotada |
+| BHV-030 | destinatários, histórico, edição e reenvio das entradas | reproduzido |
+| BHV-031 | tarefa `2` criada de entrada, reivindicada e atualizada | reproduzido |
+| BHV-032 | respondido/não respondido e diálogos secundários | reproduzido e restaurado |
+| BHV-033 | status, atribuição, transferência, vínculo e fusão em massa | reproduzido no recorte; exclusão somente observada |
+| BHV-034 | opções de PDF/ZIP e exportação de fila | observado; PDF staff comprovado, novo CSV/ZIP não materializado |
 
 ## Visitante anônimo — passagem sequencial reiniciada
 
@@ -61,15 +106,27 @@ acionado e abriu `https://osticket.com/` em nova aba. O cadastro foi preenchido
 integralmente na tela; domínios locais e reservados de teste foram rejeitados,
 um endereço fictício sintaticamente público foi aceito e o sistema confirmou o
 envio da ativação. Login anterior à ativação exibiu `Confirmação de conta
-necessária`. O consumo do link ainda está aberto devido à corrida com o coletor
-POP3 natural, sem registrar tokens na evidência.
+necessária`. O primeiro consumo do link ficou aberto devido à corrida com o
+coletor POP3 natural, sem registrar tokens na evidência.
 
 Uma segunda repetição controlada pausou a coleta POP3 pela própria tela,
 persistiu a pausa, cadastrou outra conta fictícia e confirmou novamente a
 página de envio. A mensagem não apareceu na caixa POP esperada pelo
 microservidor; portanto o link não foi artificialmente marcado como validado.
 A coleta foi restaurada visualmente e o banner `Atualizado com sucesso este
-e-mail` confirmou o rollback da configuração.
+e-mail` confirmou o rollback da configuração. A inspeção sanitizada da caixa
+mostrou que o e-mail de boas-vindas usa `pwreset.php` como rota de confirmação,
+e não `account.php`. Após ajustar somente a ponte efêmera para reconhecer essa
+rota, o link foi consumido sem expor o token. O login subsequente, com e-mail e
+senha preenchidos na tela, abriu `/tickets.php`, exibiu a identidade `OSTR
+Wave9 Activation Two` e permitiu encerrar a sessão normalmente.
+
+Na correlação pelos Eventos do Sistema, os registros mais recentes eram
+`Ciclo infinito de e-mail detectado`: o próprio texto informa que
+`root@localhost.local` está simultaneamente como conta coletada e conta de
+usuário/sistema. O evento exibido referencia respostas do cenário SMTP, não o
+e-mail de ativação; por isso ele explica a contaminação do microservidor, mas
+não comprova entrega nem consumo do token de confirmação.
 
 ## Cliente autenticado — passagem sequencial reiniciada
 
@@ -91,15 +148,16 @@ topo.
 | 9 | lista fechada | alternância para `Fechado` | estado vazio; os controles ainda exibiram valores visuais anteriores até o reinício |
 | 10 | ordenação | Número, Data, Status, Assunto e Departamento | Número, Status, Assunto e Departamento mudaram os parâmetros; Data não alterou a URL nesta tentativa e exige repetição |
 | 11 | detalhe `593078` | abertura da linha | informações básicas, usuário, thread, impressão, edição e resposta apresentados |
-| 12 | impressão | `Imprimir` | nenhum resultado visual ou navegação observado; captura de download permanece pendente |
+| 12 | impressão | `Imprimir` | nenhuma navegação no portal; a impressão staff do mesmo ticket materializou PDF, delimitando a divergência ao contexto cliente |
 | 13 | edição — reinício | assunto temporário preenchido e `Recomeçar Formulário` | assunto original restaurado sem persistência |
 | 14 | edição — cancelamento | `Cancelar` | retorno para `/index.php`, não para o detalhe |
 | 15 | resposta vazia | `Publicar Resposta` | mensagem inline `Mensagem necessária` |
 | 16 | resposta funcional | texto preenchido no editor visível e `Publicar Resposta` | mensagem de sucesso e nova entrada pública na thread com marcador `[OSTR-W9]` |
 
-**Fato observado:** esta etapa comprova somente as linhas acima. A divergência
-da composição de filtros, a ordenação por Data e a impressão ainda precisam de
-repetição controlada antes de qualquer classificação como defeito.
+**Fato observado:** a repetição controlada posterior confirmou a ordenação por
+Data e reproduziu a divergência da composição de filtros. A impressão continuou
+sem resultado no cliente, enquanto o contexto staff materializou o PDF; os três
+achados permanecem como comportamento observado, não como diagnóstico causal.
 
 Complementos que encerraram o contexto: o ticket colaborado `807330` mostrou
 na própria thread o evento de inclusão do cliente e duas mensagens publicadas
@@ -136,7 +194,7 @@ uma divergência candidata de apresentação, não um ensaio de segurança.
 
 ## Equipe — shell operacional com administrador
 
-**Entrada:** `/scp/`. **Estado:** Em observação. A autenticação foi preenchida
+**Entrada:** `/scp/`. **Estado:** Coberto. A autenticação foi preenchida
 nos dois controles visíveis usando valores efêmeros do `.env`, sem registro dos
 segredos.
 
@@ -192,7 +250,7 @@ ação destrutiva Apagar não foi submetida.
 ## Administração — reinício sequencial pós-Wiki
 
 **Entrada lógica:** primeiro menu `Painel de Controle`, apesar de o comando de
-troca de painel inicialmente abrir `settings.php`. **Estado:** Em observação.
+troca de painel inicialmente abrir `settings.php`. **Estado:** Coberto.
 
 ### 1. Painel de Controle
 
@@ -317,7 +375,7 @@ submetido sem alteração de conteúdo. A própria thread passou a exibir o selo
 | 7 | `Gerenciar referências` | abrir abas Referências/Indicar | zero referências; formulário oferece agente, equipe ou departamento e motivo opcional; nenhuma indicação submetida |
 | 8 | `Gerenciar Formulários` | abrir e ler o diálogo | formulário `Detalhes do chamado` listado; inclusão indisponível no contexto; nenhuma alteração submetida |
 | 9 | impressão do ticket | notas + eventos, papel A4, imprimir | `Ticket-927747.pdf` gerado localmente com 76.254 bytes |
-| 10 | exportação da fila | 25 colunas, opções avançadas, nome e delimitador | requisição concluída e modal fechado; o navegador não materializou arquivo no diretório de downloads, portanto o artefato CSV permanece pendente de comprovação |
+| 10 | exportação da fila | 25 colunas, opções avançadas, nome e delimitador | segunda submissão abriu progresso e opção de envio por e-mail; nenhum novo arquivo foi materializado; existe CSV de execução anterior, mas não comprova esta repetição |
 
 **Fato observado:** a fusão foi precedida por dump binário de 1.301.412 bytes,
 SHA-256 `12c9cd0108ea4ad104c5e2ba1916dd5e5be65f54db08e30a91713a74a4267886`,
@@ -421,7 +479,8 @@ do backend permanece para uma unidade posterior.
 ## Administração — shell e mapa global
 
 **Entrada observada:** `/scp/settings.php`  
-**Estado:** Em observação.
+**Estado:** Coberto para inventário comportamental; divergências permanecem
+abertas sem bloquear a cobertura visual.
 
 | Ordem | Navegação principal | Submenus observados pelo frontend |
 | --- | --- | --- |
@@ -440,16 +499,16 @@ o aviso é comportamento visual, não instrução para exclusão.
 | Página | Componentes observados na primeira leitura | Estado |
 | --- | --- | --- |
 | Eventos do Sistema | datas, nível de log, filtro, tabela, ordenação, seleção, exclusão e paginação | aberta; exclusão não submetida |
-| Sistema | status, URL, nome, departamento, HTTPS, colisão, paginação, log, avatares, rich text, iframe, ACL, data/hora, idiomas e anexos | campos e estados atuais observados; submissão pendente |
-| Tópicos de ajuda | adicionar, mais, modo de classificação, tabela, seleção e paginação | aberta; ações ainda pendentes |
-| Endereços de e-mail | adicionar, mais, tabela, ordenação, conta padrão e seleção | aberta; configuração de coleta pendente |
-| Agentes | filtros por departamento/equipe, adicionar, mais, tabela, ordenação e seleção | aberta; ações ainda pendentes |
-| Equipes | adicionar, mais, tabela, ordenação, seleção e paginação | listagem percorrida; inclusão e ações em massa não submetidas |
-| Funções | adicionar, mais, tabela, seleção e paginação | listagem percorrida; quatro funções ativas observadas; edição e massa pendentes |
-| Departamentos | adicionar, mais, tabela, ordenação, seleção e paginação | listagem percorrida; departamento padrão não selecionável e demais selecionáveis |
+| Sistema | status, URL, nome, departamento, HTTPS, colisão, paginação, log, avatares, rich text, iframe, ACL, data/hora, idiomas e anexos | segunda passagem alterou e redefiniu paginação sem salvar |
+| Tópicos de ajuda | adicionar, mais, modo de classificação, tabela, seleção e paginação | formulário, abas e massa classificados; alteração temporária redefinida |
+| Endereços de e-mail | adicionar, mais, tabela, ordenação, conta padrão e seleção | POP3/SMTP configurados e testados; pausa temporária da coleta restaurada |
+| Agentes | filtros por departamento/equipe, adicionar, mais, tabela, ordenação e seleção | formulário completo e permissões internas percorridos; criação cancelada |
+| Equipes | adicionar, mais, tabela, ordenação, seleção e paginação | listagem e formulário Equipe/Membros percorridos; inclusão cancelada e massa classificada |
+| Funções | adicionar, mais, tabela, seleção e paginação | quatro funções ativas; formulário Definição/Permissões percorrido e cancelado; massa classificada |
+| Departamentos | adicionar, mais, tabela, ordenação, seleção e paginação | formulário Configurações/Acesso percorrido e cancelado; padrão não selecionável; massa classificada |
 
-A abertura de uma página não a classifica como coberta. Cada linha acima será
-expandida componente por componente antes do encerramento da Administração.
+A primeira abertura não classificou a página como coberta. As passagens
+funcionais e tabelas individualizadas abaixo substituem aquele estado inicial.
 
 ### Grupo Agentes — primeira passagem posicional
 
@@ -463,9 +522,9 @@ visível, da esquerda para a direita; nenhuma mutação foi submetida.
 | 3 | Funções | adicionar, mais, nome, status, criação, atualização e seleção | quatro funções ativas visíveis; a função sem checkbox revela item não selecionável nesse estado |
 | 4 | Departamentos | adicionar, mais, nome, status, tipo, agentes, e-mail, gerente, criação e seleção | três departamentos públicos ativos; o departamento padrão aparece com seleção desabilitada |
 
-Formulários de inclusão/edição e menus `Mais` continuam pendentes. Esta
-passagem comprova o mapa e os estados das listagens, não o comportamento de
-submissão.
+Os formulários de inclusão e os menus de massa foram classificados na segunda
+passagem. Ações destrutivas não foram submetidas; isso é um limite deliberado
+do ensaio, e não uma lacuna de observação.
 
 Na segunda passagem funcional, o formulário de Equipe teve as abas `Equipe` e
 `Membros` percorridas; o de Função teve `Definição` e as permissões de Tickets,
@@ -477,6 +536,13 @@ temporária no nome de `Questões gerais` foi revertida por `Recomeçar
 Formulário`. Em Sistema, a paginação foi mudada visualmente de 25 para 30 e
 restaurada para 25 pelo botão de redefinição, sem salvar.
 
+| Posição | Formulário do grupo Agentes | Entrada visual | Resultado |
+| --- | --- | --- | --- |
+| 5.1 | Agente | Adicionar Novo Agente | Conta, Acesso, quatro grupos de Permissões e Equipes lidos; cancelado |
+| 5.2 | Equipe | Adicionar Nova Equipe | abas Equipe e Membros lidas; cancelado |
+| 5.3 | Função | Adicionar Nova Função | Definição e permissões de Tickets, Tarefas e KB lidas; cancelado |
+| 5.4 | Departamento | Adicionar Novo Departamento | Configurações e Acesso lidos; cancelado |
+
 Os editores auxiliares de Gerenciar também foram abertos pela navegação
 visível, lidos e cancelados: Filtro (regras, ações e notas), SLA, Agenda,
 chave de API, Página, Formulário e Lista. O formulário de Filtro expôs ações
@@ -484,6 +550,18 @@ de rejeição, departamento, prioridade, SLA, equipe, agente, tópico, estado,
 endereço de resposta, autoresposta, anexo de resposta pronta e envio de
 e-mail. Plugins não oferece upload pela interface e instrui a instalação em
 `include/plugins`.
+
+| Posição | Editor | Entrada visual | Estados/resultado |
+| --- | --- | --- | --- |
+| 3.1 | Tópico de ajuda | Adicionar/editar | Informações, opções de novo ticket e Formulários; redefinido/cancelado |
+| 3.2 | Filtro | Adicionar | regras, ações e notas; cancelado |
+| 3.3 | SLA | Adicionar | nome, período, agenda, transiência e notas; cancelado |
+| 3.4 | Agenda | Adicionar | nome, fuso, tipo, descrição e horário; cancelado |
+| 3.5 | API | Adicionar | IP, serviços de ticket/cron e notas; cancelado sem chave |
+| 3.6 | Página | Adicionar | tipo, nome, estado, corpo e notas; cancelado |
+| 3.7 | Formulário | Adicionar | título, instruções e quatro campos configuráveis; cancelado |
+| 3.8 | Lista | Adicionar | definição, propriedades, tipos e variáveis; cancelado |
+| 3.9 | Plugin | Adicionar | instrução de instalação por `include/plugins`; sem upload disponível |
 
 Em Configurações, os anexos de Tickets e Tarefas abriram o gerenciador de
 sequências e a configuração do campo de anexos; as alterações de ensaio foram
@@ -493,6 +571,53 @@ variável `%{link}`. **Fato observado:** a linha `Página de Login` referencia
 `ajax.php/content//manage`, sem identificador, e não abre editor ou mensagem
 de erro ao ser acionada. O achado permanece como divergência funcional a
 correlacionar com a configuração persistida e o código.
+
+| Posição | Anexo/editor de Configurações | Resultado explícito |
+| --- | --- | --- |
+| 2.1 | Empresa — Páginas/Logos/Fundo | seletores, upload e destinos cliente/staff lidos; nenhum arquivo submetido |
+| 2.2 | Sistema | paginação 25→30 e redefinição para 25 sem salvar |
+| 2.3 | Tickets — Sequências | sequência existente e formulário de nova sequência abertos; descartados |
+| 2.4 | Tickets — Anexos | Configuração e Visibilidade do campo abertas; canceladas |
+| 2.5 | Tarefas — Anexos | limites e visibilidade do campo abertos; cancelados |
+| 2.6 | Agentes — Modelos | quatro modelos listados; boas-vindas aberto e cancelado |
+| 2.7 | Usuários — Modelos | seis linhas; confirmação aberta; Página de Login sem identificador não abriu |
+| 4.3 | Lista Negra | formulário de novo bloqueio lido; cancelado |
+| 4.4 | Modelos de e-mail | 19 modelos classificados; Modelo de Resposta e ajuda de variáveis abertos |
+
+#### Modelos de e-mail — rastreabilidade individual
+
+Todos os itens abaixo tiveram título, descrição e estado lidos na listagem do
+conjunto HTML padrão. `Modelo de Resposta` também teve assunto, corpo e ajuda
+de variáveis abertos. Os demais editores individuais não serão declarados como
+cobertos até serem abertos com nova sessão administrativa válida.
+
+| Ordem | Modelo | Leitura visual atual | Estado do editor |
+| --- | --- | --- | --- |
+| 4.4.1 | Aviso de Nova Atividade | colaborador em alteração de ticket | pendente |
+| 4.4.2 | Nova mensagem de Resposta automática | confirmação de mensagem anexada | pendente |
+| 4.4.3 | Resposta Automática para Novo Ticket | resposta por correspondência de filtro | pendente |
+| 4.4.4 | Resposta automática de Novo Ticket | resposta ao criar ticket | pendente |
+| 4.4.5 | Aviso de Novo Ticket | ticket criado por agente | pendente |
+| 4.4.6 | Aviso de limite ultrapassado | máximo de tickets abertos | pendente |
+| 4.4.7 | Modelo de Resposta | assunto, editor HTML e variáveis | coberto |
+| 4.4.8 | Alerta de atividade interna | nota ou resposta do agente | pendente |
+| 4.4.9 | Alerta de nova mensagem | resposta de usuário | pendente |
+| 4.4.10 | Alerta de Novo Chamado | criação de ticket | pendente |
+| 4.4.11 | Alerta de tickets em atraso | inatividade ou vencimento | pendente |
+| 4.4.12 | Alerta de atribuição de tickets | atribuição de ticket | pendente |
+| 4.4.13 | Alerta na transferência | transferência de ticket | pendente |
+| 4.4.14 | Alerta de nova atividade | nova atividade em tarefa | pendente |
+| 4.4.15 | Aviso de Nova Atividade | colaborador em atividade da tarefa | pendente |
+| 4.4.16 | Alerta de Nova Tarefa | criação de tarefa | pendente |
+| 4.4.17 | Alerta de tarefas em atraso | vencimento ou inatividade | pendente |
+| 4.4.18 | Aviso de atribuição de tarefa | atribuição de tarefa | pendente |
+| 4.4.19 | Aviso de transferência de tarefa | transferência de tarefa | pendente |
+
+**Bloqueio reproduzido:** após a expiração da sessão, a tentativa visual com a
+conta principal definida no `.env` retornou `Acesso negado`; a conta de teste
+administrativa retornou `ID de usuário inválido`. A continuidade exige que o
+responsável atualize as credenciais administrativas locais ou restabeleça a
+sessão no navegador. Nenhum desvio de autenticação foi tentado.
 
 Em Empresa, as quatro abas foram relidas: Informações Básicas; seleção das
 páginas Inicial, Offline e Agradecimento; Logos distintos para cliente/equipe;
@@ -538,9 +663,9 @@ lidos e nenhum botão `Salvar Alterações` foi submetido.
 
 **Fato observado:** cinco páginas deste grupo possuem navegação interna por
 fragmentos (`#...`) que altera o painel de conteúdo. Portanto, inventariar
-somente a rota de topo não cobre a página. Os botões de configuração anexos,
-gerência de sequências e editores de modelos ainda precisam de abertura e
-classificação individual.
+somente a rota de topo não cobre a página. Botões de configuração anexos,
+gerência de sequências e editores de modelos foram abertos e classificados na
+segunda passagem registrada acima.
 
 ### Grupo Gerenciar — primeira passagem posicional
 
@@ -561,7 +686,8 @@ direita. Inclusões, edições e comandos de massa não foram submetidos.
 
 **Fato observado:** a listagem de API mascara a chave, mas ainda representa
 material operacional; a documentação registra somente o estado e jamais o
-identificador exibido. Editores de cada tipo e menus de massa seguem pendentes.
+identificador exibido. Os editores de cada tipo foram abertos e cancelados; os
+menus de massa foram classificados sem submissão destrutiva.
 
 ### Grupo E-mails — primeira passagem e precondição natural
 
@@ -576,17 +702,12 @@ identificador exibido. Editores de cada tipo e menus de massa seguem pendentes.
 | 7 | Conta padrão — Caixa de Correio Remota | host, porta, pasta, IMAP/POP, autenticação, coleta, frequência, quantidade e ação pós-coleta |
 | 8 | Conta padrão — SMTP | estado, host, porta, autenticação e permissão de cabeçalho |
 
-**Fato observado:** a busca global de e-mail está desabilitada; a conta padrão
-não possui host, porta, pasta nem protocolo de caixa remota e sua coleta está
-desabilitada. O SMTP da conta também está desabilitado e sem host/porta; o MTA
-global observado é a função `mail` do PHP. Portanto, os tickets anteriormente
-injetados por coletor/CLI não comprovam o fluxo natural de recebimento.
-
-**Bloqueio externo:** validar recebimento natural exige uma caixa IMAP ou POP
-de homologação e respectivas credenciais fornecidas pelo responsável. Nenhuma
-credencial será inventada, extraída ou persistida na documentação. Até essa
-precondição existir, BHV-011 permanece evidência apenas de backend; o formulário
-de diagnóstico permite testar somente a saída pelo frontend.
+**Fato observado histórico, depois superado:** na primeira passagem a conta
+não possuía caixa nem SMTP configurados. A configuração natural posterior do
+microservidor local habilitou POP e SMTP, permitiu o envio pelo Diagnóstico e a
+coleta pelo autocron do frontend, gerando o ticket `967253`. A pausa controlada
+da coleta durante o teste de ativação também foi revertida pela interface.
+Nenhuma credencial foi registrada na documentação.
 
 ### Grupo Painel de Controle — primeira passagem posicional
 
@@ -604,7 +725,7 @@ assinaturas e outros detalhes locais não são reproduzidos nesta documentação
 ## Equipe — administrador — fila de tickets abertos
 
 **Rota observada:** `/scp/tickets.php?queue=1`  
-**Estado:** Em observação — regiões visíveis cobertas; mutações em massa ainda
+**Estado:** Coberto — regiões e mutações reversíveis cobertas; ações destrutivas
 precisam de fixtures próprias.
 
 | Ordem | Região/componente | Ação natural observada | Resultado |
@@ -615,17 +736,17 @@ precisam de fixtures próprias.
 | 4 | submenu Meus Tickets | aberto e percorrido | Atribuído a mim, Equipes Atribuídos e adicionar fila pessoal |
 | 5 | submenu Encerrado | aberto e percorrido | Hoje, Ontem, semana, mês, trimestre, ano e adicionar fila pessoal |
 | 6 | Pesquisar | diálogo aberto pelo frontend | pesquisa pai, critérios, colunas, salvar busca e campos adicionais observados |
-| 7 | busca simples | controle e lookup visíveis | submissões positiva/negativa serão repetidas neste protocolo |
-| 8 | Ordenar | controle visível | opções ainda serão abertas e exercitadas nesta onda |
+| 7 | busca simples | controle e lookup visíveis | submissões positiva e negativa repetidas; paginação inconsistente registrada |
+| 8 | Ordenar | controle visível | opções abertas e ordenações repetidas |
 | 9 | cabeçalhos da tabela | Ticket, atualização, assunto, origem, prioridade e atribuição | links de ordenação observados |
 | 10 | checkboxes | `Todos`, `Nenhum` e `Alternar` exercitados | 12/12, 0/12 e complemento 1→11 confirmados visualmente |
 | 11 | Alterar status | dropdown aberto | Aberto, Resolvido e Encerrado |
 | 12 | Atribuir | dropdown aberto | Reivindicar, Agente e Equipe |
-| 13 | Fundir | diálogo aberto com duas fixtures | ordem, participantes, status, modos, excluir filho e mover tarefas; não submetido |
-| 14 | Vincular | diálogo aberto com duas fixtures | ordem, adicionar ticket e salvar; não submetido nesta passagem |
-| 15 | Transferir | diálogo aberto | departamento, manter encaminhamento e razão; não submetido |
+| 13 | Fundir | diálogo aberto com duas fixtures | submetido sem exclusão; pai `924064`, dependente `273122` e threads combinadas preservados |
+| 14 | Vincular | diálogo aberto com duas fixtures | desvínculo e novo vínculo de `903010`/`874483` confirmados visualmente |
+| 15 | Transferir | diálogo aberto | transferência temporária submetida e restaurada com razão auditável |
 | 16 | Excluir | confirmação aberta | aviso de irreversibilidade e razão observados; exclusão não confirmada |
-| 17 | Exportar | diálogo e opções avançadas abertos; botão submetido | download CSV natural observado, 25 campos padrão, nome e delimitador `;` |
+| 17 | Exportar | diálogo e opções avançadas abertos; botão submetido | CSV histórico existe, mas a repetição atual exibiu progresso sem materializar novo arquivo |
 | 18 | paginação/contagem | rodapé lido | 12 itens, página única no estado atual |
 
 As ações individuais anteriores não são usadas para encerrar as mutações em

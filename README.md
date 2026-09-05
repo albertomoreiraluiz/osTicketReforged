@@ -44,29 +44,32 @@ repetiu vínculo e derivação de ticket e concluiu o primeiro atendimento
 realista ponta a ponta no ticket `990221`. A tarefa derivada `2` também teve seu
 ciclo Aberto → Encerrado → Aberto, atualização, nota interna e formulários
 secundários reproduzidos pelo frontend; BHV-022 foi repetido com edição e
-restauração visual do ticket `903010`. A matriz ainda permanece aberta para as
-demais equivalências visuais dos cenários `BHV-001` a `BHV-034`. A passagem já
+restauração visual do ticket `903010`. A matriz agora explicita, cenário a
+cenário, a equivalência visual ou a ausência de interface para `BHV-001` a
+`BHV-034`. A passagem já
 reconfirmou também a Base de Conhecimento operacional e os cenários
 `BHV-016`, `BHV-020`, `BHV-021`, `BHV-023` e `BHV-024`, com restauração dos
 estados temporários e preservação das evidências funcionais. A repetição também
 confirmou paginação, ações em massa, vínculo/desvínculo, fusão visual sem
 exclusão, edição com histórico, marcações respondido/não respondido e impressão
 PDF. Cliente e agente restrito já tiveram os percursos sequenciais repetidos;
-o cadastro público chegou à confirmação por e-mail e o SMTP visual foi
-publicado e reenviado pela thread. A materialização do arquivo CSV, o consumo
-do link de ativação e os editores administrativos restantes continuam em
-observação.
+o cadastro público chegou à confirmação, ativação e login, e o SMTP visual foi
+publicado e reenviado pela thread. A materialização da exportação atual
+continua como divergência de comprovação. Dezenove modelos de e-mail foram
+classificados, mas dezoito editores individuais aguardam a restauração da
+sessão administrativa.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 
 Próximas etapas:
 
-1. concluir a matriz visual sequencial e a repetição dos cenários diretos;
-2. consolidar as evidências em pelo menos três opções arquiteturais;
-3. comparar riscos de atualização, integração, segurança e migração;
-4. manter exclusões condicionadas a plano, backup verificável e rollback
+1. restaurar a sessão administrativa e abrir os 18 editores de e-mail restantes;
+2. obter revisão independente aprovada da matriz visual reconciliada;
+3. depois consolidar as evidências em pelo menos três opções arquiteturais;
+4. comparar riscos de atualização, integração, segurança e migração;
+5. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
-5. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
+6. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
    versões de Angular, PrimeNG ou detalhes de integração.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
