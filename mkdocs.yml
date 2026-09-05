@@ -74,6 +74,8 @@ nav:
       - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
       - Revisão cruzada: reverse-engineering/REVIEW_REPORT.md
       - Análise comportamental: reverse-engineering/BEHAVIORAL_ANALYSIS.md
+      - Protocolo de observação integral: reverse-engineering/INTERFACE_OBSERVATION_PROTOCOL.md
+      - Matriz de cobertura da interface: reverse-engineering/INTERFACE_COVERAGE_MATRIX.md
       - Evidências comportamentais:
           - Protocolo e índice: reverse-engineering/evidence/README.md
           - BHV-027 — tickets vinculados: reverse-engineering/evidence/BHV-027-linked-tickets.md

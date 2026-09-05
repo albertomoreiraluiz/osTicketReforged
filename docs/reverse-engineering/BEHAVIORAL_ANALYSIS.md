@@ -49,7 +49,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-008 | ticket de teste | papéis fictícios | mutável | concluído | ciclo, thread, estado e persistência |
 | BHV-009 | tarefas vinculadas | papéis fictícios | mutável | concluído | criação, visibilidade, estado e ACL por ação |
 | BHV-010 | anexos e arquivos | papéis fictícios | mutável | concluído | persistência, serving, allowlist e tamanho |
-| BHV-011 | e-mail | papéis fictícios | mutável | concluído no ambiente local | entrada HTTP e saída por coletor sem relay |
+| BHV-011 | e-mail | papéis fictícios | mutável | backend observado; fluxo natural pendente | entrada direta e saída isolada não comprovam configuração administrativa completa |
 | BHV-012 | API HTTP nativa | chave fictícia local | mutável | concluído | JSON, XML, e-mail, cron, flags e persistência |
 | BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
 | BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
@@ -599,6 +599,21 @@ configurações terminaram novamente `NULL`. Persistência, serving, allowlist e
 limite ficam cobertos, encerrando BHV-010.
 
 ### BHV-011 — pré-condição do transporte de e-mail
+
+**Reclassificação pela Onda 9:** as chamadas diretas a `tickets.email` e os
+coletores locais descritos abaixo comprovam componentes de backend, parsing e
+transporte. Não comprovam criação natural por uma conta configurada e coletada
+pelo Painel de Administração. Esse fluxo permanece pendente conforme GOV-019.
+
+Na inspeção natural do Painel de Administração, `E-mails > Configurações`
+mostrou a busca global desabilitada e sem busca automática por cron. Em
+`E-mails > E-mails > conta padrão > Caixa de Correio Remota`, host, porta,
+pasta, protocolo e autenticação estavam sem configuração e o estado de coleta
+estava desabilitado. A aba `Enviando (SMTP)` também estava desabilitada e sem
+host/porta; o MTA global selecionado era a função `mail` do PHP. Assim, a
+precondição ausente para entrada natural é uma caixa IMAP/POP fictícia de
+homologação, configurada pela interface com credenciais fornecidas para esse
+fim. O diagnóstico visível cobre saída, não recebimento.
 
 A inspeção não destrutiva encontrou zero conta SMTP cadastrada ou ativa em
 `email_account`. O fallback do PHP aponta para `localhost:25`, sem

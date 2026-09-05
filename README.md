@@ -9,6 +9,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
 | Etapa atual | Onda 8 integrada pela PR #9; preparação do Portão D |
+| Observação visual | Onda 9 iniciada — cobertura integral por página e componente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
@@ -30,6 +31,9 @@ foram repetidos sob rollback binário e agora possuem dossiês e JSON sanitizado
 no [índice de evidências comportamentais](docs/reverse-engineering/evidence/README.md).
 Para inspeção humana, a homologação mantém o vínculo `903010`→`874483` e o
 ticket derivado `166522`, conforme GOV-018.
+Sob GOV-019, a cobertura foi reaberta para percorrer os contextos público,
+cliente, equipe e Administração exclusivamente pelo frontend natural antes do
+Portão D. Evidência de backend não substitui comportamento visual.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 

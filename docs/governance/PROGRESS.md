@@ -37,6 +37,9 @@
 - Evidência comportamental destinada à inspeção humana deve permanecer como
   fixture identificável na homologação conforme GOV-018; rollback é proteção
   contra falha, não encerramento automático do cenário.
+- Onda 9 reabriu a cobertura visual sob GOV-019: todas as superfícies serão
+  percorridas pelo frontend natural, componente por componente; Administração
+  e e-mail operacional deixam de herdar conclusão de chamadas diretas.
 
 ## Onda 7 concluída funcionalmente
 
@@ -307,6 +310,10 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-04 | Correção de encoding do rollback | dump íntegro; backup do estado afetado; restore binário temporário/ativo; `HEX()` e sete contagens | acentuação UTF-8 restaurada; procedimento textual proibido por GOV-017 |
 | 2026-09-04 | Auditoria de evidências BHV-027/BHV-029 | revisão dos checkpoints; repetição controlada; dossiês e JSON sanitizados | lacuna corrigida: vínculo/desvínculo e ticket derivado de `R` possuem evidência própria; rollback binário confirmou sete contagens e UTF-8 |
 | 2026-09-04 | Correção do critério de evidência operacional | GOV-018; painel, HTTP e banco | vínculo `903010`→`874483` e ticket derivado `166522` recriados e mantidos; os três aparecem na fila administrativa |
+| 2026-09-04 | Início da Onda 9 — observação integral | GOV-019; protocolo e matriz posicional | cobertura anterior reaberta; Administração, ações em massa e fluxo natural de e-mail entram como pendências explícitas |
+| 2026-09-04 | Onda 9 — fila administrativa de tickets | navegador interno; percurso posicional; 18 regiões | submenus, pesquisa avançada, seleção, diálogos em massa e exportação CSV observados pelo frontend; exclusão não submetida |
+| 2026-09-05 | Onda 9 — Administração, primeira passagem | navegador interno; matriz posicional; 27 páginas/painéis | cinco grupos e todos os submenus de topo percorridos; Configurações, Gerenciar, E-mails, Agentes e Painel documentados sem submissões |
+| 2026-09-05 | Onda 9 — precondição natural de e-mail | Administração > E-mails > Configurações/Conta/Caixa/SMTP | coleta e SMTP desabilitados e caixa remota sem parâmetros; BHV-011 permanece backend até existir caixa IMAP/POP fictícia |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |
