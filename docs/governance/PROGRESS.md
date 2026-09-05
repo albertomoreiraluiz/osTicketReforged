@@ -4,8 +4,8 @@
 
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
-- Branch estável: `main`; checkpoint integral em `codex/project-state-checkpoint`.
-- Etapa: consolidação documental anterior ao Portão D; comparação arquitetural ainda não iniciada.
+- Branch estável: `main`; checkpoint integral entregue pela PR #27.
+- Etapa: checkpoint anterior ao Portão D concluído; comparação arquitetural ainda não iniciada.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -381,7 +381,7 @@ que o registro histórico seja reescrito.
 | 2026-09-05 | Onda 9 — revisão independente da auditoria | `qa_engineer/onda09/auditoria-complementar-final`; recálculo da tag; revisão somente leitura | aprovado sem achado alto/médio; soma 2.266, zero caminho não classificado, zero sobreposição, links íntegros e nenhum segredo localizado |
 | 2026-09-05 | Portal — arquitetura de informação | PR #25; `mkdocs.yml`; landing pages; stylesheet local; inspeção visual no navegador | árvore plana substituída por abas e oito grupos recolhíveis; quatro trilhas orientam leitores; caminhos e conteúdo canônicos preservados |
 | 2026-09-05 | Preparação do Portão D | PR #26; GOV-023; ADR 0002; portal; plano ativo | taxonomia do MkDocs tornada obrigatória e trabalho do Portão D descrito sem iniciar comparação ou implementação |
-| 2026-09-05 | Checkpoint integral anterior ao Portão D | GOV-024; contexto; progresso; plano; decisões; matrizes; manifesto; 114 Markdown; 200 links locais | estado corrente separado do histórico; 55/55 documentos no MkDocs; zero link quebrado do Reforged; seis referências herdadas preservadas |
+| 2026-09-05 | Checkpoint integral anterior ao Portão D | PR #27; GOV-024; contexto; progresso; plano; decisões; matrizes; manifesto; 114 Markdown; 200 links locais | estado corrente separado do histórico; 55/55 documentos no MkDocs; zero link quebrado do Reforged; seis referências herdadas preservadas |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |

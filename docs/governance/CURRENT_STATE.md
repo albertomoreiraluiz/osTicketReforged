@@ -2,10 +2,10 @@
 
 ## Status e finalidade
 
-Documento **Aceito** em 2026-09-05 como fotografia operacional do projeto antes
-do Portão D. Ele permite que uma nova sessão retome o trabalho sem depender de
-conversa, memória privada, terminal anterior ou inferências sobre arquivos
-ausentes.
+Documento **Aceito** em 2026-09-05 e entregue pela PR #27 como fotografia
+operacional do projeto antes do Portão D. Ele permite que uma nova sessão
+retome o trabalho sem depender de conversa, memória privada, terminal anterior
+ou inferências sobre arquivos ausentes.
 
 Este checkpoint resume; não substitui as fontes especializadas. Em conflito,
 prevalecem código e configuração da baseline para comportamento, ADRs aceitos
