@@ -130,6 +130,19 @@ agora oferece trilhas para estado, funcionamento, evidências e evolução.
 
 ### Portão D — Decisão arquitetural
 
+**Estado corrente:** estratégia confirmada pelo responsável e formalizada no
+[ADR 0004](../../adr/0004-modulos-reforged-backend-osticket.md). Módulos novos
+reutilizam backend intacto, cobrem todo o SCP e preservam coexistência e identidade.
+O login foi exemplo didático, não primeira entrega autorizada. O portão continua
+aberto para detalhamento técnico e revisão; nenhuma implementação foi iniciada.
+
+As atividades abaixo aplicam-se às decisões ainda abertas. Não refazer escolha
+entre estratégias já descartadas nem reabrir a fronteira aceita; comparações
+técnicas devem ser delimitadas e discutidas com o responsável. As três opções
+da primeira rodada permanecem históricas, sem demonstrar revisão da estratégia nova.
+
+**Histórico do reinício:**
+
 **Reiniciado em 2026-09-05**, por descarte explícito da recomendação anterior.
 O [ADR 0003](../../adr/0003-coexistencia-paineis-portal-separado.md) registra
 coexistência contínua dos painéis e portal separado, sem escolha de arquitetura.
@@ -154,10 +167,10 @@ Git, progresso, decisões e evidências antes de abrir a primeira missão.
 
 Atividades obrigatórias:
 
-1. discutir e alinhar com o responsável critérios e requisitos sob o ADR 0003,
+1. discutir e alinhar com o responsável detalhes pendentes sob ADRs 0003 e 0004,
    depois consolidar restrições, capacidades e lacunas da baseline;
-2. formular pelo menos três opções arquiteturais completas, sem apresentar
-   preferência como decisão aceita;
+2. comparar alternativas para as decisões técnicas abertas, sem transformar
+   nomes e pseudocódigo do exemplo em contrato nem reabrir a estratégia aceita;
 3. rastrear cada opção até as evidências de core, plugins, hooks, API, banco,
    autenticação, autorização e frontend;
 4. comparar atualização do upstream, delta de core, segurança, integridade de
@@ -183,12 +196,14 @@ Entregáveis previstos:
 
 Critérios de saída:
 
-- pelo menos três opções comparadas em critérios comuns;
+- alternativas técnicas pertinentes comparadas em critérios comuns dentro da
+  estratégia aceita; histórico da primeira comparação preservado;
 - riscos de atualização, integração, dados e segurança avaliados;
 - estratégia de evolução reversível que preserve o painel PHP operacional;
 - nenhuma pendência crítica ou alta sem correção ou aceite explícito;
-- ADR de arquitetura técnica aprovado explicitamente pelo responsável; o ADR
-  0003 de premissas não satisfaz sozinho esse critério.
+- estratégia aceita no ADR 0004 e decisões técnicas necessárias formalizadas
+  após aprovação explícita; ADRs 0003/0004 não comprovam integração executável
+  nem encerram sozinhos o portão.
 
 Somente o Portão D libera o planejamento da implementação. Um portão não é concluído por inferência; registre evidências em `docs/governance/PROGRESS.md`.
 

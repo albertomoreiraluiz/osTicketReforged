@@ -7,6 +7,11 @@ descartada pelo responsável. Não são aprovação da nova análise, de uma nov
 recomendação ou do encerramento do Portão D. O reinício é orientado pelo
 [ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md).
 
+O responsável posteriormente confirmou a estratégia do
+[ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md). Sua formalização
+documental não constitui nova revisão especializada ou prova de viabilidade;
+os pareceres históricos abaixo não foram reutilizados como aceite técnico.
+
 Esta atualização de contexto foi feita por um único integrador: não há frentes
 técnicas independentes a delegar antes da discussão com o responsável. Nenhum
 novo teste ou parecer especializado foi executado nesta retomada.

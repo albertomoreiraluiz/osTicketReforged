@@ -1,17 +1,20 @@
 # Portão D — Dossiê de opções arquiteturais
 
-## Estado corrente — análise reiniciada
+## Estado corrente — estratégia aceita, detalhamento pendente
 
 **Decisão aceita:** o responsável descartou a recomendação anterior e determinou
 reinício com coexistência contínua dos painéis. Ver
 [ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md).
-Não existe nova alternativa preferida nem primeiro recorte recomendado.
+Após discussão, o responsável confirmou a estratégia no
+[ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md): módulos novos
+reutilizam o backend original intacto para expor APIs ao Angular, cobrindo todo
+o SCP. Essa decisão não reativa a recomendação da PR #28.
 
-O próximo trabalho é discutir requisitos e critérios com o responsável:
-quais capacidades devem existir no Reforged, como será a experiência de acesso
-entre painéis e quais condições de compatibilidade precisam ser preservadas.
-Sessão compartilhada, URL final e organização da API permanecem sem decisão.
-O portal do usuário terá planejamento separado.
+O próximo trabalho é detalhar contratos, bootstrap e integração da sessão com
+o responsável. Alternância sem novo login, mesma identidade/permissões e
+reutilização das regras são requisitos aceitos; o mecanismo técnico permanece
+pendente. URL final, layout e primeiro recorte não foram escolhidos. O portal
+do usuário terá planejamento separado; autenticação foi exemplo didático.
 
 ## Histórico da primeira rodada — recomendação descartada
 

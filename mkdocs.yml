@@ -135,6 +135,7 @@ nav:
       - ADR 0001 — Frontend separado: adr/0001-frontend-angular-primeng.md
       - ADR 0002 — Portal documental: adr/0002-documentation-toolchain.md
       - ADR 0003 — Coexistência e portal: adr/0003-coexistencia-paineis-portal-separado.md
+      - ADR 0004 — Módulos e backend original: adr/0004-modulos-reforged-backend-osticket.md
   - Ambiente e ferramentas:
       - Portal documental: development/DOCUMENTATION_PORTAL.md
       - Homologação: development/HOMOLOGATION_ENVIRONMENT.md

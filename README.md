@@ -8,12 +8,12 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Portão D reiniciado — requisitos de coexistência em discussão |
+| Etapa atual | Portão D — estratégia modular aceita; detalhamento técnico pendente |
 | Observação visual | sequência estrita concluída e aprovada em revisão independente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
-| Portão D — Decisão arquitetural | Recomendação anterior descartada; arquitetura técnica não escolhida |
+| Portão D — Decisão arquitetural | Em andamento; ADR 0004 aceito, implementação não iniciada |
 
 Ambiente de homologação instalado e ativo: XAMPP local, PHP 8.2, MariaDB,
 extensões e logs preparados. A interface pública e a autenticação administrativa
@@ -87,8 +87,8 @@ de toda combinação possível de configuração.
 
 Próximas etapas:
 
-1. discutir critérios e requisitos para coexistência contínua dos painéis;
-2. refazer a comparação sem recomendação ou primeiro recorte herdados;
+1. detalhar contratos, bootstrap e integração de sessão dentro do ADR 0004;
+2. definir o primeiro recorte com evidências, sem herdar a sugestão descartada;
 3. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
 4. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
@@ -101,7 +101,14 @@ do usuário poderá ser substituído integralmente, com planejamento separado.
 O [dossiê](docs/reverse-engineering/ARCHITECTURE_DECISION_RECORD.md), a
 [estratégia](docs/reverse-engineering/MIGRATION_STRATEGY.md) e os
 [pareceres](docs/reverse-engineering/GATE_D_REVIEW.md) da PR #28 estão preservados
-como histórico da recomendação descartada. Não há nova recomendação técnica.
+como histórico da recomendação descartada.
+
+O [ADR 0004](docs/adr/0004-modulos-reforged-backend-osticket.md) formaliza a
+estratégia confirmada: osTicket intacto, módulos/endpoints novos reutilizando
+suas regras e mecanismos, respostas estruturadas sem HTML legado e Angular +
+PrimeNG cobrindo todo o SCP, inclusive administração. Mesma identidade e
+permissões, com alternância sem novo login, são requisitos; integração técnica
+e contratos permanecem pendentes. O exemplo de autenticação não é código pronto.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
 `frontend/`; versões e integração serão definidas após a análise correspondente.

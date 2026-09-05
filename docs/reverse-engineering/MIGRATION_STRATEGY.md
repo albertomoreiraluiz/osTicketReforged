@@ -11,6 +11,10 @@ Nenhuma sequência substituta foi escolhida. O caminho deste documento permanece
 estável para preservar referências; o título histórico não autoriza migração
 de saída do painel legado.
 
+A estratégia agora aceita está no [ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md):
+todo o SCP como alvo, módulos novos reutilizando backend intacto e alternância
+sem novo login. Isso não aceita a sequência ou o primeiro recorte históricos abaixo.
+
 ## Histórico da estratégia anterior — sem vigência
 
 **Status: Proposto.** Derivada das alternativas do
