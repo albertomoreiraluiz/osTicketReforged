@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/modular-backend-strategy` para formalizar a estratégia
-confirmada no ADR 0004, após o descarte da PR #28. Permite que uma nova sessão
+Atualizado na branch `codex/scp-flow-mapping`, entrada `33d40fb7` (PR #30), para
+mapear fluxos sobre a estratégia confirmada no ADR 0004. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -156,14 +156,23 @@ Inventário e evidências da baseline permanecem preservados.
 
 Após a discussão, ADR 0004 aceita a estratégia de módulos novos sobre o backend
 original. Não reabrir essa fronteira como indefinida. Próximo passo: detalhar com
-o responsável contratos, bootstrap e integração da sessão, com evidências por
-fluxo. Primeiro módulo, rota definitiva e funcionalidades do portal continuam
+o responsável agrupamentos, contratos, bootstrap e integração da sessão a partir
+do [mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
+47 arquivos PHP do escopo (inclui dois bootstraps), 26 famílias e 229 folhas AJAX.
+UX/layout/fluxos de exibição serão planejados em seguida, não antecipados aqui.
+Primeiro módulo, rota definitiva e funcionalidades do portal continuam
 sem escolha. Não implementar, alterar core/schema ou tratar pseudocódigo como API pronta.
 
 Fonte normativa desta unidade: `docs/adr/0004-modulos-reforged-backend-osticket.md`.
 `ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md` e `GATE_D_REVIEW.md`,
 em `docs/reverse-engineering/`, preservam o histórico com indicação do novo ADR.
 A formalização não encerra o Portão D.
+
+O mapa não significa nova validação visual nem cobertura de todas as combinações
+de configuração/plugins. Conserva 13 alvos AJAX ausentes, divergência do claim
+tradicional e coordenação/regras ainda presas a páginas/controllers; não garante
+que todas as cadeias já sejam reutilizáveis sem decisão adicional. Nenhum core,
+schema, credencial, banco ou frontend foi alterado nesta unidade.
 
 ## Fontes canônicas de aprofundamento
 

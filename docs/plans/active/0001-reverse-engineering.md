@@ -130,6 +130,15 @@ agora oferece trilhas para estado, funcionamento, evidências e evolução.
 
 ### Portão D — Decisão arquitetural
 
+Unidade corrente autorizada: [mapear integralmente os fluxos SCP](../../reverse-engineering/SCP_FLOW_MAP.md)
+sob o ADR 0004, antes da arquitetura detalhada dos módulos e do planejamento
+de UX/layout/fluxos de exibição. Mapeamento documental, não implementação.
+
+Entrega estática consolidada: 153 registros em três frentes, 47 arquivos do
+escopo e 26 famílias/229 folhas AJAX reconciliados. Revisão e validações da
+unidade ficam no mapa; pendências de viabilidade/contrato permanecem explícitas.
+Próxima discussão: agrupamentos e dependências dos módulos; depois frontend.
+
 **Estado corrente:** estratégia confirmada pelo responsável e formalizada no
 [ADR 0004](../../adr/0004-modulos-reforged-backend-osticket.md). Módulos novos
 reutilizam backend intacto, cobrem todo o SCP e preservam coexistência e identidade.

@@ -32,6 +32,7 @@ flowchart LR
 | segurança | [autenticação](AUTHENTICATION.md) e [modelo de segurança](SECURITY_MODEL.md) |
 | extensibilidade | [plugins](PLUGIN_ARCHITECTURE.md), [sinais](SIGNAL_CATALOG.md), [registries](REGISTRY_CATALOG.md) e [customização](CUSTOMIZATION_MATRIX.md) |
 | frontend PHP | [análise estática](FRONTEND_ANALYSIS.md) |
+| fluxos SCP para módulos | [mapa integral](SCP_FLOW_MAP.md), com operação/administração/transversais; fatos, não contratos aprovados |
 | operação | [CLI](CLI_CATALOG.md), [instalação/upgrade](INSTALLATION_UPGRADE.md) e [testes](TESTING_BASELINE.md) |
 
 **Fato observado:** estes documentos descrevem a arquitetura presente. Opções

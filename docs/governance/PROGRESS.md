@@ -224,11 +224,30 @@
 
 ## Próximo passo proposto
 
+Unidade corrente: mapeamento integral do SCP operacional, administrativo e
+transversal em `codex/scp-flow-mapping`, entrada `33d40fb7`, conforme
+[mapa](../reverse-engineering/SCP_FLOW_MAP.md). Mapeamento estático concluído no universo declarado;
+153 registros, 47 arquivos, 26 famílias e 229 folhas AJAX. Sem nova execução
+comportamental. Depois serão discutidos arquitetura dos módulos e UX.
+
+Revisão independente `qa_engineer/scp-map/revisao` aprovada após corrigir O28,
+O43, T51 e A51; sem achado documental aberto no recorte. Três frentes de leitura
+e um único integrador/escritor preservaram o core e o ADR 0004. Catálogo AJAX
+precisado quanto a guardas e respostas; 13 alvos ausentes e bloqueios de
+reutilização permanecem explícitos, sem ensaios ou correção de produto.
+
+Validações: 47/47 arquivos, 153 IDs únicos, 26 famílias/229 folhas sem sobra ou
+sobreposição; 64/64 documentos no MkDocs e taxonomia GOV-023 preservada; build
+estrito e diff sem erros. Auditoria final: 123 Markdown, 276 links locais,
+zero destino ausente do Reforged e seis referências herdadas preservadas.
+Portão D não encerrado; arquitetura detalhada, primeira implementação
+e UX não escolhidas automaticamente.
+
 1. detalhar com o responsável as decisões técnicas abertas dentro do ADR 0004;
 2. rastrear contratos e integração por fluxo, sem reabrir a estratégia aceita;
 3. revisar o detalhamento antes de fechar o Portão D ou iniciar implementação.
 
-## Estratégia modular formalizada — estado corrente
+## Estratégia modular formalizada — histórico da PR #30, decisão vigente
 
 **Decisão aceita:** [ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md)
 registra a aprovação explícita após a demonstração de autenticação: backend

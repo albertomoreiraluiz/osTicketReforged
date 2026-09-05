@@ -60,8 +60,9 @@ Declarações: `ajax.php:23-43`. Definições:
 | Admin | 7 | Staff | 8 |
 | Filas | 7 | E-mail | 3 |
 
-Todas herdam ACL `staff`, agente válido/ativo e CSRF para métodos mutáveis
-(`scp/staff.inc.php:24-112`). `Controller::access()` é chamado, mas o padrão é
+Todas passam por ACL `staff`, sessão válida e CSRF para métodos mutáveis
+(`scp/staff.inc.php:24-112`). Atividade/offline/upgrade têm condições e exceções
+administrativas explícitas, não uma guarda uniforme. `Controller::access()` é chamado, mas o padrão é
 permissivo. Plugins e e-mail exigem admin no controller; Admin verifica admin em
 cada método; upgrader exige admin no método. Demais controles são distribuídos.
 
@@ -101,7 +102,7 @@ que extração por indentação não é confiável.
 
 ## Matriz linha a linha
 
-Legenda: `STAFF` resume ACL staff, agente válido/ativo e CSRF condicionado ao
+Legenda: `STAFF` resume a cadeia condicional acima, sessão válida e CSRF condicionado ao
 método HTTP. `hasPerm`, `acesso-*` e `dono-*` resumem controles adicionais
 observados; não são nomes canônicos de permissões.
 
@@ -119,15 +120,15 @@ observados; não são nomes canônicos de permissões.
 | 50 | POST | `/content/(?P<id>\d+)(?:/(?P<lang>\w+))?` | `ContentAjaxAPI::updateContent` | `ajax.content.php:187` | STAFF+ADMIN | conteúdo; status |
 | 53 | GET | `/config/scp` | `ConfigAjaxAPI::scp` | `ajax.config.php:23` | STAFF | config; JSON/JS |
 | 54 | GET | `/config/links` | `ConfigAjaxAPI::templateLinks` | `ajax.config.php:89` | STAFF | config; JSON |
-| 55 | GET | `/config/date-format` | `ConfigAjaxAPI::dateFormat` | `ajax.config.php:121` | STAFF | config; JSON |
-| 58 | GET | `/form/help-topic/(?P<id>\d+)` | `DynamicFormsAjaxAPI::getFormsForHelpTopic` | `ajax.forms.php:17` | STAFF | forms; HTML |
+| 55 | GET | `/config/date-format` | `ConfigAjaxAPI::dateFormat` | `ajax.config.php:121` | STAFF | config; texto escapado |
+| 58 | GET | `/form/help-topic/(?P<id>\d+)` | `DynamicFormsAjaxAPI::getFormsForHelpTopic` | `ajax.forms.php:17` | STAFF+Referer+tópico existente | forms; sessão :form-data; JSON com HTML e media |
 | 59 | GET | `/form/field-config/(?P<id>\d+)` | `DynamicFormsAjaxAPI::getFieldConfiguration` | `ajax.forms.php:54` | STAFF | campo; HTML |
 | 60 | POST | `/form/field-config/(?P<id>\d+)` | `DynamicFormsAjaxAPI::saveFieldConfiguration` | `ajax.forms.php:59` | STAFF | campo; status/HTML |
 | 61 | DELETE | `/form/answer/(?P<entry>\d+)/(?P<field>\d+)` | `DynamicFormsAjaxAPI::deleteAnswer` | `ajax.forms.php:94` | STAFF | resposta; status |
 | 62 | POST | `/form/upload/(\d+)?` | `DynamicFormsAjaxAPI::upload` | `ajax.forms.php:378` | STAFF | arquivo; JSON |
 | 63 | POST | `/form/upload/(\w+)?` | `DynamicFormsAjaxAPI::attach` | `ajax.forms.php:392` | STAFF | arquivo; JSON |
 | 64 | POST | `/form/upload/(?P<object>ticket\|task)/(\w+)` | `DynamicFormsAjaxAPI::attach` | `ajax.forms.php:392` | STAFF | arquivo; JSON |
-| 65 | GET | `/form/(?P<id>\d+)/fields/view` | `DynamicFormsAjaxAPI::getAllFields` | `ajax.forms.php:415` | STAFF | campos; HTML |
+| 65 | GET | `/form/(?P<id>\d+)/fields/view` | `DynamicFormsAjaxAPI::getAllFields` | `ajax.forms.php:415` | STAFF | campos; JSON com HTML |
 | 68 | GET | `/filter/action/(?P<type>\w+)/config` | `FilterAjaxAPI::getFilterActionForm` | `ajax.filter.php:7` | STAFF | filtro; HTML |
 | 71 | ANY | `/schedule/add` | `ScheduleAjaxAPI::add` | `ajax.schedule.php:6` | STAFF | agenda; HTML/status |
 | 72 | ANY | `/schedule/(?P<id>\d+)/clone` | `ScheduleAjaxAPI::cloneSchedule` | `ajax.schedule.php:49` | STAFF | agenda; status |
@@ -282,25 +283,25 @@ observados; não são nomes canônicos de permissões.
 | 240 | ANY | `/tasks/mass/(?P<action>\w+)(?:/(?P<what>\w+))?` | `TasksAjaxAPI::massProcess` | `ajax.tasks.php:298` | STAFF+perm-por-ação | tarefas; HTML/status |
 | 243 | GET | `/thread/(?P<tid>\d+)/collaborators/(?P<manage>\d+)/preview` | `ThreadAjaxAPI::previewCollaborators` | `ajax.thread.php:176` | STAFF+acesso-thread | colaboradores; HTML |
 | 244 | GET | `/thread/(?P<tid>\d+)/collaborators/(?P<manage>\d+)` | `ThreadAjaxAPI::showCollaborators` | `ajax.thread.php:162` | STAFF+acesso-thread | colaboradores; HTML |
-| 245 | POST | `/thread/(?P<tid>\d+)/collaborators` | `ThreadAjaxAPI::updateCollaborators` | `ajax.thread.php:211` | STAFF+acesso-thread | colaboradores; status |
+| 245 | POST | `/thread/(?P<tid>\d+)/collaborators` | `ThreadAjaxAPI::updateCollaborators` | `ajax.thread.php:211` | STAFF+acesso-thread | colaboradores; HTML/status |
 | 246 | GET | `/thread/(?P<tid>\d+)/add-collaborator/(?P<type>\w+)/(?P<uid>\d+)` | `ThreadAjaxAPI::addCollaborator` | `ajax.thread.php:81` | STAFF+acesso-thread | colaborador; HTML |
 | 247 | GET | `/thread/(?P<tid>\d+)/add-collaborator/(?P<type>\w+)/auth:(?P<bk>[\w.]+):(?P<id>.+)` | `ThreadAjaxAPI::addRemoteCollaborator` | `ajax.thread.php:59` | STAFF+acesso-thread | colaborador remoto; HTML |
 | 248 | ANY | `/thread/(?P<tid>\d+)/add-collaborator/(?P<type>\w+)` | `ThreadAjaxAPI::addCollaborator` | `ajax.thread.php:81` | STAFF+acesso-thread | colaborador; HTML/status |
 | 249 | GET | `/thread/(?P<tid>\d+)/collaborators/(?P<cid>\d+)/view` | `ThreadAjaxAPI::viewCollaborator` | `ajax.thread.php:145` | STAFF+acesso-thread | colaborador; HTML |
-| 250 | POST | `/thread/(?P<tid>\d+)/collaborators/(?P<cid>\d+)` | `ThreadAjaxAPI::updateCollaborator` | `ajax.thread.php:120` | STAFF+acesso-thread | colaborador; status |
+| 250 | POST | `/thread/(?P<tid>\d+)/collaborators/(?P<cid>\d+)` | `ThreadAjaxAPI::updateCollaborator` | `ajax.thread.php:120` | STAFF+acesso-thread | colaborador; HTML/status |
 | 253 | POST | `/draft/(?P<id>\d+)` | `DraftAjaxAPI::updateDraft` | `ajax.draft.php:284` | STAFF+dono-draft | draft; JSON/status |
 | 254 | DELETE | `/draft/(?P<id>\d+)` | `DraftAjaxAPI::deleteDraft` | `ajax.draft.php:326` | STAFF+dono-draft | draft; status |
 | 255 | POST | `/draft/(?P<id>\d+)/attach` | `DraftAjaxAPI::uploadInlineImage` | `ajax.draft.php:297` | STAFF+dono-draft | arquivo; JSON |
 | 256 | POST | `/draft/(?P<namespace>[\w.]+)/attach` | `DraftAjaxAPI::uploadInlineImageEarly` | `ajax.draft.php:310` | STAFF+namespace | arquivo; JSON |
 | 257 | GET | `/draft/(?P<namespace>[\w.]+)` | `DraftAjaxAPI::getDraft` | `ajax.draft.php:268` | STAFF+dono/namespace | draft; JSON |
 | 258 | POST | `/draft/(?P<namespace>[\w.]+)` | `DraftAjaxAPI::createDraft` | `ajax.draft.php:255` | STAFF+namespace | draft; JSON/status |
-| 259 | GET | `/draft/images/browse` | `DraftAjaxAPI::getFileList` | `ajax.draft.php:339` | STAFF+canAccess-objeto | arquivos; HTML |
-| 262 | ANY | `/export/(?P<id>\w+)/check` | `ExportAjaxAPI::check` | `ajax.export.php:6` | STAFF+sessão-export | export; JSON/status |
-| 265 | GET | `/note/(?P<id>\d+)` | `NoteAjaxAPI::getNote` | `ajax.note.php:9` | STAFF+dono/ADMIN | nota; HTML |
-| 266 | POST | `/note/(?P<id>\d+)` | `NoteAjaxAPI::updateNote` | `ajax.note.php:23` | STAFF+dono/ADMIN | nota; status |
+| 259 | GET | `/draft/images/browse` | `DraftAjaxAPI::getFileList` | `ajax.draft.php:339` | STAFF; canAccess condiciona inclusão de imagens da thread | arquivos; JSON |
+| 262 | ANY | `/export/(?P<id>\w+)/check` | `ExportAjaxAPI::check` | `ajax.export.php:6` | STAFF+sessão-export | export; HTML; POST JSON 200/201 |
+| 265 | GET | `/note/(?P<id>\d+)` | `NoteAjaxAPI::getNote` | `ajax.note.php:9` | STAFF+dono/ADMIN | nota; HTML/205 |
+| 266 | POST | `/note/(?P<id>\d+)` | `NoteAjaxAPI::updateNote` | `ajax.note.php:23` | STAFF+dono/ADMIN | nota; HTML/status |
 | 267 | DELETE | `/note/(?P<id>\d+)` | `NoteAjaxAPI::deleteNote` | `ajax.note.php:43` | STAFF+dono/ADMIN | nota; status |
-| 268 | POST | `/note/attach/(?P<ext_id>\w\d+)` | `NoteAjaxAPI::createNote` | `ajax.note.php:59` | STAFF+dono/ADMIN | nota/anexo; status |
-| 271 | GET | `/sequence/(?P<id>\d+)` | `SequenceAjaxAPI::current` | `ajax.sequence.php:24` | STAFF | sequência; JSON |
+| 268 | POST | `/note/attach/(?P<ext_id>\w\d+)` | `NoteAjaxAPI::createNote` | `ajax.note.php:59` | STAFF; contexto O/U ou ADMIN | nota rápida; HTML/status |
+| 271 | GET | `/sequence/(?P<id>\d+)` | `SequenceAjaxAPI::current` | `ajax.sequence.php:24` | STAFF | sequência; valor escalar formatado |
 | 272 | GET | `/sequence/manage` | `SequenceAjaxAPI::manage` | `ajax.sequence.php:54` | STAFF | sequência; HTML |
 | 273 | POST | `/sequence/manage` | `SequenceAjaxAPI::manage` | `ajax.sequence.php:54` | STAFF | sequência; status |
 | 275 | POST | `/upgrader` | `UpgraderAjaxAPI::upgrade` | `ajax.upgrader.php:22` | STAFF+ADMIN | upgrade; texto/status |
@@ -317,16 +318,16 @@ observados; não são nomes canônicos de permissões.
 | 292 | ANY | `/admin/quick-add/staff` | `AdminAjaxAPI::addStaff` | `ajax.admin.php:160` | STAFF+ADMIN | agente; HTML/status |
 | 293 | ANY | `/admin/quick-add/queue-column` | `AdminAjaxAPI::addQueueColumn` | `ajax.admin.php:194` | STAFF+ADMIN | coluna fila; HTML/status |
 | 294 | ANY | `/admin/quick-add/queue-sort` | `AdminAjaxAPI::addQueueSort` | `ajax.admin.php:219` | STAFF+ADMIN | ordenação; HTML/status |
-| 296 | GET | `/admin/role/(?P<id>\d+)/perms` | `AdminAjaxAPI::getRolePerms` | `ajax.admin.php:147` | STAFF+ADMIN | permissões; HTML |
+| 296 | GET | `/admin/role/(?P<id>\d+)/perms` | `AdminAjaxAPI::getRolePerms` | `ajax.admin.php:147` | STAFF+ADMIN | permissões; JSON |
 | 299 | ANY | `/staff/(?P<id>\d+)/set-password` | `StaffAjaxAPI::setPassword` | `ajax.staff.php:21` | STAFF+ADMIN | senha agente; HTML/status |
 | 300 | ANY | `/staff/(?P<id>\d+)/change-password` | `StaffAjaxAPI::changePassword` | `ajax.staff.php:74` | STAFF+próprio | senha; HTML/status |
-| 301 | GET | `/staff/(?P<id>\d+)/perms` | `StaffAjaxAPI::getAgentPerms` | `ajax.staff.php:127` | STAFF+ADMIN | permissões; HTML |
+| 301 | GET | `/staff/(?P<id>\d+)/perms` | `StaffAjaxAPI::getAgentPerms` | `ajax.staff.php:127` | STAFF+ADMIN | permissões; JSON |
 | 302 | ANY | `/staff/reset-permissions` | `StaffAjaxAPI::resetPermissions` | `ajax.staff.php:140` | STAFF+ADMIN | permissões; status |
 | 303 | ANY | `/staff/change-department` | `StaffAjaxAPI::changeDepartment` | `ajax.staff.php:171` | STAFF+ADMIN | departamento; status |
-| 304 | ANY | `/staff/(?P<id>\d+)/avatar/change` | `StaffAjaxAPI::setAvatar` | `ajax.staff.php:213` | STAFF+próprio/ADMIN | avatar; HTML/status |
+| 304 | ANY | `/staff/(?P<id>\d+)/avatar/change` | `StaffAjaxAPI::setAvatar` | `ajax.staff.php:213` | STAFF+próprio/ADMIN | avatar; JSON com img HTML e code |
 | 305 | ANY | `/staff/(?P<id>\d+)/2fa/configure(?:/(?P<mfid>.+))?` | `StaffAjaxAPI::configure2FA` | `ajax.staff.php:236` | STAFF+próprio | 2FA; HTML/status |
 | 306 | ANY | `/staff/(?P<id>\d+)/reset-2fa` | `StaffAjaxAPI::reset2fA` | `ajax.staff.php:309` | STAFF+ADMIN | 2FA; status |
-| 309 | ANY | `/queue/(?P<id>\d+/)?preview` | `SearchAjaxAPI::previewQueue` | `ajax.search.php:328` | STAFF+fila-acessível | fila; HTML |
+| 309 | ANY | `/queue/(?P<id>\d+/)?preview` | `SearchAjaxAPI::previewQueue` | `ajax.search.php:328` | STAFF+existência se ID; sem checkAccess explícito no método | fila; HTML |
 | 310 | GET | `/queue/(?P<id>\d+)` | `SearchAjaxAPI::getQueue` | `ajax.search.php:281` | STAFF+fila-acessível | fila; JSON |
 | 311 | GET | `/queue/addColumn` | `SearchAjaxAPI::addColumn` | AUSENTE | STAFF; ALVO-AUSENTE | 500 após `access()` |
 | 312 | GET | `/queue/condition/add` | `SearchAjaxAPI::addCondition` | `ajax.search.php:351` | STAFF | condição; HTML |
@@ -338,6 +339,12 @@ observados; não são nomes canônicos de permissões.
 | 320 | ANY | `/email/(?P<id>\d+)/auth/config/(?P<type>\w+)/(?P<auth>.+)` | `EmailAjaxAPI::configureAuth` | `ajax.email.php:18` | STAFF+ADMIN | GET/POST inválido: HTML; POST basic: config/account + 201 texto; OAuth2: config/account + 201 JSON redirect quando autoriza |
 
 Contagem da matriz: 229 linhas; 101 GET, 60 POST, 5 DELETE, 63 ANY; 13 definições ausentes.
+
+Releitura estática de 2026-09-05: formatos/guardas de configuração, formulários,
+colaboradores, imagens, notas, exportação, sequências, permissões e avatar foram
+precisados. A prévia de fila não tem checkAccess explícito no método. Nenhuma
+rota foi executada novamente. O [mapa SCP](SCP_FLOW_MAP.md) relaciona estas
+declarações aos fluxos tradicionais e dependências de extração.
 
 ## Confirmação funcional de respostas prontas — Onda 7
 

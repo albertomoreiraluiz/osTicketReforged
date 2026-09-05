@@ -57,6 +57,9 @@ Comece pelo [dossiê do Portão D](reverse-engineering/ARCHITECTURE_DECISION_REC
 e pelas [premissas de coexistência](adr/0003-coexistencia-paineis-portal-separado.md).
 A [estratégia modular aceita](adr/0004-modulos-reforged-backend-osticket.md)
 define a fronteira atual: módulos novos sobre o backend intacto, SCP completo.
+O [mapa de fluxos SCP](reverse-engineering/SCP_FLOW_MAP.md) organiza as cadeias
+operacionais, administrativas e compartilhadas para discutir os módulos antes
+de planejar UX, layout e exibição do frontend.
 A estratégia anterior permanece somente como histórico, não como orientação ativa.
 
 Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), a

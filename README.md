@@ -87,7 +87,11 @@ de toda combinação possível de configuração.
 
 Próximas etapas:
 
-1. detalhar contratos, bootstrap e integração de sessão dentro do ADR 0004;
+O mapeamento estático do SCP reúne 153 registros de fluxo, reconciliando os
+47 arquivos do escopo e as 229 folhas AJAX, com revisão independente. Isso não
+equivale a novas execuções visuais nem prova de reutilização universal do backend.
+
+1. discutir agrupamentos e dependências a partir do [mapa de fluxos SCP](docs/reverse-engineering/SCP_FLOW_MAP.md), detalhando contratos, bootstrap e sessão dentro do ADR 0004;
 2. definir o primeiro recorte com evidências, sem herdar a sugestão descartada;
 3. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
