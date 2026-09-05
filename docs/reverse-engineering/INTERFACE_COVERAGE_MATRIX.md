@@ -264,6 +264,24 @@ renderizados, inclusive justificativa. Transferência e status foram observados
 até o ponto anterior à mutação para preservar a fixture principal enquanto os
 cenários dedicados são preparados.
 
+### Tarefa criada a partir de entrada
+
+| Ordem | Ação visual | Resultado observável |
+| ---: | --- | --- |
+| 1 | busca simples por `927747` e abertura da única linha | ticket e entrada original `32` localizados sem rota direta |
+| 2 | menu da entrada → `Criar Tarefa` | diálogo `Solicitação #927747: Adicionar nova tarefa` aberto; a tentativa anterior sem resposta ocorreu porque o menu havia fechado antes do acionamento, não por ausência da função |
+| 3 | leitura do formulário | título obrigatório, descrição já preenchida com o corpo da entrada, anexo, departamento, agente, vencimento, reinício, cancelamento e criação visíveis |
+| 4 | título `[OSTR-W9] Verificar fila de impressão fiscal`, departamento Manutenção e Alberto Moreira | três controles preenchidos e conferidos na tela; descrição predefinida preservada |
+| 5 | `Criar Tarefa` | aba passou a `Tarefas (1)` e exibiu tarefa `2`, aberta, atribuída a Alberto no departamento Manutenção |
+| 6 | abertura da tarefa na aba | thread apresentou conteúdo copiado, referência ao ticket `927747`, criação e reivindicação automática |
+| 7 | atualização operacional preenchida e publicada | mensagem `Atualização enviada com sucesso` e nova entrada na thread da tarefa confirmadas |
+
+**Fato observado:** BHV-031 possui agora uma reprodução integral pelo frontend.
+A criação derivada copia a entrada para a descrição, vincula a tarefa ao ticket
+e, quando um agente é escolhido no formulário, registra também sua
+reivindicação. A fixture foi preservada aberta e nenhuma ação de remoção foi
+executada.
+
 ## Administração — shell e mapa global
 
 **Entrada observada:** `/scp/settings.php`  
