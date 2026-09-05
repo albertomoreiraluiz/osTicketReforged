@@ -48,6 +48,11 @@ stylesheet local para hierarquia visual, largura de leitura, tabelas e estados,
 com alternância claro/escuro. Nenhum arquivo técnico foi movido ou removido;
 links existentes e contexto persistente continuam válidos.
 
+GOV-023 torna essa taxonomia a baseline editorial do portal. Novos documentos
+devem ser incorporados aos seis contextos e às oito categorias existentes de
+acordo com a intenção do leitor. Uma alteração estrutural futura exige decisão
+de governança explícita e atualização coordenada das fontes normativas.
+
 ## Referências
 
 - <https://www.mkdocs.org/user-guide/configuration/>

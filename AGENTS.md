@@ -119,6 +119,13 @@ Ao concluir uma unidade relevante, atualize no mesmo PR o progresso, o plano e d
 - Toda alteração documental deve avaliar impacto em `mkdocs.yml`; quando o
   portal estiver configurado, execute `python -m mkdocs build --strict` com o
   ambiente documentado antes de concluir a tarefa e antes de abrir PR.
+- Toda atualização do MkDocs deve preservar a arquitetura de informação aceita
+  em GOV-023: seis contextos de primeiro nível, oito categorias de engenharia
+  reversa, classificação por intenção do leitor, uma única ocorrência de cada
+  documento na navegação principal e caminhos canônicos preservados. Ampliação
+  ou substituição dessa taxonomia exige decisão de governança formalizada no
+  mesmo Pull Request; crescimento do acervo não autoriza retornar a uma árvore
+  plana.
 - Antes de qualquer alteração de código, consulte README, contexto, progresso, plano, decisões, ADRs, especificações, Issues e Pull Requests aplicáveis.
 - Implementações devem cumprir decisões `Aceito`; não reabra perguntas já respondidas. Só solicite nova decisão quando houver conflito, ambiguidade material, evidência nova ou escopo realmente não decidido.
 - Se surgir uma decisão durante a implementação, pause o trecho afetado, registre a proposta, obtenha aprovação, formalize-a e somente então prossiga.
