@@ -4,7 +4,7 @@
 
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
-- Branch estável: `main`; trabalho corrente em `codex/wave9-sequential-ui-pass`.
+- Branch estável: `main`; trabalho corrente em `codex/wave9-task-lifecycle`.
 - Etapa: Onda 9 em execução; repetição visual profunda anterior ao Portão D.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
@@ -332,6 +332,7 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-05 | Onda 9 — ajuda contextual e cenário realista 01 | ajuda `advanced`; ajuda `reply_types`; ticket `990221`; portal público e SCP | textos dos dois manuais lidos na tela; incidente de impressão aberto, pesquisado, reivindicado, diagnosticado, respondido e resolvido integralmente pelo frontend; interrupção do SMTP/POP correlacionada e serviço local restabelecido; paginação inconsistente da busca registrada |
 | 2026-09-05 | Onda 9 — repetição visual de BHV-031 | busca visual; ticket `927747`; entrada `32`; tarefa `2` | ação `Criar Tarefa` aberta corretamente; título/departamento/agente preenchidos na tela; descrição herdada, vínculo, reivindicação e atualização da tarefa confirmados pela interface |
 | 2026-09-05 | Onda 9 — ações do detalhe do ticket | ticket `903010`; menus de atribuição, transferência e status | atribuição a Alberto concluída com justificativa visível e confirmada na fila/detalhe; transferência e status inventariados e cancelados antes da mutação |
+| 2026-09-05 | Onda 9 — ciclo visual completo da tarefa e filas | tarefa `2`; abas, histórico, ações, visão `/scp/tasks.php?id=2`, Aberto e Minhas Tarefas | fechamento com motivo, reabertura e nota interna confirmados; formulários secundários lidos; menus/seleção em massa observados; pesquisa pelo título funcionou, mas pelo ticket `927747` não; fixture terminou aberta e nenhuma exclusão ocorreu |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |
