@@ -26,6 +26,11 @@ cuja integração técnica de sessão ainda será validada. Não criar IAM paral
 
 O objetivo não é reproduzir telas antigas nem reescrever o backend por preferência tecnológica.
 
+A direção de UX aceita prioriza funcionamento e um dashboard administrativo
+mais intuitivo. GOV-026 delega a primeira disposição de menus/usabilidade ao
+agente principal, com ajustes posteriores pelo responsável. O Plano 0002
+separa essa orientação das propostas visuais ajustáveis e decisões técnicas abertas.
+
 ## Baseline
 
 - Upstream: `osTicket/osTicket`.

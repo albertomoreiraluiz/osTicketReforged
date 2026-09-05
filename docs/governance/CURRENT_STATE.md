@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/scp-flow-mapping`, entrada `33d40fb7` (PR #30), para
-mapear fluxos sobre a estratégia confirmada no ADR 0004. Permite que uma nova sessão
+Atualizado na branch `codex/functional-ux-direction`, entrada `6ab70064` (PR #31),
+para registrar direção de UX e delegação visual, preservando ADR 0004. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -74,7 +74,7 @@ autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
 
 ## Decisões aceitas que limitam o próximo trabalho
 
-- GOV-001 a GOV-025 governam memória persistente, documentação, agentes,
+- GOV-001 a GOV-026 governam memória persistente, documentação, agentes,
   homologação, Git, evidências visuais, taxonomia e retomada.
 - ADR 0001 aceita apenas o isolamento futuro do frontend em `frontend/` e o uso
   de Angular com PrimeNG; versões e integração continuam indefinidas.
@@ -159,7 +159,10 @@ original. Não reabrir essa fronteira como indefinida. Próximo passo: detalhar 
 o responsável agrupamentos, contratos, bootstrap e integração da sessão a partir
 do [mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
 47 arquivos PHP do escopo (inclui dois bootstraps), 26 famílias e 229 folhas AJAX.
-UX/layout/fluxos de exibição serão planejados em seguida, não antecipados aqui.
+GOV-026 e [Plano 0002](../plans/active/0002-functional-ux-direction.md) registram
+direção de dashboard administrativo intuitivo, prioridade funcional e delegação
+da primeira UX ao agente principal. Navegação proposta é ajustável, não
+arquitetura aceita; sua materialização depende da liberação da implementação.
 Primeiro módulo, rota definitiva e funcionalidades do portal continuam
 sem escolha. Não implementar, alterar core/schema ou tratar pseudocódigo como API pronta.
 
