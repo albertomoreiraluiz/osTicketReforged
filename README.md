@@ -45,7 +45,13 @@ realista ponta a ponta no ticket `990221`. A tarefa derivada `2` também teve se
 ciclo Aberto → Encerrado → Aberto, atualização, nota interna e formulários
 secundários reproduzidos pelo frontend; BHV-022 foi repetido com edição e
 restauração visual do ticket `903010`. A matriz ainda permanece aberta para as
-demais equivalências visuais dos cenários `BHV-001` a `BHV-034`.
+demais equivalências visuais dos cenários `BHV-001` a `BHV-034`. A passagem já
+reconfirmou também a Base de Conhecimento operacional e os cenários
+`BHV-016`, `BHV-020`, `BHV-021`, `BHV-023` e `BHV-024`, com restauração dos
+estados temporários e preservação das evidências funcionais. A repetição também
+confirmou paginação, ações em massa, vínculo/desvínculo, fusão visual sem
+exclusão, edição com histórico, marcações respondido/não respondido e impressão
+PDF; a materialização do arquivo CSV continua pendente de comprovação.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 
