@@ -115,8 +115,11 @@ segredos.
 | 2.2 | Importar — Copiar e colar | uma linha por nome/e-mail | modal observado sem submissão |
 | 2.2.1 | Importar — Carregar | CSV e colunas Email, Name, Phone e Notes | seletor de arquivo observado sem upload |
 | 2.3 | Organizações | busca, inclusão, Mais, ordenação, seleção e exportação | duas organizações visíveis |
-| 3 | Tarefas — Aberto | busca/ordem, Mais, seis colunas, seleção, exportação e uma tarefa | tarefa vinculada ao ticket `593078` visível |
-| 3.1 | Nova Tarefa | título, editor, anexo, departamento, designado, vencimento e ações | modal aberto e cancelado sem mutação |
+| 3 | Tarefas — Aberto | busca/ordem, Mais, seis colunas, seleção, exportação e duas tarefas | tarefas `1` e `2`; ciclo da `2` preservado aberto e visível |
+| 3.1 | Minhas Tarefas | mesmos controles, com `Última Atualização` no lugar de criação | tarefa `2`, atribuída a Alberto, foi a única linha |
+| 3.2 | Nova Tarefa | título, editor, anexo, departamento, designado, vencimento e ações | modal independente reaberto e cancelado sem mutação |
+| 3.3 | Pesquisa de tarefas | campo preenchido e submetido visualmente | número de ticket `927747` não retornou linha; trecho do título `fila de impressão` retornou a tarefa `2` |
+| 3.4 | Mais e seleção | Fechar, Reivindicar, Atribuir a Agente/Equipe, Transferir e Apagar; Todos/Nenhum/Alternar | menus e estados de seleção exercitados, sem ação em massa submetida |
 | 4 | Tickets — Aberto | cinco submenus, busca, avançado, ações, seis colunas, seleção e exportação | 14 tickets; novas fixtures `729918` e `961630` visíveis |
 | 5 | Base de Conhecimento — FAQs | busca, filtros de categoria/tópico e categoria pública | uma categoria pública visível |
 | 5.1 | Categorias | inclusão, Mais, quatro colunas, seleção e ações Público/Interno/Apagar | uma categoria pública; nenhuma ação em massa submetida |
@@ -275,12 +278,27 @@ cenários dedicados são preparados.
 | 5 | `Criar Tarefa` | aba passou a `Tarefas (1)` e exibiu tarefa `2`, aberta, atribuída a Alberto no departamento Manutenção |
 | 6 | abertura da tarefa na aba | thread apresentou conteúdo copiado, referência ao ticket `927747`, criação e reivindicação automática |
 | 7 | atualização operacional preenchida e publicada | mensagem `Atualização enviada com sucesso` e nova entrada na thread da tarefa confirmadas |
+| 8 | `Ações` → `Fechar`, com motivo operacional | confirmação submetida pela interface; lista passou a exibir `Encerrado`, e a thread registrou a mudança para Completo, o motivo e o agente que fechou |
+| 9 | nova atualização com seletor de status `Aberto` | mensagem publicada, evento `Reaberto por Alberto Moreira` registrado e tarefa novamente aberta |
+| 10 | aba `Publicar Nota Interna` | nota de acompanhamento preenchida no editor e confirmada por `Nota publicada com sucesso`; entrada permaneceu visível na thread |
+| 11 | `Ver Tarefa` | rota completa `/scp/tasks.php?id=2` preservou vínculo com o ticket, thread, status, departamento, atribuição e colaboradores |
+| 12 | barra de ações da visão completa | status mostrou `Fechar`; atribuição mostrou `Agente` e `Equipe`; transferência, impressão, edição e exclusão apareceram da esquerda para a direita |
+| 13 | transferência, edição, vencimento e colaboradores | formulários foram abertos e lidos: departamentos/encaminhamento/razão; título/nota; data/fuso/razão; adicionar/salvar colaboradores; todos cancelados sem mutação |
 
 **Fato observado:** BHV-031 possui agora uma reprodução integral pelo frontend.
 A criação derivada copia a entrada para a descrição, vincula a tarefa ao ticket
 e, quando um agente é escolhido no formulário, registra também sua
-reivindicação. A fixture foi preservada aberta e nenhuma ação de remoção foi
-executada.
+reivindicação. O ciclo Aberto → Encerrado → Aberto foi repetido integralmente,
+com justificativas e eventos persistidos na própria thread. A fixture foi
+preservada aberta e nenhuma ação de remoção foi executada. A visão completa
+expõe exclusão, mas ela permaneceu apenas inventariada devido ao seu caráter
+destrutivo.
+
+**Divergência candidata:** na pesquisa simples de tarefas, o título localiza a
+tarefa `2`, mas o número do ticket associado `927747`, embora seja uma coluna
+visível e clicável da mesma linha, produz “Não existem tarefas com o critério
+indicado”. A observação descreve o contrato visível; a correlação com a consulta
+do backend permanece para uma unidade posterior.
 
 ## Administração — shell e mapa global
 

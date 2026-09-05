@@ -100,7 +100,9 @@ varredura integral pelo frontend natural, conforme GOV-019; portanto o Portão D
 aguarda essa matriz. GOV-020 exige reinício em ordem visual estrita e repetição
 pelo navegador de todos os cenários antes comprovados diretamente. O trabalho
 restante deste plano é dependente
-da comparação de opções e da decisão explícita do responsável.
+da conclusão da repetição visual da Onda 9; o ciclo funcional da tarefa
+derivada `2` já foi repetido pela interface e preservado aberto. Depois disso,
+o plano depende da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural
 
