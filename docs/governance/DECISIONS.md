@@ -24,6 +24,8 @@ Este índice registra decisões de processo. Decisões arquiteturais pertencem a
 | GOV-018 | 2026-09-04 | Aceito | Fixtures que constituem evidência de análise comportamental devem permanecer no osTicket de homologação para inspeção humana. Snapshot e rollback protegem contra falha ou desvio; não devem apagar automaticamente a evidência funcional aprovada. | esclarecimento explícito do responsável; dossiês BHV-027 e BHV-029 |
 | GOV-019 | 2026-09-04 | Aceito | A análise comportamental integral deve usar o frontend natural e percorrer cada página de cima para baixo e da esquerda para a direita, componente por componente, em contextos separados. CLI, endpoint direto, banco e código são apenas evidência complementar. | `INTERFACE_OBSERVATION_PROTOCOL.md`; orientação explícita do responsável |
 | GOV-020 | 2026-09-05 | Aceito | A Onda 9 deve reiniciar os menus em sua ordem visual estrita, sem saltos, e repetir pelo frontend todos os cenários antes exercitados por CLI, endpoint ou método direto. Parametrizações funcionais e microserviço local de e-mail são autorizados quando isolados à homologação, documentados e sem alteração do core ou schema. | `INTERFACE_OBSERVATION_PROTOCOL.md`; autorização explícita do responsável |
+| GOV-021 | 2026-09-05 | Aceito | Em cenários de formulário da Onda 9, cada valor deve ser inserido no controle renderizado e seu estado visual conferido antes da submissão. Atribuição indireta, requisição forjada ou mutação de backend não comprova o preenchimento. Credenciais da homologação podem ser reutilizadas a partir do `.env` ou da sessão local, mas nunca documentadas, capturadas em evidência ou expostas em logs. | `INTERFACE_OBSERVATION_PROTOCOL.md`; orientação explícita do responsável |
+| GOV-022 | 2026-09-05 | Aceito | Antes de configurar dados dependentes em modal, a entidade principal deve ser salva e reaberta; depois o modal e o formulário principal são salvos e revalidados na interface. O Wiki oficial orienta o modelo funcional, mas a baseline `v1.18.4` prevalece sobre páginas históricas. | `OSTICKET_OPERATIONAL_MODEL.md`; orientação explícita do responsável |
 
 As decisões GOV-001 a GOV-006 foram integradas pela PR #1. As decisões GOV-007
 a GOV-011 foram formalizadas e integradas pela PR #2. GOV-012 e GOV-013, o
@@ -41,3 +43,8 @@ operação natural por chamadas diretas.
 GOV-020 corrige a execução inicial da Onda 9: a existência de uma matriz não
 permite navegar fora de ordem, e evidências diretas antigas precisam ser
 reproduzidas pelo fluxo visível sempre que o produto o oferecer.
+GOV-021 torna verificável o uso do frontend nos formulários: a evidência exige
+preenchimento e conferência dos controles visíveis, sem transformar segredos
+locais em documentação ou artefato persistente.
+GOV-022 corrige a interpretação dos formulários compostos e adiciona o Wiki
+oficial como base de conhecimento operacional auxiliar da passagem visual.

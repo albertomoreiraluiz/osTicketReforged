@@ -75,6 +75,7 @@ nav:
       - Revisão cruzada: reverse-engineering/REVIEW_REPORT.md
       - Análise comportamental: reverse-engineering/BEHAVIORAL_ANALYSIS.md
       - Protocolo de observação integral: reverse-engineering/INTERFACE_OBSERVATION_PROTOCOL.md
+      - Modelo operacional do Wiki: reverse-engineering/OSTICKET_OPERATIONAL_MODEL.md
       - Matriz de cobertura da interface: reverse-engineering/INTERFACE_COVERAGE_MATRIX.md
       - Evidências comportamentais:
           - Protocolo e índice: reverse-engineering/evidence/README.md

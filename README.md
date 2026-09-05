@@ -38,6 +38,11 @@ GOV-020 exige que a passagem recomece no primeiro menu e avance sem saltos;
 cenários históricos de CLI, endpoint ou método direto serão repetidos pelo
 navegador. Dependências locais, incluindo e-mail de homologação sem relay,
 podem ser parametrizadas quando necessárias.
+O checkpoint atual já percorreu o mapa global dos quatro contextos, configurou
+e-mail POP3/SMTP local pela Administração, confirmou criação natural por coleta,
+repetiu vínculo e derivação de ticket e concluiu o primeiro atendimento
+realista ponta a ponta no ticket `990221`. A matriz ainda permanece aberta para
+as demais equivalências visuais dos cenários `BHV-001` a `BHV-034`.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 

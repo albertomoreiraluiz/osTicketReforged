@@ -183,6 +183,22 @@ sem versionar o `.env`. Mudança de schema continua proibida. Antes de qualquer
 exclusão, devem existir plano, backup verificável e procedimento de rollback;
 sem essas três evidências, a exclusão não pode ser executada.
 
+### Microservidor local de e-mail da Onda 9
+
+GOV-020 autoriza uma dependência efêmera exclusiva de homologação para repetir
+os fluxos naturais de entrada e saída. A instância deve atender somente em
+`127.0.0.1`, oferecer SMTP de captura e POP3 ou IMAP, recusar relay externo e
+usar apenas contas e mensagens fictícias. Código executável, caixa postal e
+credenciais permanecem em `.local/`, ignorados pelo Git.
+
+Em 2026-09-05 foi iniciada uma instância SMTP/POP3 mínima nas portas locais
+padrão. Um autoteste enviou uma mensagem fictícia pelo SMTP e confirmou uma
+mensagem disponível por POP3. O processo permanece ativo para a bateria; sua
+existência não comprova integração com o osTicket. Conta, coleta e SMTP ainda
+devem ser configurados pelo Painel de Administração e validados pelo fluxo
+visível. Ao encerrar a onda, o processo será desligado e as configurações locais
+serão reconciliadas na documentação.
+
 ### Restauração segura do MariaDB no Windows
 
 Arquivos SQL de backup são artefatos binários do ponto de vista da automação.

@@ -35,6 +35,12 @@ A publicação oficial consultada se apresenta como documentação `1.17.7`.
 Portanto, seu conteúdo é auxiliar: código, esquema e comportamento observado na
 baseline `v1.18.4` prevalecem, e divergências devem ser registradas.
 
+O modelo operacional da Onda 9 também consulta o Wiki oficial no commit
+`b641236e504bbd867b38ece275e065a9f1be4fc1`. Como suas páginas funcionais são
+históricas, ele orienta conceitos e precondições; não substitui a interface, o
+código nem a configuração da baseline. A síntese aplicada está em
+`docs/reverse-engineering/OSTICKET_OPERATIONAL_MODEL.md`.
+
 ## Fora do escopo
 
 - alteração funcional do core;

@@ -1,5 +1,10 @@
 # Matriz de cobertura integral da interface
 
+> A passagem reiniciada antes da leitura do Wiki foi interrompida e não vale
+> como sequência integral. O novo percurso começou novamente em `/index.php`
+> após a adoção de GOV-022 e do modelo operacional do Wiki; resultados úteis
+> anteriores permanecem como evidência parcial, não como cobertura herdada.
+
 ## Legenda
 
 - `Pendente`: rota ou região conhecida ainda não percorrida integralmente.
@@ -12,11 +17,252 @@
 
 | Contexto | Entrada | Estado | Evidência atual | Próxima ação |
 | --- | --- | --- | --- | --- |
-| Anônimo | `/` | Pendente | navegação básica anterior será revalidada | percorrer cabeçalho, conteúdo, conhecimento, abertura e rodapé |
-| Cliente | `/login.php` | Pendente | fluxos anteriores não usaram matriz posicional | percorrer todas as páginas e componentes com conta fictícia |
-| Equipe — agente | `/scp/` | Pendente | tickets/tarefas parcialmente exercitados | percorrer menu completo com papel operacional |
+| Anônimo | `/` | Em observação | cabeçalho, quatro menus, cadastro, validações e criação funcional percorridos em ordem | concluir link recebido por e-mail e rodapé externo |
+| Cliente | `/login.php` | Coberto | autenticação, perfil, lista, filtros, ordenação, tickets próprio/colaborado, criação, KB, página inicial e saída percorridos visualmente | manter três divergências candidatas na fila de correlação |
+| Equipe — agente | `/scp/` | Em observação | shell, Painel de Controle, Usuários, Tarefas e Tickets percorridos pelo administrador no contexto operacional | concluir KB e repetir ações funcionais de tickets/tarefas |
 | Equipe — administrador | `/scp/` | Em observação | fila de tickets revelou lacunas de massa/exportação | reiniciar pelo topo e cobrir todas as abas operacionais |
-| Administração | `/scp/admin.php` | Em observação | shell global e grupo Agentes percorridos pelo frontend natural | percorrer os demais grupos, formulários e estados configuráveis |
+| Administração | `/scp/admin.php` | Coberto no mapa global | cinco grupos e todos os 27 submenus/abas internas percorridos em ordem pelo frontend | repetir fluxos funcionais priorizados e fechar correlações |
+
+## Visitante anônimo — passagem sequencial reiniciada
+
+**Entrada:** `/index.php`. **Método:** GOV-020, sem saltos entre os quatro itens
+da navegação principal. Cada mudança de página reiniciou a leitura pelo topo.
+
+| Ordem | Superfície/componente | Ação natural | Resultado observável |
+| --- | --- | --- | --- |
+| 1 | cabeçalho — Entrar | aberto antes da navegação principal | formulário de usuário/senha, cadastro, entrada de atendente e abertura de ticket |
+| 2 | login vazio | botão `Entrar` | mensagem `Acesso negado`; link `Esqueci minha senha` passou a ser exibido |
+| 3 | recuperação de senha vazia | `Enviar E-mail` | formulário foi substituído por mensagem genérica de que o envio ocorrerá se os dados forem válidos |
+| 4 | logotipo | acionado após recuperação | retorno para `/index.php` |
+| 5 | Página Principal | primeiro menu | atalhos de abertura/consulta, busca da KB, conteúdo institucional e rodapé |
+| 6 | Base de Conhecimento | segundo menu | categoria, FAQ, seletor por tópico, busca e outros recursos |
+| 7 | categoria e FAQ | links internos na ordem | categoria pública, artigo, breadcrumbs, data de atualização e associação ao tópico |
+| 8 | busca positiva da KB | termo fictício existente + `Enter` | um resultado, com acesso ao FAQ |
+| 9 | busca negativa da KB | termo fictício inexistente + `Enter` | estado vazio explícito |
+| 10 | navegação por tópico | tópico disponível | um FAQ correspondente e categorias laterais |
+| 11 | Abrir Novo Ticket | terceiro menu | contato, tópico, ações e validação do formulário |
+| 12 | submissão vazia do ticket | `Criar novo Ticket` | erro geral e mensagens obrigatórias em e-mail, nome e tópico |
+| 13 | quatro tópicos de ajuda | seleção na ordem | todos carregaram por AJAX o mesmo formulário integrado de resumo, editor rico e anexos |
+| 14 | reinício do ticket | após selecionar o último subtópico | tópico voltou ao placeholder, mas o bloco dinâmico permaneceu renderizado |
+| 15 | cancelamento do ticket | `Cancelar` | retorno à Página Principal |
+| 16 | Verificar Status do Ticket | quarto menu | e-mail, número, link de acesso, login/cadastro e atalho para novo ticket |
+| 17 | consulta vazia | `Link de acesso do e-mail` | URL mudou para `login.php`, conteúdo permaneceu como consulta e exibiu erro de campos válidos |
+| 18 | atalhos da Página Principal | abertura e consulta acionadas na ordem | mesmos destinos dos menus principais |
+| 19 | busca da Página Principal | termo positivo + `Pesquisar` | encaminhamento natural à busca da KB com um resultado |
+| 20 | cadastro | formulário vazio e `Registrar` | campos obrigatórios de e-mail e nome e erro geral de informação incompleta |
+| 21 | cadastro — cancelamento | `Cancelar` | retorno para `/index.php` sem mutação |
+| 22 | criação funcional | todos os campos preenchidos na tela e `Criar novo Ticket` | confirmação visual de ticket criado com sucesso; fixture `[OSTR-W9] Ticket criado integralmente pelo portal` preservada |
+
+**Fato observado:** a navegação anterior por rotas não havia registrado as
+mudanças condicionais do login nem a permanência do formulário dinâmico após
+`Recomeçar Formulário`. O cadastro foi exercitado até sua validação e o ticket
+foi criado pelo formulário integralmente visível. Link de acesso por e-mail e
+link externo do rodapé ainda não encerram este contexto.
+
+## Cliente autenticado — passagem sequencial reiniciada
+
+**Entrada:** `/login.php`. **Método:** credenciais locais foram lidas do `.env`
+por ponte efêmera em loopback e preenchidas nos controles renderizados; nenhum
+segredo foi capturado ou documentado. A leitura de cada página reiniciou pelo
+topo.
+
+| Ordem | Superfície/componente | Ação natural | Resultado observável |
+| --- | --- | --- | --- |
+| 1 | autenticação | e-mail e senha preenchidos visualmente + `Entrar` | sessão do cliente aberta e contador `Tickets(3)` exibido |
+| 2 | cabeçalho e navegação | leitura da esquerda para a direita | Perfil, Tickets, Sair; Página Principal, KB, Abrir Novo Ticket e tickets |
+| 3 | Perfil | inspeção integral | contato, preferências, fuso horário e alteração de senha disponíveis |
+| 4 | Perfil — reinício | telefone e ramal temporários preenchidos e `Recomeçar Formulário` | campos voltaram ao valor anterior sem persistência |
+| 5 | Perfil — cancelamento | `Cancelar` | retorno para `/index.php`, não para a lista de tickets |
+| 6 | lista aberta | busca pelo número `593078` | uma linha correspondente |
+| 7 | filtro de tópico | `Questões gerais` | três linhas correspondentes |
+| 8 | composição busca+tópico | termo inexistente com o filtro ativo | a URL recebeu o termo, mas a lista continuou exibindo as três linhas do tópico |
+| 9 | lista fechada | alternância para `Fechado` | estado vazio; os controles ainda exibiram valores visuais anteriores até o reinício |
+| 10 | ordenação | Número, Data, Status, Assunto e Departamento | Número, Status, Assunto e Departamento mudaram os parâmetros; Data não alterou a URL nesta tentativa e exige repetição |
+| 11 | detalhe `593078` | abertura da linha | informações básicas, usuário, thread, impressão, edição e resposta apresentados |
+| 12 | impressão | `Imprimir` | nenhum resultado visual ou navegação observado; captura de download permanece pendente |
+| 13 | edição — reinício | assunto temporário preenchido e `Recomeçar Formulário` | assunto original restaurado sem persistência |
+| 14 | edição — cancelamento | `Cancelar` | retorno para `/index.php`, não para o detalhe |
+| 15 | resposta vazia | `Publicar Resposta` | mensagem inline `Mensagem necessária` |
+| 16 | resposta funcional | texto preenchido no editor visível e `Publicar Resposta` | mensagem de sucesso e nova entrada pública na thread com marcador `[OSTR-W9]` |
+
+**Fato observado:** esta etapa comprova somente as linhas acima. A divergência
+da composição de filtros, a ordenação por Data e a impressão ainda precisam de
+repetição controlada antes de qualquer classificação como defeito.
+
+Complementos que encerraram o contexto: o ticket colaborado `807330` mostrou
+na própria thread o evento de inclusão do cliente e duas mensagens publicadas
+por ele; a abertura autenticada omitiu os campos de contato, carregou o
+formulário pelo tópico e criou visualmente o ticket `961630`; o contador passou
+de três para quatro. A KB e a Página Principal preservaram o conteúdo público,
+mas mantiveram os controles autenticados. `Sair` encerrou a sessão e restaurou
+o cabeçalho e a navegação anônimos.
+
+## Equipe — shell operacional com administrador
+
+**Entrada:** `/scp/`. **Estado:** Em observação. A autenticação foi preenchida
+nos dois controles visíveis usando valores efêmeros do `.env`, sem registro dos
+segredos.
+
+| Ordem | Menu/submenu | Componentes observados | Resultado |
+| --- | --- | --- | --- |
+| 1 | Painel de Controle | intervalo, período, atualização, gráfico, legenda, estatísticas por departamento/tópico/agente e exportação | gráfico renderizou rótulos `NaN`; tabela departamental apresentou métricas |
+| 1.1 | Diretório do Agente | busca, departamento, filtro, seis colunas ordenáveis e paginação | dois agentes visíveis |
+| 1.2 | Meu Perfil — Conta | avatar, contato, senha, 2FA, férias e ações | sem submissão |
+| 1.2.1 | Preferências | paginação, atualização, remetente, fila, thread, assinatura, papel, redirecionamento, anexos, editor e localidade | todos os seletores percorridos visualmente |
+| 1.2.2 | Assinatura | editor rico e ações do formulário | editor vazio no estado atual |
+| 2 | Usuários — Diretório | busca, inclusão, importação, Mais, ordenação, seleção e exportação | nove usuários; fixture pública da Onda 9 visível |
+| 2.1 | Adicionar Usuário | busca prévia, e-mail, nome, telefone/ramal, notas e ações | modal aberto e cancelado sem mutação |
+| 2.2 | Importar — Copiar e colar | uma linha por nome/e-mail | modal observado sem submissão |
+| 2.2.1 | Importar — Carregar | CSV e colunas Email, Name, Phone e Notes | seletor de arquivo observado sem upload |
+| 2.3 | Organizações | busca, inclusão, Mais, ordenação, seleção e exportação | duas organizações visíveis |
+| 3 | Tarefas — Aberto | busca/ordem, Mais, seis colunas, seleção, exportação e uma tarefa | tarefa vinculada ao ticket `593078` visível |
+| 3.1 | Nova Tarefa | título, editor, anexo, departamento, designado, vencimento e ações | modal aberto e cancelado sem mutação |
+| 4 | Tickets — Aberto | cinco submenus, busca, avançado, ações, seis colunas, seleção e exportação | 14 tickets; novas fixtures `729918` e `961630` visíveis |
+| 5 | Base de Conhecimento — FAQs | busca, filtros de categoria/tópico e categoria pública | uma categoria pública visível |
+| 5.1 | Categorias | inclusão, Mais, quatro colunas, seleção e ações Público/Interno/Apagar | uma categoria pública; nenhuma ação em massa submetida |
+| 5.2 | Resposta pronta | inclusão, Mais, quatro colunas, seleção e paginação | três respostas ativas globais visíveis |
+
+**Fato observado:** a passagem acima usa o administrador dentro do painel
+operacional; ela não substitui a posterior repetição com o papel restrito de
+agente nem a inspeção das ações encadeadas de cada ticket.
+
+## Administração — reinício sequencial pós-Wiki
+
+**Entrada lógica:** primeiro menu `Painel de Controle`, apesar de o comando de
+troca de painel inicialmente abrir `settings.php`. **Estado:** Em observação.
+
+### 1. Painel de Controle
+
+| Ordem | Página | Componentes observados | Resultado |
+| --- | --- | --- | --- |
+| 1 | Eventos do Sistema | intervalo de datas, nível, filtro, exclusão, quatro colunas ordenáveis, seleção e paginação | 25 linhas na primeira página; exclusão não submetida |
+| 2 | Informações | versões, extensões PHP, cache, PHP, banco, armazenamento, assinatura, fusos e idiomas | osTicket `v1.18.4-23-g9f497f4b`; PHP 8.2.12; MariaDB 10.11.19; APCu ausente e demais extensões listadas presentes |
+
+### 2. Configurações
+
+| Ordem | Página/aba | Componentes observados | Resultado atual |
+| --- | --- | --- | --- |
+| 1 | Empresa — Informações Básicas | nome, website, telefone e endereço | somente nome preenchido |
+| 1.1 | Páginas do site | página inicial, offline e agradecimento | Inicial e Obrigado selecionadas; offline desligada |
+| 1.2 | Logos | escolhas separadas para Cliente/Equipe e upload | logo padrão nos dois contextos |
+| 1.3 | Fundo de acesso | escolha da equipe e upload | fundo padrão |
+| 2 | Sistema | estado, URL, departamento, HTTPS, colisão, paginação, logs, editor, iframe, ACL, localidade, idiomas, anexos e login | sistema conectado; anexos no banco; login para anexo ativo |
+| 3 | Tickets — Configurações | sequência, estado/prioridade/SLA/tópico, locks, fila, limites, CAPTCHA, colaboração, fechamento e anexos | quatro abas internas identificadas |
+| 3.1 | Respostas Automáticas | novo ticket, ticket de agente, mensagem, participantes e limite | respostas de ticket/mensagem ao proprietário desativadas; ticket de agente e participantes ativos |
+| 3.2 | Alertas e Avisos | novo ticket/mensagem/atividade, atribuição, transferência, atraso e sistema | destinatários e estados atuais percorridos |
+| 3.3 | Filas | inclusão, Mais, nome, criador, status, data e seleção | 14 filas de sistema ativas |
+| 4 | Tarefas — Configurações | formato/sequência, prioridade e anexos | sequência de tarefas e prioridade baixa |
+| 4.1 | Alertas & Avisos | nova tarefa, atividade, atribuição, transferência e atraso | todos os cinco grupos desabilitados |
+| 5 | Agentes — Configurações | nome, avatar, colaboradores, senha, reset, 2FA, bloqueio, sessão e IP | políticas atuais percorridas sem mutação |
+| 5.1 | Modelos | boas-vindas, login, recuperação e 2FA | quatro conteúdos versionados visíveis |
+| 6 | Usuários — Configurações | nome, avatar, registro, política, bloqueio, sessão, token e acesso rápido | registro público e token ativos; registro obrigatório inativo |
+| 6.1 | Modelos | acesso visitante, login, recuperação e confirmação | seis entradas; `Página de Login` exibiu destino `content//manage` e data vazia |
+| 7 | Base de Conhecimento | estado, login obrigatório e respostas prontas | KB e respostas prontas ativas; login não exigido |
+
+**Fato observado:** o destino incompleto do modelo `Página de Login` foi
+registrado como divergência visual/estrutural candidata. Nenhuma hipótese de
+causa ou impacto foi assumida nesta etapa funcional.
+
+### 3. Gerenciar
+
+| Ordem | Página | Componentes observados | Resultado atual |
+| --- | --- | --- | --- |
+| 1 | Tópico de ajuda | inclusão, Mais, classificação, sete colunas, seleção e paginação | quatro tópicos públicos ativos, incluindo um subtópico |
+| 2 | Filtros | inclusão, Mais e sete colunas ordenáveis | estado vazio explícito |
+| 3 | SLA | inclusão, Mais, cinco colunas, seleção e paginação | SLA padrão ativo, 18 horas |
+| 4 | Agendas | inclusão, Ações, quatro colunas, seleção e paginação | quatro agendas de negócio/férias |
+| 5 | API | inclusão, Mais, chave mascarada, IP, status, datas e seleção | uma chave local desativada; valor integral não exposto |
+| 6 | Páginas | inclusão, Mais, cinco colunas, seleção e paginação | Inicial, Obrigado e Offline ativas/em uso |
+| 7 | Formulários | inclusão e formulários integrados/personalizados | cinco integrados; nenhum personalizado |
+| 8 | Listas | inclusão, Mais, datas e seleção | lista integrada `Status do ticket` |
+| 9 | Plugins | inclusão, Mais e quatro colunas | nenhum plugin instalado |
+
+**Fato observado:** todas as nove páginas foram acessadas pelo submenu visível
+na ordem apresentada. Os controles mutáveis foram inventariados, mas inclusão,
+mudança em massa e exclusão não foram submetidas nesta passagem de cobertura.
+
+### 4. E-mails
+
+| Ordem | Página/aba | Componentes observados | Resultado atual |
+| --- | --- | --- | --- |
+| 1 | E-mails | inclusão, Mais, cinco colunas, seleção e paginação | três contas; `root@localhost.local` é a padrão |
+| 2 | Configurações | modelos, remetentes, administrador, verificação, recebimento, MTA e anexos | coleta e autocron habilitados visualmente, salvos e revalidados |
+| 3 | Lista Negra | busca, inclusão, Mais, quatro colunas e seleção | uma entrada ativa; data de inclusão aparece truncada como `01/12/2` |
+| 4 | Modelos | inclusão, Mais, cinco colunas, seleção e paginação | conjunto HTML padrão ativo e em uso |
+| 5 | Diagnóstico | origem, destino, assunto, editor e ações | conta SMTP disponível como origem |
+| 1.1 | Conta padrão | endereço/nome, departamento, prioridade, tópico, autoresposta e notas | entidade principal reaberta antes das configurações dependentes |
+| 1.2 | Caixa remota | host, porta, pasta, protocolo, autenticação, frequência, lote e pós-busca | POP `127.0.0.1:110`, autenticação básica, conta `ostr`, ativo, 1 minuto/10 mensagens |
+| 1.2.1 | Modal de autenticação | usuário e senha persistida | usuário revalidado; senha armazenada não foi exibida nem documentada |
+| 1.3 | SMTP | estado, host, porta, autenticação e cabeçalho | ativo em `127.0.0.1:25`, sem autenticação; os dois estados ativos foram conferidos no formulário renderizado |
+
+**Fato observado:** após habilitar coleta/autocron e navegar normalmente para
+o painel da equipe, o e-mail anteriormente enviado pela tela de diagnóstico foi
+coletado pelo POP3 e criou o ticket `967253`, assunto `[OSTR-W9] Teste visual de
+SMTP`. Não houve chamada ao receptor do osTicket por CLI. Uma segunda mensagem
+externa foi entregue ao microservidor e permanece aguardando a janela natural
+de coleta; sua ausência imediata não é falha.
+
+### 5. Agentes
+
+| Ordem | Página | Componentes observados | Resultado atual |
+| --- | --- | --- | --- |
+| 1 | Agentes | departamento/equipe, aplicar, inclusão, Mais, seis colunas, seleção e paginação | administrador e agente de visualização ativos |
+| 2 | Equipes | inclusão, Mais, seis colunas, seleção e paginação | uma equipe ativa, sem membros/líder |
+| 3 | Funções | inclusão, Mais, quatro colunas, seleção e paginação | quatro funções ativas; duas sem checkbox selecionável |
+| 4 | Departamentos | inclusão, Mais, sete colunas, seleção e paginação | três departamentos públicos ativos; Suporte é padrão e não selecionável |
+
+**Fato observado:** o mapa administrativo global reiniciado está completo nos
+cinco menus principais. “Coberto no mapa global” não encerra os fluxos de
+criação/edição nem os cenários funcionais repetidos; eles seguem na fila da
+mesma Onda 9 e só serão encerrados com evidência de resultado.
+
+## Repetição visual de ações encadeadas
+
+| Ordem | Contexto/controle | Ação visual | Resultado observável |
+| --- | --- | --- | --- |
+| 1 | ticket `927747`, entrada `32` | seta da entrada | menu `Editar`, `Criar novo Ticket` e `Criar Tarefa` exibido |
+| 2 | `Criar novo Ticket` | seleção do tópico, assunto preenchido e criação | corpo da entrada foi pré-carregado; ticket `163086` criado com sucesso |
+| 3 | ticket derivado `163086` | inspeção da thread | mensagem copiada, nota de derivação e vínculo `#927747` exibidos |
+| 4 | ticket de origem `927747` | retorno pela fila e inspeção da thread | duas referências visíveis: `#229189` e `#163086`, ambas apresentadas como criadas a partir da entrada `32` |
+| 5 | `Criar Tarefa` | acionado no mesmo menu visível | nenhum modal, navegação ou feedback apareceu nesta tentativa; repetição/correlação pendente |
+
+**Fato observado:** `#229189` aparece na fila com o assunto
+`[OSTR-W9] Entrada natural por POP3` e remetente `Ostr W9 Sender`, mas a thread
+de `#927747` também o apresenta como ticket criado a partir da entrada `32`.
+Essa combinação permanece em correlação e não é classificada como derivação
+manual até que percurso e persistência sejam reconciliados. A ausência de
+resposta de `Criar Tarefa` é somente comportamento visual reproduzido neste
+ponto.
+
+### Vínculo pela fila
+
+| Ordem | Controle visual | Resultado observado |
+| ---: | --- | --- |
+| 1 | seleção das linhas `903010` e `874483` | ambas as caixas ficaram marcadas na fila |
+| 2 | atalho de vínculo | modal `Tickets Link` abriu com `903010` no topo e `874483` abaixo; o próprio modal informa que o primeiro é o principal e permite reordenação |
+| 3 | `Salvar Alterações` | modal fechou e a fila foi recarregada |
+| 4 | detalhe de `903010` | rótulo `PRINCIPAL` e aba `Tickets Relacionados. (1)` exibidos |
+| 5 | aba de relacionados | tabela apresentou `874483`, assunto, departamento e data de criação |
+
+**Fato observado:** a composição pai/filho foi confirmada pelo fluxo natural da
+fila e pela renderização posterior do ticket principal. Nenhuma remoção ou
+desvinculação foi executada.
+
+### Atribuição, transferência e status no detalhe
+
+| Ordem | Controle visual | Resultado observado |
+| ---: | --- | --- |
+| 1 | menu de atribuição de `903010` | opções `Reivindicar`, `Agente` e `Equipe` exibidas |
+| 2 | `Agente` | modal listou `Alberto Moreira` e `OSTR Viewer`, além da justificativa |
+| 3 | seleção de `Alberto Moreira`, justificativa visível e `Atribuir` | retorno à fila; coluna `Atribuído a` passou a mostrar `Alberto Moreira` |
+| 4 | reabertura de `903010` | detalhe confirmou `Atribuído a: Alberto Moreira` e uma segunda entrada na thread |
+| 5 | `Transferir` | modal apresentou departamentos `Manutenção`, `Suporte` e `Vendas`, opção de manter acesso e justificativa; cancelado sem mutação |
+| 6 | `Alterar status` | menu apresentou `Resolvido` e `Encerrado`; nenhuma transição foi aplicada nesta unidade |
+
+**Fato observado:** a atribuição foi executada integralmente por controles
+renderizados, inclusive justificativa. Transferência e status foram observados
+até o ponto anterior à mutação para preservar a fixture principal enquanto os
+cenários dedicados são preparados.
 
 ## Administração — shell e mapa global
 
@@ -206,3 +452,40 @@ Cada página ganhará uma subseção própria durante a execução, com componen
 na ordem visual. A matriz não herdará o estado “concluído” dos cenários antigos:
 eles serão usados como evidência auxiliar e vinculados somente após
 reconfirmação pelo frontend natural.
+
+## Ajuda contextual e leitura integral
+
+**Fato observado:** os ícones `?` usam tópicos de ajuda vinculados pelo
+atributo `href`. Na fila de tickets, o tópico `advanced` foi aberto pelo próprio
+ícone e exibiu o manual **Avançado**: os critérios reduzem os parâmetros da
+pesquisa e o resultado da busca avançada pode ser exportado no rodapé. No
+formulário de resposta, o tópico `reply_types` foi aberto visualmente e explicou:
+
+- **Responder a Todos** envia ao usuário e aos colaboradores selecionados;
+- **Responder ao Usuário** envia apenas ao proprietário;
+- **Não Enviar E-mail de Resposta** não dispara alerta, mas mantém a resposta
+  visível a todos os usuários que possam consultar o ticket.
+
+Esses textos foram efetivamente renderizados na interface. A partir deste
+checkpoint, cada página deve inventariar também os tópicos de ajuda disponíveis;
+Wiki e código servem apenas para correlação, não substituem a abertura visual.
+
+## Cenário realista 01 — interrupção de impressão no fechamento
+
+| Ordem | Papel e ação visual | Resultado observável |
+| ---: | --- | --- |
+| 1 | solicitante anônima `Marina Costa - Financeiro` selecionou `Relate um problema` | formulário dinâmico exibiu resumo, editor e instrução para descrever o problema |
+| 2 | contato, telefone, ramal, resumo e relato operacional foram preenchidos na tela | após a troca de tópico, e-mail e telefone inicialmente preenchidos foram limpos pelo recarregamento dinâmico; todos os campos foram novamente preenchidos e conferidos antes do envio |
+| 3 | `Criar novo Ticket` | confirmação pública exibida; ticket `990221` criado no departamento Manutenção, origem Web, prioridade Normal e SLA Padrão |
+| 4 | agente pesquisou o assunto pela busca simples | uma linha correta foi retornada, mas o rodapé indicou `Mostrando 1 - 25` e páginas `2` a `15` mesmo havendo somente um resultado renderizado; divergência candidata |
+| 5 | agente abriu `Reivindicar`, preencheu a razão e confirmou | primeira tentativa permaneceu em `Carregando` enquanto SMTP/POP local não escutava; nenhuma atribuição persistiu após recarga |
+| 6 | microservidor isolado foi restabelecido e o mesmo formulário foi repetido | mensagem `Ticket atribuído a você Com sucesso`, campo `Atribuído a: Alberto Moreira` e evento com a justificativa foram exibidos |
+| 7 | agente abriu Nota Interna, preencheu título e diagnóstico | confirmação `Nota interna foi postado com sucesso` e entrada `Diagnóstico inicial da impressora fiscal` visíveis na thread |
+| 8 | agente abriu Resposta, carregou a resposta pronta de teste e substituiu o conteúdo por solução contextual | carregamento da resposta pronta foi comprovado no editor antes da substituição |
+| 9 | destinatário `Proprietário do Ticket`, status `Resolvido` e resposta final foram selecionados na tela | confirmação `Resposta postada com sucesso`; ticket permaneceu localizável na busca ad hoc com quatro itens na thread |
+
+**Fato observado:** a dependência do envio de alerta pode prolongar a operação
+de reivindicação quando o transporte configurado está indisponível. A primeira
+tentativa não persistiu a atribuição; a segunda, com o serviço local ativo,
+concluiu e deixou evidência visual. O cenário permanece como fixture humana e
+não contém dados reais.

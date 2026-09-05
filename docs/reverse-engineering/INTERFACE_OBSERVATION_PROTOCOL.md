@@ -86,7 +86,15 @@ ausência será documentada como limite do produto.
 
 ## Formulários e eventos
 
-- Preencher campos diretamente pelo navegador quando o objetivo for submissão.
+- Preencher cada campo no controle renderizado pelo navegador quando o objetivo
+  for submissão; atribuições indiretas, chamadas de endpoint, CLI ou banco não
+  contam como preenchimento visual.
+- Antes de submeter, conferir na própria interface os valores não secretos, as
+  seleções, os estados condicionado/expandido e a presença do valor mascarado
+  nos controles secretos.
+- Credenciais locais podem ser reutilizadas a partir do `.env` não versionado
+  ou da sessão do navegador, mas seus valores não entram em capturas,
+  documentação, logs, comandos registrados ou fixtures.
 - Usar movimento real do cursor somente para hover, drag, tooltip ou outro
   evento dependente de ponteiro.
 - Abrir todos os selects, dropdowns, abas, accordions e diálogos.
@@ -94,6 +102,11 @@ ausência será documentada como limite do produto.
   segurança.
 - Não usar requisições forjadas nesta passagem.
 - Configurações funcionais devem ser realizadas pelo Painel de Administração.
+- Quando um modal configurar um objeto dependente, aplicar o ciclo documentado
+  em `OSTICKET_OPERATIONAL_MODEL.md`: salvar primeiro a entidade principal,
+  reabri-la, configurar e salvar o modal, salvar novamente a principal quando
+  aplicável e reabrir para confirmar a persistência. Reset anterior a esse ciclo
+  é precondição não cumprida, não defeito presumido.
 - Dependências locais necessárias podem ser parametrizadas pela interface. É
   permitido manter um microserviço de e-mail exclusivo da homologação para SMTP
   e IMAP/POP, desde que não funcione como relay externo, use apenas dados
