@@ -89,4 +89,4 @@ passagem aprovou essas correções e confirmou também:
 - coerência entre README, progresso, plano, matriz e análise comportamental.
 
 Não permanece achado bloqueante. O revisor não alterou arquivos, estado do
-navegador, banco ou serviços externos.
+navegador, banco ou serviços externos. O fechamento foi submetido pela PR #23.
