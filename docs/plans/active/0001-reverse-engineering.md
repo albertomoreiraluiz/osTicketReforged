@@ -96,11 +96,9 @@ efeito em lote. Nenhuma exclusão ocorreu. A revisão independente foi aprovada 
 integrada pela PR #9. Conforme GOV-018, as fixtures de vínculo e criação de
 ticket a partir de resposta permanecem na homologação como evidência
 inspecionável pelo painel. A Onda 9 reabriu a cobertura comportamental para uma
-varredura integral pelo frontend natural, conforme GOV-019; portanto o Portão D
-aguarda essa matriz. GOV-020 exige reinício em ordem visual estrita e repetição
-pelo navegador de todos os cenários antes comprovados diretamente. O trabalho
-restante deste plano é dependente
-da conclusão da repetição visual da Onda 9; o ciclo funcional da tarefa
+varredura integral pelo frontend natural, conforme GOV-019. GOV-020 exigiu o
+reinício em ordem visual estrita e a repetição pelo navegador dos cenários antes
+comprovados diretamente. Essa repetição foi concluída: o ciclo funcional da tarefa
 derivada `2` já foi repetido pela interface e preservado aberto. Depois disso,
 BHV-022 também foi repetido com edição e restauração visual do ticket
 `903010`. A sequência posterior reconfirmou KB, usuários, organizações, perfil,
@@ -109,9 +107,12 @@ auditáveis da thread pelo frontend. Cliente e agente restrito já tiveram seus
 percursos completos repetidos; cadastro público, SMTP visual, reenvio e
 formulários administrativos priorizados também avançaram. A comprovação do
 novo arquivo CSV continua como divergência de comprovação; o link de ativação
-foi concluído. Dezoito editores individuais de modelos de e-mail aguardam a
-restauração da sessão administrativa. Concluída essa passagem e a revisão
-independente da Onda 9, o plano
+foi concluído. A matriz de visibilidade entre departamentos e equipe foi
+comprovada visualmente com fixtures preservadas. Os 19 editores do conjunto
+HTML padrão também foram percorridos na ordem visual, incluindo assunto, corpo,
+ajuda e variáveis, sem salvar alterações. A revisão independente bloqueou a
+primeira versão, as classificações históricas foram reconciliadas e a segunda
+passagem foi aprovada sem achado bloqueante. A Onda 9 está concluída; o plano
 dependerá da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural

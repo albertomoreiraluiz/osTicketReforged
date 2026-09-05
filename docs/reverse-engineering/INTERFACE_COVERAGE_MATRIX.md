@@ -192,6 +192,29 @@ não abriu visualizador nem materializou arquivo no diretório de downloads.
 contagens e paginações, contudo, não refletem as linhas autorizadas e formam
 uma divergência candidata de apresentação, não um ensaio de segurança.
 
+### Matriz visual entre departamentos e equipe
+
+**Entrada:** agente fictícia `Marina Nunes`, criada integralmente pelo
+formulário administrativo, com departamento primário `Suporte`, papel `Acesso
+total`, sem acesso estendido a `Vendas` e integrante da equipe `Nível 1 de
+Atendimento`.
+
+| Ordem | Ação visual | Resultado observável |
+| --- | --- | --- |
+| 1 | abrir a fila do agente | ticket `948619`, de Suporte e sem atribuição, ficou visível |
+| 2 | procurar `256288`, de Vendas e sem atribuição | nenhuma linha retornou; o resumo incoerente `25 de cerca 500` permaneceu |
+| 3 | abrir `tickets.php?id=24` pela interface do navegador | página do SCP respondeu `Acesso negado` |
+| 4 | abrir o ticket `948619` | detalhe, metadados e thread de Suporte ficaram acessíveis |
+| 5 | criar pelo formulário o ticket `625882`, em Vendas, atribuído à equipe Nível 1 | criação foi confirmada e a fila passou a exibir o ticket de Vendas junto ao ticket de Suporte |
+| 6 | abrir `625882` a partir da listagem do solicitante | após recarga completa, detalhe e thread ficaram acessíveis; a troca por PJAX havia preservado transitoriamente o conteúdo anterior |
+| 7 | reler os tickets da solicitante fictícia | apareceram somente `948619` e `625882`; o ticket `256288` continuou oculto |
+
+**Fato observado:** o departamento primário concedeu acesso ao ticket de
+Suporte; a mera existência de um ticket sem atribuição em Vendas não concedeu
+acesso; a atribuição à equipe da qual a agente participa concedeu acesso ao
+ticket de Vendas. As três fontes foram diferenciadas visualmente sem alterar
+core, schema ou permissões por acesso estendido.
+
 ## Equipe — shell operacional com administrador
 
 **Entrada:** `/scp/`. **Estado:** Coberto. A autenticação foi preenchida
@@ -582,42 +605,69 @@ correlacionar com a configuração persistida e o código.
 | 2.6 | Agentes — Modelos | quatro modelos listados; boas-vindas aberto e cancelado |
 | 2.7 | Usuários — Modelos | seis linhas; confirmação aberta; Página de Login sem identificador não abriu |
 | 4.3 | Lista Negra | formulário de novo bloqueio lido; cancelado |
-| 4.4 | Modelos de e-mail | 19 modelos classificados; Modelo de Resposta e ajuda de variáveis abertos |
+| 4.4 | Modelos de e-mail | 19 modelos e respectivos editores percorridos em ordem; assuntos, corpos, ajudas, variáveis e validações lidos sem salvar alterações |
 
 #### Modelos de e-mail — rastreabilidade individual
 
-Todos os itens abaixo tiveram título, descrição e estado lidos na listagem do
-conjunto HTML padrão. `Modelo de Resposta` também teve assunto, corpo e ajuda
-de variáveis abertos. Os demais editores individuais não serão declarados como
-cobertos até serem abertos com nova sessão administrativa válida.
+Todos os itens abaixo tiveram título e descrição lidos na listagem do conjunto
+HTML padrão e, depois, cada editor foi aberto em ordem pelo seletor visual. Em
+cada página foram conferidos assunto, editor HTML, corpo renderizado, link de
+variáveis e ações de salvar, redefinir e cancelar. A ajuda contextual do
+primeiro editor foi aberta e reproduziu a descrição já visível na listagem; as
+referências de variáveis foram abertas uma vez no grupo de ticket e uma vez no
+grupo de tarefa. Nenhuma alteração foi submetida.
 
 | Ordem | Modelo | Leitura visual atual | Estado do editor |
 | --- | --- | --- | --- |
-| 4.4.1 | Aviso de Nova Atividade | colaborador em alteração de ticket | pendente |
-| 4.4.2 | Nova mensagem de Resposta automática | confirmação de mensagem anexada | pendente |
-| 4.4.3 | Resposta Automática para Novo Ticket | resposta por correspondência de filtro | pendente |
-| 4.4.4 | Resposta automática de Novo Ticket | resposta ao criar ticket | pendente |
-| 4.4.5 | Aviso de Novo Ticket | ticket criado por agente | pendente |
-| 4.4.6 | Aviso de limite ultrapassado | máximo de tickets abertos | pendente |
-| 4.4.7 | Modelo de Resposta | assunto, editor HTML e variáveis | coberto |
-| 4.4.8 | Alerta de atividade interna | nota ou resposta do agente | pendente |
-| 4.4.9 | Alerta de nova mensagem | resposta de usuário | pendente |
-| 4.4.10 | Alerta de Novo Chamado | criação de ticket | pendente |
-| 4.4.11 | Alerta de tickets em atraso | inatividade ou vencimento | pendente |
-| 4.4.12 | Alerta de atribuição de tickets | atribuição de ticket | pendente |
-| 4.4.13 | Alerta na transferência | transferência de ticket | pendente |
-| 4.4.14 | Alerta de nova atividade | nova atividade em tarefa | pendente |
-| 4.4.15 | Aviso de Nova Atividade | colaborador em atividade da tarefa | pendente |
-| 4.4.16 | Alerta de Nova Tarefa | criação de tarefa | pendente |
-| 4.4.17 | Alerta de tarefas em atraso | vencimento ou inatividade | pendente |
-| 4.4.18 | Aviso de atribuição de tarefa | atribuição de tarefa | pendente |
-| 4.4.19 | Aviso de transferência de tarefa | transferência de tarefa | pendente |
+| 4.4.1 | Aviso de Nova Atividade | colaborador em alteração de ticket | coberto — `Re: %{ticket.subject}` |
+| 4.4.2 | Nova mensagem de Resposta automática | confirmação de mensagem anexada | coberto — `Confirmação de mensagem` |
+| 4.4.3 | Resposta Automática para Novo Ticket | resposta por correspondência de filtro | coberto — `Re: %{ticket.subject}` |
+| 4.4.4 | Resposta automática de Novo Ticket | resposta ao criar ticket | coberto — `Ticket de Suporte Aberto [#%{ticket.number}]` |
+| 4.4.5 | Aviso de Novo Ticket | ticket criado por agente | coberto — editor sinaliza `%{response}` como potencialmente inválida |
+| 4.4.6 | Aviso de limite ultrapassado | máximo de tickets abertos | coberto — fragmento `href=` é renderizado como texto no corpo |
+| 4.4.7 | Modelo de Resposta | resposta pública do agente | coberto e revalidado — `Re: %{ticket.subject}` |
+| 4.4.8 | Alerta de atividade interna | nota ou resposta do agente | coberto — editor sinaliza `%{note.message}` como potencialmente inválida |
+| 4.4.9 | Alerta de nova mensagem | resposta de usuário | coberto — `Alerta de nova mensagem` |
+| 4.4.10 | Alerta de Novo Chamado | criação de ticket | coberto — `Alerta de Novo Chamado` |
+| 4.4.11 | Alerta de tickets em atraso | inatividade ou vencimento | coberto — `Alerta de Chamados Atrasados` |
+| 4.4.12 | Alerta de atribuição de tickets | atribuição de ticket | coberto — `Chamado atribuído a você` |
+| 4.4.13 | Alerta na transferência | transferência de ticket | coberto — assunto inclui número e departamento |
+| 4.4.14 | Alerta de nova atividade | nova atividade em tarefa | coberto — editor sinaliza `%{message}` como potencialmente inválida |
+| 4.4.15 | Aviso de Nova Atividade | colaborador em atividade da tarefa | coberto — assunto inclui título e número da tarefa |
+| 4.4.16 | Alerta de Nova Tarefa | criação de tarefa | coberto — `Alerta de Nova Tarefa` |
+| 4.4.17 | Alerta de tarefas em atraso | vencimento ou inatividade | coberto — `Alerta de tarefa inativa` |
+| 4.4.18 | Aviso de atribuição de tarefa | atribuição de tarefa | coberto — `Tarefa atribuída à você` |
+| 4.4.19 | Aviso de transferência de tarefa | transferência de tarefa | coberto — editor sinaliza `%{staff.name.short}` como potencialmente inválida |
 
-**Bloqueio reproduzido:** após a expiração da sessão, a tentativa visual com a
-conta principal definida no `.env` retornou `Acesso negado`; a conta de teste
-administrativa retornou `ID de usuário inválido`. A continuidade exige que o
-responsável atualize as credenciais administrativas locais ou restabeleça a
-sessão no navegador. Nenhum desvio de autenticação foi tentado.
+**Fato observado:** o link `Variáveis Suportadas` de um modelo de tarefa abriu
+uma janela intitulada `Variáveis de Chamados`, com variáveis `ticket` e outras
+expansões gerais, mas sem catálogo visível de `task` ou `activity`. Isso diverge
+dos próprios assuntos e corpos dos seis modelos de tarefa, que usam ambas as
+famílias. O comportamento foi somente observado; os modelos padrão não foram
+corrigidos nesta etapa documental.
+
+**Correção de evidência:** os retornos `Acesso negado` e `ID de usuário
+inválido` ocorreram em uma página reutilizada sem recarga completa e não
+demonstram falha das credenciais. O responsável limpou os dados recentes de
+navegação, preencheu novamente os dois campos e submeteu o formulário com
+`Enter`, obtendo acesso normal. Não foi isolado se a recuperação decorreu da
+limpeza, da recarga implícita ou do modo de submissão; portanto, a causa
+permanece **Inferência**, e não um defeito de autenticação. Novas entradas devem
+partir de uma recarga completa, usar os campos visíveis e enviar com `Enter`.
+
+**Novo bloqueio reproduzido em 2026-09-05:** depois de encerrar a sessão da
+agente fictícia, quatro submissões visuais partiram de recarga completa. A
+primeira revelou que o preenchimento salvo do navegador substituía a conta
+digitada pela identidade da agente. Nas tentativas seguintes, a ordem dos
+campos foi invertida para impedir essa substituição e o usuário administrativo
+ativo foi confirmado de modo somente leitura. A conta definida em
+`OSTR_ADMIN_ACCOUNT` corresponde, no estado local atual, à agente fictícia; a
+senha definida não autenticou nem essa conta nem o usuário ou e-mail do
+administrador. Nenhum valor secreto foi exibido ou documentado. Como o limite
+de três falhas foi excedido, os editores foram suspensos naquele checkpoint.
+**Resolvido:** na retomada seguinte o navegador já apresentou uma sessão
+administrativa válida e todos os 19 editores foram concluídos sem nova tentativa
+de autenticação.
 
 Em Empresa, as quatro abas foram relidas: Informações Básicas; seleção das
 páginas Inicial, Offline e Agradecimento; Logos distintos para cliente/equipe;

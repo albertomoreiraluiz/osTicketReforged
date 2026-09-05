@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; trabalho corrente em `codex/wave9-downloads-and-closure`.
-- Etapa: Onda 9 em execução; repetição visual profunda anterior ao Portão D.
+- Etapa: Onda 9 concluída e aprovada; preparação comparativa do Portão D é o próximo passo.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -37,9 +37,9 @@
 - Evidência comportamental destinada à inspeção humana deve permanecer como
   fixture identificável na homologação conforme GOV-018; rollback é proteção
   contra falha, não encerramento automático do cenário.
-- Onda 9 reabriu a cobertura visual sob GOV-019: todas as superfícies serão
-  percorridas pelo frontend natural, componente por componente; Administração
-  e e-mail operacional deixam de herdar conclusão de chamadas diretas.
+- Onda 9 concluiu a cobertura visual reaberta por GOV-019: superfícies públicas,
+  do cliente, da equipe e da Administração foram percorridas pelo frontend
+  natural; a revisão independente final foi aprovada sem bloqueios.
 
 ## Onda 7 concluída funcionalmente
 
@@ -204,10 +204,10 @@
 
 ## Próximo passo proposto
 
-1. restaurar a sessão administrativa com credencial local válida;
-2. abrir e registrar os 18 editores de modelos de e-mail restantes;
-3. obter novo parecer independente e fechar documentalmente a Onda 9;
-4. somente depois derivar opções arquiteturais para o Portão D.
+1. integrar o fechamento documental da Onda 9;
+2. consolidar as evidências em pelo menos três opções arquiteturais;
+3. comparar atualização, integração, segurança e migração;
+4. submeter a recomendação do Portão D à aprovação explícita.
 
 ## Estado dos portões
 
@@ -216,7 +216,7 @@
 | A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
 | B — Inventário | Concluído | três ondas estáticas, portal e revisão QA independente | nenhum |
 | C — Análise profunda | Concluído | ciclos, dados, plugins, segurança, API, frontend, catálogos, falhas, registries, customização e revisão cruzada | nenhum bloqueio estático alto/médio |
-| D — Decisão arquitetural | Não iniciado | nenhuma | Portão C e aprovação do ADR |
+| D — Decisão arquitetural | Não iniciado | Portão C e Onda 9 concluídos | comparação de opções e aprovação explícita do ADR |
 
 ## Decisões futuras, fora da preparação atual
 
@@ -244,6 +244,10 @@ deliberados apenas na etapa a que pertencem, com base nas evidências produzidas
 Cada item concluído deve apontar para documento, diff, comando reproduzível, teste, Issue, Pull Request ou commit. Não registre avanço apenas por tempo gasto ou estimativa percentual.
 
 ## Histórico
+
+As linhas abaixo são checkpoints cronológicos: uma pendência registrada em uma
+linha antiga pode ser explicitamente superada por uma evidência posterior sem
+que o registro histórico seja reescrito.
 
 | Data | Unidade | Evidência | Resultado |
 | --- | --- | --- | --- |
@@ -338,7 +342,7 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-05 | Onda 9 — correlação do laboratório de e-mail | Eventos do Sistema; modal do log | ciclo detectado porque `root@localhost.local` é simultaneamente conta coletada e conta do sistema; evento refere respostas SMTP e não comprova ativação |
 | 2026-09-05 | Onda 9 — primeira revisão independente de fechamento | parecer QA somente leitura | bloqueou fechamento por ativação aberta, ausência da tabela BHV-001..034, trechos históricos contraditórios e próximo passo prematuro; correções documentais iniciadas na branch corrente |
 | 2026-09-05 | Onda 9 — confirmação pública concluída | caixa POP sanitizada; `pwreset.php`; login visual | rota real do link identificada sem token; confirmação consumida; login da conta fictícia abriu o portal autenticado e saída restaurou o contexto anônimo |
-| 2026-09-05 | Onda 9 — bloqueio de reautenticação administrativa | login SCP visual; `.env` sem exposição | conta principal retornou `Acesso negado`; conta administrativa de teste retornou `ID de usuário inválido`; 18 editores de modelos permanecem individualmente pendentes |
+| 2026-09-05 | Onda 9 — reautenticação administrativa corrigida | relato do responsável; login SCP visual após limpeza/recarga e `Enter` | credenciais locais confirmadas válidas; erros anteriores vieram de uma página reutilizada e não sustentam diagnóstico de credencial inválida; causa entre estado do navegador e modo de submissão não foi isolada |
 | 2026-09-05 | Onda 9 — vínculo de tickets pela fila | fila aberta; modal `Tickets Link`; ticket principal `903010`; relacionado `874483` | seleção, confirmação e reabertura executadas visualmente; rótulo `PRINCIPAL` e aba de relacionados com uma linha confirmados; nenhuma desvinculação executada |
 | 2026-09-05 | Onda 9 — ajuda contextual e cenário realista 01 | ajuda `advanced`; ajuda `reply_types`; ticket `990221`; portal público e SCP | textos dos dois manuais lidos na tela; incidente de impressão aberto, pesquisado, reivindicado, diagnosticado, respondido e resolvido integralmente pelo frontend; interrupção do SMTP/POP correlacionada e serviço local restabelecido; paginação inconsistente da busca registrada |
 | 2026-09-05 | Onda 9 — repetição visual de BHV-031 | busca visual; ticket `927747`; entrada `32`; tarefa `2` | ação `Criar Tarefa` aberta corretamente; título/departamento/agente preenchidos na tela; descrição herdada, vínculo, reivindicação e atualização da tarefa confirmados pela interface |
@@ -350,6 +354,11 @@ Cada item concluído deve apontar para documento, diff, comando reproduzível, t
 | 2026-09-05 | Onda 9 — paginação e ações em massa | preferência 5→25; tickets `729918` e `961630`; filas Aberto/Encerrado | quatro páginas confirmadas e preferência restaurada; transferência e resolução em lote executadas com rollback visual; divergência de total na fila encerrada registrada |
 | 2026-09-05 | Onda 9 — BHV-027/028 pelo frontend | tickets `903010`/`874483`; fixtures `924064`/`273122`; dump binário validado | desvínculo e relink concluídos visualmente; fusão com threads combinadas preservou pai, resolveu filho sem excluí-lo e deixou eventos/relacionamento visíveis |
 | 2026-09-05 | Onda 9 — entrada, marcações e exportações | ticket `927747`; histórico visual; referências/formulários; PDF/CSV | edição/restauração e histórico confirmados; responded→unanswered restaurado; PDF A4 gerado; CSV submetido, mas sem arquivo materializado no download |
+| 2026-09-05 | Onda 9 — matriz visual de departamentos e equipe | agente `Marina Nunes`; tickets `948619`, `256288` e `625882`; filas, pesquisa, detalhe e agregação do solicitante | acesso por departamento primário, negação fora do escopo e acesso cruzado por atribuição à equipe foram diferenciados pelo frontend; fixtures fictícias preservadas como evidência |
+| 2026-09-05 | Onda 9 — reautenticação após teste departamental | quatro recargas e submissões visuais; contrato `.env`; consulta somente leitura da identidade administrativa | preenchimento salvo do navegador foi isolado na primeira tentativa; `OSTR_ADMIN_ACCOUNT` aponta para a agente fictícia e o par atual não autenticou o administrador; intervenção solicitada somente após exceder três falhas |
+| 2026-09-05 | Onda 9 — 19 editores de modelos de e-mail | seletor visual do conjunto HTML padrão; assuntos, corpos, ajudas e variáveis | todos os editores percorridos na ordem do frontend sem salvar; quatro alertas de variável do validador, fragmento `href=` renderizado e catálogo de tarefa ausente na ajuda foram registrados |
+| 2026-09-05 | Onda 9 — revisão QA final | `qa_engineer/onda09/revisao-final-2`; diff de seis documentos; duas passagens somente leitura | primeira passagem bloqueou BHV-011/028/033 históricos; correções reconciliadas e segunda passagem aprovada sem achado bloqueante |
+| 2026-09-05 | Onda 9 — fechamento documental | matriz visual, análise comportamental, README, plano, progresso e parecer | repetição visual profunda concluída; nenhuma exclusão executada; Portão D permanece não iniciado até comparação e aprovação explícita |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |

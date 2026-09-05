@@ -49,7 +49,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-008 | ticket de teste | papéis fictícios | mutável | concluído | ciclo, thread, estado e persistência |
 | BHV-009 | tarefas vinculadas | papéis fictícios | mutável | concluído | criação, visibilidade, estado e ACL por ação |
 | BHV-010 | anexos e arquivos | papéis fictícios | mutável | concluído | persistência, serving, allowlist e tamanho |
-| BHV-011 | e-mail | papéis fictícios | mutável | backend observado; fluxo natural pendente | entrada direta e saída isolada não comprovam configuração administrativa completa |
+| BHV-011 | e-mail | papéis fictícios | mutável | concluído após repetição visual da Onda 9 | configuração POP3/SMTP, diagnóstico, autocron, resposta e reenvio pelo frontend |
 | BHV-012 | API HTTP nativa | chave fictícia local | mutável | concluído | JSON, XML, e-mail, cron, flags e persistência |
 | BHV-013 | exportação PDF | administrador/agente/cliente | leitura | concluído | MIME, assinatura e acesso por papel |
 | BHV-014 | buscas, filtros e ordenação | administrador/cliente | leitura | concluído | resultado positivo/negativo e controles de lista |
@@ -71,7 +71,7 @@ continuam registrados, mas não orientam os próximos cenários funcionais.
 | BHV-030 | ações das entradas da thread | administrador | leitura/mutável | concluído no recorte | destinatários, edição/histórico e formulário de reenvio |
 | BHV-031 | criação de tarefa a partir de entrada | administrador | mutável | concluído | prefill, vínculo e notas cruzadas |
 | BHV-032 | ações secundárias do ticket | administrador | leitura/mutável reversível | concluído no recorte | diálogos e flag respondido; demais comandos catalogados |
-| BHV-033 | ações em massa da fila | administrador | leitura | mapeado estaticamente | disponibilidade e dispatch por ação; efeito em lote não testado |
+| BHV-033 | ações em massa da fila | administrador | mutável reversível | concluído no recorte da Onda 9 | seleção, transferência e resolução em lote com restauração; exclusão somente observada |
 | BHV-034 | exportações compostas | administrador | leitura | concluído no recorte | PDFs e estrutura dos ZIPs com/sem tarefa |
 
 ## Regras de evidência
@@ -186,9 +186,10 @@ Em seguida, a fusão em modo **Threads separadas**, sem excluir filho nem mover
 tarefas, respondeu `201`. O pai continuou aberto; o filho recebeu referência ao
 pai, flag de thread separada e estado resolvido. A visão materializada
 `ticket__cdata` deixou de enumerar o filho após a migração de sua thread para o
-contexto extra do pai, embora a linha base do ticket permaneça. BHV-027 está
-concluído e BHV-028 permanece aberto para comparar o modo de threads combinadas
-e a apresentação resultante sem executar exclusão.
+contexto extra do pai, embora a linha base do ticket permaneça. Neste primeiro
+checkpoint da Onda 8, BHV-027 ficou concluído e BHV-028 permaneceu aberto para
+comparar o modo de threads combinadas e a apresentação resultante sem executar
+exclusão; o checkpoint seguinte encerrou essa pendência.
 
 ### Checkpoint 2 — modos de fusão e criações derivadas
 
@@ -259,20 +260,23 @@ negada apesar do retorno de página `200`. Banir e
 desbanir endereço, remover referências/formulários e excluir ticket foram
 catalogados sem execução por envolverem remoção de relação ou registro.
 
-Na fila, o menu em massa oferece reivindicar, atribuir a agente/equipe, fundir,
-vincular, transferir e excluir. Os contratos de atribuição, transferência,
-status, fusão e vínculo já foram exercitados individualmente; a camada em massa
-itera a seleção e agrega o resultado, portanto foi mantida somente leitura para
-evitar duplicar mutações sem ampliar o comportamento conhecido. Exclusão em
-massa permanece fora de escopo.
+Na Onda 8, o menu em massa ofereceu reivindicar, atribuir a agente/equipe,
+fundir, vincular, transferir e excluir. Como os contratos haviam sido
+exercitados individualmente, aquela passagem permaneceu somente leitura. A
+Onda 9 superou esse limite: os controles `Todos`, `Nenhum` e `Alternar` foram
+exercitados, uma transferência em lote foi submetida e restaurada com razão
+auditável, e dois tickets foram resolvidos em lote e depois reabertos pela
+interface. Exclusão em massa permaneceu apenas observada e fora de execução.
 
 As três variantes PDF retornaram `200 application/pdf`, com tamanhos distintos
 ao incluir notas e eventos. O ZIP sem tarefas retornou
 `200 application/zip`, 63.826 bytes e um PDF; o ZIP com tarefas retornou
 126.795 bytes e dois PDFs, confirmando um documento adicional para a tarefa.
-Não foi alegada inspeção do conteúdo de anexos dentro dos arquivos. O recorte
-funcional de BHV-026 a BHV-032 e BHV-034 foi concluído; BHV-033 permanece
-mapeado estaticamente porque nenhum efeito em lote foi executado.
+Não foi alegada inspeção do conteúdo de anexos dentro dos arquivos. Ao final da
+Onda 8, o recorte funcional de BHV-026 a BHV-032 e BHV-034 estava concluído e
+BHV-033 permanecia somente estático. A repetição visual da Onda 9 executou os
+efeitos não destrutivos em lote descritos acima e reclassificou BHV-033 como
+concluído no recorte, sem executar exclusão.
 
 ## Achados iniciais
 
@@ -402,6 +406,16 @@ Controle da Equipe, sem conteúdo de administração, enquanto a busca AJAX
 `/users/staff` respondeu `403`. Isso demonstra que o status HTTP `200` isolado
 não prova autorização: títulos, menus e conteúdo final também precisam ser
 verificados.
+
+Uma segunda identidade fictícia, `Marina Nunes`, foi criada pelo formulário
+administrativo com departamento primário Suporte, sem acesso estendido a
+Vendas e como membro da equipe Nível 1 de Atendimento. Na sessão visual dessa
+agente, o ticket `948619` de Suporte ficou acessível; o ticket `256288` de
+Vendas, sem atribuição, não apareceu na fila nem na agregação do solicitante e
+respondeu `Acesso negado`; o ticket `625882`, também de Vendas, passou a ficar
+visível após ser atribuído à equipe Nível 1. O ensaio distingue acesso por
+departamento de acesso por equipe, sem inferi-los a partir de consulta direta
+ao banco.
 
 ### BHV-CLI-001 — ativação de cliente pelo CLI
 
@@ -600,20 +614,44 @@ limite ficam cobertos, encerrando BHV-010.
 
 ### BHV-011 — pré-condição do transporte de e-mail
 
-**Reclassificação pela Onda 9:** as chamadas diretas a `tickets.email` e os
-coletores locais descritos abaixo comprovam componentes de backend, parsing e
-transporte. Não comprovam criação natural por uma conta configurada e coletada
-pelo Painel de Administração. Esse fluxo permanece pendente conforme GOV-019.
+**Estado histórico anterior à Onda 9:** as chamadas diretas a `tickets.email`
+e os coletores locais descritos abaixo comprovavam componentes de backend,
+parsing e transporte, mas não a criação natural por uma conta configurada e
+coletada pelo Painel de Administração. GOV-019 reabriu esse fluxo.
 
 Na inspeção natural do Painel de Administração, `E-mails > Configurações`
 mostrou a busca global desabilitada e sem busca automática por cron. Em
 `E-mails > E-mails > conta padrão > Caixa de Correio Remota`, host, porta,
-pasta, protocolo e autenticação estavam sem configuração e o estado de coleta
-estava desabilitado. A aba `Enviando (SMTP)` também estava desabilitada e sem
-host/porta; o MTA global selecionado era a função `mail` do PHP. Assim, a
-precondição ausente para entrada natural é uma caixa IMAP/POP fictícia de
-homologação, configurada pela interface com credenciais fornecidas para esse
-fim. O diagnóstico visível cobre saída, não recebimento.
+pasta, protocolo e autenticação estavam inicialmente sem configuração e o
+estado de coleta estava desabilitado. A aba `Enviando (SMTP)` também estava
+desabilitada e sem host/porta; o MTA global selecionado era a função `mail` do
+PHP. Esse trecho descreve a precondição inicial, depois superada.
+
+Na Onda 9, o microservidor local foi configurado visualmente na conta padrão:
+POP em `127.0.0.1:110`, autenticação básica, coleta ativa a cada minuto e lote
+de dez mensagens; SMTP ativo em `127.0.0.1:25`, sem relay externo. Coleta e
+autocron foram habilitados e salvos no Painel de Administração. O e-mail criado
+pelo Diagnóstico foi recebido pelo autocron natural do frontend e gerou o
+ticket `967253`; uma resposta e um reenvio também foram submetidos pela thread.
+O laboratório registrou um ciclo por usar a mesma conta nos dois lados, sem
+invalidar a comprovação do fluxo natural. Isso encerra BHV-011 no recorte da
+homologação.
+
+Na passagem final da Onda 9, o conjunto HTML padrão foi aberto e seus 19
+editores foram percorridos sequencialmente pelo seletor visível. Assunto, corpo
+renderizado, editor rico, link de variáveis suportadas e ações de formulário
+foram lidos sem salvar alterações. A ajuda contextual do primeiro modelo foi
+aberta e correspondeu à descrição já lida na lista. O validador da própria página
+sinalizou `%{response}` no aviso de ticket criado pelo agente,
+`%{note.message}` no alerta de atividade interna, `%{message}` no alerta de
+atividade de tarefa e `%{staff.name.short}` na transferência de tarefa. Além
+disso, o aviso de limite aberto renderizou um fragmento `href=` como texto.
+
+O link de variáveis em um modelo de tarefa abriu `Variáveis de Chamados` e não
+mostrou um catálogo de `task` ou `activity`, apesar do uso dessas famílias nos
+seis modelos da categoria. Esses achados descrevem a validação e a apresentação
+do editor padrão; não demonstram, sem um disparo correspondente, o resultado
+final de cada expansão durante o envio.
 
 A inspeção não destrutiva encontrou zero conta SMTP cadastrada ou ativa em
 `email_account`. O fallback do PHP aponta para `localhost:25`, sem
@@ -1112,11 +1150,14 @@ porque o ambiente é acessível somente em sua máquina. A permanência é aceit
 apenas neste contexto, não constitui orientação para produção e deve ser
 reavaliada se o serviço passar a aceitar conexões externas.
 
-## Encerramento funcional
+## Encerramento funcional da Onda 8 e reclassificação da Onda 9
 
-Os 25 cenários originais e oito dos nove cenários complementares estão
-concluídos no recorte declarado. BHV-033 permanece mapeado estaticamente, sem
-alegação de efeito em lote. O fechamento revisado foi integrado pela PR #9.
+Ao final da Onda 8, os 25 cenários originais e oito dos nove cenários
+complementares estavam concluídos no recorte declarado; BHV-033 permanecia
+mapeado estaticamente. Esse fechamento histórico foi integrado pela PR #9.
+Depois, a Onda 9 executou transferência e resolução em lote com restauração
+visual e concluiu BHV-033 no recorte não destrutivo. A exclusão em massa
+continua somente observada.
 Referências a concorrência,
 injeção de falhas, acessibilidade e novos testes de segurança permanecem
 deliberadamente reservadas a fases próprias e não anulam a evidência obtida.

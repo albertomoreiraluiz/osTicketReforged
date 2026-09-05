@@ -68,3 +68,25 @@ modo somente leitura a matriz comportamental e o diff de consolidação.
 O integrador corrigiu os três itens e repetiu as validações documentais. O
 revisor não leu `.env`, banco ou runtime, não executou testes ofensivos e não
 alterou arquivos. Não permanece bloqueio funcional ou documental da Onda 7.
+
+## Onda 9 — revisão QA da repetição visual profunda
+
+A instância `qa_engineer/onda09/revisao-final-2` revisou em modo somente leitura
+a matriz visual reconciliada, a análise comportamental, o plano e os resumos de
+progresso. A primeira passagem bloqueou o fechamento porque BHV-011, BHV-028 e
+BHV-033 ainda apresentavam estados históricos da Onda 8 como se fossem atuais.
+
+O integrador marcou a precondição antiga de e-mail como superada pelo fluxo
+POP3/SMTP visual, delimitou o checkpoint incompleto de BHV-028 e reclassificou
+BHV-033 após transferência e resolução reversíveis em lote na Onda 9. A segunda
+passagem aprovou essas correções e confirmou também:
+
+- os 19 editores de e-mail individualizados, sem alegar expansão não disparada;
+- a matriz de acesso por departamento primário, negação fora do escopo e
+  concessão por equipe;
+- a divergência de materialização do CSV preservada sem causa presumida;
+- exclusão em massa limitada à observação;
+- coerência entre README, progresso, plano, matriz e análise comportamental.
+
+Não permanece achado bloqueante. O revisor não alterou arquivos, estado do
+navegador, banco ou serviços externos.
