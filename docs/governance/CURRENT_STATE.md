@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/reforged-entry-session-design`, entrada `0f23d12e` (PR #35),
-para detalhar entradas/sessão/publicação sem novos aceites arquiteturais. Permite que uma nova sessão
+Atualizado na branch `codex/reforged-guard-contracts`, entrada `1580ea20` (PR #36),
+para registrar rastreio de guardas e ADR 0007 proposto, aguardando decisão. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -111,6 +111,8 @@ em comparação, não em execução:
 - primeiro módulo a migrar;
 - política final de release e proteção obrigatória da `main`;
 - qualquer alteração de core, schema ou implementação de produto.
+- ADR 0007: adaptação limitada da coordenação inline de guardas staff/admin;
+  não aceito. Métodos originais permanecem reutilizados; core intacto.
 
 Esses itens pertencem ao Portão D ou a decisões posteriores. Ausência de
 decisão nunca deve ser preenchida por preferência técnica do agente.
@@ -163,11 +165,13 @@ Inventário e evidências da baseline permanecem preservados.
 Após a discussão, ADR 0004 aceita a estratégia de módulos novos sobre o backend
 original. ADR 0005 aceita divisão/paridade; ADR 0006 aceita mesma origem,
 recursos/ações e isolamento. Não reabrir essas decisões como indefinidas.
-Detalhamento corrente: [entradas, sessão e publicação](../reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md),
-com matriz por contexto e critérios futuros, ainda propostos. A árvore física
-continua candidata. Próximo passo: ligar cada guarda a um mecanismo reutilizável
-e consolidar contratos de contexto/erros, antes de fixar URLs ou implementar, a partir
-do [mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
+Detalhamento corrente: [guardas e contratos](../reverse-engineering/REFORGED_GUARD_CONTRACTS.md),
+com G01–G09 rastreados e contexto/erros propostos. Intervenção necessária: decidir
+o ADR 0007 antes de fechar a adaptação das combinações/exceções inline staff/admin.
+Não falta autorização para chamar métodos; falta aceitar o tratamento da
+coordenação presa às páginas. Não gerar código nem preencher esse aceite por
+autonomia operacional. A árvore física continua candidata. Base de rastreabilidade:
+[mapa SCP](../reverse-engineering/SCP_FLOW_MAP.md): 153 registros estáticos,
 47 arquivos PHP do escopo (inclui dois bootstraps), 26 famílias e 229 folhas AJAX.
 GOV-026 e [Plano 0002](../plans/active/0002-functional-ux-direction.md) registram
 direção de dashboard administrativo intuitivo, prioridade funcional e delegação

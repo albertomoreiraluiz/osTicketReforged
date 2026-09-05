@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da unidade: `codex/reforged-entry-session-design`, entrada `0f23d12e` (PR #35).
+- Branch da unidade: `codex/reforged-guard-contracts`, entrada `1580ea20` (PR #36).
 - Etapa: Portão D em andamento; ADRs 0004–0006 aceitos nos respectivos recortes, detalhes técnicos pendentes.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
@@ -223,6 +223,26 @@
   UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
+
+Unidade corrente: `REFORGED_GUARD_CONTRACTS.md` rastreia G01–G09 e propõe campos
+de contexto e categorias de erro. Métodos individuais estão disponíveis; agregado
+completo sem apresentação não foi identificado no recorte pesquisado.
+Coordenação de chamadas continua aceita; combinações/exceções inline exigem
+decisão explícita conforme ADR 0004. ADR 0007 foi criado como **Proposto**, não
+aceito. Próximo passo depende do responsável: autorizar ou ajustar a adaptação
+limitada da coordenação staff/admin, sem core change, novo IAM ou cópia de métodos.
+
+Autonomia solicitada aplicada ao rastreio e documentação; não converte proposta
+em decisão. Concluída a unidade documental, o trecho dependente dessa decisão
+pausa. Não houve implementação, alteração de schema/core, teste de produto,
+acesso a banco ou credencial de homologação. Revisão independente IAM favorável,
+sem achado crítico/alto/médio; precisão sobre efeitos herdados de logs incorporada
+e reconferida pelo integrador. MkDocs estrito válido; 73 documentos/73 entradas,
+132 Markdown e 340 links auditados, zero quebra própria e seis herdadas;
+mapa SCP, agrupamento de módulos e diff validados. Evidências das unidades
+anteriores seguem históricas. Aceite arquitetural do ADR 0007 continua pendente.
+
+### Histórico — entradas integradas pela PR #36
 
 Unidade corrente: `REFORGED_ENTRY_SESSION_DESIGN.md`, matriz de tipos de entrada,
 reutilização/obstáculos, continuidade de sessão/CSRF e publicação por intenção.
