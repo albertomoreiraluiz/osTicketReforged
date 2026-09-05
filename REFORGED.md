@@ -2,10 +2,12 @@
 
 ## Situação
 
-Projeto em engenharia reversa, baseado no osTicket `v1.18.4`. Ainda não existe arquitetura de customização aprovada nem implementação própria.
+Projeto em engenharia reversa, baseado no osTicket `v1.18.4`. A estratégia de
+módulos novos sobre o backend original está aceita no ADR 0004; implementação
+própria não iniciada.
 
-O Portão D foi reiniciado: recomendação anterior descartada; discussão de
-requisitos para coexistência contínua dos painéis, sem nova recomendação.
+O Portão D permanece em andamento para detalhamento técnico da estratégia
+aceita. A recomendação anterior da PR #28 continua descartada.
 
 ## Objetivo
 

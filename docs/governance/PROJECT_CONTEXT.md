@@ -2,21 +2,27 @@
 
 ## Estado
 
-Documento **Aceito** pelo responsável pelo projeto como contexto persistente. Decisões arquiteturais continuam **A definir (TBD)** até aprovação em ADR.
+Documento **Aceito** pelo responsável. ADR 0004 formaliza a estratégia de módulos
+novos sobre o backend intacto; detalhes técnicos não decididos permanecem TBD.
 
 ## Missão
 
 Realizar engenharia reversa estruturada do osTicket 1.18 e, com base no código, definir uma arquitetura sustentável para:
 
-- preservar o core sempre que possível;
-- desenvolver plugins e regras próprias;
-- introduzir uma camada de API desacoplada dos detalhes internos;
+- preservar o core original intacto, sem refatoração para o Reforged;
+- escrever módulos e endpoints novos reutilizando mecanismos e regras existentes,
+  sem duplicá-los nem executar fluxos por escrita direta nas tabelas;
+- introduzir contratos estruturados para Angular, sem HTML legado;
 - manter o painel PHP e disponibilizar um painel Angular/PrimeNG adicional por
   endereço distinto, em coexistência contínua;
 - planejar separadamente a possível substituição integral do portal do usuário;
 - preservar segurança, permissões, SLA, tickets, threads e anexos;
 - manter compatibilidade com atualizações futuras;
 - evitar um fork profundo e difícil de manter.
+
+O novo painel contempla todo o SCP, incluindo administração. Ambos os painéis
+usam a mesma identidade e permissões; alternância sem novo login é requisito,
+cuja integração técnica de sessão ainda será validada. Não criar IAM paralelo.
 
 O objetivo não é reproduzir telas antigas nem reescrever o backend por preferência tecnológica.
 
@@ -37,7 +43,10 @@ Os Portões A, B e C estão concluídos. O Portão D foi iniciado em 2026-09-05 
 autorização do responsável e reiniciado após descarte da recomendação da PR #28.
 As premissas aceitas estão no [ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md):
 `/scp` preservado, endereço novo distinto (`/scp/reforged` apenas candidato),
-portal planejado à parte. Não há nova recomendação ou primeiro recorte. O
+portal planejado à parte. A estratégia discutida e confirmada posteriormente
+está no [ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md).
+Primeiro recorte executável e contratos continuam pendentes; login foi exemplo.
+Nenhuma implementação é iniciada por esta formalização. O
 [checkpoint canônico](CURRENT_STATE.md) registra o contrato de retomada e deve
 ser confrontado com Git e fontes especializadas em toda nova sessão.
 

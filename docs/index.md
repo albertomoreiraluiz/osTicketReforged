@@ -55,6 +55,8 @@ Use a [matriz de evidências](reverse-engineering/EVIDENCE_MATRIX.md), a
 
 Comece pelo [dossiê do Portão D](reverse-engineering/ARCHITECTURE_DECISION_RECORD.md)
 e pelas [premissas de coexistência](adr/0003-coexistencia-paineis-portal-separado.md).
+A [estratégia modular aceita](adr/0004-modulos-reforged-backend-osticket.md)
+define a fronteira atual: módulos novos sobre o backend intacto, SCP completo.
 A estratégia anterior permanece somente como histórico, não como orientação ativa.
 
 Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), a
@@ -74,7 +76,7 @@ Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), 
 | Inventário | concluído | 2.266 caminhos classificados sem lacuna ou sobreposição |
 | Análise profunda | concluída | arquitetura, domínio, dados, interfaces, APIs, segurança e extensão documentados |
 | Observação visual | concluída | 34 cenários reconciliados e revisão independente aprovada |
-| Decisão arquitetural | reiniciada | [novas premissas](adr/0003-coexistencia-paineis-portal-separado.md); recomendação anterior descartada |
+| Decisão arquitetural | estratégia aceita; detalhamento em andamento | [ADR 0004](adr/0004-modulos-reforged-backend-osticket.md); nenhuma implementação iniciada |
 
 ## Como interpretar as afirmações
 

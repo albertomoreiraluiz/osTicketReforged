@@ -25,6 +25,11 @@ reiniciar as análises. Este registro não escolhe uma arquitetura técnica.
 
 ## O que esta decisão não autoriza
 
+Complemento posterior: [ADR 0004](0004-modulos-reforged-backend-osticket.md)
+aceita a fronteira modular, escopo integral do SCP e requisito de alternância
+sem novo login. Os limites abaixo descrevem o alcance deste ADR 0003, não
+revogam o complemento; integração técnica e implementação continuam pendentes.
+
 Não escolhe plugin, fachada, serviço, contrato, autenticação, sessão compartilhada,
 URL definitiva, primeiro módulo, versões, infraestrutura ou armazenamento.
 Não autoriza implementação, mudanças de core/schema ou substituição imediata do

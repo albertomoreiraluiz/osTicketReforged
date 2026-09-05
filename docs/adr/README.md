@@ -19,3 +19,6 @@ Decisões aceitas:
   MkDocs Material e ferramentas especializadas complementares.
 - `0003-coexistencia-paineis-portal-separado.md` — coexistência contínua dos painéis
   e portal separado; premissas aceitas, não arquitetura técnica ou liberação do Portão D.
+- `0004-modulos-reforged-backend-osticket.md` — estratégia aceita de módulos novos
+  reutilizando o backend intacto, SCP completo e identidade existente; detalhes
+  executáveis e fechamento do Portão D continuam pendentes.

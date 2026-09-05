@@ -2,6 +2,12 @@
 
 ## Síntese canônica
 
+O login original foi usado como exemplo didático para a estratégia aceita no
+[ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md). Não há módulo ou
+endpoint Reforged implementado. Reutilizar a cadeia original, e não somente a
+comparação da senha, é a fronteira confirmada; contratos e sessão ainda serão
+detalhados, sem alterar os fatos da baseline abaixo.
+
 Autenticação é fornecida por registries distintos para agentes e clientes;
 sessão, CSRF, escopo do objeto e permissão da ação formam controles em camadas,
 mas não um middleware uniforme. Cada operação precisa aplicar os controles

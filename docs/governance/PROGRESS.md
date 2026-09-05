@@ -5,8 +5,8 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da retomada: `codex/gate-d-restart-coexistence`, entrada `379efb0b` (PR #28).
-- Etapa: Portão D reiniciado; recomendação anterior descartada, critérios em discussão.
+- Branch da formalização: `codex/modular-backend-strategy`, entrada `ad107b49` (PR #29).
+- Etapa: Portão D em andamento; estratégia aceita no ADR 0004, detalhamento pendente.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -224,11 +224,35 @@
 
 ## Próximo passo proposto
 
-1. discutir requisitos e critérios de coexistência contínua com o responsável;
-2. só então refazer a comparação, sem preferência ou primeiro recorte herdados;
-3. submeter nova recomendação à decisão explícita, sem iniciar implementação.
+1. detalhar com o responsável as decisões técnicas abertas dentro do ADR 0004;
+2. rastrear contratos e integração por fluxo, sem reabrir a estratégia aceita;
+3. revisar o detalhamento antes de fechar o Portão D ou iniciar implementação.
 
-## Reinício do Portão D — estado corrente
+## Estratégia modular formalizada — estado corrente
+
+**Decisão aceita:** [ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md)
+registra a aprovação explícita após a demonstração de autenticação: backend
+original intacto, módulos/endpoints novos reutilizando regras e efeitos,
+respostas estruturadas sem HTML legado, Angular/PrimeNG cobrindo todo o SCP.
+Mesma identidade e permissões, com alternância sem novo login, são requisitos;
+integração de sessão compartilhada ainda depende de desenho e validação.
+Portal do usuário separado. Nenhum IAM paralelo, cópia de regras ou escrita
+direta de fluxos nas tabelas foi autorizado.
+
+O exemplo de login não escolhe automaticamente primeiro módulo, rotas ou classes.
+Os nomes e JSONs didáticos não são contrato aprovado. A proposta e os pareceres
+da PR #28 continuam históricos; não são revisões desta estratégia.
+
+Unidade documental centralizada: não houve necessidade de subagentes, nova
+escolha técnica, implementação ou mutação de homologação. O Portão D continua
+aberto para contratos, bootstrap, integração e revisão de fechamento.
+
+Validação desta formalização: MkDocs estrito aprovado; 60/60 documentos na
+navegação sem ausência/duplicação e seis contextos preservados; 119 Markdown
+e 242 links locais auditados, zero destino ausente do Reforged e seis referências
+herdadas. `git diff --check` sem erro. Nenhum teste de produto executado.
+
+## Reinício do Portão D — histórico da PR #29
 
 **Decisão aceita:** recomendação da PR #28 descartada por solicitação explícita.
 [ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md) formaliza somente
@@ -277,16 +301,17 @@ da publicação: nenhuma Issue ou PR aberta. Estado externo deve ser revalidado.
 | A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
 | B — Inventário | Concluído | três ondas estáticas, portal e revisão QA independente | nenhum |
 | C — Análise profunda | Concluído | ciclos, dados, plugins, segurança, API, frontend, catálogos, falhas, registries, customização e revisão cruzada | nenhum bloqueio estático alto/médio |
-| D — Decisão arquitetural | Reiniciado | descarte da PR #28; premissas no ADR 0003 | discussão de requisitos, nova comparação e decisão técnica final |
+| D — Decisão arquitetural | Em andamento | ADR 0004: estratégia aceita | detalhamento técnico e revisão de fechamento |
 
 ## Decisões ainda não aceitas
 
 Os itens abaixo não bloqueiam a comparação documental. Serão deliberados na
-etapa correspondente; não há direção técnica ou primeiro recorte recomendados.
+etapa correspondente; a estratégia do ADR 0004 não deve ser reaberta por ausência
+de detalhes. Primeiro recorte executável permanece indefinido.
 
 - Convenção final de releases do Reforged — **A definir (TBD)**.
 - Política de proteção obrigatória de `main` no GitHub — **Proposto**.
-- Arquitetura de extensão/API — **A definir (TBD)** sob coexistência aceita no ADR 0003.
+- Contratos, bootstrap e integração de sessão — **A definir (TBD)** dentro do ADR 0004.
 - Primeiro recorte — **A definir (TBD)**; sugestão anterior descartada.
 - Persistência definitiva de conexões e segredos — **A definir (TBD)**.
 

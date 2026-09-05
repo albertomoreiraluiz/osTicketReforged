@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/gate-d-restart-coexistence` para registrar o descarte
-da recomendação da PR #28 e o reinício do Portão D. Permite que uma nova sessão
+Atualizado na branch `codex/modular-backend-strategy` para formalizar a estratégia
+confirmada no ADR 0004, após o descarte da PR #28. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -21,9 +21,9 @@ o ponto de retomada.
 | Fork | `https://github.com/albertomoreiraluiz/osTicketReforged.git`, remoto `origin` |
 | Baseline | tag `v1.18.4`, commit `8d38b0619649a50ee7cbbf37085f5d297fdc6f36` |
 | Linha estável | `main` |
-| Etapa | Portão D reiniciado; discussão de requisitos, sem nova recomendação |
+| Etapa | Portão D em andamento; estratégia aceita, detalhamento técnico pendente |
 | Implementação própria | não iniciada |
-| Arquitetura-alvo | não escolhida |
+| Arquitetura-alvo | fronteira modular aceita no ADR 0004; desenho executável pendente |
 
 O HEAD, o estado do GitHub e o ambiente local são dados mutáveis e devem ser
 reconfirmados no início de cada tarefa; nenhum hash registrado aqui autoriza
@@ -36,11 +36,12 @@ ignorar `git status`, remotos, PRs ou a branch efetivamente carregada.
 | A — Governança | concluído | regras, decisões, documentação e perfis integrados |
 | B — Inventário | concluído | 2.266 caminhos da baseline classificados sem sobra ou sobreposição |
 | C — Análise profunda | concluído | catálogos, análise estática, comportamento visual e revisões independentes aprovados |
-| D — Decisão arquitetural | reiniciado | ADR 0003 aceita premissas; comparação técnica e decisão final ainda pendentes |
+| D — Decisão arquitetural | em andamento | ADR 0004 aceita estratégia; contratos, integração e revisão de fechamento pendentes |
 
 O responsável descartou a recomendação anterior e reiniciou a análise. O ADR
 0003 formaliza somente coexistência contínua e separação do portal; não libera
-implementação nem encerra o portão. A decisão técnica final ainda é necessária.
+implementação nem encerra o portão. ADR 0004 complementa as premissas com a
+estratégia aprovada; detalhes técnicos e revisão de fechamento ainda são necessários.
 
 ## Fatos consolidados
 
@@ -81,17 +82,22 @@ autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
   taxonomia editorial.
 - ADR 0003 aceita coexistência contínua: painel legado em `/scp`, painel novo
   por endereço distinto e portal do usuário com planejamento separado.
-  `/scp/reforged` é candidato; não há decisão de rota, sessão ou API.
+  `/scp/reforged` é candidato; esse ADR não escolheu mecanismos de sessão ou API,
+  e foi complementado pela estratégia no ADR 0004.
 - GOV-016 autoriza branch, push, PR e merge validados; não autoriza force-push,
   release, reset destrutivo, exclusão ou integração com risco material.
+- ADR 0004 aceita módulos e endpoints novos reutilizando o backend intacto,
+  sem duplicar regras ou encapsular HTML. O alvo é todo o SCP, inclusive
+  administração; mesma identidade/permissões e alternância sem novo login.
+  A integração técnica da sessão não foi escolhida ou provada.
 
 ## O que continua sem decisão
 
 Não apresentar como aprovado ou implementado; os itens arquiteturais agora estão
 em comparação, não em execução:
 
-- arquitetura técnica para sustentar a coexistência aceita com o osTicket;
-- desenho, tecnologia, autenticação e versionamento da futura API;
+- layout, bootstrap e empacotamento da fronteira modular aceita;
+- contratos, integração da autenticação existente e versionamento da API;
 - versões de Angular e PrimeNG;
 - mecanismo de sessão e integração entre frontend novo e backend;
 - padrão definitivo de plugins próprios;
@@ -148,13 +154,16 @@ pelo responsável. As três opções, a estratégia e os seis pareceres da PR #2
 são históricos, não ponto de partida preferido nem prova da nova análise.
 Inventário e evidências da baseline permanecem preservados.
 
-Próximo passo: discutir requisitos e critérios com o responsável antes de nova
-comparação. Não escolher arquitetura, primeiro módulo, sessão, rota definitiva
-ou funcionalidades do portal por inferência. Não implementar ou alterar core/schema.
+Após a discussão, ADR 0004 aceita a estratégia de módulos novos sobre o backend
+original. Não reabrir essa fronteira como indefinida. Próximo passo: detalhar com
+o responsável contratos, bootstrap e integração da sessão, com evidências por
+fluxo. Primeiro módulo, rota definitiva e funcionalidades do portal continuam
+sem escolha. Não implementar, alterar core/schema ou tratar pseudocódigo como API pronta.
 
-Fontes desta unidade: `ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md`
-e `GATE_D_REVIEW.md`, todos em `docs/reverse-engineering/`. A integração desta
-abertura não encerra o Portão D.
+Fonte normativa desta unidade: `docs/adr/0004-modulos-reforged-backend-osticket.md`.
+`ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md` e `GATE_D_REVIEW.md`,
+em `docs/reverse-engineering/`, preservam o histórico com indicação do novo ADR.
+A formalização não encerra o Portão D.
 
 ## Fontes canônicas de aprofundamento
 

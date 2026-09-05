@@ -26,6 +26,7 @@ subsistemas:
 
 - [Arquitetura canônica](ARCHITECTURE.md);
 - [Portão D: reinício e dossiê histórico](ARCHITECTURE_DECISION_RECORD.md);
+- [Estratégia modular aceita — ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md);
 - [Portão D: estratégia anterior descartada](MIGRATION_STRATEGY.md);
 - [Mapa de componentes](COMPONENT_MAP.md);
 - [Catálogo de entrypoints](ENTRYPOINT_CATALOG.md);
