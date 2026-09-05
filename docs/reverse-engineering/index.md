@@ -63,6 +63,8 @@ navegador:
 
 Para compreender as superfícies de integração e execução não interativa:
 
+- [Mapa completo de fluxos SCP](SCP_FLOW_MAP.md) — operação, administração e
+  serviços transversais; cadeias e obstáculos para aplicar o ADR 0004;
 - [APIs, AJAX e integrações](API_ANALYSIS.md);
 - [Catálogo de rotas AJAX](AJAX_ROUTE_CATALOG.md);
 - [Catálogo dos módulos CLI](CLI_CATALOG.md).

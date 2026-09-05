@@ -12,9 +12,37 @@ O responsável posteriormente confirmou a estratégia do
 documental não constitui nova revisão especializada ou prova de viabilidade;
 os pareceres históricos abaixo não foram reutilizados como aceite técnico.
 
-Esta atualização de contexto foi feita por um único integrador: não há frentes
-técnicas independentes a delegar antes da discussão com o responsável. Nenhum
-novo teste ou parecer especializado foi executado nesta retomada.
+A formalização da PR #30 foi centralizada e não produziu novo parecer técnico.
+A unidade subsequente de mapeamento SCP possui a revisão específica abaixo,
+sem reutilizar os pareceres históricos como aprovação da estratégia atual.
+
+## Revisão do mapa SCP — 2026-09-05
+
+Entrada `33d40fb7`, branch `codex/scp-flow-mapping`, baseline `v1.18.4`.
+Instância `qa_engineer/scp-map/revisao`, cargo Engenheiro de Qualidade,
+independente das três frentes que produziram insumos. Somente leitura dos
+quatro mapas SCP, catálogo AJAX e amostras de código; nenhum descendente,
+escrita, banco, navegador, credencial ou teste de produto.
+
+**Parecer:** cobertura estrutural aprovada. Conferidos 47/47 arquivos, 153 IDs
+sem duplicação, 26 famílias/229 folhas com uma única cobertura por intervalo,
+ordem StaffNav/AdminNav e amostras de logout, filas, drafts, tarefas, thread,
+FAQ, exportação e upgrade. Nenhum achado alto/médio nas amostras.
+
+Quatro ajustes baixos incorporados e reconferidos: O28 explicita Ticket::PERM_EDIT
+no addcc da tarefa; O43 registra manageFaqAccess/ispublished/save; T51 distingue
+guarda própria de TEA_ResendThreadEntry; A51 enumera enable/disable/delete.
+Parecer pós-correção aprovado, sem achado aberto no recorte. `git diff --check`
+sem erro; avisos de normalização CRLF não foram tratados como falha.
+
+Conferência adicional do catálogo aprovada: guardas STAFF e rotas de forms,
+colaboradores, imagens, preview de fila, notas, exportação, sequências,
+permissões e avatar correspondem ao código. Auditorias globais de MkDocs/links
+foram executadas pelo integrador, não atribuídas ao revisor.
+
+A revisão não certifica cada ramo/configuração/plugin nem execução visual,
+atomicidade ou viabilidade de todos os módulos. Não encerra o Portão D, aceita
+arquitetura, autoriza implementação ou aceita risco de segurança legado.
 
 ## Histórico de revisões da primeira rodada
 

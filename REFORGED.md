@@ -8,6 +8,9 @@ própria não iniciada.
 
 O Portão D permanece em andamento para detalhamento técnico da estratégia
 aceita. A recomendação anterior da PR #28 continua descartada.
+O [mapa de fluxos SCP](docs/reverse-engineering/SCP_FLOW_MAP.md) detalha a
+operação, administração e dependências compartilhadas. Arquitetura dos módulos
+será discutida a partir dele; UX/layout do frontend vêm em seguida.
 
 ## Objetivo
 

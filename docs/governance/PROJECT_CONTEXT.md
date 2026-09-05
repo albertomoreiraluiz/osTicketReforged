@@ -91,6 +91,11 @@ síntese e apontam aos catálogos detalhados. `MIGRATION_STRATEGY.md` e
 Portão D e foram descartados como orientação ativa; permanecem como histórico.
 `GATE_D_REVIEW.md` registra os pareceres daquela rodada, não a aprovação da nova.
 
+O [mapa de fluxos SCP](../reverse-engineering/SCP_FLOW_MAP.md) e seus três
+detalhamentos organizam operação, administração e serviços compartilhados sob
+o ADR 0004. São base factual para discutir módulos antes de UX/layout/frontend,
+não contratos aprovados ou implementação autorizada.
+
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 
 ## Classificação das afirmações

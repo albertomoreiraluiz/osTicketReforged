@@ -112,6 +112,11 @@ nav:
           - Modelo operacional do Wiki: reverse-engineering/OSTICKET_OPERATIONAL_MODEL.md
           - Testes da baseline: reverse-engineering/TESTING_BASELINE.md
       - APIs e automação:
+          - Fluxos SCP para módulos:
+              - Mapa e cobertura: reverse-engineering/SCP_FLOW_MAP.md
+              - Operação: reverse-engineering/SCP_OPERATIONAL_FLOWS.md
+              - Administração: reverse-engineering/SCP_ADMIN_FLOWS.md
+              - Serviços transversais: reverse-engineering/SCP_TRANSVERSAL_FLOWS.md
           - APIs, AJAX e integrações: reverse-engineering/API_ANALYSIS.md
           - Catálogo de rotas AJAX: reverse-engineering/AJAX_ROUTE_CATALOG.md
           - Catálogo dos módulos CLI: reverse-engineering/CLI_CATALOG.md
