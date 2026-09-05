@@ -27,7 +27,9 @@ subsistemas:
 - [Arquitetura canônica](ARCHITECTURE.md);
 - [Módulos por capacidade](MODULE_CAPABILITY_PROPOSAL.md) — divisão lógica aceita,
   detalhes técnicos pendentes; [integração e contratos](INTEGRATION_CONTRACT_DESIGN.md)
-  apresenta o desenho inicial ainda proposto;
+  distingue origem/estilo aceitos e contratos pendentes;
+- [Organização física e carregamento](REFORGED_PHYSICAL_DESIGN.md) — proposta de
+  isolamento, publicação e critérios de integração;
 - [Portão D: reinício e dossiê histórico](ARCHITECTURE_DECISION_RECORD.md);
 - [Estratégia modular aceita — ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md);
 - [Portão D: estratégia anterior descartada](MIGRATION_STRATEGY.md);

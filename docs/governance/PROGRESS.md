@@ -5,8 +5,8 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da unidade: `codex/scp-parity-integration-design`, entrada `2fa8e56a` (PR #33).
-- Etapa: Portão D em andamento; ADRs 0004/0005 aceitos, detalhamento técnico pendente.
+- Branch da unidade: `codex/reforged-isolation-design`, entrada `8bd050ba` (PR #34).
+- Etapa: Portão D em andamento; ADRs 0004–0006 aceitos nos respectivos recortes, detalhes técnicos pendentes.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -223,6 +223,29 @@
   UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
+
+Unidade corrente: ADR 0006 formaliza mesma origem, recursos/ações e isolamento.
+`REFORGED_PHYSICAL_DESIGN.md` propõe `reforged/` para PHP novo, mantendo `frontend/`;
+separa fontes internas, artefatos públicos e URLs, sem criar pastas de aplicação.
+Próximo passo: discutir essa organização; depois detalhar matriz de guardas,
+bootstrap e ciclo da sessão. Nenhuma escolha de sessão, servidor, URLs concretas,
+framework ou implementação foi aceita por essa formalização.
+
+Fatos reconfirmados: paths/configuração em bootstrap/main, mistura de guardas e
+apresentação em staff/admin, adaptação de login no AJAX e efeitos de logout.
+Não houve acesso a banco, navegador, credenciais de homologação ou teste de produto.
+Único escritor; revisão independente `software_architect/isolation/revisao`
+favorável à integração documental, sem achado crítico/alto/médio. Um ajuste baixo
+incorporado para distinguir desenho de estrutura de aplicação criada.
+Reconciliação editorial: README não reabre mais agrupamentos aceitos; contexto
+distingue revisões históricas e atuais; tabela de módulos não reabre divisão aceita.
+Validações desta unidade: MkDocs estrito aprovado; 70/70 documentos na navegação,
+129 Markdown e 317 links locais auditados; zero destino ausente do Reforged,
+seis referências herdadas. Quinze grupos/153 atribuições, 47 arquivos SCP,
+26 famílias/229 folhas AJAX preservados. Taxonomia GOV-023 e diff válidos.
+Resultados abaixo pertencem à PR #34, não à unidade nova.
+
+### Histórico — integração da PR #34
 
 Unidade corrente: ADR 0005 aceito para M01–M15 e cobertura integral do SCP,
 exceto setup. Nenhuma capacidade será entregue por retorno obrigatório ao legado.

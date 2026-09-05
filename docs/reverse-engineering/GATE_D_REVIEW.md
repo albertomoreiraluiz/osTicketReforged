@@ -2,6 +2,26 @@
 
 ## Estado corrente
 
+Unidade `codex/reforged-isolation-design`, entrada `8bd050ba` (PR #34), baseline
+v1.18.4. ADR 0006 formaliza somente mesma origem, recursos/ações e isolamento.
+`REFORGED_PHYSICAL_DESIGN.md` propõe layout/público/interno e critérios de
+carregamento/sessão; não implementa nem escolhe mecanismo executável de IAM.
+
+Manifesto: principal único escritor de documentos, índices, planos e checkpoint;
+instância `software_architect/isolation/revisao` somente leitura e independente,
+sem descendentes, rede, banco, credenciais, Git mutável ou testes exploratórios.
+Missão delimitada à coerência ADR/layout/isolamento e evidências de carregamento;
+necessária para conferir preservação upstream e limite de aceites, enquanto o
+integrador valida MkDocs/links. Parecer favorável à integração documental, sem
+achado crítico/alto/médio. Um ajuste editorial baixo incorporado: o desenho de
+integração agora distingue árvore proposta de estrutura de aplicação criada.
+Revisor e integrador reconferiram bootstrap, paths, staff/admin, AJAX e logout;
+não há comprovação nova de runtime. A árvore permanece candidata.
+Contratos concretos de sessão exigirão revisão IAM própria, não herdando aceite
+da revisão documental desta árvore.
+
+### Histórico — revisão da PR #34
+
 Unidade: `codex/scp-parity-integration-design`, entrada `2fa8e56a` (PR #33).
 ADR 0005 registra aprovação do responsável para divisão lógica e paridade SCP.
 O desenho `INTEGRATION_CONTRACT_DESIGN.md` permanece proposta técnica.

@@ -60,6 +60,10 @@ define a fronteira atual: módulos novos sobre o backend intacto, SCP completo.
 O [mapa de fluxos SCP](reverse-engineering/SCP_FLOW_MAP.md) organiza as cadeias
 operacionais, administrativas e compartilhadas para discutir os módulos antes
 de planejar UX, layout e exibição do frontend.
+ADR 0005 aceita os módulos lógicos e paridade integral. O
+[ADR 0006](adr/0006-origem-api-isolamento-reforged.md) aceita mesma origem,
+recursos/ações e isolamento; a [organização física](reverse-engineering/REFORGED_PHYSICAL_DESIGN.md)
+é a proposta corrente. Implementação e contratos concretos continuam pendentes.
 A estratégia anterior permanece somente como histórico, não como orientação ativa.
 
 Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), a

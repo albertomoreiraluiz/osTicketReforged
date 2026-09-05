@@ -69,8 +69,9 @@ ao legado, exceto setup. Essa paridade não altera a liberdade de ajustar menus.
 
 1. Concluído: agrupamentos lógicos aceitos no ADR 0005, rastreados aos IDs O/A/T,
    sem assumir correspondência de um menu para um módulo.
-2. Discutir coordenação, contratos e integração com o backend, especialmente
-   regras presas a controladores e estado compartilhado entre os painéis.
+2. Mesma origem, recursos/ações e isolamento aceitos no ADR 0006. Discutir layout
+   PHP/publicação e detalhar coordenação, contratos e estado compartilhado;
+   `frontend/` não foi movido ou substituído pela pasta PHP candidata.
 3. Comparar opções pertinentes, revisar e formalizar as escolhas necessárias;
    selecionar primeiro recorte somente com justificativa e aprovação.
 4. Após liberação da implementação, materializar a primeira versão funcional

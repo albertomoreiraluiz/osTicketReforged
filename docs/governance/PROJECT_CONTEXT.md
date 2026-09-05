@@ -29,6 +29,10 @@ configurar todas as capacidades SCP sem voltar ao frontend antigo, exceto setup.
 Coexistência é voluntária, não solução para funcionalidade faltante. Entrega
 incremental não reduz o escopo final; portal continua no planejamento separado.
 
+ADR 0006 aceita mesma origem para painéis/API, recursos e ações explícitas e
+isolamento do código próprio. `frontend/` preservado; pasta PHP e mapeamento de
+publicação ainda propostos. Mesma origem não comprova sessão compartilhada.
+
 O objetivo não é reproduzir telas antigas nem reescrever o backend por preferência tecnológica.
 
 A direção de UX aceita prioriza funcionamento e um dashboard administrativo
@@ -99,7 +103,8 @@ Em `docs/reverse-engineering/`:
 síntese e apontam aos catálogos detalhados. `MIGRATION_STRATEGY.md` e
 `ARCHITECTURE_DECISION_RECORD.md` foram produzidos como propostas na abertura do
 Portão D e foram descartados como orientação ativa; permanecem como histórico.
-`GATE_D_REVIEW.md` registra os pareceres daquela rodada, não a aprovação da nova.
+`GATE_D_REVIEW.md` distingue pareceres históricos descartados das revisões atuais;
+nenhum deles equivale à aprovação arquitetural pelo responsável.
 
 O [mapa de fluxos SCP](../reverse-engineering/SCP_FLOW_MAP.md) e seus três
 detalhamentos organizam operação, administração e serviços compartilhados sob
@@ -108,8 +113,10 @@ não contratos aprovados ou implementação autorizada.
 
 `MODULE_CAPABILITY_PROPOSAL.md` conserva o catálogo de 15 capacidades lógicas
 aceito no ADR 0005, separado dos menus e do empacotamento. Detalhamento de
-integração/contratos em `INTEGRATION_CONTRACT_DESIGN.md` permanece proposto;
-bootstrap, sessão, convenções concretas e liberação técnica continuam no Portão D.
+integração/contratos em `INTEGRATION_CONTRACT_DESIGN.md` distingue origem/estilo
+aceitos no ADR 0006 dos detalhes propostos. `REFORGED_PHYSICAL_DESIGN.md` apresenta
+pasta PHP candidata e limites de publicação/carregamento. Bootstrap, sessão,
+convenções concretas e liberação técnica continuam no Portão D.
 
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 
