@@ -206,6 +206,11 @@ riscos legados.
 
 ## Sequência proposta após o mapa
 
+Atualização: ADR 0005 aceita a divisão lógica M01–M15 e a cobertura integral
+do SCP sem depender da interface antiga, exceto setup. A sequência abaixo é
+a orientação original do mapa; discussão de agrupamentos foi atendida. O trabalho
+atual está em `INTEGRATION_CONTRACT_DESIGN.md`, ainda proposto.
+
 1. Discutir agrupamentos e dependências de módulos com o responsável, usando os
    IDs como rastreabilidade; não reabrir a fronteira já aceita no ADR 0004.
 2. Para cada agrupamento, comparar bootstrap/chamadas/coordenação/contratos,

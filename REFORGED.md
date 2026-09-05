@@ -14,8 +14,9 @@ será discutida a partir dele; UX/layout do frontend vêm em seguida.
 O Plano 0002 registra a direção visual já fornecida: dashboard administrativo
 intuitivo e funcional primeiro; a primeira navegação será elaborada pelo agente
 principal. Essa delegação não substitui o fechamento técnico do Portão D.
-Há uma proposta de agrupamentos por capacidade em
-`docs/reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md`, ainda não aceita.
+ADR 0005 aceita a divisão lógica M01–M15 e cobertura integral do SCP sem depender
+do frontend original, exceto setup. `INTEGRATION_CONTRACT_DESIGN.md` em
+`docs/reverse-engineering/` propõe a integração e os contratos; não libera código.
 
 ## Objetivo
 

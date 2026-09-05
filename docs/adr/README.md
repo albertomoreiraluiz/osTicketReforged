@@ -22,3 +22,5 @@ Decisões aceitas:
 - `0004-modulos-reforged-backend-osticket.md` — estratégia aceita de módulos novos
   reutilizando o backend intacto, SCP completo e identidade existente; detalhes
   executáveis e fechamento do Portão D continuam pendentes.
+- `0005-modulos-logicos-paridade-scp.md` — divisão lógica M01–M15 e cobertura
+  integral do SCP sem dependência do frontend legado, exceto setup; não libera código.

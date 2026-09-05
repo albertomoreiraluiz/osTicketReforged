@@ -130,19 +130,20 @@ agora oferece trilhas para estado, funcionamento, evidências e evolução.
 
 ### Portão D — Decisão arquitetural
 
-Unidade corrente autorizada: [mapear integralmente os fluxos SCP](../../reverse-engineering/SCP_FLOW_MAP.md)
+Unidade de base concluída: [mapear integralmente os fluxos SCP](../../reverse-engineering/SCP_FLOW_MAP.md)
 sob o ADR 0004, antes da arquitetura detalhada dos módulos e do planejamento
 de UX/layout/fluxos de exibição. Mapeamento documental, não implementação.
 
 Entrega estática consolidada: 153 registros em três frentes, 47 arquivos do
 escopo e 26 famílias/229 folhas AJAX reconciliados. Revisão e validações da
 unidade ficam no mapa; pendências de viabilidade/contrato permanecem explícitas.
-Próxima discussão: agrupamentos e dependências dos módulos; depois frontend.
+Agrupamentos aprovados no ADR 0005; próxima discussão: integração e contratos.
 
-Disponível a [proposta de 15 capacidades](../../reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md),
-com responsáveis principais pelos 153 IDs e dependências explícitas. Próximo
-critério é discussão com o responsável, não implementação. Revisão do recorte
-arquitetural não equivale ao fechamento técnico do portão.
+O [ADR 0005](../../adr/0005-modulos-logicos-paridade-scp.md) aceita os 15 módulos
+lógicos e exige cobertura integral do SCP sem dependência funcional do legado,
+exceto setup. Unidade corrente: [desenho de integração e contratos](../../reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md),
+ainda proposto. Próximo critério: alinhar estilo contratual e hospedagem, fechar
+bootstrap/guardas/sessão e contratos concretos; não implementar por inferência.
 
 Direção visual antecipada pelo responsável em GOV-026 e
 [Plano 0002](0002-functional-ux-direction.md): dashboard administrativo intuitivo,
