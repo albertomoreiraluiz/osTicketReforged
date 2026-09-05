@@ -143,8 +143,10 @@ O [ADR 0005](../../adr/0005-modulos-logicos-paridade-scp.md) aceita os 15 módul
 lógicos e exige cobertura integral do SCP sem dependência funcional do legado,
 exceto setup. Unidade corrente: [organização física](../../reverse-engineering/REFORGED_PHYSICAL_DESIGN.md),
 ainda proposta, sob ADR 0006 aceito para mesma origem, recursos/ações e isolamento.
-Próximo critério: discutir pasta PHP/publicação e fechar bootstrap/guardas/sessão
-e contratos concretos; não implementar por inferência.
+Detalhamento corrente: [entradas, sessão e publicação](../../reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md),
+matriz por contexto e critérios futuros. Próximo critério: vincular guardas a
+mecanismos reutilizáveis e especificar contexto/erros, bootstrap e sessão;
+discutir as escolhas técnicas sem implementar por inferência.
 
 Direção visual antecipada pelo responsável em GOV-026 e
 [Plano 0002](0002-functional-ux-direction.md): dashboard administrativo intuitivo,

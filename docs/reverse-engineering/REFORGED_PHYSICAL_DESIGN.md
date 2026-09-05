@@ -112,6 +112,9 @@ concreto. As evidências visuais anteriores permanecem históricas, sem nova exe
 
 ## Próxima unidade e critérios
 
+Detalhamento produzido em [Entradas, sessão e publicação](REFORGED_ENTRY_SESSION_DESIGN.md).
+Tipos de entrada e critérios avançaram; a árvore não foi aceita por inferência.
+
 Discutir a árvore candidata sem reabrir mesma origem/recursos/isolamento aceitos.
 Depois detalhar matriz por tipo de entrada e critérios de bootstrap compatível,
 seguida de contratos concretos e revisão independente pertinente. Nome da pasta

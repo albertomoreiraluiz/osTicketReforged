@@ -95,6 +95,9 @@ aceita mesma origem, recursos/ações e isolamento dos arquivos. A
 [organização física](docs/reverse-engineering/REFORGED_PHYSICAL_DESIGN.md) propõe
 `reforged/` para PHP novo, preservando `frontend/`. Bootstrap, sessão, contratos
 concretos e primeiro recorte seguem abertos; nenhuma implementação iniciada.
+O [detalhamento de entradas, sessão e publicação](docs/reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md)
+separa os contextos de autenticação, operação e administração e seus critérios
+de integração. Próximo passo: contratos de contexto/erros e rastreabilidade das guardas.
 
 Direção de UX: dashboard administrativo intuitivo, prioridade funcional e
 primeira navegação elaborada pelo agente principal, com ajustes posteriores

@@ -30,6 +30,8 @@ subsistemas:
   distingue origem/estilo aceitos e contratos pendentes;
 - [Organização física e carregamento](REFORGED_PHYSICAL_DESIGN.md) — proposta de
   isolamento, publicação e critérios de integração;
+- [Entradas, sessão e publicação](REFORGED_ENTRY_SESSION_DESIGN.md) — tipos de
+  entrada, guardas, continuidade e verificações futuras;
 - [Portão D: reinício e dossiê histórico](ARCHITECTURE_DECISION_RECORD.md);
 - [Estratégia modular aceita — ADR 0004](../adr/0004-modulos-reforged-backend-osticket.md);
 - [Portão D: estratégia anterior descartada](MIGRATION_STRATEGY.md);

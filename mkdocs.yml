@@ -92,6 +92,7 @@ nav:
           - Reforged — Módulos lógicos: reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md
           - Reforged — Integração e contratos: reverse-engineering/INTEGRATION_CONTRACT_DESIGN.md
           - Reforged — Organização física: reverse-engineering/REFORGED_PHYSICAL_DESIGN.md
+          - Reforged — Entradas e sessão: reverse-engineering/REFORGED_ENTRY_SESSION_DESIGN.md
           - Portão D — Reinício e histórico: reverse-engineering/ARCHITECTURE_DECISION_RECORD.md
           - Portão D — Estratégia descartada: reverse-engineering/MIGRATION_STRATEGY.md
           - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
