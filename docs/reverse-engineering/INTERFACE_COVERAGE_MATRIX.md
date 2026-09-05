@@ -22,7 +22,7 @@
 | Cliente | `/login.php` | Coberto | autenticação, perfil, lista, filtros, ordenação, tickets próprio/colaborado, criação, KB, página inicial e saída percorridos visualmente | correlacionar divergências de filtro, contagem e impressão |
 | Equipe — agente | `/scp/` | Coberto para o papel restrito | Painel, Diretório, Perfil, Tarefas, Tickets e FAQ percorridos como `OSTR Viewer`; nota funcional publicada | correlacionar divergências de ACL/contagem e modal vazio da FAQ |
 | Equipe — administrador | `/scp/` | Coberto | shell e cinco menus operacionais percorridos; ações de ticket, tarefa, KB, usuários e filas repetidas visualmente | manter divergências explícitas para correlação posterior |
-| Administração | `/scp/admin.php` | Em observação | cinco grupos, 27 submenus/abas e editores funcionais percorridos em ordem; editor de Resposta aberto | abrir individualmente os outros 18 modelos após restaurar a sessão administrativa |
+| Administração | `/scp/admin.php` | Coberto | cinco grupos, 27 submenus/abas e editores funcionais percorridos em ordem; 19 modelos de e-mail abertos individualmente | manter divergências conhecidas na preparação do Portão D |
 
 ## Rastreabilidade dos cenários comportamentais anteriores
 
@@ -62,7 +62,7 @@ convertido artificialmente em teste visual.
 | BHV-027 | desvínculo e novo vínculo `903010`/`874483` | reproduzido |
 | BHV-028 | fusão `924064`/`273122` sem exclusão | reproduzido |
 | BHV-029 | tickets derivados `163086` e `229189` visíveis na origem | reproduzido; correlação POP anotada |
-| BHV-030 | destinatários, histórico, edição e reenvio das entradas | reproduzido |
+| BHV-030 | destinatários, cabeçalhos MIME, histórico, edição e reenvio das entradas | reproduzido; segunda resposta reenviada na auditoria final |
 | BHV-031 | tarefa `2` criada de entrada, reivindicada e atualizada | reproduzido |
 | BHV-032 | respondido/não respondido e diálogos secundários | reproduzido e restaurado |
 | BHV-033 | status, atribuição, transferência, vínculo e fusão em massa | reproduzido no recorte; exclusão somente observada |
@@ -591,9 +591,11 @@ sequências e a configuração do campo de anexos; as alterações de ensaio for
 descartadas. Os modelos de Agentes e Usuários foram percorridos. O editor
 `E-mail de confirmação de conta` apresentou assunto, corpo e a exigência da
 variável `%{link}`. **Fato observado:** a linha `Página de Login` referencia
-`ajax.php/content//manage`, sem identificador, e não abre editor ou mensagem
-de erro ao ser acionada. O achado permanece como divergência funcional a
-correlacionar com a configuração persistida e o código.
+`ajax.php/content//manage`, sem identificador. Na auditoria final, o acionamento
+abriu uma sobreposição que permaneceu vazia após espera e só fechou por
+cancelamento. `include/staff/settings-users.inc.php:160-181` indexa o conteúdo
+por tipo e interpola o id no destino; a causa persistida ainda não foi
+demonstrada. O resultado é divergência funcional conhecida.
 
 | Posição | Anexo/editor de Configurações | Resultado explícito |
 | --- | --- | --- |
@@ -603,7 +605,7 @@ correlacionar com a configuração persistida e o código.
 | 2.4 | Tickets — Anexos | Configuração e Visibilidade do campo abertas; canceladas |
 | 2.5 | Tarefas — Anexos | limites e visibilidade do campo abertos; cancelados |
 | 2.6 | Agentes — Modelos | quatro modelos listados; boas-vindas aberto e cancelado |
-| 2.7 | Usuários — Modelos | seis linhas; confirmação aberta; Página de Login sem identificador não abriu |
+| 2.7 | Usuários — Modelos | seis linhas; confirmação aberta; Página de Login sem identificador abriu sobreposição permanentemente vazia |
 | 4.3 | Lista Negra | formulário de novo bloqueio lido; cancelado |
 | 4.4 | Modelos de e-mail | 19 modelos e respectivos editores percorridos em ordem; assuntos, corpos, ajudas, variáveis e validações lidos sem salvar alterações |
 
@@ -796,19 +798,19 @@ precisam de fixtures próprias.
 | 14 | Vincular | diálogo aberto com duas fixtures | desvínculo e novo vínculo de `903010`/`874483` confirmados visualmente |
 | 15 | Transferir | diálogo aberto | transferência temporária submetida e restaurada com razão auditável |
 | 16 | Excluir | confirmação aberta | aviso de irreversibilidade e razão observados; exclusão não confirmada |
-| 17 | Exportar | diálogo e opções avançadas abertos; botão submetido | CSV histórico existe, mas a repetição atual exibiu progresso sem materializar novo arquivo |
+| 17 | Exportar | diálogo e opções avançadas abertos; botão submetido duas vezes na auditoria final | diálogo encerrou; não houve evento de download nem novo arquivo materializado; causa não isolada |
 | 18 | paginação/contagem | rodapé lido | 12 itens, página única no estado atual |
 
-As ações individuais anteriores não são usadas para encerrar as mutações em
-massa. Cada submissão não destrutiva receberá fixture e evidência própria. A
-exclusão permanece bloqueada até plano específico.
+As ações individuais anteriores não foram usadas para encerrar as mutações em
+massa: transferência e resolução em lote receberam fixtures, submissão e
+restauração próprias. A exclusão permaneceu somente observada.
 
 ## Regras de preenchimento
 
-Cada página ganhará uma subseção própria durante a execução, com componentes
-na ordem visual. A matriz não herdará o estado “concluído” dos cenários antigos:
-eles serão usados como evidência auxiliar e vinculados somente após
-reconfirmação pelo frontend natural.
+Cada página recebeu subseção ou linha própria, com componentes na ordem visual.
+A matriz não herdou o estado “concluído” dos cenários antigos: eles foram
+vinculados somente após reconfirmação pelo frontend natural ou classificados
+como contratos sem equivalente visual.
 
 ## Ajuda contextual e leitura integral
 

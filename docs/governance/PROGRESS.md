@@ -4,8 +4,8 @@
 
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
-- Branch estável: `main`; trabalho corrente em `codex/wave9-downloads-and-closure`.
-- Etapa: Onda 9 concluída e aprovada; preparação comparativa do Portão D é o próximo passo.
+- Branch estável: `main`; auditoria de fechamento em `codex/wave9-closure-audit`.
+- Etapa: Onda 9 e auditoria complementar aprovadas; integração do checkpoint precede o Portão D.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -40,6 +40,12 @@
 - Onda 9 concluiu a cobertura visual reaberta por GOV-019: superfícies públicas,
   do cliente, da equipe e da Administração foram percorridas pelo frontend
   natural; a revisão independente final foi aprovada sem bloqueios.
+- Auditoria complementar reproduziu o modal vazio da Página de Login, confirmou
+  a ausência de materialização do novo CSV e concluiu visualmente cabeçalhos
+  MIME e `Salvar e Reenviar`, sem exclusão ou alteração de core/schema.
+- Os 2.266 caminhos da baseline foram classificados por regras mutuamente
+  exclusivas; 1.215 pertencem às árvores incorporadas Laminas Mail, mPDF e PEAR,
+  e os demais estão ligados a componentes e documentos especializados.
 
 ## Onda 7 concluída funcionalmente
 
@@ -204,7 +210,7 @@
 
 ## Próximo passo proposto
 
-1. integrar o fechamento documental da Onda 9;
+1. integrar o checkpoint validado em `main`;
 2. consolidar as evidências em pelo menos três opções arquiteturais;
 3. comparar atualização, integração, segurança e migração;
 4. submeter a recomendação do Portão D à aprovação explícita.
@@ -359,6 +365,8 @@ que o registro histórico seja reescrito.
 | 2026-09-05 | Onda 9 — 19 editores de modelos de e-mail | seletor visual do conjunto HTML padrão; assuntos, corpos, ajudas e variáveis | todos os editores percorridos na ordem do frontend sem salvar; quatro alertas de variável do validador, fragmento `href=` renderizado e catálogo de tarefa ausente na ajuda foram registrados |
 | 2026-09-05 | Onda 9 — revisão QA final | `qa_engineer/onda09/revisao-final-2`; diff de seis documentos; duas passagens somente leitura | primeira passagem bloqueou BHV-011/028/033 históricos; correções reconciliadas e segunda passagem aprovada sem achado bloqueante |
 | 2026-09-05 | Onda 9 — fechamento documental | PR #23; matriz visual, análise comportamental, README, plano, progresso e parecer | repetição visual profunda concluída; nenhuma exclusão executada; Portão D permanece não iniciado até comparação e aprovação explícita |
+| 2026-09-05 | Onda 9 — auditoria complementar | fila CSV; Página de Login; cabeçalhos MIME; ticket `593078`; matriz dos 2.266 caminhos | dois fluxos visuais concluídos, duas divergências reproduzidas sem causa presumida e cobertura estrutural integral explicitada antes de nova revisão independente |
+| 2026-09-05 | Onda 9 — revisão independente da auditoria | `qa_engineer/onda09/auditoria-complementar-final`; recálculo da tag; revisão somente leitura | aprovado sem achado alto/médio; soma 2.266, zero caminho não classificado, zero sobreposição, links íntegros e nenhum segredo localizado |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |

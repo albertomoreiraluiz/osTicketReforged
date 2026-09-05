@@ -14,6 +14,10 @@
 As contagens descrevem a árvore Git da baseline, não o diretório de trabalho do
 Reforged.
 
+A classificação mutuamente exclusiva de todos os 2.266 caminhos, com
+separação das dependências incorporadas e ligação aos documentos
+especializados, está na [matriz de cobertura do código-fonte](SOURCE_COVERAGE_MATRIX.md).
+
 Para reproduzir o commit de uma tag anotada, use `git rev-parse
 v1.18.4^{commit}`. `git rev-parse v1.18.4` retorna o objeto da tag, não o
 commit referenciado.

@@ -112,8 +112,14 @@ comprovada visualmente com fixtures preservadas. Os 19 editores do conjunto
 HTML padrão também foram percorridos na ordem visual, incluindo assunto, corpo,
 ajuda e variáveis, sem salvar alterações. A revisão independente bloqueou a
 primeira versão, as classificações históricas foram reconciliadas e a segunda
-passagem foi aprovada sem achado bloqueante. A Onda 9 está concluída; o plano
-dependerá da comparação de opções e da decisão explícita do responsável.
+passagem foi aprovada sem achado bloqueante. Uma auditoria complementar
+reproduziu a ausência de materialização do CSV e a sobreposição vazia da Página
+de Login, além de concluir cabeçalhos MIME e um segundo `Salvar e Reenviar`.
+A matriz literal classificou todos os 2.266 caminhos da baseline, separando
+1.215 arquivos de dependências incorporadas. A revisão independente recalculou
+as contagens, confirmou zero caminho sem classificação e zero sobreposição e
+aprovou o conjunto sem achado alto ou médio. Após a integração desse checkpoint,
+o plano dependerá da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural
 

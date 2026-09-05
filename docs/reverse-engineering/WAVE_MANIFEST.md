@@ -288,7 +288,7 @@ integrada em `main` pela PR #9.
 
 ## Onda 9 — observação integral pelo frontend
 
-**Estado:** iniciada; cobertura anterior reaberta para validação visual.
+**Estado:** concluída, reconciliada e submetida a revisão independente.
 
 **Motivo:** a cobertura por cenários e rotas não garantiu que todas as páginas,
 regiões e ações visíveis fossem observadas. O Painel de Administração recebeu
@@ -302,18 +302,28 @@ posicional, de cima para baixo e da esquerda para a direita. Cada componente
 recebe estado explícito na matriz; chamadas diretas não encerram cenários
 visuais. Segurança permanece fora da onda.
 
-**Estratégia de agentes:** execução inicial por um único agente, porque a sessão
+**Estratégia de agentes:** execução por um único agente, porque a sessão
 visual, as abas e o estado das fixtures são compartilhados e sequenciais.
-Revisão independente será avaliada após a matriz estabilizar.
+Uma instância de QA diferente revisou os artefatos depois da estabilização.
 
-**Primeiro alvo:** shell do administrador operacional, começando pela fila de
-tickets marcada pelo responsável; em seguida, Painel de Administração completo
-e demais contextos. Fixtures úteis permanecem na homologação por GOV-018.
+**Fechamento de 2026-09-05:** os contextos anônimo, cliente, agente restrito,
+administrador operacional e Administração foram percorridos em ordem. Os 34
+cenários receberam equivalência visual explícita ou justificativa de ausência
+de frontend. A passagem incluiu fluxo POP3/SMTP loopback configurado pela
+interface, ações em massa reversíveis, matriz de departamentos/equipe, 19
+editores de e-mail e ações de entrada da thread. Nenhuma exclusão foi executada.
 
-**Checkpoint administrativo de 2026-09-05:** o shell, os cinco grupos e todos
-os submenus de topo foram percorridos pelo frontend. A matriz registra 27
-páginas ou painéis na primeira passagem, incluindo as abas internas omitidas
-por uma análise baseada somente em rotas. Permanecem pendentes os formulários
-de inclusão/edição, menus de massa e submissões não destrutivas. A entrada
-natural de e-mail está bloqueada por ausência de uma caixa IMAP/POP fictícia
-configurada; a saída possui formulário de diagnóstico próprio.
+Uma auditoria complementar repetiu a visualização de cabeçalhos MIME e o
+`Salvar e Reenviar`, reproduziu o modal vazio da Página de Login e confirmou
+que a nova exportação CSV não foi materializada no navegador interno. Esses
+dois últimos resultados permanecem divergências conhecidas, não pendências de
+execução. A cobertura literal dos 2.266 arquivos da baseline foi consolidada
+em `SOURCE_COVERAGE_MATRIX.md` antes da revisão final.
+
+**Parecer independente final:** a instância
+`qa_engineer/onda09/auditoria-complementar-final` recalculou a árvore da tag e
+confirmou soma 2.266, zero caminho sem classificação e zero sobreposição. A
+coerência transversal, os links e a sanitização do dossiê foram aprovados sem
+achado alto ou médio. A Onda 9 não possui lacuna comportamental conhecida que
+exija repetição adicional antes do Portão D; as campanhas deliberadamente fora
+do recorte e as divergências conhecidas continuam explicitadas.

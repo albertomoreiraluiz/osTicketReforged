@@ -2,7 +2,7 @@
 
 | Frente | Evidência atual | Estado | Próxima verificação |
 | --- | --- | --- | --- |
-| Estrutura do repositório | árvore, contagens e fronteira core/dependências em `PROVENANCE_MAP.md` | Mapeado estaticamente | revisar ownership por arquivo apenas quando houver alteração |
+| Estrutura do repositório | 2.266 caminhos classificados sem lacuna em `SOURCE_COVERAGE_MATRIX.md`; fronteira core/dependências em `PROVENANCE_MAP.md` | Confirmado por universo fechado | revisar ownership por arquivo apenas quando houver alteração |
 | Bootstrap e sessão | cadeias web/CLI, configuração, conexão, handlers; sessões pública, cliente e staff observadas | Confirmado estática e funcionalmente | estados de upgrade permanecem no recorte próprio |
 | Portal do usuário | navegação, login, tickets, buscas, perfil, colaboração, arquivos e conhecimento | Confirmado funcionalmente | acessibilidade pertence à futura análise de frontend |
 | Painel da equipe | guarda comum, 229 folhas AJAX, filas, tickets, tarefas, menus contextuais e administração | Confirmado funcionalmente no recorte BHV | novos módulos somente quando uma fase os exigir |
@@ -13,6 +13,14 @@
 | Plugins e sinais | ciclo/persistência, 41 sinais, 22 registries/factories e matriz de customização | Mapeado e revisado estaticamente | comportamento de plugin somente quando uma fase o exigir |
 | Autenticação/autorização | identidade, sessão, ACL, CSRF, API keys, arquivos e uploads confrontados por papel | Confirmado no recorte funcional | novos ensaios de segurança pertencem à fase própria |
 | Frontend PHP | shells cliente/SCP, navegação, formulários, assets, widgets, AJAX e PJAX | Confirmado funcionalmente | acessibilidade e arquitetura futura permanecem no Portão D/frontend |
+
+## Auditoria complementar da Onda 9
+
+O fechamento repetiu pela interface os cabeçalhos MIME e o fluxo `Salvar e
+Reenviar`. Também reproduziu, sem atribuir causa não demonstrada, a sobreposição
+vazia da Página de Login e a ausência de materialização de um novo CSV. O
+dossiê sanitizado está em
+[Auditoria complementar de fechamento da Onda 9](evidence/WAVE-09-CLOSURE-AUDIT.md).
 
 ## Encerramento do aprofundamento estático — Portão C
 
