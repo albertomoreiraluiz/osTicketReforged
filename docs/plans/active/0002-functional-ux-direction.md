@@ -61,6 +61,10 @@ real por botões sem ação ou sucesso meramente visual.
 
 ## Próxima unidade do Portão D
 
+A primeira proposta de agrupamentos foi produzida em
+[Módulos por capacidades](../../reverse-engineering/MODULE_CAPABILITY_PROPOSAL.md).
+Permanece em discussão; não altera a liberdade de ajustar a navegação visual.
+
 1. Propor agrupamentos de módulos por capacidade e dependência, rastreados aos
    IDs O/A/T, sem assumir correspondência de um menu para um módulo.
 2. Discutir coordenação, contratos e integração com o backend, especialmente

@@ -2,6 +2,23 @@
 
 ## Estado corrente
 
+Unidade mais recente: proposta de capacidades em `MODULE_CAPABILITY_PROPOSAL.md`,
+entrada `e68d13dc` (PR #32), branch `codex/module-capability-proposal`.
+Instância independente `software_architect/module-proposal/revisao`, cargo
+Arquiteto de Software, somente leitura, sem descendentes, rede, banco, credenciais,
+Git mutável ou teste comportamental. O integrador é único escritor.
+
+Parecer: **pronta para discussão**, sem achados críticos/altos/médios; dois
+ajustes baixos incorporados e reconferidos — unicidade editorial dos 153 IDs
+não cria 153 operações disjuntas, e upload por campo/draft/publicação tem etapas
+distintas entre M08/M09/M03/M04. Sem achado aberto na reconferência.
+Revisadas fronteiras, dependências e amostras de resposta/lock e release/evento/
+nota; preservados ADR 0004, menus independentes de módulos e decisões pendentes.
+Não é aprovação arquitetural final: API/IAM/dados/frontend/QA serão envolvidos
+no desenho técnico pertinente. Auditorias mecânicas/MkDocs são do integrador.
+
+### Contexto dos pareceres anteriores
+
 Os seis pareceres abaixo revisaram a proposta da PR #28, posteriormente
 descartada pelo responsável. Não são aprovação da nova análise, de uma nova
 recomendação ou do encerramento do Portão D. O reinício é orientado pelo
