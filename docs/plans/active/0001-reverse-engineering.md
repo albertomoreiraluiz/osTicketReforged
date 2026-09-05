@@ -121,6 +121,12 @@ as contagens, confirmou zero caminho sem classificação e zero sobreposição e
 aprovou o conjunto sem achado alto ou médio. Após a integração desse checkpoint,
 o plano dependerá da comparação de opções e da decisão explícita do responsável.
 
+Antes do Portão D, o portal documental foi reorganizado por intenção de leitura.
+A mudança não altera entregáveis, evidências ou decisões: mantém os caminhos
+canônicos e apresenta projeto, inventário, arquitetura, domínio, interfaces,
+APIs, segurança e extensibilidade em abas e grupos recolhíveis. A landing page
+agora oferece trilhas para estado, funcionamento, evidências e evolução.
+
 ### Portão D — Decisão arquitetural
 
 - pelo menos três opções comparadas;

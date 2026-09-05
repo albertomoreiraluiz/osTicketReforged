@@ -8,7 +8,7 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Onda 9 e auditoria complementar aprovadas; integração do checkpoint precede o Portão D |
+| Etapa atual | Onda 9 e portal documental reorganizado; Portão D é o próximo passo |
 | Observação visual | sequência estrita concluída e aprovada em revisão independente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
@@ -18,7 +18,10 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 Ambiente de homologação instalado e ativo: XAMPP local, PHP 8.2, MariaDB,
 extensões e logs preparados. A interface pública e a autenticação administrativa
 foram confirmadas por observação em runtime. O snapshot oficial de referência e
-o portal MkDocs permanecem no fluxo obrigatório de atualização.
+o portal MkDocs permanecem no fluxo obrigatório de atualização. O portal usa
+abas de contexto e categorias técnicas recolhíveis, com trilhas de leitura por
+objetivo, busca global e temas claro/escuro; os caminhos canônicos dos documentos
+continuam preservados.
 
 A Onda 7 concluiu 25 cenários funcionais. Uma revisão de cobertura abriu a Onda
 8 para demonstrar menus contextuais e ações encadeadas ainda não exercitadas.
