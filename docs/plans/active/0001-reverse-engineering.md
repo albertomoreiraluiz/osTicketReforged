@@ -150,8 +150,9 @@ e sessão ainda exigem escolhas técnicas; não implementar por inferência.
 Rastreio subsequente: [G01–G09 e contratos](../../reverse-engineering/REFORGED_GUARD_CONTRACTS.md).
 [ADR 0007 aceito](../../adr/0007-coordenacao-guardas-controladores.md): adaptação
 de combinações/exceções inline e análise comportamental de trechos acoplados.
-Próximo passo: matriz de intenções/efeitos e critérios de equivalência, distinguindo
-evidências existentes de cenários visuais pendentes. Não reabrir o princípio
+Entregue [matriz I01–I12](../../reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md),
+distinguindo evidências existentes de cenários visuais pendentes. Próximo passo:
+completar observações após ativação da sessão do navegador. Não reabrir o princípio
 aceito nem presumir liberação de implementação; demais decisões mantidas.
 
 Direção visual antecipada pelo responsável em GOV-026 e

@@ -68,6 +68,8 @@ O [desenho de entradas e sessão](reverse-engineering/REFORGED_ENTRY_SESSION_DES
 aprofunda os critérios de carregamento e publicação dessa proposta.
 O [ADR 0007 aceito](adr/0007-coordenacao-guardas-controladores.md) autoriza o
 tratamento da coordenação acoplada orientado por evidências comportamentais.
+A [matriz de equivalência](reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md)
+organiza intenções, efeitos e lacunas visuais para a próxima validação.
 A estratégia anterior permanece somente como histórico, não como orientação ativa.
 
 Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), a

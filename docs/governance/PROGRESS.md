@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da unidade: `codex/accept-guard-coordination`, entrada `0c259179` (PR #37).
+- Branch da unidade: `codex/guard-intent-matrix`, entrada `3eb3d7cf` (PR #38).
 - Etapa: Portão D em andamento; ADRs 0004–0007 aceitos nos respectivos recortes, detalhes técnicos pendentes.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
@@ -223,6 +223,25 @@
   UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
+
+Unidade corrente: `REFORGED_INTENT_EQUIVALENCE.md`, 12 intenções com fontes,
+precedências, efeitos e critérios de equivalência sob ADR 0007 aceito.
+QA auditou evidências existentes; login/acesso administrativo/perfil normal não
+comprovam logout staff completo, recuperação staff, senha/MFA obrigatórios,
+offline por papel, expiração ou upgrade. Lacunas preservadas, sem inventar testes.
+Navegador interno abriu localhost/scp e mostrou login sem sessão ativa; nenhuma
+credencial submetida, nenhuma falha de autenticação/CSRF atribuída ao backend.
+Intervenção operacional: ativar sessão visualmente para continuar observação,
+pois não foi localizado meio suportado de transferir o segredo local ao campo
+sem expô-lo em saída. Não usar bridge ou requisição direta como alternativa.
+Mudanças futuras de credenciais terão conclusão assistida; não alterar conta
+administrativa principal. Nenhum código, core, schema ou dado funcional alterado.
+Revisão independente IAM e validações documentais registradas no registro do Portão D.
+Achado médio I11 corrigido e encerrado pelo revisor; parecer estático aprovado.
+MkDocs estrito válido; 74/74 documentos, 133 Markdown/350 links, zero quebra própria,
+seis herdadas; mapas de módulos/SCP e diff validados.
+
+### Histórico — aceite integrado pela PR #38
 
 **Decisão aceita em 2026-09-05:** responsável aprovou ADR 0007 e a análise
 comportamental dos trechos muito acoplados antes de reproduzi-los no módulo.

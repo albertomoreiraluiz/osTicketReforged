@@ -24,7 +24,9 @@ e `reforged/` candidato para PHP novo; nenhuma pasta de aplicação criada.
 como proposta. Integração executável e contratos continuam pendentes.
 O ADR 0007 está **Aceito**: adaptar coordenação inline e analisar comportamentos
 muito acoplados antes de reproduzi-los nos módulos, reutilizando os mecanismos
-originais. Próximo passo: matriz de intenções, efeitos e equivalência. Core intacto.
+originais. `REFORGED_INTENT_EQUIVALENCE.md` detalha 12 intenções, efeitos e
+critérios; lacunas visuais não são cobertas por testes históricos de outra camada.
+Retomada visual depende de sessão autenticada no navegador. Core intacto.
 
 ## Objetivo
 
