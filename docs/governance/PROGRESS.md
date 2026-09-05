@@ -4,8 +4,8 @@
 
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
-- Branch estável: `main`; auditoria de fechamento em `codex/wave9-closure-audit`.
-- Etapa: Onda 9 e auditoria complementar aprovadas; integração do checkpoint precede o Portão D.
+- Branch estável: `main`; melhoria do portal em `codex/mkdocs-information-architecture`.
+- Etapa: Onda 9 integrada; arquitetura de informação do portal em validação antes do Portão D.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -46,6 +46,9 @@
 - Os 2.266 caminhos da baseline foram classificados por regras mutuamente
   exclusivas; 1.215 pertencem às árvores incorporadas Laminas Mail, mPDF e PEAR,
   e os demais estão ligados a componentes e documentos especializados.
+- Portal MkDocs reorganizado sem mover fontes: seis contextos de primeiro nível,
+  oito categorias recolhíveis de engenharia reversa, quatro trilhas de leitura,
+  tema claro/escuro e stylesheet local responsivo.
 
 ## Onda 7 concluída funcionalmente
 
@@ -210,7 +213,7 @@
 
 ## Próximo passo proposto
 
-1. integrar o checkpoint validado em `main`;
+1. validar e integrar a melhoria de arquitetura de informação do portal;
 2. consolidar as evidências em pelo menos três opções arquiteturais;
 3. comparar atualização, integração, segurança e migração;
 4. submeter a recomendação do Portão D à aprovação explícita.
@@ -367,6 +370,7 @@ que o registro histórico seja reescrito.
 | 2026-09-05 | Onda 9 — fechamento documental | PR #23; matriz visual, análise comportamental, README, plano, progresso e parecer | repetição visual profunda concluída; nenhuma exclusão executada; Portão D permanece não iniciado até comparação e aprovação explícita |
 | 2026-09-05 | Onda 9 — auditoria complementar | fila CSV; Página de Login; cabeçalhos MIME; ticket `593078`; matriz dos 2.266 caminhos | dois fluxos visuais concluídos, duas divergências reproduzidas sem causa presumida e cobertura estrutural integral explicitada antes de nova revisão independente |
 | 2026-09-05 | Onda 9 — revisão independente da auditoria | `qa_engineer/onda09/auditoria-complementar-final`; recálculo da tag; revisão somente leitura | aprovado sem achado alto/médio; soma 2.266, zero caminho não classificado, zero sobreposição, links íntegros e nenhum segredo localizado |
+| 2026-09-05 | Portal — arquitetura de informação | `mkdocs.yml`; landing pages; stylesheet local; inspeção visual no navegador | árvore plana substituída por abas e grupos recolhíveis; quatro trilhas orientam leitores; caminhos e conteúdo canônicos preservados |
 | 2026-09-04 | Onda 7 — exportações PDF | ticket/tarefa; administrador/agente/cliente; MIME, extração textual e inspeção visual | Quatro PDFs válidos e legíveis; cliente recebeu somente conversa pública, enquanto tarefa manteve histórico próprio; artefatos apenas na área local ignorada |
 | 2026-09-04 | Onda 7 — foco funcional | GOV-015; verificação de persistência após interrupção do ensaio seguinte | Novos testes de segurança suspensos; upload deduplicado não criou resposta nem associação e a execução prossegue pelos fluxos normais de frontend/backend |
 | 2026-09-04 | Onda 7 — resposta funcional do cliente | formulário real do portal; visão staff; thread, indicadores e logs | Uma mensagem pública foi exibida nos dois shells, persistida como `M`, atualizou `lastmessage` e manteve ticket aberto/não respondido; sem novo erro de runtime |

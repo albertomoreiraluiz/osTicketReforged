@@ -35,6 +35,19 @@ adotadas apenas quando o recorte correspondente possuir evidência e contrato.
 - o portal não cria dependência de produção nem altera o core;
 - publicação remota e automação de deploy permanecem fora deste ADR.
 
+## Evolução editorial de 2026-09-05
+
+Com o crescimento do inventário, a árvore técnica plana deixou de oferecer uma
+leitura humana eficiente. Sem mudar a ferramenta ou as fontes canônicas, a
+navegação passou a usar abas de primeiro nível e grupos recolhíveis por intenção:
+projeto, inventário, arquitetura, domínio, interfaces, APIs, segurança,
+extensibilidade, decisões, ambiente e referência oficial.
+
+A página inicial passou a oferecer trilhas por objetivo e o tema recebeu um
+stylesheet local para hierarquia visual, largura de leitura, tabelas e estados,
+com alternância claro/escuro. Nenhum arquivo técnico foi movido ou removido;
+links existentes e contexto persistente continuam válidos.
+
 ## Referências
 
 - <https://www.mkdocs.org/user-guide/configuration/>

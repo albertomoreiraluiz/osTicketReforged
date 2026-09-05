@@ -1,53 +1,87 @@
-# Inventário de engenharia reversa
+# Engenharia reversa
 
-## Objetivo
+Esta área contém a leitura técnica da baseline `v1.18.4`. Os documentos estão
+agrupados pela pergunta que ajudam a responder; os caminhos originais foram
+preservados para manter links, histórico e contexto dos agentes.
 
-Localizar os componentes arquiteturais, entrypoints e fluxos principais da
-baseline antes de aprofundar comportamento, riscos ou opções de customização.
+## Inventário e rastreabilidade
 
-## Regras de leitura
+Para confirmar o universo analisado, a origem dos arquivos e a qualidade das
+evidências:
 
-- **Fato observado:** possui caminho, símbolo ou comando reproduzível.
-- **Inferência:** interpretação ainda sujeita a confirmação.
-- **Proposta:** alternativa ainda não aprovada.
-- **Decisão aceita:** possui registro normativo aplicável.
+- [Inventário da baseline](INVENTORY.md) — dimensão e superfícies executáveis;
+- [Cobertura do código-fonte](SOURCE_COVERAGE_MATRIX.md) — classificação dos
+  2.266 caminhos;
+- [Proveniência e ownership](PROVENANCE_MAP.md) — core e dependências
+  incorporadas;
+- [Ondas de inventário](WAVE_MANIFEST.md) — sequência e critérios de fechamento;
+- [Matriz de evidências](EVIDENCE_MATRIX.md) — estado verificável por frente;
+- [Revisões independentes](REVIEW_REPORT.md) — achados e pareceres de QA.
 
-## Documentos desta unidade
+## Arquitetura e execução
 
-1. [Manifesto das ondas de inventário](WAVE_MANIFEST.md)
-2. [Arquitetura canônica](ARCHITECTURE.md)
-3. [Proveniência e ownership](PROVENANCE_MAP.md)
-4. [Inventário da baseline](INVENTORY.md)
-5. [Matriz de cobertura do código-fonte](SOURCE_COVERAGE_MATRIX.md)
-6. [Mapa inicial de componentes](COMPONENT_MAP.md)
-7. [Catálogo inicial de entrypoints](ENTRYPOINT_CATALOG.md)
-8. [Superfícies HTTP — leitura estática](HTTP_SURFACES.md)
-9. [APIs, AJAX e integrações](API_ANALYSIS.md)
-10. [Catálogo de rotas AJAX](AJAX_ROUTE_CATALOG.md)
-11. [Modelo de segurança](SECURITY_MODEL.md)
-12. [Frontend PHP existente](FRONTEND_ANALYSIS.md)
-13. [Ciclo inicial de requisição](REQUEST_LIFECYCLE.md)
-14. [Ciclo do ticket](TICKET_LIFECYCLE.md)
-15. [Falhas, atomicidade e órfãos](INTEGRITY_FAILURES.md)
-16. [Subsistemas transversais](TRANSVERSAL_SUBSYSTEMS.md)
-17. [Autenticação e autorização](AUTHENTICATION.md)
-18. [Banco e persistência](DATABASE.md)
-19. [Mapa inicial do modelo de dados](DATA_MODEL_MAP.md)
-20. [Arquitetura de persistência](DATABASE_ARCHITECTURE.md)
-21. [Catálogo dos metadados ORM](ORM_CATALOG.md)
-22. [Instalação e evolução](INSTALLATION_UPGRADE.md)
-23. [Testes da baseline](TESTING_BASELINE.md)
-24. [Catálogo dos módulos CLI](CLI_CATALOG.md)
-25. [Pontos iniciais de extensão](EXTENSION_POINTS.md)
-26. [Arquitetura de plugins](PLUGIN_ARCHITECTURE.md)
-27. [Catálogo de registries e factories](REGISTRY_CATALOG.md)
-28. [Visão geral dos sinais](HOOKS.md)
-29. [Catálogo individual dos sinais](SIGNAL_CATALOG.md)
-30. [Matriz de customização](CUSTOMIZATION_MATRIX.md)
-31. [Matriz de evidências](EVIDENCE_MATRIX.md)
-32. [Revisão cruzada do Portão C](REVIEW_REPORT.md)
-33. [Análise comportamental](BEHAVIORAL_ANALYSIS.md)
-34. [Evidências comportamentais](evidence/README.md)
+Para seguir uma requisição desde o bootstrap até os controladores e
+subsistemas:
 
-O Portão B está concluído. Estes documentos agora sustentam o aprofundamento
-do Portão C e serão atualizados a cada unidade analisada.
+- [Arquitetura canônica](ARCHITECTURE.md);
+- [Mapa de componentes](COMPONENT_MAP.md);
+- [Catálogo de entrypoints](ENTRYPOINT_CATALOG.md);
+- [Ciclo de requisição](REQUEST_LIFECYCLE.md);
+- [Superfícies HTTP](HTTP_SURFACES.md);
+- [Subsistemas transversais](TRANSVERSAL_SUBSYSTEMS.md).
+
+## Domínio e persistência
+
+Para compreender tickets, relações, banco, ORM, instalação e integridade:
+
+- [Ciclo do ticket](TICKET_LIFECYCLE.md);
+- [Modelo de dados](DATA_MODEL_MAP.md);
+- [Banco e persistência](DATABASE.md);
+- [Arquitetura de persistência](DATABASE_ARCHITECTURE.md);
+- [Catálogo ORM](ORM_CATALOG.md);
+- [Instalação e upgrades](INSTALLATION_UPGRADE.md);
+- [Falhas, atomicidade e órfãos](INTEGRITY_FAILURES.md).
+
+## Interfaces e comportamento
+
+Para confrontar a composição do frontend legado com o que foi observado no
+navegador:
+
+- [Frontend PHP existente](FRONTEND_ANALYSIS.md);
+- [Análise comportamental](BEHAVIORAL_ANALYSIS.md);
+- [Cobertura integral da interface](INTERFACE_COVERAGE_MATRIX.md);
+- [Protocolo de observação](INTERFACE_OBSERVATION_PROTOCOL.md);
+- [Modelo operacional do Wiki](OSTICKET_OPERATIONAL_MODEL.md);
+- [Testes da baseline](TESTING_BASELINE.md);
+- [Evidências comportamentais](evidence/README.md).
+
+## APIs e automação
+
+Para compreender as superfícies de integração e execução não interativa:
+
+- [APIs, AJAX e integrações](API_ANALYSIS.md);
+- [Catálogo de rotas AJAX](AJAX_ROUTE_CATALOG.md);
+- [Catálogo dos módulos CLI](CLI_CATALOG.md).
+
+## Segurança e acesso
+
+Para localizar os controles existentes antes de qualquer evolução funcional:
+
+- [Modelo de segurança](SECURITY_MODEL.md);
+- [Autenticação e autorização](AUTHENTICATION.md).
+
+## Extensibilidade e customização
+
+Para avaliar limites de extensão e alternativas de evolução sustentável:
+
+- [Pontos de extensão](EXTENSION_POINTS.md);
+- [Arquitetura de plugins](PLUGIN_ARCHITECTURE.md);
+- [Registries e factories](REGISTRY_CATALOG.md);
+- [Visão geral dos sinais](HOOKS.md) e [catálogo de sinais](SIGNAL_CATALOG.md);
+- [Matriz de customização](CUSTOMIZATION_MATRIX.md).
+
+!!! info "Portões concluídos"
+
+    Os Portões B e C estão concluídos. Esta organização não altera conclusões,
+    decisões ou precedência das fontes; apenas cria trilhas de leitura para o
+    conteúdo já versionado.

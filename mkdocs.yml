@@ -1,5 +1,9 @@
 site_name: osTicket Reforged — Engenharia Reversa
 site_description: Inventário e análise verificável da baseline osTicket v1.18.4
+site_author: osTicket Reforged
+repo_url: https://github.com/albertomoreiraluiz/osTicketReforged
+repo_name: albertomoreiraluiz/osTicketReforged
+edit_uri: ""
 docs_dir: docs
 site_dir: .local/site-docs
 strict: true
@@ -7,12 +11,37 @@ strict: true
 theme:
   name: material
   language: pt-BR
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Usar tema escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Usar tema claro
   features:
-    - navigation.indexes
-    - navigation.sections
-    - navigation.top
-    - search.highlight
-    - search.suggest
+      - navigation.indexes
+      - navigation.tabs
+      - navigation.tabs.sticky
+      - navigation.tracking
+      - navigation.top
+      - navigation.footer
+      - toc.follow
+      - content.code.copy
+      - search.highlight
+      - search.share
+      - search.suggest
+
+extra_css:
+  - assets/stylesheets/extra.css
 
 plugins:
   - search:
@@ -40,61 +69,68 @@ markdown_extensions:
 
 nav:
   - Início: index.md
+  - Projeto:
+      - Contexto persistente: governance/PROJECT_CONTEXT.md
+      - Progresso atual: governance/PROGRESS.md
+      - Plano ativo: plans/active/0001-reverse-engineering.md
+      - Decisões de governança: governance/DECISIONS.md
+      - Política documental: governance/DOCUMENTATION_POLICY.md
+      - Registro de mudanças: changes/README.md
   - Engenharia reversa:
       - Visão geral: reverse-engineering/index.md
-      - Arquitetura canônica: reverse-engineering/ARCHITECTURE.md
-      - Proveniência e ownership: reverse-engineering/PROVENANCE_MAP.md
-      - Ondas de inventário: reverse-engineering/WAVE_MANIFEST.md
-      - Inventário da baseline: reverse-engineering/INVENTORY.md
-      - Matriz de cobertura do código-fonte: reverse-engineering/SOURCE_COVERAGE_MATRIX.md
-      - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
-      - Catálogo de entrypoints: reverse-engineering/ENTRYPOINT_CATALOG.md
-      - Superfícies HTTP: reverse-engineering/HTTP_SURFACES.md
-      - APIs e AJAX: reverse-engineering/API_ANALYSIS.md
-      - Catálogo AJAX: reverse-engineering/AJAX_ROUTE_CATALOG.md
-      - Modelo de segurança: reverse-engineering/SECURITY_MODEL.md
-      - Autenticação e autorização: reverse-engineering/AUTHENTICATION.md
-      - Frontend PHP existente: reverse-engineering/FRONTEND_ANALYSIS.md
-      - Ciclo inicial de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
-      - Ciclo do ticket: reverse-engineering/TICKET_LIFECYCLE.md
-      - Falhas e órfãos: reverse-engineering/INTEGRITY_FAILURES.md
-      - Subsistemas transversais: reverse-engineering/TRANSVERSAL_SUBSYSTEMS.md
-      - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
-      - Banco e persistência: reverse-engineering/DATABASE.md
-      - Arquitetura de persistência: reverse-engineering/DATABASE_ARCHITECTURE.md
-      - Catálogo ORM: reverse-engineering/ORM_CATALOG.md
-      - Instalação e upgrades: reverse-engineering/INSTALLATION_UPGRADE.md
-      - Testes da baseline: reverse-engineering/TESTING_BASELINE.md
-      - Catálogo CLI: reverse-engineering/CLI_CATALOG.md
-      - Pontos de extensão: reverse-engineering/EXTENSION_POINTS.md
-      - Arquitetura de plugins: reverse-engineering/PLUGIN_ARCHITECTURE.md
-      - Registries e factories: reverse-engineering/REGISTRY_CATALOG.md
-      - Visão geral dos sinais: reverse-engineering/HOOKS.md
-      - Catálogo de sinais: reverse-engineering/SIGNAL_CATALOG.md
-      - Matriz de customização: reverse-engineering/CUSTOMIZATION_MATRIX.md
-      - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
-      - Revisão cruzada: reverse-engineering/REVIEW_REPORT.md
-      - Análise comportamental: reverse-engineering/BEHAVIORAL_ANALYSIS.md
-      - Protocolo de observação integral: reverse-engineering/INTERFACE_OBSERVATION_PROTOCOL.md
-      - Modelo operacional do Wiki: reverse-engineering/OSTICKET_OPERATIONAL_MODEL.md
-      - Matriz de cobertura da interface: reverse-engineering/INTERFACE_COVERAGE_MATRIX.md
+      - Inventário e rastreabilidade:
+          - Inventário da baseline: reverse-engineering/INVENTORY.md
+          - Cobertura do código-fonte: reverse-engineering/SOURCE_COVERAGE_MATRIX.md
+          - Proveniência e ownership: reverse-engineering/PROVENANCE_MAP.md
+          - Ondas de inventário: reverse-engineering/WAVE_MANIFEST.md
+          - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
+          - Revisões independentes: reverse-engineering/REVIEW_REPORT.md
+      - Arquitetura e execução:
+          - Arquitetura canônica: reverse-engineering/ARCHITECTURE.md
+          - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
+          - Catálogo de entrypoints: reverse-engineering/ENTRYPOINT_CATALOG.md
+          - Ciclo de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
+          - Superfícies HTTP: reverse-engineering/HTTP_SURFACES.md
+          - Subsistemas transversais: reverse-engineering/TRANSVERSAL_SUBSYSTEMS.md
+      - Domínio e persistência:
+          - Ciclo do ticket: reverse-engineering/TICKET_LIFECYCLE.md
+          - Modelo de dados: reverse-engineering/DATA_MODEL_MAP.md
+          - Banco e persistência: reverse-engineering/DATABASE.md
+          - Arquitetura de persistência: reverse-engineering/DATABASE_ARCHITECTURE.md
+          - Catálogo ORM: reverse-engineering/ORM_CATALOG.md
+          - Instalação e upgrades: reverse-engineering/INSTALLATION_UPGRADE.md
+          - Falhas, atomicidade e órfãos: reverse-engineering/INTEGRITY_FAILURES.md
+      - Interfaces e comportamento:
+          - Frontend PHP existente: reverse-engineering/FRONTEND_ANALYSIS.md
+          - Análise comportamental: reverse-engineering/BEHAVIORAL_ANALYSIS.md
+          - Cobertura integral da interface: reverse-engineering/INTERFACE_COVERAGE_MATRIX.md
+          - Protocolo de observação: reverse-engineering/INTERFACE_OBSERVATION_PROTOCOL.md
+          - Modelo operacional do Wiki: reverse-engineering/OSTICKET_OPERATIONAL_MODEL.md
+          - Testes da baseline: reverse-engineering/TESTING_BASELINE.md
+      - APIs e automação:
+          - APIs, AJAX e integrações: reverse-engineering/API_ANALYSIS.md
+          - Catálogo de rotas AJAX: reverse-engineering/AJAX_ROUTE_CATALOG.md
+          - Catálogo dos módulos CLI: reverse-engineering/CLI_CATALOG.md
+      - Segurança e acesso:
+          - Modelo de segurança: reverse-engineering/SECURITY_MODEL.md
+          - Autenticação e autorização: reverse-engineering/AUTHENTICATION.md
+      - Extensibilidade e customização:
+          - Pontos de extensão: reverse-engineering/EXTENSION_POINTS.md
+          - Arquitetura de plugins: reverse-engineering/PLUGIN_ARCHITECTURE.md
+          - Registries e factories: reverse-engineering/REGISTRY_CATALOG.md
+          - Visão geral dos sinais: reverse-engineering/HOOKS.md
+          - Catálogo de sinais: reverse-engineering/SIGNAL_CATALOG.md
+          - Matriz de customização: reverse-engineering/CUSTOMIZATION_MATRIX.md
       - Evidências comportamentais:
           - Protocolo e índice: reverse-engineering/evidence/README.md
           - Auditoria complementar da Onda 9: reverse-engineering/evidence/WAVE-09-CLOSURE-AUDIT.md
           - BHV-027 — tickets vinculados: reverse-engineering/evidence/BHV-027-linked-tickets.md
           - BHV-029 — ticket de resposta: reverse-engineering/evidence/BHV-029-ticket-from-response.md
-  - Governança:
-      - Contexto: governance/PROJECT_CONTEXT.md
-      - Progresso: governance/PROGRESS.md
-      - Decisões: governance/DECISIONS.md
-      - Política documental: governance/DOCUMENTATION_POLICY.md
-      - Registro de mudanças: changes/README.md
-  - Plano ativo: plans/active/0001-reverse-engineering.md
-  - Ambiente:
+  - Decisões arquiteturais:
+      - Como as decisões são registradas: adr/README.md
+      - ADR 0001 — Frontend separado: adr/0001-frontend-angular-primeng.md
+      - ADR 0002 — Portal documental: adr/0002-documentation-toolchain.md
+  - Ambiente e ferramentas:
       - Portal documental: development/DOCUMENTATION_PORTAL.md
       - Homologação: development/HOMOLOGATION_ENVIRONMENT.md
-  - Decisões arquiteturais:
-      - Índice: adr/README.md
-      - ADR 0001 — Frontend: adr/0001-frontend-angular-primeng.md
-      - ADR 0002 — Portal documental: adr/0002-documentation-toolchain.md
   - Referência oficial incorporada: upstream/osticket-docs/README.md

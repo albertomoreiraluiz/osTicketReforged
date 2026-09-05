@@ -18,7 +18,10 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 Ambiente de homologação instalado e ativo: XAMPP local, PHP 8.2, MariaDB,
 extensões e logs preparados. A interface pública e a autenticação administrativa
 foram confirmadas por observação em runtime. O snapshot oficial de referência e
-o portal MkDocs permanecem no fluxo obrigatório de atualização.
+o portal MkDocs permanecem no fluxo obrigatório de atualização. O portal usa
+abas de contexto e categorias técnicas recolhíveis, com trilhas de leitura por
+objetivo, busca global e temas claro/escuro; os caminhos canônicos dos documentos
+continuam preservados.
 
 A Onda 7 concluiu 25 cenários funcionais. Uma revisão de cobertura abriu a Onda
 8 para demonstrar menus contextuais e ações encadeadas ainda não exercitadas.
