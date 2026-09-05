@@ -17,6 +17,7 @@ evidências:
 - [Ondas de inventário](WAVE_MANIFEST.md) — sequência e critérios de fechamento;
 - [Matriz de evidências](EVIDENCE_MATRIX.md) — estado verificável por frente;
 - [Revisões independentes](REVIEW_REPORT.md) — achados e pareceres de QA.
+- [Revisões do Portão D](GATE_D_REVIEW.md) — avaliação das propostas arquiteturais.
 
 ## Arquitetura e execução
 
@@ -24,6 +25,8 @@ Para seguir uma requisição desde o bootstrap até os controladores e
 subsistemas:
 
 - [Arquitetura canônica](ARCHITECTURE.md);
+- [Portão D: opções arquiteturais](ARCHITECTURE_DECISION_RECORD.md);
+- [Portão D: migração proposta](MIGRATION_STRATEGY.md);
 - [Mapa de componentes](COMPONENT_MAP.md);
 - [Catálogo de entrypoints](ENTRYPOINT_CATALOG.md);
 - [Ciclo de requisição](REQUEST_LIFECYCLE.md);

@@ -31,8 +31,8 @@ O objetivo não é reproduzir telas antigas nem reescrever o backend por prefer�
 
 Somente engenharia reversa e documentação. A implementação de Angular, API completa, plugins próprios, alterações do core e mudanças de banco está bloqueada até a análise e a decisão arquitetural.
 
-Os Portões A, B e C estão concluídos. A preparação documental do Portão D está
-concluída, mas sua comparação arquitetural ainda não foi iniciada. O
+Os Portões A, B e C estão concluídos. O Portão D foi iniciado em 2026-09-05 por
+autorização do responsável; comparação e migração permanecem propostas. O
 [checkpoint canônico](CURRENT_STATE.md) registra o contrato de retomada e deve
 ser confrontado com Git e fontes especializadas em toda nova sessão.
 
@@ -73,8 +73,8 @@ Em `docs/reverse-engineering/`:
 
 `ARCHITECTURE.md`, `DATABASE.md` e `AUTHENTICATION.md` são índices canônicos de
 síntese e apontam aos catálogos detalhados. `MIGRATION_STRATEGY.md` e
-`ARCHITECTURE_DECISION_RECORD.md` serão produzidos no Portão D, depois do
-fechamento da análise profunda; sua ausência durante o Portão C é deliberada.
+`ARCHITECTURE_DECISION_RECORD.md` foram produzidos como propostas na abertura do
+Portão D. `GATE_D_REVIEW.md` registra revisão, limites e próximos critérios.
 
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 

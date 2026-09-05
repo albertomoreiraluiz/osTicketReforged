@@ -8,12 +8,12 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Onda 9 e portal documental reorganizado; Portão D é o próximo passo |
+| Etapa atual | Portão D iniciado — comparação arquitetural documental |
 | Observação visual | sequência estrita concluída e aprovada em revisão independente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
-| Portão D — Decisão arquitetural | Não iniciado |
+| Portão D — Decisão arquitetural | Em andamento; nenhuma arquitetura aceita |
 
 Ambiente de homologação instalado e ativo: XAMPP local, PHP 8.2, MariaDB,
 extensões e logs preparados. A interface pública e a autenticação administrativa
@@ -87,12 +87,19 @@ de toda combinação possível de configuração.
 
 Próximas etapas:
 
-1. consolidar as evidências em pelo menos três opções arquiteturais;
-2. comparar riscos de atualização, integração, segurança e migração;
+1. obter decisão explícita sobre a direção e o primeiro recorte propostos;
+2. registrar a escolha em ADR antes de planejar a prova de integração;
 3. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
 4. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
    versões de Angular, PrimeNG ou detalhes de integração.
+
+O [dossiê do Portão D](docs/reverse-engineering/ARCHITECTURE_DECISION_RECORD.md)
+compara fachada PHP, serviço externo com conector e extração com dados próprios.
+A [migração proposta](docs/reverse-engineering/MIGRATION_STRATEGY.md) recomenda
+começar por consultas de tickets do agente. Os
+[seis pareceres independentes](docs/reverse-engineering/GATE_D_REVIEW.md) não substituem
+aprovação arquitetural nem autorizam implementação.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
 `frontend/`; versões e integração serão definidas após a análise correspondente.

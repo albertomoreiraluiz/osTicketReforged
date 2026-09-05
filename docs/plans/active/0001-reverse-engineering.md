@@ -130,6 +130,15 @@ agora oferece trilhas para estado, funcionamento, evidências e evolução.
 
 ### Portão D — Decisão arquitetural
 
+**Em andamento desde 2026-09-05**, por autorização do responsável. Abertura na
+branch `codex/gate-d-architecture`, entrada `874efbd8`:
+[dossiê comparativo](../../reverse-engineering/ARCHITECTURE_DECISION_RECORD.md),
+[migração proposta](../../reverse-engineering/MIGRATION_STRATEGY.md) e
+[revisões](../../reverse-engineering/GATE_D_REVIEW.md). Software, segurança e
+dados revisaram a primeira proposta; API, frontend e QA concluíram a revisão
+complementar. Ajustes incorporados; decisão final permanece pendente. Nenhuma
+implementação foi autorizada por esta abertura.
+
 O Portão D transforma as evidências dos Portões B e C em uma escolha explícita
 de arquitetura. Ele não é uma etapa de implementação: nenhuma aplicação
 Angular, API completa, alteração de core, plugin próprio ou mudança de schema
