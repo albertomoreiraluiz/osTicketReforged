@@ -4,12 +4,14 @@
 
 Projeto em engenharia reversa, baseado no osTicket `v1.18.4`. Ainda não existe arquitetura de customização aprovada nem implementação própria.
 
-O Portão D está em andamento documental: comparação de três alternativas e
-estratégia de migração propostas, revisões concluídas e decisão final pendente.
+O Portão D foi reiniciado: recomendação anterior descartada; discussão de
+requisitos para coexistência contínua dos painéis, sem nova recomendação.
 
 ## Objetivo
 
-Compreender o osTicket 1.18 diretamente pelo código e definir uma estratégia sustentável para plugins próprios, API moderna e migração progressiva do frontend PHP para Angular com PrimeNG, preservando permissões, segurança e capacidade de atualização.
+Compreender o osTicket 1.18 pelo código e definir uma estratégia sustentável
+para API e painel Angular/PrimeNG adicional, preservando o painel PHP, permissões,
+segurança e atualizações. O portal do usuário terá planejamento separado.
 
 ## Comece por aqui
 

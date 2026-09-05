@@ -1,5 +1,25 @@
 # Portão D — Dossiê de opções arquiteturais
 
+## Estado corrente — análise reiniciada
+
+**Decisão aceita:** o responsável descartou a recomendação anterior e determinou
+reinício com coexistência contínua dos painéis. Ver
+[ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md).
+Não existe nova alternativa preferida nem primeiro recorte recomendado.
+
+O próximo trabalho é discutir requisitos e critérios com o responsável:
+quais capacidades devem existir no Reforged, como será a experiência de acesso
+entre painéis e quais condições de compatibilidade precisam ser preservadas.
+Sessão compartilhada, URL final e organização da API permanecem sem decisão.
+O portal do usuário terá planejamento separado.
+
+## Histórico da primeira rodada — recomendação descartada
+
+Todo o conteúdo abaixo pertence à PR #28. As expressões “Proposta”,
+“recomendação” e “decisões a apresentar” abaixo descrevem aquela rodada,
+não o ponto de retomada atual. Evidências técnicas permanecem como referência,
+mas conclusões e pareceres não aprovam automaticamente a nova proposta.
+
 ## Estado e escopo
 
 **Proposta**, iniciada em 2026-09-05 por autorização do responsável. Baseline
@@ -110,7 +130,7 @@ inferidos dessas restrições, não observados em implementações inexistentes)
 | Evolução independente | D-E01, D-E02, D-E07, D-E08 |
 | Adequação ao primeiro módulo | D-E04, D-E05, D-E06, D-E08; INTERFACE_COVERAGE_MATRIX.md |
 
-## Recomendação inicial
+## Recomendação inicial descartada — histórico
 
 **Proposta:** iniciar pela alternativa A, com fronteira explícita de contratos e
 adaptadores, preservando B como evolução se isolamento de processo ou requisitos
@@ -152,7 +172,7 @@ correlação de operação e procedimento de reconciliação. Nenhum retry mutá
 automático até existir idempotência demonstrada. Reusar domínio não corrige os
 achados existentes nem garante atomicidade.
 
-## Decisões a apresentar ao responsável
+## Decisões então propostas — não vigentes
 
 1. aceitar A como direção arquitetural inicial, sujeita às condições acima;
 2. aceitar o primeiro recorte proposto na [estratégia de migração](MIGRATION_STRATEGY.md);

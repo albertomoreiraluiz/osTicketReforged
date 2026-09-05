@@ -89,8 +89,8 @@ nav:
           - Revisões do Portão D: reverse-engineering/GATE_D_REVIEW.md
       - Arquitetura e execução:
           - Arquitetura canônica: reverse-engineering/ARCHITECTURE.md
-          - Portão D — Opções propostas: reverse-engineering/ARCHITECTURE_DECISION_RECORD.md
-          - Portão D — Migração proposta: reverse-engineering/MIGRATION_STRATEGY.md
+          - Portão D — Reinício e histórico: reverse-engineering/ARCHITECTURE_DECISION_RECORD.md
+          - Portão D — Estratégia descartada: reverse-engineering/MIGRATION_STRATEGY.md
           - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
           - Catálogo de entrypoints: reverse-engineering/ENTRYPOINT_CATALOG.md
           - Ciclo de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
@@ -134,6 +134,7 @@ nav:
       - Como as decisões são registradas: adr/README.md
       - ADR 0001 — Frontend separado: adr/0001-frontend-angular-primeng.md
       - ADR 0002 — Portal documental: adr/0002-documentation-toolchain.md
+      - ADR 0003 — Coexistência e portal: adr/0003-coexistencia-paineis-portal-separado.md
   - Ambiente e ferramentas:
       - Portal documental: development/DOCUMENTATION_PORTAL.md
       - Homologação: development/HOMOLOGATION_ENVIRONMENT.md

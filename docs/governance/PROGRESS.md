@@ -5,8 +5,8 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da abertura: `codex/gate-d-architecture`, entrada `874efbd8`.
-- Etapa: Portão D em andamento documental; três alternativas e migração propostas.
+- Branch da retomada: `codex/gate-d-restart-coexistence`, entrada `379efb0b` (PR #28).
+- Etapa: Portão D reiniciado; recomendação anterior descartada, critérios em discussão.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -224,16 +224,35 @@
 
 ## Próximo passo proposto
 
-1. obter aprovação, rejeição ou pedido de ajuste da recomendação do Portão D;
-2. registrar a escolha em ADR, mantendo decisões ausentes explícitas;
-3. somente após aceite, planejar a prova de integração no recorte aprovado.
+1. discutir requisitos e critérios de coexistência contínua com o responsável;
+2. só então refazer a comparação, sem preferência ou primeiro recorte herdados;
+3. submeter nova recomendação à decisão explícita, sem iniciar implementação.
 
-## Abertura do Portão D — 2026-09-05
+## Reinício do Portão D — estado corrente
+
+**Decisão aceita:** recomendação da PR #28 descartada por solicitação explícita.
+[ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md) formaliza somente
+as novas premissas: painel PHP preservado em `/scp`, Angular/PrimeNG adicional
+por endereço distinto (`/scp/reforged` candidato), coexistência contínua e portal
+do usuário com planejamento separado. Não há nova escolha técnica ou primeiro módulo.
+
+Dossiê, estratégia e pareceres anteriores foram sinalizados como históricos,
+sem apagar inventário, evidências, arquivos ou Git. Atualização documental
+centralizada, sem necessidade de subagentes; nenhum teste de produto, alteração
+de banco/core ou implementação. Próximo passo é discussão com o responsável,
+não aprovação automática da fachada ou do recorte anteriores.
+
+Validação desta retomada: MkDocs estrito aprovado; 59/59 documentos na navegação
+sem repetição, seis contextos preservados; 118 Markdown e 227 links locais
+auditados, zero destino ausente do Reforged e seis referências herdadas.
+`git diff --check` sem erro. Não houve validação comportamental nova.
+
+## Abertura do Portão D — histórico da PR #28, recomendação descartada
 
 **Fato observado:** autorização do responsável para iniciar a comparação.
 Entregues como **Proposta**: [dossiê de três opções](../reverse-engineering/ARCHITECTURE_DECISION_RECORD.md)
 e [estratégia de migração](../reverse-engineering/MIGRATION_STRATEGY.md).
-A recomendação inicial é fachada PHP como extensão, começando por consulta de
+A recomendação inicial era fachada PHP como extensão, começando por consulta de
 tickets do agente. Nenhum ADR de arquitetura-alvo foi aceito.
 
 Seis [revisões independentes](../reverse-engineering/GATE_D_REVIEW.md) avaliaram
@@ -243,7 +262,8 @@ escopo de tickets e recuperação conjunta com verificação de encoding.
 Não houve novo teste comportamental, acesso ao banco, alteração de produto ou
 aceite de riscos legados. Contratos de erro, navegação/coexistência e evidências
 por critério também foram explicitados. A decisão final permanece pendente;
-baseline e plano ativo permanecem os mesmos.
+baseline e plano ativo permaneceram os mesmos nessa entrega. Esse histórico
+não substitui o estado de reinício acima.
 
 Validação documental: build estrito aprovado; 58/58 documentos na navegação;
 117 Markdown e 217 links locais auditados, zero destino ausente do Reforged e
@@ -257,18 +277,17 @@ da publicação: nenhuma Issue ou PR aberta. Estado externo deve ser revalidado.
 | A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
 | B — Inventário | Concluído | três ondas estáticas, portal e revisão QA independente | nenhum |
 | C — Análise profunda | Concluído | ciclos, dados, plugins, segurança, API, frontend, catálogos, falhas, registries, customização e revisão cruzada | nenhum bloqueio estático alto/médio |
-| D — Decisão arquitetural | Em andamento | dossiê comparativo, migração e seis pareceres | aprovação explícita do ADR |
+| D — Decisão arquitetural | Reiniciado | descarte da PR #28; premissas no ADR 0003 | discussão de requisitos, nova comparação e decisão técnica final |
 
 ## Decisões ainda não aceitas
 
 Os itens abaixo não bloqueiam a comparação documental. Serão deliberados na
-etapa correspondente; direção arquitetural e primeiro recorte são propostas do
-Portão D, não decisões já aceitas.
+etapa correspondente; não há direção técnica ou primeiro recorte recomendados.
 
 - Convenção final de releases do Reforged — **A definir (TBD)**.
 - Política de proteção obrigatória de `main` no GitHub — **Proposto**.
-- Direção de extensão/API e coexistência — **Proposto** no dossiê do Portão D.
-- Primeiro recorte — **Proposto**: consulta de tickets do agente.
+- Arquitetura de extensão/API — **A definir (TBD)** sob coexistência aceita no ADR 0003.
+- Primeiro recorte — **A definir (TBD)**; sugestão anterior descartada.
 - Persistência definitiva de conexões e segredos — **A definir (TBD)**.
 
 ## Riscos conhecidos

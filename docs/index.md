@@ -54,7 +54,8 @@ Use a [matriz de evidências](reverse-engineering/EVIDENCE_MATRIX.md), a
 ### Preparar decisões de evolução
 
 Comece pelo [dossiê do Portão D](reverse-engineering/ARCHITECTURE_DECISION_RECORD.md)
-e pela [migração proposta](reverse-engineering/MIGRATION_STRATEGY.md).
+e pelas [premissas de coexistência](adr/0003-coexistencia-paineis-portal-separado.md).
+A estratégia anterior permanece somente como histórico, não como orientação ativa.
 
 Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), a
 [arquitetura de plugins](reverse-engineering/PLUGIN_ARCHITECTURE.md), o
@@ -73,7 +74,7 @@ Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), 
 | Inventário | concluído | 2.266 caminhos classificados sem lacuna ou sobreposição |
 | Análise profunda | concluída | arquitetura, domínio, dados, interfaces, APIs, segurança e extensão documentados |
 | Observação visual | concluída | 34 cenários reconciliados e revisão independente aprovada |
-| Decisão arquitetural | em andamento | [três opções propostas](reverse-engineering/ARCHITECTURE_DECISION_RECORD.md); aprovação pendente |
+| Decisão arquitetural | reiniciada | [novas premissas](adr/0003-coexistencia-paineis-portal-separado.md); recomendação anterior descartada |
 
 ## Como interpretar as afirmações
 

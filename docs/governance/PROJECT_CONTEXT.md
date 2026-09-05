@@ -11,7 +11,9 @@ Realizar engenharia reversa estruturada do osTicket 1.18 e, com base no código,
 - preservar o core sempre que possível;
 - desenvolver plugins e regras próprias;
 - introduzir uma camada de API desacoplada dos detalhes internos;
-- substituir progressivamente o frontend PHP por Angular e PrimeNG;
+- manter o painel PHP e disponibilizar um painel Angular/PrimeNG adicional por
+  endereço distinto, em coexistência contínua;
+- planejar separadamente a possível substituição integral do portal do usuário;
 - preservar segurança, permissões, SLA, tickets, threads e anexos;
 - manter compatibilidade com atualizações futuras;
 - evitar um fork profundo e difícil de manter.
@@ -32,7 +34,10 @@ O objetivo não é reproduzir telas antigas nem reescrever o backend por prefer�
 Somente engenharia reversa e documentação. A implementação de Angular, API completa, plugins próprios, alterações do core e mudanças de banco está bloqueada até a análise e a decisão arquitetural.
 
 Os Portões A, B e C estão concluídos. O Portão D foi iniciado em 2026-09-05 por
-autorização do responsável; comparação e migração permanecem propostas. O
+autorização do responsável e reiniciado após descarte da recomendação da PR #28.
+As premissas aceitas estão no [ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md):
+`/scp` preservado, endereço novo distinto (`/scp/reforged` apenas candidato),
+portal planejado à parte. Não há nova recomendação ou primeiro recorte. O
 [checkpoint canônico](CURRENT_STATE.md) registra o contrato de retomada e deve
 ser confrontado com Git e fontes especializadas em toda nova sessão.
 
@@ -50,7 +55,7 @@ ser confrontado com Git e fontes especializadas em toda nova sessão.
 10. opções para uma API própria;
 11. frontend PHP atual;
 12. futura arquitetura Angular e PrimeNG;
-13. migração progressiva e coexistência;
+13. evolução incremental e coexistência contínua dos painéis;
 14. padrão para plugins próprios;
 15. atualizações do upstream e controle do delta;
 16. segurança;
@@ -74,7 +79,8 @@ Em `docs/reverse-engineering/`:
 `ARCHITECTURE.md`, `DATABASE.md` e `AUTHENTICATION.md` são índices canônicos de
 síntese e apontam aos catálogos detalhados. `MIGRATION_STRATEGY.md` e
 `ARCHITECTURE_DECISION_RECORD.md` foram produzidos como propostas na abertura do
-Portão D. `GATE_D_REVIEW.md` registra revisão, limites e próximos critérios.
+Portão D e foram descartados como orientação ativa; permanecem como histórico.
+`GATE_D_REVIEW.md` registra os pareceres daquela rodada, não a aprovação da nova.
 
 A decisão arquitetural aceita será registrada de forma canônica em um ADR numerado em `docs/adr/`. O dossiê de engenharia reversa não substitui esse ADR.
 
@@ -99,4 +105,8 @@ A decisão arquitetural aceita será registrada de forma canônica em um ADR num
 
 ## Critério para encerrar a engenharia reversa
 
-A etapa somente pode ser encerrada quando os entregáveis permitirem responder, com evidência, como funcionam core, plugins, hooks, extensão, autenticação, permissões, API, domínio, banco e frontend; quais customizações exigem core; como migrar progressivamente; como atualizar o upstream; quais arquiteturas são viáveis; e qual primeiro módulo deve ser migrado.
+A etapa somente pode ser encerrada quando os entregáveis permitirem responder,
+com evidência, como funcionam core, plugins, hooks, extensão, autenticação,
+permissões, API, domínio, banco e frontend; quais customizações exigem core;
+como evoluir mantendo ambos os painéis; como atualizar o upstream; quais
+arquiteturas são viáveis; e qual primeiro módulo desenvolver no Reforged.

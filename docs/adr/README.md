@@ -17,3 +17,5 @@ Decisões aceitas:
   Angular e PrimeNG.
 - `0002-documentation-toolchain.md` — portal principal da engenharia reversa com
   MkDocs Material e ferramentas especializadas complementares.
+- `0003-coexistencia-paineis-portal-separado.md` — coexistência contínua dos painéis
+  e portal separado; premissas aceitas, não arquitetura técnica ou liberação do Portão D.
