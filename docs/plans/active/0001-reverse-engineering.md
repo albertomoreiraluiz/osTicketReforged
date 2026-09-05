@@ -103,8 +103,11 @@ restante deste plano é dependente
 da conclusão da repetição visual da Onda 9; o ciclo funcional da tarefa
 derivada `2` já foi repetido pela interface e preservado aberto. Depois disso,
 BHV-022 também foi repetido com edição e restauração visual do ticket
-`903010`. Concluída a Onda 9, o plano dependerá da comparação de opções e da
-decisão explícita do responsável.
+`903010`. A sequência posterior reconfirmou KB, usuários, organizações, perfil,
+paginação, ações em massa, vínculo/desvínculo, fusão sem exclusão e ações
+auditáveis da thread pelo frontend; a comprovação do arquivo CSV e os contextos
+de cliente e agente restrito continuam na fila. Concluída a Onda 9, o plano
+dependerá da comparação de opções e da decisão explícita do responsável.
 
 ### Portão D — Decisão arquitetural
 

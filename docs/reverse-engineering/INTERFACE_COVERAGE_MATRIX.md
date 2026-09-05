@@ -19,7 +19,7 @@
 | --- | --- | --- | --- | --- |
 | Anônimo | `/` | Em observação | cabeçalho, quatro menus, cadastro, validações e criação funcional percorridos em ordem | concluir link recebido por e-mail e rodapé externo |
 | Cliente | `/login.php` | Coberto | autenticação, perfil, lista, filtros, ordenação, tickets próprio/colaborado, criação, KB, página inicial e saída percorridos visualmente | manter três divergências candidatas na fila de correlação |
-| Equipe — agente | `/scp/` | Em observação | shell, Painel de Controle, Usuários, Tarefas e Tickets percorridos pelo administrador no contexto operacional | concluir KB e repetir ações funcionais de tickets/tarefas |
+| Equipe — agente | `/scp/` | Em observação | shell, Painel de Controle, Usuários, Tarefas, Tickets e Base de Conhecimento percorridos pelo administrador no contexto operacional | repetir as ações funcionais restantes e depois validar o papel restrito |
 | Equipe — administrador | `/scp/` | Em observação | fila de tickets revelou lacunas de massa/exportação | reiniciar pelo topo e cobrir todas as abas operacionais |
 | Administração | `/scp/admin.php` | Coberto no mapa global | cinco grupos e todos os 27 submenus/abas internas percorridos em ordem pelo frontend | repetir fluxos funcionais priorizados e fechar correlações |
 
@@ -121,13 +121,36 @@ segredos.
 | 3.3 | Pesquisa de tarefas | campo preenchido e submetido visualmente | número de ticket `927747` não retornou linha; trecho do título `fila de impressão` retornou a tarefa `2` |
 | 3.4 | Mais e seleção | Fechar, Reivindicar, Atribuir a Agente/Equipe, Transferir e Apagar; Todos/Nenhum/Alternar | menus e estados de seleção exercitados, sem ação em massa submetida |
 | 4 | Tickets — Aberto | cinco submenus, busca, avançado, ações, seis colunas, seleção e exportação | 14 tickets; novas fixtures `729918` e `961630` visíveis |
-| 5 | Base de Conhecimento — FAQs | busca, filtros de categoria/tópico e categoria pública | uma categoria pública visível |
-| 5.1 | Categorias | inclusão, Mais, quatro colunas, seleção e ações Público/Interno/Apagar | uma categoria pública; nenhuma ação em massa submetida |
-| 5.2 | Resposta pronta | inclusão, Mais, quatro colunas, seleção e paginação | três respostas ativas globais visíveis |
+| 5 | Base de Conhecimento — FAQs | busca, filtros de categoria/tópico, categoria pública, detalhe, edição, anexos e notas | busca positiva abriu a FAQ funcional; detalhe e editor integralmente percorridos |
+| 5.1 | Categorias | inclusão, Mais, quatro colunas, seleção, ações Público/Interno/Apagar, edição e notas | criação e fixture existente percorridas nas duas abas; nota interna persistida foi reexibida; nada salvo |
+| 5.2 | Resposta pronta | inclusão, Mais, quatro colunas, seleção, ações Ativar/Desativar/Apagar, editor, anexos, notas e variáveis | três respostas ativas; fixture funcional reabriu conteúdo e nota persistidos; manual de variáveis foi renderizado |
 
 **Fato observado:** a passagem acima usa o administrador dentro do painel
 operacional; ela não substitui a posterior repetição com o papel restrito de
 agente nem a inspeção das ações encadeadas de cada ticket.
+
+### Base de Conhecimento operacional — detalhamento funcional
+
+**Fato observado:** a busca visível por `OSTR-W7` retornou somente a FAQ
+funcional, cuja página de detalhe expôs impressão, edição, categoria, tópico,
+estado de publicação e conteúdo. O editor apresentou as abas de artigo,
+anexos e notas internas; a nota da fixture reapareceu ao reabrir o registro.
+
+**Fato observado:** a inclusão de categoria apresentou tipo
+Destacado/Público/Privado, categoria principal, nome, descrição e nota interna.
+A edição da categoria funcional exibiu os mesmos controles com os valores e a
+nota persistidos. Na listagem, seleção e ações para tornar Público, tornar
+Interno ou Apagar foram classificadas, sem submissão.
+
+**Fato observado:** a inclusão e a edição de resposta pronta expuseram estado,
+departamento, título, editor rico, anexos e notas internas. O diálogo
+`Variáveis Suportadas` foi aberto pelo link renderizado e listou variáveis base,
+expansões e variáveis contextuais. A resposta `[OSTR-W7] Resposta pronta
+funcional` conservou o conteúdo que já havia sido carregado visualmente no
+formulário de resposta do ticket. O menu em massa apresentou Habilitar,
+Desabilitar e Apagar; a fixture foi desabilitada, reaberta nesse estado e
+reativada pela própria interface. O estado ativo inicial foi restaurado e a
+ação destrutiva Apagar não foi submetida.
 
 ## Administração — reinício sequencial pós-Wiki
 
@@ -237,6 +260,26 @@ manual até que percurso e persistência sejam reconciliados. A ausência de
 resposta de `Criar Tarefa` é somente comportamento visual reproduzido neste
 ponto.
 
+### Relações, fusão e ações auditáveis do ticket
+
+| Ordem | Contexto/controle | Ação visual | Resultado observável |
+| --- | --- | --- | --- |
+| 1 | fila aberta, tickets `903010` e `874483` | desvincular no gerenciador e salvar | aba de relacionados desapareceu do pai, confirmando persistência |
+| 2 | atalho coletivo de corrente | selecionar os dois tickets, ordenar pai/filho e salvar | `903010` voltou a exibir `PRINCIPAL` e `Tickets Relacionados (1)`; estado inicial restaurado |
+| 3 | fixtures `924064` e `273122` | fundir com `Combinar temas`, pai aberto, filho resolvido e sem exclusão | thread do pai passou a seis itens, registrou o evento de fusão e incorporou as entradas do filho |
+| 4 | ticket dependente `273122` | abrir pelo relacionado | rótulo `DEPENDENTE`, status `Resolvido`, referência ao pai e bloqueio de resposta exibidos; ticket não foi excluído |
+| 5 | entrada original do ticket `927747` | editar, salvar texto temporário e restaurar | marcador `Editado` e `View History` surgiram; conteúdo final voltou ao original e a revisão permaneceu auditável |
+| 6 | menu global do ticket `927747` | marcar respondido e depois não respondido, sempre com motivo | quatro eventos de agente/sistema foram adicionados; estado final voltou a não respondido |
+| 7 | `Gerenciar referências` | abrir abas Referências/Indicar | zero referências; formulário oferece agente, equipe ou departamento e motivo opcional; nenhuma indicação submetida |
+| 8 | `Gerenciar Formulários` | abrir e ler o diálogo | formulário `Detalhes do chamado` listado; inclusão indisponível no contexto; nenhuma alteração submetida |
+| 9 | impressão do ticket | notas + eventos, papel A4, imprimir | `Ticket-927747.pdf` gerado localmente com 76.254 bytes |
+| 10 | exportação da fila | 25 colunas, opções avançadas, nome e delimitador | requisição concluída e modal fechado; o navegador não materializou arquivo no diretório de downloads, portanto o artefato CSV permanece pendente de comprovação |
+
+**Fato observado:** a fusão foi precedida por dump binário de 1.301.412 bytes,
+SHA-256 `12c9cd0108ea4ad104c5e2ba1916dd5e5be65f54db08e30a91713a74a4267886`,
+restaurado em banco temporário com igualdade de sete contagens e validação de
+UTF-8. A opção destrutiva `Excluir ticket` permaneceu desmarcada.
+
 ### Vínculo pela fila
 
 | Ordem | Controle visual | Resultado observado |
@@ -308,6 +351,22 @@ com justificativas e eventos persistidos na própria thread. A fixture foi
 preservada aberta e nenhuma ação de remoção foi executada. A visão completa
 expõe exclusão, mas ela permaneceu apenas inventariada devido ao seu caráter
 destrutivo.
+
+### Usuários, organizações e perfil — repetição funcional
+
+| Cenário | Ação integralmente visual | Evidência observável | Estado final |
+| --- | --- | --- | --- |
+| BHV-020 | organização `[OSTR-W9] Organização criada pelo fluxo visual` criada; usuário fictício localizado pelo autocomplete e associado | aba Usuários mostrou o vínculo; aba Tickets agregou o ticket `729918` do usuário | organização e associação preservadas como fixture |
+| BHV-021 | website alterado, reaberto e restaurado; nota criada pela aba Notas | valor temporário reapareceu no editor; valor original foi restaurado; nota `[OSTR-W9]` permaneceu visível | campos restaurados; nota preservada |
+| BHV-023 | telefone/ramal do usuário `OSTR Client` alterados e limpos pela mesma interface; nota administrativa criada | atualização do perfil foi refletida no carimbo; aba Notas exibiu autor, data e conteúdo | contato restaurado; nota preservada |
+| BHV-024 | fuso do agente mudou de Padrão do Sistema para America/New_York e retornou ao padrão | duas mensagens `Perfil atualizado com sucesso`; seletor reaberto mostrou primeiro o valor temporário e depois o padrão | preferência restaurada |
+
+**Fato observado:** os quatro cenários foram executados por controles
+renderizados. O autocomplete de organização somente apresentou resultados após
+uma busca parcial sem os marcadores do início do nome. A associação exibiu uma
+etapa intermediária de conferência com endereço, telefone, website e nota antes
+de `Continuar`; o ticket do usuário só apareceu na organização depois dessa
+confirmação.
 
 **Divergência candidata:** na pesquisa simples de tarefas, o título localiza a
 tarefa `2`, mas o número do ticket associado `927747`, embora seja uma coluna
