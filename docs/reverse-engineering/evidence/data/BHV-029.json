@@ -29,9 +29,19 @@
     "derived_ticket_note_count": 2
   },
   "rollback": {
+    "applies_to_prior_corrective_run": true,
     "seven_table_counts_match": true,
     "utf8_sample_matches": true,
     "temporary_ticket_removed_by_full_restore": true,
     "source_response_restored": true
+  },
+  "persistent_evidence": {
+    "ticket_id": 12,
+    "ticket_number": "166522",
+    "subject": "[OSTR-EVIDENCE] Ticket criado a partir de resposta",
+    "source_ticket_number": "912803",
+    "visible_in_staff_queue": true,
+    "response_body_binary_match_count": 1,
+    "contingency_snapshot_restored": false
   }
 }
