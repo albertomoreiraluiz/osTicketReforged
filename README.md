@@ -8,8 +8,8 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Onda 9 — repetição visual profunda antes do Portão D |
-| Observação visual | reinício sequencial estrito e repetição dos cenários antes executados diretamente |
+| Etapa atual | Onda 9 concluída; preparação comparativa do Portão D é o próximo passo |
+| Observação visual | sequência estrita concluída e aprovada em revisão independente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
@@ -38,7 +38,7 @@ GOV-020 exige que a passagem recomece no primeiro menu e avance sem saltos;
 cenários históricos de CLI, endpoint ou método direto serão repetidos pelo
 navegador. Dependências locais, incluindo e-mail de homologação sem relay,
 podem ser parametrizadas quando necessárias.
-O checkpoint atual já percorreu o mapa global dos quatro contextos, configurou
+A Onda 9 percorreu o mapa global dos quatro contextos, configurou
 e-mail POP3/SMTP local pela Administração, confirmou criação natural por coleta,
 repetiu vínculo e derivação de ticket e concluiu o primeiro atendimento
 realista ponta a ponta no ticket `990221`. A tarefa derivada `2` também teve seu
@@ -55,21 +55,25 @@ exclusão, edição com histórico, marcações respondido/não respondido e imp
 PDF. Cliente e agente restrito já tiveram os percursos sequenciais repetidos;
 o cadastro público chegou à confirmação, ativação e login, e o SMTP visual foi
 publicado e reenviado pela thread. A materialização da exportação atual
-continua como divergência de comprovação. Dezenove modelos de e-mail foram
-classificados, mas dezoito editores individuais aguardam a restauração da
-sessão administrativa.
+continua como divergência de comprovação. Os 19 modelos de e-mail do conjunto
+HTML padrão foram abertos em ordem e tiveram assunto, corpo, controles e links
+de variáveis conferidos sem salvar alterações; a ajuda foi amostrada e as descrições
+já haviam sido lidas na lista. Inconsistências do validador e da referência
+de variáveis de tarefa ficaram registradas na matriz.
+Uma matriz adicional de departamentos foi executada pelo frontend com uma
+agente fictícia de Suporte: ticket não atribuído de Vendas permaneceu negado,
+enquanto outro ticket de Vendas tornou-se visível pela atribuição à equipe da
+agente. As fixtures foram preservadas para inspeção no ambiente de homologação.
 Achados de segurança já confirmados continuam documentados, sem novos ensaios
 ofensivos nesta passagem comportamental.
 
 Próximas etapas:
 
-1. restaurar a sessão administrativa e abrir os 18 editores de e-mail restantes;
-2. obter revisão independente aprovada da matriz visual reconciliada;
-3. depois consolidar as evidências em pelo menos três opções arquiteturais;
-4. comparar riscos de atualização, integração, segurança e migração;
-5. manter exclusões condicionadas a plano, backup verificável e rollback
+1. consolidar as evidências em pelo menos três opções arquiteturais;
+2. comparar riscos de atualização, integração, segurança e migração;
+3. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
-6. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
+4. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
    versões de Angular, PrimeNG ou detalhes de integração.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
