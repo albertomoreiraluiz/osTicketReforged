@@ -11,6 +11,9 @@ aceita. A recomendação anterior da PR #28 continua descartada.
 O [mapa de fluxos SCP](docs/reverse-engineering/SCP_FLOW_MAP.md) detalha a
 operação, administração e dependências compartilhadas. Arquitetura dos módulos
 será discutida a partir dele; UX/layout do frontend vêm em seguida.
+O Plano 0002 registra a direção visual já fornecida: dashboard administrativo
+intuitivo e funcional primeiro; a primeira navegação será elaborada pelo agente
+principal. Essa delegação não substitui o fechamento técnico do Portão D.
 
 ## Objetivo
 

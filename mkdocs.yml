@@ -106,6 +106,7 @@ nav:
           - Falhas, atomicidade e órfãos: reverse-engineering/INTEGRITY_FAILURES.md
       - Interfaces e comportamento:
           - Frontend PHP existente: reverse-engineering/FRONTEND_ANALYSIS.md
+          - Reforged — Direção de UX: plans/active/0002-functional-ux-direction.md
           - Análise comportamental: reverse-engineering/BEHAVIORAL_ANALYSIS.md
           - Cobertura integral da interface: reverse-engineering/INTERFACE_COVERAGE_MATRIX.md
           - Protocolo de observação: reverse-engineering/INTERFACE_OBSERVATION_PROTOCOL.md

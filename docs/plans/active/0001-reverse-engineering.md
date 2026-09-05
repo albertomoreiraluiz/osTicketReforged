@@ -139,6 +139,12 @@ escopo e 26 famílias/229 folhas AJAX reconciliados. Revisão e validações da
 unidade ficam no mapa; pendências de viabilidade/contrato permanecem explícitas.
 Próxima discussão: agrupamentos e dependências dos módulos; depois frontend.
 
+Direção visual antecipada pelo responsável em GOV-026 e
+[Plano 0002](0002-functional-ux-direction.md): dashboard administrativo intuitivo,
+prioridade funcional, primeira organização de menus pelo agente principal e
+ajustes posteriores. Não é necessário fechar o layout para discutir módulos;
+isso não libera código nem substitui decisões técnicas pendentes.
+
 **Estado corrente:** estratégia confirmada pelo responsável e formalizada no
 [ADR 0004](../../adr/0004-modulos-reforged-backend-osticket.md). Módulos novos
 reutilizam backend intacto, cobrem todo o SCP e preservam coexistência e identidade.

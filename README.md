@@ -87,6 +87,10 @@ de toda combinação possível de configuração.
 
 Próximas etapas:
 
+Direção de UX: dashboard administrativo intuitivo, prioridade funcional e
+primeira navegação elaborada pelo agente principal, com ajustes posteriores
+pelo responsável ([Plano 0002](docs/plans/active/0002-functional-ux-direction.md)).
+
 O mapeamento estático do SCP reúne 153 registros de fluxo, reconciliando os
 47 arquivos do escopo e as 229 folhas AJAX, com revisão independente. Isso não
 equivale a novas execuções visuais nem prova de reutilização universal do backend.

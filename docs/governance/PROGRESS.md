@@ -224,7 +224,22 @@
 
 ## Próximo passo proposto
 
-Unidade corrente: mapeamento integral do SCP operacional, administrativo e
+Atualização corrente: direção de UX formalizada em GOV-026 e
+[Plano 0002](../plans/active/0002-functional-ux-direction.md), entrada `6ab70064`,
+branch `codex/functional-ux-direction`. Dashboard administrativo intuitivo,
+primeira navegação sob responsabilidade do agente principal e prioridade
+funcional; ajustes estéticos posteriores pelo responsável. Grupos de menus e
+critérios detalhados permanecem proposta, não novos módulos aprovados.
+Próxima unidade: discutir capacidades/dependências e arquitetura dos módulos,
+sem bloquear por layout definitivo. Um único agente, nenhum código/runtime novo.
+
+Validação desta direção: MkDocs estrito aprovado, 65/65 documentos na navegação,
+124 Markdown e 281 links locais auditados; zero destino ausente do Reforged,
+seis referências herdadas preservadas, diff sem erro. Taxonomia GOV-023 mantida.
+
+### Mapeamento SCP — entrega da PR #31
+
+Unidade entregue: mapeamento integral do SCP operacional, administrativo e
 transversal em `codex/scp-flow-mapping`, entrada `33d40fb7`, conforme
 [mapa](../reverse-engineering/SCP_FLOW_MAP.md). Mapeamento estático concluído no universo declarado;
 153 registros, 47 arquivos, 26 famílias e 229 folhas AJAX. Sem nova execução
