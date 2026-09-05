@@ -2,8 +2,9 @@
 
 ## Status e finalidade
 
-Documento **Aceito** em 2026-09-05 e entregue pela PR #27 como fotografia
-operacional do projeto antes do Portão D. Ele permite que uma nova sessão
+Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
+Atualizado na branch `codex/gate-d-architecture` para registrar a abertura
+autorizada do Portão D, sem aceitar a arquitetura proposta. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -20,7 +21,7 @@ o ponto de retomada.
 | Fork | `https://github.com/albertomoreiraluiz/osTicketReforged.git`, remoto `origin` |
 | Baseline | tag `v1.18.4`, commit `8d38b0619649a50ee7cbbf37085f5d297fdc6f36` |
 | Linha estável | `main` |
-| Etapa | engenharia reversa documental; preparação do Portão D concluída |
+| Etapa | engenharia reversa documental; Portão D em andamento |
 | Implementação própria | não iniciada |
 | Arquitetura-alvo | não escolhida |
 
@@ -35,11 +36,10 @@ ignorar `git status`, remotos, PRs ou a branch efetivamente carregada.
 | A — Governança | concluído | regras, decisões, documentação e perfis integrados |
 | B — Inventário | concluído | 2.266 caminhos da baseline classificados sem sobra ou sobreposição |
 | C — Análise profunda | concluído | catálogos, análise estática, comportamento visual e revisões independentes aprovados |
-| D — Decisão arquitetural | não iniciado | comparar ao menos três opções e obter aprovação explícita de ADR |
+| D — Decisão arquitetural | em andamento | três opções e seis revisões; aprovação explícita de ADR pendente |
 
-Preparar e descrever o Portão D não equivale a iniciá-lo. Somente uma nova
-instrução do responsável autoriza abrir a comparação arquitetural; somente o
-ADR aceito libera o planejamento da implementação.
+A instrução atual do responsável autorizou iniciar o Portão D. Essa autorização
+não aceita nenhuma opção: somente o ADR aceito libera o planejamento da implementação.
 
 ## Fatos consolidados
 
@@ -54,7 +54,7 @@ ADR aceito libera o planejamento da implementação.
   alto ou médio documental aberto.
 - **Fato observado:** a documentação humana usa MkDocs Material e a taxonomia
   normativa de GOV-023, sem mover as fontes canônicas.
-- **Fato observado neste checkpoint:** 114 arquivos Markdown rastreados ou
+- **Fato observado no checkpoint anterior (PR #27):** 114 arquivos Markdown rastreados ou
   adicionados foram varridos; os 55 documentos de `docs/` aparecem uma única
   vez na navegação MkDocs, sem ausências ou duplicações. Dos 200 links locais
   verificados, nenhum destino ausente pertence à documentação do Reforged; seis
@@ -63,6 +63,9 @@ ADR aceito libera o planejamento da implementação.
 - **Fato observado na última validação documentada:** a homologação local usa
   XAMPP, PHP 8.2 e MariaDB. Serviço, sessão, fixture e credencial local podem
   mudar e devem ser testados novamente antes de uso.
+- **Fato observado na abertura do Portão D:** build estrito aprovado, 58/58
+  documentos no MkDocs sem duplicação, 117 Markdown e 217 links locais auditados;
+  nenhum destino ausente do Reforged, seis referências herdadas preservadas.
 
 As cadeias de evidência estão em `docs/reverse-engineering/`; este resumo não
 autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
@@ -80,7 +83,8 @@ autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
 
 ## O que continua sem decisão
 
-Não apresentar como aprovado, iniciado ou implementado:
+Não apresentar como aprovado ou implementado; os itens arquiteturais agora estão
+em comparação, não em execução:
 
 - arquitetura-alvo de customização e coexistência com o osTicket;
 - desenho, tecnologia, autenticação e versionamento da futura API;
@@ -133,13 +137,19 @@ Antes de analisar ou alterar o projeto:
 8. atualize este checkpoint quando mudar baseline, portão, decisão, plano ativo,
    arquitetura aceita ou limite operacional material.
 
-## Próxima ação autorizável
+## Trabalho atual e próxima ação
 
-O próximo passo é iniciar, somente após ordem explícita do responsável, o
-Portão D descrito no Plano 0001: consolidar restrições, formular pelo menos três
-opções, compará-las por critérios comuns, produzir a estratégia de migração,
-submeter revisões independentes e apresentar uma recomendação. A aprovação da
-arquitetura continua reservada ao responsável pelo projeto.
+Foram produzidos três caminhos comparados e uma estratégia de migração. A
+recomendação inicial é fachada PHP como extensão e consulta de tickets do agente,
+ambas **Propostas**. Revisões independentes de software, segurança e dados
+motivaram correções de ciclo de plugins, controles de leitura e recuperação.
+API, frontend e QA também revisaram a proposta; os ajustes foram incorporados.
+Próximo passo: obter decisão do responsável e registrá-la em ADR. Não criar produto,
+alterar core/schema nem escolher mecanismo de autenticação por inferência.
+
+Fontes desta unidade: `ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md`
+e `GATE_D_REVIEW.md`, todos em `docs/reverse-engineering/`. A integração desta
+abertura não encerra o Portão D.
 
 ## Fontes canônicas de aprofundamento
 

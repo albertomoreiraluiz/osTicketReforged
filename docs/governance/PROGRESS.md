@@ -5,7 +5,8 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Etapa: checkpoint anterior ao Portão D concluído; comparação arquitetural ainda não iniciada.
+- Branch da abertura: `codex/gate-d-architecture`, entrada `874efbd8`.
+- Etapa: Portão D em andamento documental; três alternativas e migração propostas.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
 ## Concluído
@@ -55,7 +56,7 @@
 - GOV-024 cria o checkpoint canônico de retomada, separando fatos, decisões,
   itens não decididos, limites e dados mutáveis; a auditoria transversal corrige
   dois estados correntes obsoletos sem reescrever o histórico.
-- Auditoria documental: 114 Markdown e 200 links locais verificados; os 55
+- Auditoria documental anterior (PR #27): 114 Markdown e 200 links locais verificados; os 55
   documentos de `docs/` estão na navegação sem ausência ou duplicação, com zero
   link local quebrado no conteúdo próprio do Reforged. Seis referências ausentes
   são herdadas de bibliotecas ou documentação histórica da baseline.
@@ -223,9 +224,31 @@
 
 ## Próximo passo proposto
 
-1. consolidar as evidências em pelo menos três opções arquiteturais;
-2. comparar atualização, integração, segurança e migração;
-3. submeter a recomendação do Portão D à aprovação explícita.
+1. obter aprovação, rejeição ou pedido de ajuste da recomendação do Portão D;
+2. registrar a escolha em ADR, mantendo decisões ausentes explícitas;
+3. somente após aceite, planejar a prova de integração no recorte aprovado.
+
+## Abertura do Portão D — 2026-09-05
+
+**Fato observado:** autorização do responsável para iniciar a comparação.
+Entregues como **Proposta**: [dossiê de três opções](../reverse-engineering/ARCHITECTURE_DECISION_RECORD.md)
+e [estratégia de migração](../reverse-engineering/MIGRATION_STRATEGY.md).
+A recomendação inicial é fachada PHP como extensão, começando por consulta de
+tickets do agente. Nenhum ADR de arquitetura-alvo foi aceito.
+
+Seis [revisões independentes](../reverse-engineering/GATE_D_REVIEW.md) avaliaram
+software, segurança/IAM, dados, API, frontend e QA. Correções incorporam limites do conector,
+ciclo de plugins, autenticação concluída já nas leituras, encaminhamento no
+escopo de tickets e recuperação conjunta com verificação de encoding.
+Não houve novo teste comportamental, acesso ao banco, alteração de produto ou
+aceite de riscos legados. Contratos de erro, navegação/coexistência e evidências
+por critério também foram explicitados. A decisão final permanece pendente;
+baseline e plano ativo permanecem os mesmos.
+
+Validação documental: build estrito aprovado; 58/58 documentos na navegação;
+117 Markdown e 217 links locais auditados, zero destino ausente do Reforged e
+seis referências herdadas. `git diff --check` sem erro. GitHub consultado antes
+da publicação: nenhuma Issue ou PR aberta. Estado externo deve ser revalidado.
 
 ## Estado dos portões
 
@@ -234,17 +257,18 @@
 | A — Governança | Concluído | regras e perfis aprovados, validações e PR #1 | nenhum |
 | B — Inventário | Concluído | três ondas estáticas, portal e revisão QA independente | nenhum |
 | C — Análise profunda | Concluído | ciclos, dados, plugins, segurança, API, frontend, catálogos, falhas, registries, customização e revisão cruzada | nenhum bloqueio estático alto/médio |
-| D — Decisão arquitetural | Não iniciado | Portão C e Onda 9 concluídos | comparação de opções e aprovação explícita do ADR |
+| D — Decisão arquitetural | Em andamento | dossiê comparativo, migração e seis pareceres | aprovação explícita do ADR |
 
-## Decisões futuras, fora da preparação atual
+## Decisões ainda não aceitas
 
-Os itens abaixo não bloqueiam o início nem a preparação do inventário. Serão
-deliberados apenas na etapa a que pertencem, com base nas evidências produzidas.
+Os itens abaixo não bloqueiam a comparação documental. Serão deliberados na
+etapa correspondente; direção arquitetural e primeiro recorte são propostas do
+Portão D, não decisões já aceitas.
 
 - Convenção final de releases do Reforged — **A definir (TBD)**.
 - Política de proteção obrigatória de `main` no GitHub — **Proposto**.
-- Arquitetura de plugin, API e frontend — **A definir (TBD)** após engenharia reversa.
-- Primeiro módulo a migrar — **A definir (TBD)**.
+- Direção de extensão/API e coexistência — **Proposto** no dossiê do Portão D.
+- Primeiro recorte — **Proposto**: consulta de tickets do agente.
 - Persistência definitiva de conexões e segredos — **A definir (TBD)**.
 
 ## Riscos conhecidos

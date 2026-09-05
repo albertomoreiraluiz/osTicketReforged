@@ -11,7 +11,7 @@ leitura humana, rastreabilidade técnica e preparação de decisões arquitetura
   <span class="status-chip status-chip--done">Portão A · concluído</span>
   <span class="status-chip status-chip--done">Portão B · concluído</span>
   <span class="status-chip status-chip--done">Portão C · concluído</span>
-  <span class="status-chip status-chip--next">Portão D · próximo</span>
+  <span class="status-chip status-chip--next">Portão D · em análise</span>
 </div>
 
 ## Escolha seu caminho de leitura
@@ -53,6 +53,9 @@ Use a [matriz de evidências](reverse-engineering/EVIDENCE_MATRIX.md), a
 
 ### Preparar decisões de evolução
 
+Comece pelo [dossiê do Portão D](reverse-engineering/ARCHITECTURE_DECISION_RECORD.md)
+e pela [migração proposta](reverse-engineering/MIGRATION_STRATEGY.md).
+
 Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), a
 [arquitetura de plugins](reverse-engineering/PLUGIN_ARCHITECTURE.md), o
 [modelo de segurança](reverse-engineering/SECURITY_MODEL.md) e as
@@ -70,7 +73,7 @@ Leia a [matriz de customização](reverse-engineering/CUSTOMIZATION_MATRIX.md), 
 | Inventário | concluído | 2.266 caminhos classificados sem lacuna ou sobreposição |
 | Análise profunda | concluída | arquitetura, domínio, dados, interfaces, APIs, segurança e extensão documentados |
 | Observação visual | concluída | 34 cenários reconciliados e revisão independente aprovada |
-| Decisão arquitetural | não iniciada | comparação das opções pertence ao Portão D |
+| Decisão arquitetural | em andamento | [três opções propostas](reverse-engineering/ARCHITECTURE_DECISION_RECORD.md); aprovação pendente |
 
 ## Como interpretar as afirmações
 

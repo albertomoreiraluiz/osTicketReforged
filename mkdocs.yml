@@ -86,8 +86,11 @@ nav:
           - Ondas de inventário: reverse-engineering/WAVE_MANIFEST.md
           - Matriz de evidências: reverse-engineering/EVIDENCE_MATRIX.md
           - Revisões independentes: reverse-engineering/REVIEW_REPORT.md
+          - Revisões do Portão D: reverse-engineering/GATE_D_REVIEW.md
       - Arquitetura e execução:
           - Arquitetura canônica: reverse-engineering/ARCHITECTURE.md
+          - Portão D — Opções propostas: reverse-engineering/ARCHITECTURE_DECISION_RECORD.md
+          - Portão D — Migração proposta: reverse-engineering/MIGRATION_STRATEGY.md
           - Mapa de componentes: reverse-engineering/COMPONENT_MAP.md
           - Catálogo de entrypoints: reverse-engineering/ENTRYPOINT_CATALOG.md
           - Ciclo de requisição: reverse-engineering/REQUEST_LIFECYCLE.md
