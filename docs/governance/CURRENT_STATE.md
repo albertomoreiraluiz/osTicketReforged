@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/gate-d-architecture` para registrar a abertura
-autorizada do Portão D, sem aceitar a arquitetura proposta. Permite que uma nova sessão
+Atualizado na branch `codex/gate-d-restart-coexistence` para registrar o descarte
+da recomendação da PR #28 e o reinício do Portão D. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -21,7 +21,7 @@ o ponto de retomada.
 | Fork | `https://github.com/albertomoreiraluiz/osTicketReforged.git`, remoto `origin` |
 | Baseline | tag `v1.18.4`, commit `8d38b0619649a50ee7cbbf37085f5d297fdc6f36` |
 | Linha estável | `main` |
-| Etapa | engenharia reversa documental; Portão D em andamento |
+| Etapa | Portão D reiniciado; discussão de requisitos, sem nova recomendação |
 | Implementação própria | não iniciada |
 | Arquitetura-alvo | não escolhida |
 
@@ -36,10 +36,11 @@ ignorar `git status`, remotos, PRs ou a branch efetivamente carregada.
 | A — Governança | concluído | regras, decisões, documentação e perfis integrados |
 | B — Inventário | concluído | 2.266 caminhos da baseline classificados sem sobra ou sobreposição |
 | C — Análise profunda | concluído | catálogos, análise estática, comportamento visual e revisões independentes aprovados |
-| D — Decisão arquitetural | em andamento | três opções e seis revisões; aprovação explícita de ADR pendente |
+| D — Decisão arquitetural | reiniciado | ADR 0003 aceita premissas; comparação técnica e decisão final ainda pendentes |
 
-A instrução atual do responsável autorizou iniciar o Portão D. Essa autorização
-não aceita nenhuma opção: somente o ADR aceito libera o planejamento da implementação.
+O responsável descartou a recomendação anterior e reiniciou a análise. O ADR
+0003 formaliza somente coexistência contínua e separação do portal; não libera
+implementação nem encerra o portão. A decisão técnica final ainda é necessária.
 
 ## Fatos consolidados
 
@@ -72,12 +73,15 @@ autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
 
 ## Decisões aceitas que limitam o próximo trabalho
 
-- GOV-001 a GOV-024 governam memória persistente, documentação, agentes,
+- GOV-001 a GOV-025 governam memória persistente, documentação, agentes,
   homologação, Git, evidências visuais, taxonomia e retomada.
 - ADR 0001 aceita apenas o isolamento futuro do frontend em `frontend/` e o uso
   de Angular com PrimeNG; versões e integração continuam indefinidas.
 - ADR 0002 aceita MkDocs Material como portal documental e GOV-023 fixa sua
   taxonomia editorial.
+- ADR 0003 aceita coexistência contínua: painel legado em `/scp`, painel novo
+  por endereço distinto e portal do usuário com planejamento separado.
+  `/scp/reforged` é candidato; não há decisão de rota, sessão ou API.
 - GOV-016 autoriza branch, push, PR e merge validados; não autoriza force-push,
   release, reset destrutivo, exclusão ou integração com risco material.
 
@@ -86,7 +90,7 @@ autoriza ampliar uma conclusão além do recorte declarado nesses documentos.
 Não apresentar como aprovado ou implementado; os itens arquiteturais agora estão
 em comparação, não em execução:
 
-- arquitetura-alvo de customização e coexistência com o osTicket;
+- arquitetura técnica para sustentar a coexistência aceita com o osTicket;
 - desenho, tecnologia, autenticação e versionamento da futura API;
 - versões de Angular e PrimeNG;
 - mecanismo de sessão e integração entre frontend novo e backend;
@@ -139,13 +143,14 @@ Antes de analisar ou alterar o projeto:
 
 ## Trabalho atual e próxima ação
 
-Foram produzidos três caminhos comparados e uma estratégia de migração. A
-recomendação inicial é fachada PHP como extensão e consulta de tickets do agente,
-ambas **Propostas**. Revisões independentes de software, segurança e dados
-motivaram correções de ciclo de plugins, controles de leitura e recuperação.
-API, frontend e QA também revisaram a proposta; os ajustes foram incorporados.
-Próximo passo: obter decisão do responsável e registrá-la em ADR. Não criar produto,
-alterar core/schema nem escolher mecanismo de autenticação por inferência.
+Recomendação de fachada PHP e primeiro recorte de consulta de tickets descartados
+pelo responsável. As três opções, a estratégia e os seis pareceres da PR #28
+são históricos, não ponto de partida preferido nem prova da nova análise.
+Inventário e evidências da baseline permanecem preservados.
+
+Próximo passo: discutir requisitos e critérios com o responsável antes de nova
+comparação. Não escolher arquitetura, primeiro módulo, sessão, rota definitiva
+ou funcionalidades do portal por inferência. Não implementar ou alterar core/schema.
 
 Fontes desta unidade: `ARCHITECTURE_DECISION_RECORD.md`, `MIGRATION_STRATEGY.md`
 e `GATE_D_REVIEW.md`, todos em `docs/reverse-engineering/`. A integração desta

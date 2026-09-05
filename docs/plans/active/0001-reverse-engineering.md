@@ -130,14 +130,18 @@ agora oferece trilhas para estado, funcionamento, evidências e evolução.
 
 ### Portão D — Decisão arquitetural
 
-**Em andamento desde 2026-09-05**, por autorização do responsável. Abertura na
+**Reiniciado em 2026-09-05**, por descarte explícito da recomendação anterior.
+O [ADR 0003](../../adr/0003-coexistencia-paineis-portal-separado.md) registra
+coexistência contínua dos painéis e portal separado, sem escolha de arquitetura.
+Primeiro discutir critérios com o responsável; não repetir autonomamente a
+comparação nem presumir o primeiro recorte. A abertura histórica ocorreu na
 branch `codex/gate-d-architecture`, entrada `874efbd8`:
 [dossiê comparativo](../../reverse-engineering/ARCHITECTURE_DECISION_RECORD.md),
 [migração proposta](../../reverse-engineering/MIGRATION_STRATEGY.md) e
 [revisões](../../reverse-engineering/GATE_D_REVIEW.md). Software, segurança e
 dados revisaram a primeira proposta; API, frontend e QA concluíram a revisão
-complementar. Ajustes incorporados; decisão final permanece pendente. Nenhuma
-implementação foi autorizada por esta abertura.
+complementar. Esses pareceres e recomendações agora são históricos. Nenhuma
+implementação foi autorizada por essa abertura ou pelo reinício.
 
 O Portão D transforma as evidências dos Portões B e C em uma escolha explícita
 de arquitetura. Ele não é uma etapa de implementação: nenhuma aplicação
@@ -150,15 +154,17 @@ Git, progresso, decisões e evidências antes de abrir a primeira missão.
 
 Atividades obrigatórias:
 
-1. consolidar restrições, capacidades e lacunas já comprovadas na baseline;
+1. discutir e alinhar com o responsável critérios e requisitos sob o ADR 0003,
+   depois consolidar restrições, capacidades e lacunas da baseline;
 2. formular pelo menos três opções arquiteturais completas, sem apresentar
    preferência como decisão aceita;
 3. rastrear cada opção até as evidências de core, plugins, hooks, API, banco,
    autenticação, autorização e frontend;
 4. comparar atualização do upstream, delta de core, segurança, integridade de
-   dados, coexistência com o frontend PHP, migração progressiva, operação,
+   dados, coexistência contínua com o painel PHP, evolução incremental, operação,
    observabilidade, testes e rollback;
-5. propor a sequência de migração e justificar o primeiro módulo candidato;
+5. propor a sequência de evolução do painel adicional e justificar o primeiro
+   módulo candidato, sem incluir automaticamente o portal do usuário;
 6. submeter matriz, estratégia e recomendação a revisões independentes de
    arquitetura, API, frontend, dados, segurança e qualidade conforme o impacto;
 7. apresentar recomendação e riscos residuais ao responsável pelo projeto;
@@ -179,9 +185,10 @@ Critérios de saída:
 
 - pelo menos três opções comparadas em critérios comuns;
 - riscos de atualização, integração, dados e segurança avaliados;
-- estratégia de migração proposta e reversível;
+- estratégia de evolução reversível que preserve o painel PHP operacional;
 - nenhuma pendência crítica ou alta sem correção ou aceite explícito;
-- ADR aprovado explicitamente pelo responsável.
+- ADR de arquitetura técnica aprovado explicitamente pelo responsável; o ADR
+  0003 de premissas não satisfaz sozinho esse critério.
 
 Somente o Portão D libera o planejamento da implementação. Um portão não é concluído por inferência; registre evidências em `docs/governance/PROGRESS.md`.
 

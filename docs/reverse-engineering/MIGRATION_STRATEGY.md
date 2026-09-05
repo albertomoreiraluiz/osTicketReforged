@@ -1,5 +1,18 @@
 # Portão D — Estratégia de migração proposta
 
+## Estado corrente
+
+**Descartada como estratégia ativa.** A sequência e o primeiro recorte abaixo
+pertencem à PR #28, preservada como histórico. A nova análise deve planejar
+evolução com coexistência contínua, sem retirada do painel PHP; o portal do
+usuário será planejado separadamente. Ver
+[ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md).
+Nenhuma sequência substituta foi escolhida. O caminho deste documento permanece
+estável para preservar referências; o título histórico não autoriza migração
+de saída do painel legado.
+
+## Histórico da estratégia anterior — sem vigência
+
 **Status: Proposto.** Derivada das alternativas do
 [dossiê comparativo](ARCHITECTURE_DECISION_RECORD.md), baseline `v1.18.4`.
 Todas as etapas abaixo são futuras e condicionais à aprovação arquitetural;

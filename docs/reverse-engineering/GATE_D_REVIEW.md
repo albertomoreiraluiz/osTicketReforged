@@ -1,5 +1,18 @@
 # Portão D — Registro de revisões
 
+## Estado corrente
+
+Os seis pareceres abaixo revisaram a proposta da PR #28, posteriormente
+descartada pelo responsável. Não são aprovação da nova análise, de uma nova
+recomendação ou do encerramento do Portão D. O reinício é orientado pelo
+[ADR 0003](../adr/0003-coexistencia-paineis-portal-separado.md).
+
+Esta atualização de contexto foi feita por um único integrador: não há frentes
+técnicas independentes a delegar antes da discussão com o responsável. Nenhum
+novo teste ou parecer especializado foi executado nesta retomada.
+
+## Histórico de revisões da primeira rodada
+
 ## Missões e ownership
 
 Entrada: `874efbd8`, baseline `v1.18.4`. A autorização atual inicia o Portão D;

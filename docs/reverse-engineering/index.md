@@ -25,8 +25,8 @@ Para seguir uma requisição desde o bootstrap até os controladores e
 subsistemas:
 
 - [Arquitetura canônica](ARCHITECTURE.md);
-- [Portão D: opções arquiteturais](ARCHITECTURE_DECISION_RECORD.md);
-- [Portão D: migração proposta](MIGRATION_STRATEGY.md);
+- [Portão D: reinício e dossiê histórico](ARCHITECTURE_DECISION_RECORD.md);
+- [Portão D: estratégia anterior descartada](MIGRATION_STRATEGY.md);
 - [Mapa de componentes](COMPONENT_MAP.md);
 - [Catálogo de entrypoints](ENTRYPOINT_CATALOG.md);
 - [Ciclo de requisição](REQUEST_LIFECYCLE.md);

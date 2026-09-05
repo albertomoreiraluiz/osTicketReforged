@@ -8,12 +8,12 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |
 | Branch estável | `main` |
-| Etapa atual | Portão D iniciado — comparação arquitetural documental |
+| Etapa atual | Portão D reiniciado — requisitos de coexistência em discussão |
 | Observação visual | sequência estrita concluída e aprovada em revisão independente |
 | Portão A — Governança | Concluído pela PR #1 |
 | Portão B — Inventário | Concluído — estrutura verificada e revisada |
 | Portão C — Análise profunda | Concluído — revisão cruzada aprovada |
-| Portão D — Decisão arquitetural | Em andamento; nenhuma arquitetura aceita |
+| Portão D — Decisão arquitetural | Recomendação anterior descartada; arquitetura técnica não escolhida |
 
 Ambiente de homologação instalado e ativo: XAMPP local, PHP 8.2, MariaDB,
 extensões e logs preparados. A interface pública e a autenticação administrativa
@@ -87,19 +87,21 @@ de toda combinação possível de configuração.
 
 Próximas etapas:
 
-1. obter decisão explícita sobre a direção e o primeiro recorte propostos;
-2. registrar a escolha em ADR antes de planejar a prova de integração;
+1. discutir critérios e requisitos para coexistência contínua dos painéis;
+2. refazer a comparação sem recomendação ou primeiro recorte herdados;
 3. manter exclusões condicionadas a plano, backup verificável e rollback
    conforme GOV-014;
 4. submeter a recomendação do Portão D à aprovação explícita, sem antecipar
    versões de Angular, PrimeNG ou detalhes de integração.
 
-O [dossiê do Portão D](docs/reverse-engineering/ARCHITECTURE_DECISION_RECORD.md)
-compara fachada PHP, serviço externo com conector e extração com dados próprios.
-A [migração proposta](docs/reverse-engineering/MIGRATION_STRATEGY.md) recomenda
-começar por consultas de tickets do agente. Os
-[seis pareceres independentes](docs/reverse-engineering/GATE_D_REVIEW.md) não substituem
-aprovação arquitetural nem autorizam implementação.
+O [ADR 0003](docs/adr/0003-coexistencia-paineis-portal-separado.md) registra a
+intenção aceita: manter `/scp` e adicionar o painel Angular/PrimeNG em endereço
+distinto, com coexistência contínua. `/scp/reforged` é apenas candidato. O portal
+do usuário poderá ser substituído integralmente, com planejamento separado.
+O [dossiê](docs/reverse-engineering/ARCHITECTURE_DECISION_RECORD.md), a
+[estratégia](docs/reverse-engineering/MIGRATION_STRATEGY.md) e os
+[pareceres](docs/reverse-engineering/GATE_D_REVIEW.md) da PR #28 estão preservados
+como histórico da recomendação descartada. Não há nova recomendação técnica.
 
 Decisão de frontend: a futura aplicação Angular com PrimeNG ficará isolada em
 `frontend/`; versões e integração serão definidas após a análise correspondente.
