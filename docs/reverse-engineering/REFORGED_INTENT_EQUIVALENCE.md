@@ -158,6 +158,42 @@ reservada aos cenários de regularização, preservando a conta administrativa;
 não criar/modificar credenciais por automação nem pedir senhas pela conversa.
 Senha obrigatória/MFA, recuperação válida, offline e expiração continuam pendentes.
 
+## Retomada administrativa após PR #40
+
+2026-09-05; branch `codex/admin-session-preconditions`, entrada `ac8654ce`.
+**Fato observado:** sessão Alberto confirmada em `scp/index.php`; link Painel
+de Administração levou a `settings.php`. Inspeção dirigida às precondições
+I09/I10/I12, não nova varredura integral dos menus nem teste de regularização.
+Um agente, pois navegação e registro são sequenciais na mesma sessão.
+
+- V09: Sistema exibia Conectado. Configurações → Agentes mostrou redefinição
+  de senha permitida, token de 30 minutos, exigência global de MFA desmarcada,
+  bloqueio após quatro falhas por dois minutos, sessão de 30 minutos e vínculo
+  ao IP desmarcado. Nenhum campo alterado ou salvo. Ícone de ajuda de MFA
+  retornou índice inacessível; screenshot confirmou sua localização, mas o
+  conteúdo da ajuda não foi obtido nem declarado lido.
+- V10: Agentes → OSTR Viewer (`ostrviewer20260904012154`, id 2) → Conta →
+  Acesso → Permissões (Usuários, Organizações, Base de Conhecimento, Diversos)
+  → Equipes. Conta ativa, não administrativa, acesso apenas a atribuídos
+  marcado; departamento principal Suporte com função Apenas visualização,
+  sem acesso estendido listado e sem equipes atribuídas listadas. Todas as
+  permissões específicas exibidas estavam desmarcadas, inclusive pesquisa
+  independente do acesso. Texto de Equipes explica acesso a chamados atribuídos
+  à equipe independentemente do departamento. Isso é leitura da configuração,
+  não nova execução dos cenários de autorização nem auditoria da função.
+
+**Orientação do responsável nesta retomada:** continuar com administrador onde
+o outro agente não for necessário. Permissões do Viewer preservadas. Consulta
+administrativa não substitui comportamento de agente restrito; visualizar todos
+os tickets não é precondição dos testes de regularização do próprio perfil.
+
+**Próximo recorte:** planejar transição offline e recuperação com sessão
+administrativa preservada; para senha/MFA, manter identidade fictícia e etapa
+assistida de credenciais. Não habilitar exigência global de MFA para ensaio
+isolado na conta principal. I09/I10/I12 permanecem pendentes de execução completa.
+Sessão administrativa deixada ativa. Não houve alteração funcional, senha,
+permissão, core, schema, restauração ou uso de bridge nesta passagem.
+
 ## Histórico — verificação da PR #39
 
 **Observado no navegador em 2026-09-05:** abertura de `http://localhost/scp/`

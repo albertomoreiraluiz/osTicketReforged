@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/visual-profile-validation`, entrada `0ea1ab7a` (PR #39),
-para registrar passagem visual V01–V08 e suas pendências. Permite que uma nova sessão
+Atualizado na branch `codex/admin-session-preconditions`, entrada `ac8654ce` (PR #40),
+para registrar retomada administrativa V09/V10 e suas pendências. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -172,12 +172,17 @@ com G01–G09 rastreados e contexto/erros propostos. ADR 0007 aceito explicitame
 [matriz I01–I12](../reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md) produzida,
 com efeitos, evidências reaproveitáveis e critérios. Próxima ação: completar
 observações visuais ainda não cobertas, não presumir testes pelo rótulo global.
-Nesta unidade, sessão administrativa fornecida pelo responsável foi confirmada.
+Na passagem V01–V08, sessão administrativa fornecida pelo responsável foi confirmada.
 Preferência 25 → 20 → 25 salva/reaberta/restaurada; logout staff e retorno ao login
 em nova entrada protegida comprovados. Modais de senha/MFA observados/cancelados;
 login e recuperação vazios exercitados, sem prova de recuperação completa.
-Sessão terminou intencionalmente no teste de saída. Retomada requer identidade
-fictícia autenticada para regularização, sem bridge nem alteração da senha principal.
+Sessão da passagem V01–V08 terminou intencionalmente no teste de saída.
+Na retomada V09/V10, responsável ativou sessão administrativa e autorizou seu
+uso onde suficiente. Configurações de autenticação e abas do Viewer lidas;
+nenhum acesso ampliado ou configuração salva. Sessão administrativa permanece
+ativa no último ponto observado, sujeita a revalidação. Próximo recorte: planejar
+offline com retorno preservado. Regularização de senha/MFA ainda exige identidade
+fictícia e etapa assistida, sem bridge nem alteração da senha principal.
 Trechos muito acoplados podem ter seu comportamento reproduzido após análise;
 não reabrir esse princípio, não presumir testes nem liberação de código.
 A árvore física continua candidata. Base de rastreabilidade:

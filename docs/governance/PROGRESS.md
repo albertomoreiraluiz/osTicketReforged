@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da unidade: `codex/visual-profile-validation`, entrada `0ea1ab7a` (PR #39).
+- Branch da unidade: `codex/admin-session-preconditions`, entrada `ac8654ce` (PR #40).
 - Etapa: Portão D em andamento; ADRs 0004–0007 aceitos nos respectivos recortes, detalhes técnicos pendentes.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
@@ -223,6 +223,20 @@
   UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
+
+Retomada após PR #40: V09/V10 em `REFORGED_INTENT_EQUIVALENCE.md` registram
+sessão administrativa ativa, precondições de autenticação e leitura sequencial
+das abas do OSTR Viewer. Acesso restrito preservado conforme orientação para
+usar administrador onde suficiente. Nenhuma configuração salva; leitura não
+comprova regularização, transição offline ou autorização em execução.
+Próximo recorte: planejar offline com retorno administrativo preservado;
+senha/MFA continuam reservados a identidade fictícia e etapa assistida.
+Checkpoint anterior abaixo é histórico: seu logout não descreve a sessão atual.
+Validação desta unidade: MkDocs estrito aprovado; 133 Markdown/351 links,
+nenhum destino próprio ausente e seis referências herdadas preservadas;
+`git diff --check` sem erros. Taxonomia e navegação mantidas, sem novos documentos.
+
+### Histórico — passagem V01–V08
 
 Passagem corrente V01–V08 em `REFORGED_INTENT_EQUIVALENCE.md`: sessão confirmada,
 percurso Painel/Diretório/Perfil; modais de senha vazia e MFA inicial cancelados;
