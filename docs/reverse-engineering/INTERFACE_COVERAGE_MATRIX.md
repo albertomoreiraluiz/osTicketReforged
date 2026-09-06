@@ -14,6 +14,10 @@ senha/MFA obrigatórios e sua combinação, offline por papel, expiração ou up
 Controles observados e evidências de outras camadas não encerram esses cenários.
 As linhas históricas abaixo conservam seu alcance; não significam todas as
 combinações de configuração nem paridade já validada com o Reforged.
+Complemento posterior à PR #39: V06 na matriz de intenções comprovou logout staff
+pelo link Sair e nova entrada protegida retornando ao login. V04 comprovou
+paginação salva/reaberta/restaurada; V02/V03 não concluíram senha ou MFA, e V08
+não comprovou entrega de recuperação. Não estender V06 a locks ou múltiplas abas.
 
 - `Pendente`: rota ou região conhecida ainda não percorrida integralmente.
 - `Em observação`: percurso visual iniciado e ainda não fechado.

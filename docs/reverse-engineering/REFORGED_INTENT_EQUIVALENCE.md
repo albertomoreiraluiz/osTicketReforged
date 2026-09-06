@@ -70,7 +70,7 @@ um rótulo global de cobertura para combinações que não foram exercitadas.
 | Agente restrito | Equipe — agente restrito, entrada e ordem 8 | sessão de agente e retorno ao painel ao tentar Administração; não todas as combinações de permissão |
 | Administração positiva | Administração — shell e mapa global, BHV-003 | navegação autorizada; não estado offline/upgrade |
 | Preferência de perfil | BHV-024; Usuários, organizações e perfil — repetição funcional | fuso alterado/reaberto/restaurado; não troca de senha nem configuração MFA |
-| Logout staff | BHV-002 em BEHAVIORAL_ANALYSIS.md é histórico HTTP; encerramento incidental na matriz visual | repetir ciclo visual dedicado com pós-condição; logout cliente não substitui staff |
+| Logout staff | histórico HTTP complementado por V06 abaixo | saída e nova entrada protegida exigindo login comprovadas visualmente; locks, outras abas e Reforged continuam não validados |
 | Recuperação staff completa | não localizada no recorte auditado | recuperação pública vazia não comprova solicitação staff válida, entrega e conclusão |
 | Senha obrigatória | controles observados sem submissão | falta sequência funcional própria |
 | MFA obrigatório e combinação com senha | configuração administrativa lida, sem mutação | falta setup, desafio e prioridade no fluxo natural |
@@ -106,7 +106,59 @@ Critério de aceite por intenção: mesmas pré-condições, decisões, efeitos
 pertinentes e resultado funcional, com apresentação e transporte novos. Não
 exigir HTML idêntico, não copiar falhas e não prometer atomicidade sem prova.
 
-## Verificação local desta unidade e retomada
+## Passagem visual após PR #39 — checkpoint concluído, regularização pendente
+
+2026-09-05, branch `codex/visual-profile-validation`, entrada `0ea1ab7a`.
+Sessão administrativa ativada pelo responsável e reconfirmada no navegador.
+Único agente: navegação sequencial e sessão compartilhada, sem benefício de
+escrita/navegação paralela. Escopo: perfil, validações comuns e precondições de
+regularização; não campanha de segurança nem cobertura de todo o SCP nesta passagem.
+
+- V01: Painel de Controle → Diretório do Agente → Meu Perfil. Um índice obsoleto
+  no ícone de ajuda exigiu reinício no primeiro submenu. Gráfico exibiu datas e
+  valores; não comprova correção do NaN histórico. Clique no ícone de ajuda não
+  expôs conteúdo adicional; ajuda não declarada lida. Diretório exibiu três agentes.
+- V02: Conta → Alterar Senha → Atualizar com campos vazios. Modal exibiu
+  obrigatoriedade, senha atual incorreta e comprimento mínimo. Cancelado, sem
+  inserir senha, sem sucesso de alteração e sem concluir I09.
+- V03: Conta → Opções de configuração → Email. Texto explicou envio de códigos;
+  tela seguinte pediu endereço e Próximo para verificar. Cancelado sem envio,
+  sem ativar MFA e sem concluir I10; credencial administrativa preservada.
+- V04 exercitado: plano prévio de 25 → 20 → 25 executado por controles visíveis.
+  Ambas gravações exibiram Perfil atualizado com sucesso. Reabertura pelo link
+  Meu Perfil e aba Preferências confirmou primeiro 20 e depois 25. Preferência
+  original restaurada, sem exclusão ou restauração de banco. Evidência de I08,
+  não de regularização obrigatória.
+- V05 observado: Assinatura explicou uso opcional em e-mails/respostas e exibiu
+  editor rico; não houve edição nem envio de mensagem.
+- V06 exercitado: Sair pelo link natural → Login do Agente, Autenticação Necessária.
+  Logo do formulário apontando para scp/index.php clicado → voltou a login.php
+  com Autenticação Necessária. Pós-condição visual de nova entrada protegida
+  comprovada. Não houve fixture de lock, teste de outra aba, atomicidade ou
+  Reforged; essas conclusões não decorrem do redirecionamento. Sessão encerrada
+  intencionalmente por este teste, não expirada nem perdida por falha presumida.
+- V07 exercitado: login vazio → ID de usuário inválido e link Esqueci minha senha.
+  Nenhuma credencial real submetida; não conta como falha de autenticação com
+  valores válidos ou como teste de CSRF.
+- V08 exercitado parcialmente: Esqueci minha senha → formulário staff de nome/
+  e-mail → Enviar E-mail vazio → título Foi enviado um e-mail de confirmação e
+  explicação condicional Se as informações fornecidas forem válidas. Botão Login
+  retornou ao formulário inicial. Não comprova envio/entrega, consumo de link ou
+  mudança de senha; I05 completo continua pendente.
+
+**Corroboração estática:** hashes SHA-256 iguais entre checkout e homologação
+para scp/profile.php, login.php, logout.php, pwreset.php, include/ajax.staff.php
+e class.staff.php. Isso compara seis arquivos, não toda a instalação/plugins.
+pwreset.php, ramo sendmail, explica a mensagem genérica; a observação visual
+continua sendo a evidência do resultado apresentado, sem envio SMTP comprovado.
+
+**Retomada operacional:** a sessão inicial foi usada e sua saída foi testada.
+O navegador está no login. Próximo passo é autenticar uma identidade fictícia
+reservada aos cenários de regularização, preservando a conta administrativa;
+não criar/modificar credenciais por automação nem pedir senhas pela conversa.
+Senha obrigatória/MFA, recuperação válida, offline e expiração continuam pendentes.
+
+## Histórico — verificação da PR #39
 
 **Observado no navegador em 2026-09-05:** abertura de `http://localhost/scp/`
 resultou em `scp/login.php`, título Login do Agente, mensagem Autenticação

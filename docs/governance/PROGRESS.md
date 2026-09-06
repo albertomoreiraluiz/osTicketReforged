@@ -5,7 +5,7 @@
 - Data de atualização: 2026-09-05.
 - Baseline: `v1.18.4` (`8d38b0619649a50ee7cbbf37085f5d297fdc6f36`).
 - Branch estável: `main`; checkpoint integral entregue pela PR #27.
-- Branch da unidade: `codex/guard-intent-matrix`, entrada `3eb3d7cf` (PR #38).
+- Branch da unidade: `codex/visual-profile-validation`, entrada `0ea1ab7a` (PR #39).
 - Etapa: Portão D em andamento; ADRs 0004–0007 aceitos nos respectivos recortes, detalhes técnicos pendentes.
 - Plano ativo: `docs/plans/active/0001-reverse-engineering.md`.
 
@@ -223,6 +223,23 @@
   UTF-8, sem `servi??o`. GOV-017 proíbe restauração textual daqui em diante.
 
 ## Próximo passo proposto
+
+Passagem corrente V01–V08 em `REFORGED_INTENT_EQUIVALENCE.md`: sessão confirmada,
+percurso Painel/Diretório/Perfil; modais de senha vazia e MFA inicial cancelados;
+paginação 25 → 20 → 25 salva e reaberta em cada estado, original restaurado;
+logout natural e nova entrada protegida retornando ao login; login e recuperação
+staff vazios observados. Mensagem genérica não comprova entrega de e-mail.
+Único agente por navegação sequencial compartilhada. Nenhuma credencial alterada,
+core/schema ou restauração de banco; seis arquivos relevantes têm hashes iguais
+na homologação e checkout. Sessão encerrada intencionalmente em V06.
+Intervenção: autenticar conta fictícia de teste para continuar regularização,
+sem fornecer segredo pela conversa nem mudar credencial administrativa principal.
+Senha/MFA obrigatórios, recuperação válida, offline, expiração e locks pendentes.
+Validações: MkDocs estrito aprovado, 74/74 documentos, 133 Markdown/350 links,
+zero quebra própria e seis herdadas; mapa SCP e diff válidos. Navegação MkDocs
+avaliada e preservada, pois o registro amplia documento já indexado.
+
+### Histórico — matriz integrada pela PR #39
 
 Unidade corrente: `REFORGED_INTENT_EQUIVALENCE.md`, 12 intenções com fontes,
 precedências, efeitos e critérios de equivalência sob ADR 0007 aceito.

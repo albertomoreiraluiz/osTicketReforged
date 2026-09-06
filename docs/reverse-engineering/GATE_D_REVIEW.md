@@ -2,6 +2,16 @@
 
 ## Estado corrente
 
+Unidade `codex/visual-profile-validation`, entrada `0ea1ab7a` (PR #39).
+Único agente, passagem sequencial em sessão compartilhada; sem novo desenho IAM
+ou implementação. V01–V08 registram ações pelo frontend, limites e restauração
+da preferência. Revisão do registro e diff pelo integrador; não alegar nova
+revisão independente nem equivalência Reforged. Pareceres anteriores históricos.
+Validações locais aprovadas: MkDocs estrito, 74/74 documentos, 133 Markdown e
+350 links, zero quebra própria e seis herdadas; mapa SCP e diff sem inconsistência.
+
+### Histórico — revisão da PR #39
+
 Unidade `codex/guard-intent-matrix`, entrada `3eb3d7cf` (PR #38), baseline v1.18.4.
 Principal único escritor e integrador. `qa_engineer/guard-matrix/evidencias`
 contribuiu auditoria documental somente leitura, enquanto principal rastreou
