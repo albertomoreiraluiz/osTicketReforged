@@ -4,6 +4,12 @@ Fork controlado do osTicket para engenharia reversa e futura revitalização pro
 
 ## Estado atual do projeto
 
+Retomada do Portão D: sessão administrativa confirmada e precondições de
+autenticação/perfil de teste registradas em
+[V09/V10](docs/reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md).
+Permissões do Viewer preservadas. Próximo recorte: planejar offline com retorno
+administrativo; senha/MFA permanecem pendentes com identidade fictícia.
+
 | Item | Estado |
 | --- | --- |
 | Baseline | osTicket `v1.18.4`, commit `8d38b061` |

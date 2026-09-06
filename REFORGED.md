@@ -27,8 +27,10 @@ muito acoplados antes de reproduzi-los nos módulos, reutilizando os mecanismos
 originais. `REFORGED_INTENT_EQUIVALENCE.md` detalha 12 intenções, efeitos e
 critérios; lacunas visuais não são cobertas por testes históricos de outra camada.
 Passagem V01–V08 registra perfil, preferência restaurada, saída e validações
-vazias; senha/MFA obrigatórios não concluídos. Retomada requer conta fictícia
-autenticada após logout intencional. Core intacto.
+vazias; senha/MFA obrigatórios não concluídos. Retomada V09/V10 confirma sessão
+administrativa e precondições; Viewer restrito preservado. Próximo recorte:
+planejar offline com retorno administrativo; regularização continua com conta
+fictícia e etapa assistida. Core intacto.
 
 ## Objetivo
 
