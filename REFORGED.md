@@ -26,7 +26,9 @@ O ADR 0007 está **Aceito**: adaptar coordenação inline e analisar comportamen
 muito acoplados antes de reproduzi-los nos módulos, reutilizando os mecanismos
 originais. `REFORGED_INTENT_EQUIVALENCE.md` detalha 12 intenções, efeitos e
 critérios; lacunas visuais não são cobertas por testes históricos de outra camada.
-Retomada visual depende de sessão autenticada no navegador. Core intacto.
+Passagem V01–V08 registra perfil, preferência restaurada, saída e validações
+vazias; senha/MFA obrigatórios não concluídos. Retomada requer conta fictícia
+autenticada após logout intencional. Core intacto.
 
 ## Objetivo
 

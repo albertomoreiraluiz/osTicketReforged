@@ -152,7 +152,9 @@ Rastreio subsequente: [G01–G09 e contratos](../../reverse-engineering/REFORGED
 de combinações/exceções inline e análise comportamental de trechos acoplados.
 Entregue [matriz I01–I12](../../reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md),
 distinguindo evidências existentes de cenários visuais pendentes. Próximo passo:
-completar observações após ativação da sessão do navegador. Não reabrir o princípio
+completar regularização com conta fictícia autenticada. V01–V08 já documentam
+preferência restaurada, logout e nova entrada protegida, sem comprovar todos os
+fluxos de senha/MFA/recuperação. Não reabrir o princípio
 aceito nem presumir liberação de implementação; demais decisões mantidas.
 
 Direção visual antecipada pelo responsável em GOV-026 e

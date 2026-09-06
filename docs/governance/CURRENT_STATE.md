@@ -3,8 +3,8 @@
 ## Status e finalidade
 
 Documento **Aceito** em 2026-09-05 e inicialmente entregue pela PR #27.
-Atualizado na branch `codex/guard-intent-matrix`, entrada `3eb3d7cf` (PR #38),
-para registrar intenções, efeitos e lacunas de equivalência visual. Permite que uma nova sessão
+Atualizado na branch `codex/visual-profile-validation`, entrada `0ea1ab7a` (PR #39),
+para registrar passagem visual V01–V08 e suas pendências. Permite que uma nova sessão
 retome o trabalho sem depender de conversa, memória privada, terminal anterior
 ou inferências sobre arquivos ausentes.
 
@@ -172,9 +172,12 @@ com G01–G09 rastreados e contexto/erros propostos. ADR 0007 aceito explicitame
 [matriz I01–I12](../reverse-engineering/REFORGED_INTENT_EQUIVALENCE.md) produzida,
 com efeitos, evidências reaproveitáveis e critérios. Próxima ação: completar
 observações visuais ainda não cobertas, não presumir testes pelo rótulo global.
-Nesta unidade, navegador chegou ao login sem sessão ativa; nenhuma credencial
-submetida ou falha de login demonstrada. Retomada visual requer ativação da sessão
-pelos controles renderizados, sem bridge nem exposição do segredo local.
+Nesta unidade, sessão administrativa fornecida pelo responsável foi confirmada.
+Preferência 25 → 20 → 25 salva/reaberta/restaurada; logout staff e retorno ao login
+em nova entrada protegida comprovados. Modais de senha/MFA observados/cancelados;
+login e recuperação vazios exercitados, sem prova de recuperação completa.
+Sessão terminou intencionalmente no teste de saída. Retomada requer identidade
+fictícia autenticada para regularização, sem bridge nem alteração da senha principal.
 Trechos muito acoplados podem ter seu comportamento reproduzido após análise;
 não reabrir esse princípio, não presumir testes nem liberação de código.
 A árvore física continua candidata. Base de rastreabilidade:
